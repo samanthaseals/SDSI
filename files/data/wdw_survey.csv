@@ -1,0 +1,801 @@
+guest_id,park,weather,passholder,ll_use,age,party_size,visit_days,avg_temp_f,walked_miles,num_rides,wait_avg_am,wait_avg_pm,satisfaction_slider,budget,money_spent,spending_day1,spending_day2,plan_style,planned_character_dinner,actual_character_dinner,would_recommend
+1,Hollywood Studios,Cloudy,No,No,19,4,6,78.1,9.75,7,63.1,70,85.9,300,308.64,143.87,45.99,Planner,Yes,No,Yes
+2,Animal Kingdom,Sunny,No,Yes,37,4,8,97.8,10.44,17,35.9,42.2,93.2,300,329.65,128.77,117.84,Planner,Yes,Yes,Yes
+3,Hollywood Studios,Sunny,No,Yes,28,4,5,60.8,10.54,9,40.8,53.6,72.4,300,329.57,164.07,60.08,Planner,No,No,Yes
+4,Animal Kingdom,Sunny,No,Yes,23,4,14,78.2,11.93,26,20.5,29,86.7,400,442.02,241.47,91,Mixed,No,No,Yes
+5,Animal Kingdom,Sunny,No,Yes,26,3,3,71.4,8.94,13,38.6,50.6,59.6,200,242.73,129.56,28.49,Mixed,Yes,Yes,No
+6,EPCOT,Sunny,Yes,No,28,4,7,78.2,12.98,10,37.8,40.2,90.5,200,311.87,113.16,70.28,Spontaneous,Yes,Yes,Yes
+7,EPCOT,Sunny,Yes,No,22,5,4,94.5,9.67,17,31.3,40.1,86.1,300,NA,NA,NA,Planner,No,No,Yes
+8,EPCOT,Sunny,Yes,Yes,42,3,6,76.6,7.83,17,40.1,54.9,72.8,300,335.55,140.68,116.74,Planner,Yes,No,Yes
+9,Magic Kingdom,Cloudy,Yes,Yes,31,3,6,89.1,6.1,14,33.4,42.5,75.8,200,282.32,106.64,46.59,Mixed,Yes,Yes,No
+10,Hollywood Studios,Sunny,No,No,40,5,4,91.2,10.83,11,46.3,56.6,91.2,300,324.76,134.04,66.9,Spontaneous,Yes,Yes,Yes
+11,Animal Kingdom,Sunny,Yes,Yes,38,4,2,85.6,12.02,9,43.2,53.7,78.9,200,280.63,105.98,80.49,Planner,No,Yes,No
+12,Magic Kingdom,Cloudy,No,Yes,25,4,5,80.2,14.48,12,55.5,57.9,72,300,369.03,130.71,127.56,Planner,No,Yes,Yes
+13,Magic Kingdom,Rainy,No,Yes,39,4,9,76.7,11.85,18,28.1,54,69.7,300,338.17,168.56,81.03,Spontaneous,No,No,Yes
+14,Magic Kingdom,Sunny,No,Yes,38,7,7,93.7,10.15,15,70.1,86,79.8,300,357.98,205.67,40.75,Spontaneous,Yes,Yes,Yes
+15,Magic Kingdom,Cloudy,No,No,37,7,5,102,5.52,9,45.9,48.3,69.9,400,393.16,234.62,41.85,Planner,No,Yes,Yes
+16,Hollywood Studios,Sunny,Yes,No,24,6,2,89.5,10.94,10,54,46.6,88.4,200,309.86,157.43,56.57,Spontaneous,Yes,No,Yes
+17,Magic Kingdom,Sunny,No,Yes,33,3,5,87.5,8.58,12,33.9,37.9,75.3,200,289.2,141.14,47.74,Mixed,No,No,No
+18,Magic Kingdom,Sunny,Yes,No,9,7,6,77.2,6.5,15,60.4,75.5,86.9,300,299.36,146.22,70.96,Mixed,Yes,Yes,Yes
+19,EPCOT,Sunny,No,Yes,34,6,8,84.8,8.95,15,38,48.8,78.4,300,314.61,169.41,80.85,Planner,No,No,Yes
+20,EPCOT,Cloudy,No,Yes,20,8,2,87.1,7.97,10,23.8,33,77.8,300,265.43,145.66,25.21,Mixed,No,No,Yes
+21,EPCOT,Cloudy,Yes,No,20,7,10,96.4,5.92,20,37.3,57.4,76.4,500,461.15,237.55,82.95,Spontaneous,No,No,Yes
+22,Magic Kingdom,Sunny,No,Yes,29,7,4,81.3,12.75,17,54.7,69.8,78.7,400,371.28,161.58,56.82,Planner,No,No,No
+23,EPCOT,Rainy,No,No,27,4,3,87.9,12.75,10,41.5,50.6,43.4,200,286.25,149.9,32.22,Mixed,No,Yes,No
+24,Magic Kingdom,Cloudy,No,No,49,3,2,65.7,10.59,8,52.1,79,82.2,100,222.48,117.31,22.61,Spontaneous,No,No,Yes
+25,Hollywood Studios,Sunny,No,Yes,44,6,9,58.3,13.22,19,38.3,51.6,79,300,331.3,128.87,48.04,Planner,Yes,Yes,Yes
+26,Animal Kingdom,Cloudy,No,No,31,4,6,74.7,10.04,9,19.7,32.9,78.8,400,312.38,149.11,85.53,Planner,No,No,Yes
+27,Animal Kingdom,Sunny,No,Yes,30,4,6,95.3,10.27,17,19.5,30.1,75.1,200,327.27,153.52,59.44,Spontaneous,No,Yes,Yes
+28,EPCOT,Cloudy,Yes,Yes,15,2,5,79.9,2.89,9,21.6,20.7,73.5,300,249.85,108.98,29.24,Planner,Yes,Yes,Yes
+29,Hollywood Studios,Cloudy,No,No,45,5,3,87.3,12.56,12,57.1,60.7,84.1,200,295.73,171.46,58.36,Planner,No,No,No
+30,EPCOT,Sunny,No,Yes,16,3,11,96.4,11.36,16,42.2,38.2,69,200,385.38,217.87,61.02,Spontaneous,Yes,Yes,No
+31,Hollywood Studios,Cloudy,No,No,31,5,3,73.9,8.52,13,44.8,46.3,74.8,200,282.67,120.86,45.08,Planner,No,No,No
+32,Animal Kingdom,Sunny,No,No,30,4,4,80.2,9.92,10,34.5,44.8,80.5,200,259.71,154.14,33.81,Planner,No,No,No
+33,Animal Kingdom,Cloudy,No,Yes,27,4,5,94.8,8.43,9,31.3,31.7,84,200,334.91,194.56,30.58,Planner,No,Yes,Yes
+34,Animal Kingdom,Rainy,No,Yes,35,4,2,93.8,11.56,8,13.5,24.3,81.3,200,274.61,107.71,61.59,Planner,No,No,No
+35,EPCOT,Cloudy,No,No,35,5,5,84.5,11.61,13,32.3,43.7,64.4,300,391.95,142.31,107.78,Mixed,No,No,No
+36,EPCOT,Sunny,No,No,54,3,4,93.7,10.65,12,38.4,55.9,64.8,200,253.44,98.22,62.85,Mixed,Yes,Yes,No
+37,Magic Kingdom,Cloudy,Yes,Yes,32,1,3,84.8,1.5,11,58.6,73.9,77.7,200,283.77,153.51,71.29,Planner,No,Yes,Yes
+38,EPCOT,Sunny,No,Yes,43,4,7,85.8,9.96,12,39.9,51.1,67.6,200,325.86,169.36,79.87,Planner,No,No,No
+39,Magic Kingdom,Rainy,Yes,Yes,55,5,6,84.8,9.3,12,37.8,54.3,79.2,300,395.31,147.43,120.64,Spontaneous,No,No,Yes
+40,Hollywood Studios,Sunny,No,Yes,11,1,6,95.2,8.85,14,52.8,62.5,83.1,300,334.68,156.3,71.31,Planner,No,Yes,Yes
+41,EPCOT,Cloudy,Yes,No,51,6,6,79.5,10.56,13,9.8,20.9,76.8,200,361.63,161.54,68.06,Planner,Yes,Yes,No
+42,Magic Kingdom,Sunny,No,Yes,41,5,7,83.8,10.85,20,37.7,38.9,85,500,423.17,239.87,76.9,Planner,No,No,Yes
+43,EPCOT,Sunny,No,Yes,58,2,4,102,5.17,13,27.5,37.4,73.8,300,230.69,120.42,57.29,Planner,Yes,Yes,Yes
+44,EPCOT,Sunny,No,No,25,3,7,61.6,13.98,14,13.2,18.9,58,200,231.94,88.53,37.12,Spontaneous,No,No,No
+45,EPCOT,Sunny,No,Yes,64,4,5,75.7,9.65,12,33.1,60.4,59.7,300,293.1,117.54,91.86,Planner,Yes,Yes,Yes
+46,Magic Kingdom,Sunny,Yes,Yes,31,8,7,78.9,12.04,13,74.4,80.3,70.8,300,431.35,223.07,88.83,Planner,No,No,No
+47,EPCOT,Rainy,Yes,Yes,34,2,3,96.3,8.96,7,50.3,61.4,72.8,200,255.72,127.52,52.28,Spontaneous,No,No,Yes
+48,Magic Kingdom,Cloudy,Yes,Yes,65,5,6,79.4,11.28,10,49.1,65.7,82,200,404.66,217.89,89.65,Planner,No,Yes,No
+49,Hollywood Studios,Cloudy,Yes,Yes,28,1,5,79.2,13.92,9,33.1,53.1,71.3,100,206.38,91.85,38.26,Mixed,Yes,Yes,Yes
+50,Magic Kingdom,Rainy,Yes,No,45,3,8,76.2,10.93,12,52,61.7,70,300,335.28,189.81,78.19,Spontaneous,No,No,Yes
+51,Animal Kingdom,Sunny,No,Yes,37,4,7,81.2,9.29,14,18.2,29.4,78.4,200,335.14,123.18,56.55,Mixed,Yes,Yes,Yes
+52,EPCOT,Sunny,No,No,46,3,7,80.8,7.82,15,56.5,63.7,72.1,200,301.83,123.51,41.59,Mixed,No,Yes,No
+53,Magic Kingdom,Cloudy,No,Yes,37,6,6,66.7,14.34,12,51.9,63.6,60.2,400,370.38,198.39,70.94,Planner,No,Yes,No
+54,EPCOT,Sunny,No,Yes,10,6,5,82.7,4.2,7,25.3,50.1,94.3,200,284.33,159.94,61.37,Spontaneous,Yes,Yes,Yes
+55,Magic Kingdom,Sunny,No,Yes,7,4,5,70.9,8.09,12,78.5,74.4,75.1,300,279.87,100.52,49.28,Mixed,No,Yes,Yes
+56,Hollywood Studios,Sunny,No,No,44,7,3,79,8.49,6,40.6,52.2,74.1,300,300.3,175.23,45.08,Mixed,No,Yes,Yes
+57,Magic Kingdom,Sunny,No,No,39,2,9,79.2,7.22,15,69.8,76.3,85,300,325.88,175.59,73.28,Spontaneous,Yes,Yes,No
+58,EPCOT,Cloudy,No,No,23,4,5,93.3,15.03,9,32.9,36.2,88.3,300,251.91,146.4,37.04,Mixed,No,No,Yes
+59,EPCOT,Sunny,Yes,Yes,46,1,2,80.4,11.57,8,39,48.3,80.9,200,196.67,104.97,45.09,Mixed,Yes,Yes,No
+60,Magic Kingdom,Rainy,No,No,28,5,6,68,13.61,15,34.4,41.1,76.6,400,361.1,194.08,35.74,Spontaneous,Yes,Yes,Yes
+61,EPCOT,Sunny,Yes,Yes,49,6,7,74.5,14.8,17,51.8,59.1,76,300,341.18,164.19,75.81,Spontaneous,No,No,Yes
+62,Animal Kingdom,Sunny,Yes,No,49,7,3,79.9,10.49,9,16.7,28.8,83.1,400,408.37,168.33,104.15,Spontaneous,Yes,Yes,Yes
+63,EPCOT,Sunny,No,No,38,5,6,90.7,10.65,13,37.8,50.1,74.7,300,325.06,144.25,78.36,Planner,No,No,Yes
+64,Hollywood Studios,Cloudy,No,No,12,2,7,79.5,3.36,11,41.7,57.6,77.1,200,293.83,141.7,38.33,Spontaneous,No,No,Yes
+65,Magic Kingdom,Cloudy,Yes,No,33,2,9,66.5,11.64,15,52.3,63,60,400,335.02,142.98,96.69,Spontaneous,Yes,Yes,No
+66,EPCOT,Sunny,Yes,Yes,18,4,5,87.9,4.16,8,49.8,68.7,96,200,292.37,112.41,63.83,Mixed,No,Yes,Yes
+67,Animal Kingdom,Sunny,No,Yes,31,3,6,86.4,10.54,13,28.6,49.4,73.3,200,324.08,146.12,88.81,Planner,Yes,No,No
+68,Hollywood Studios,Sunny,No,Yes,34,7,8,91.8,10.91,17,58.2,62.7,71.4,400,429.34,179.07,146.58,Spontaneous,Yes,Yes,Yes
+69,Magic Kingdom,Cloudy,Yes,Yes,9,4,3,79.2,15,11,51.1,58.2,78,200,226.35,109.45,66.65,Mixed,Yes,Yes,No
+70,Magic Kingdom,Sunny,No,Yes,47,5,4,90.2,7.94,12,34.5,42.6,88.8,200,258.9,111.59,45.08,Mixed,No,No,Yes
+71,Hollywood Studios,Cloudy,No,Yes,22,3,1,85.5,10.19,5,47.9,50.7,82.5,200,224.31,224.31,NA,Mixed,Yes,Yes,Yes
+72,Hollywood Studios,Sunny,No,No,32,5,3,90.3,7.68,11,50.5,63.2,75.7,200,NA,NA,NA,Planner,No,Yes,No
+73,Animal Kingdom,Cloudy,Yes,No,26,2,6,80.5,6.75,13,30.1,40,71.6,200,297.57,127.37,97.03,Mixed,Yes,Yes,Yes
+74,EPCOT,Sunny,No,Yes,23,5,10,102,5.39,11,29.7,45.2,98.6,200,388.56,141.97,92.64,Planner,No,No,Yes
+75,Hollywood Studios,Cloudy,No,Yes,37,3,4,84.6,7.89,11,57.7,61,69.4,300,269.58,133.13,35.56,Planner,No,No,Yes
+76,Magic Kingdom,Cloudy,Yes,No,39,3,6,83,13.11,17,47.6,45.5,100,400,397.66,235.59,63.2,Planner,Yes,Yes,Yes
+77,Magic Kingdom,Cloudy,No,No,40,5,10,95.8,12.4,23,56.5,61.2,78.9,400,386.98,145.68,109.3,Planner,Yes,No,Yes
+78,Magic Kingdom,Rainy,No,Yes,8,5,2,91,16.03,6,30.7,42.1,83.3,300,272.66,111.07,76.35,Spontaneous,No,Yes,No
+79,Magic Kingdom,Sunny,No,No,37,5,2,85.2,14.06,12,41.7,52.5,83.4,300,341.82,154.19,100.76,Planner,Yes,Yes,Yes
+80,EPCOT,Cloudy,Yes,Yes,43,6,5,64.6,13.97,16,44.3,67.7,80.4,200,386.88,143.81,142.87,Planner,No,Yes,Yes
+81,Magic Kingdom,Sunny,No,Yes,41,4,4,79,6.52,17,59,73.3,63.6,200,331.47,193,56.44,Planner,No,No,No
+82,EPCOT,Rainy,Yes,Yes,21,5,8,93.3,10.13,12,32.1,40.3,82.9,300,388.89,195.12,82.79,Planner,Yes,Yes,Yes
+83,Animal Kingdom,Sunny,No,Yes,36,2,4,91.2,9.6,15,9.8,28.7,79.9,200,229.44,110.57,61.63,Mixed,Yes,No,Yes
+84,Magic Kingdom,Sunny,Yes,No,41,2,4,84.5,7.86,11,31.2,45.7,77.6,100,200.18,94.3,50.44,Mixed,No,No,Yes
+85,Magic Kingdom,Cloudy,No,Yes,57,6,7,93.3,7.47,16,44.8,61.2,70.8,300,380.91,137.76,97.34,Planner,Yes,Yes,No
+86,EPCOT,Sunny,No,No,48,5,10,82.5,11.88,16,36.1,45.7,59.3,300,NA,NA,NA,Mixed,No,No,No
+87,Hollywood Studios,Sunny,No,No,12,8,7,81.3,9.09,12,45.1,49.5,82.6,400,442.5,186.57,96.12,Planner,No,No,Yes
+88,EPCOT,Sunny,No,No,11,4,3,70.1,11.24,15,30.5,44,77.9,300,263.39,126.62,41.04,Spontaneous,Yes,Yes,Yes
+89,Hollywood Studios,Sunny,No,Yes,36,1,6,90.4,8.09,10,67.1,77.1,82.4,200,260.92,144.63,27.97,Planner,No,No,No
+90,EPCOT,Rainy,No,No,36,3,4,77.6,9.18,17,47.2,54.4,62.5,400,329.22,125.33,75.38,Planner,No,No,Yes
+91,Magic Kingdom,Rainy,No,Yes,24,2,5,79.4,8.66,13,19.9,45.3,58.9,200,268.69,110.34,79.53,Planner,Yes,No,No
+92,EPCOT,Cloudy,No,Yes,73,4,8,89.5,10.87,10,31.6,47.3,78.2,300,392.32,209.14,42.63,Mixed,No,No,No
+93,EPCOT,Sunny,No,No,32,5,6,79.5,4.4,17,46.4,53.1,86.2,300,395.22,154.58,136.76,Planner,No,Yes,Yes
+94,EPCOT,Rainy,Yes,Yes,39,3,5,79.2,10.91,10,21.2,35.1,96.6,300,253.94,152.06,39.48,Planner,No,No,Yes
+95,Animal Kingdom,Cloudy,Yes,Yes,25,1,8,76.3,9.34,12,21.2,29.6,79.8,300,281.73,135.88,53.77,Planner,Yes,Yes,Yes
+96,Animal Kingdom,Sunny,No,No,50,4,4,78.2,7.46,14,29.8,42.8,77.4,300,326.66,185.67,47.13,Planner,No,No,Yes
+97,EPCOT,Sunny,No,Yes,36,5,2,77.8,11.51,14,36.8,43.4,75,400,331.18,196.27,70.61,Spontaneous,No,Yes,Yes
+98,Magic Kingdom,Sunny,Yes,Yes,29,2,5,78.7,13.78,9,44,71.9,59.7,200,219.57,96.3,59.95,Mixed,No,No,No
+99,Magic Kingdom,Sunny,Yes,Yes,30,3,7,68.2,8.97,11,54.9,69.3,100,300,321.63,149.65,73.88,Mixed,No,Yes,Yes
+100,Magic Kingdom,Cloudy,No,No,38,2,6,87.1,9.79,11,46.4,46.1,80,400,330.82,126.68,95.96,Spontaneous,No,Yes,Yes
+101,Hollywood Studios,Sunny,No,No,47,2,7,68.4,11,15,45.4,43.5,89.4,300,272.06,100.49,68.59,Spontaneous,No,No,No
+102,Animal Kingdom,Cloudy,No,Yes,30,6,3,76.5,13.38,14,27.2,47.1,92.5,300,334.14,148.35,108.25,Mixed,No,No,Yes
+103,Hollywood Studios,Sunny,No,Yes,44,1,9,81.1,12.65,16,44,60.8,73.7,300,318.55,190.98,33.83,Planner,No,No,No
+104,Magic Kingdom,Sunny,Yes,No,36,6,6,88.6,11.23,14,49,56.7,88,300,348.89,178.64,86.92,Planner,Yes,No,Yes
+105,Magic Kingdom,Cloudy,No,No,29,4,4,84.8,8.39,12,48.3,55.3,82.9,300,342.83,126.62,55.79,Planner,No,No,Yes
+106,Magic Kingdom,Cloudy,No,No,28,5,4,77.5,11.95,14,40.3,54.9,74.8,300,340.62,199.86,67.78,Mixed,Yes,No,No
+107,Animal Kingdom,Cloudy,No,No,48,4,8,76.4,10.14,20,28.8,43.6,82.4,200,375.03,207.37,78.65,Spontaneous,No,No,Yes
+108,Magic Kingdom,Sunny,No,Yes,36,3,4,76.1,7.77,11,44,46.5,70.9,300,372.5,196.7,67.84,Spontaneous,No,No,No
+109,Magic Kingdom,Cloudy,No,Yes,7,2,8,79.9,10.97,16,43.5,57,68.2,300,348.6,196.71,47.13,Spontaneous,No,No,No
+110,Hollywood Studios,Rainy,No,No,34,2,5,79,8.89,9,44,46,84.6,200,238.54,111.58,31.2,Spontaneous,No,Yes,No
+111,Magic Kingdom,Cloudy,No,Yes,27,4,5,72.8,4.95,9,54.7,60.6,82.4,200,263.7,101.81,88.15,Mixed,No,No,Yes
+112,Animal Kingdom,Cloudy,No,No,40,3,7,83.6,14.52,15,28.9,34.2,51.2,200,290.14,118.38,85,Mixed,Yes,Yes,No
+113,Animal Kingdom,Cloudy,No,No,57,5,7,79.2,10.18,16,29,45.8,76.6,300,346.32,173.5,102.83,Planner,No,No,Yes
+114,EPCOT,Sunny,No,Yes,34,6,8,76.7,9.83,14,35.5,39.7,86.9,400,365.15,174.62,77.35,Planner,No,Yes,Yes
+115,Hollywood Studios,Cloudy,Yes,No,26,4,10,86.6,11.51,20,36.2,34.3,68.7,400,390.08,186.73,77.28,Planner,No,Yes,Yes
+116,Animal Kingdom,Rainy,No,Yes,44,4,6,75.4,8.05,11,12.9,25.8,79.7,200,250.15,149.29,31.35,Spontaneous,Yes,Yes,Yes
+117,Hollywood Studios,Sunny,No,Yes,62,4,6,95,4,10,40.5,59.1,79.9,300,326.65,164.79,33.86,Planner,No,No,Yes
+118,Magic Kingdom,Sunny,Yes,No,26,1,7,87.5,10.89,14,38.7,51.3,74.5,300,323.27,131.91,39.07,Planner,No,No,Yes
+119,Animal Kingdom,Cloudy,Yes,No,51,3,5,102,12.69,16,24.4,29.4,67,300,348.59,177.84,58.05,Mixed,Yes,Yes,No
+120,Animal Kingdom,Sunny,No,Yes,39,4,5,87,11.09,11,41.2,47.5,74.9,200,262.27,132.55,33.08,Spontaneous,No,No,Yes
+121,Animal Kingdom,Cloudy,No,No,44,7,6,77.8,5.66,11,42.1,46.7,76.6,400,435.3,168.3,83.54,Planner,No,No,Yes
+122,EPCOT,Cloudy,Yes,No,50,1,7,84.6,7.81,10,5,23.6,85,300,288.45,148.15,60.72,Spontaneous,Yes,Yes,Yes
+123,Hollywood Studios,Sunny,No,No,46,4,2,85.5,14.39,5,37.3,58.1,76.1,200,207.89,94.63,55.05,Planner,No,No,Yes
+124,EPCOT,Cloudy,No,No,38,5,4,86.3,11.09,15,31.1,40.7,75.1,300,337.68,158.06,70.48,Planner,Yes,Yes,Yes
+125,EPCOT,Rainy,No,Yes,37,4,5,62.4,9.99,19,25.6,44.3,79,200,285.8,151.34,69.19,Spontaneous,No,No,Yes
+126,Animal Kingdom,Cloudy,No,No,38,2,3,76.6,7.88,11,20.5,45.6,61.5,200,228.07,126.18,49.3,Planner,No,No,No
+127,EPCOT,Sunny,No,No,44,5,3,76.3,8.75,15,51.1,52.4,68.9,300,297.78,137.35,69.35,Mixed,No,Yes,No
+128,EPCOT,Sunny,Yes,Yes,34,4,5,94.5,11.24,10,25.2,32.9,70.5,200,294.99,115.12,43.72,Planner,No,No,No
+129,Hollywood Studios,Rainy,Yes,Yes,27,7,6,72.3,9.9,17,41.3,46.7,74,300,324.52,193.5,50.02,Planner,Yes,Yes,No
+130,Animal Kingdom,Cloudy,No,No,27,6,3,85.7,9.17,12,45.1,53.9,78.4,300,283.26,123.81,92.05,Mixed,Yes,Yes,Yes
+131,EPCOT,Cloudy,Yes,Yes,17,3,2,82.2,10.87,7,38.4,40,75.8,100,166.51,61.17,45.27,Mixed,No,Yes,No
+132,Magic Kingdom,Cloudy,No,Yes,17,2,6,74.4,9.3,17,38.5,51.1,63,300,250.21,121.11,30.03,Planner,Yes,Yes,No
+133,EPCOT,Sunny,No,No,20,4,5,91,13.67,15,20.6,39.8,65.6,300,364.04,182.01,73.22,Spontaneous,No,No,Yes
+134,Magic Kingdom,Sunny,No,No,51,4,6,86.2,11.18,17,39.1,52.9,94.8,300,312.5,183.9,51.86,Planner,No,No,Yes
+135,Animal Kingdom,Sunny,Yes,Yes,40,3,2,84.7,5.66,18,21.9,30.8,81.3,200,NA,NA,NA,Planner,No,Yes,Yes
+136,EPCOT,Sunny,No,Yes,37,6,6,95.5,11.82,8,34.5,52.9,87.1,300,369.9,131.64,138.61,Planner,Yes,No,Yes
+137,EPCOT,Cloudy,No,No,45,6,7,92.1,8.97,19,29.6,37,71.4,300,424.11,231.98,47.2,Mixed,Yes,Yes,No
+138,EPCOT,Rainy,No,Yes,62,4,5,92,14.7,11,22.7,37.2,69.7,200,254.37,142.6,28.74,Spontaneous,No,Yes,Yes
+139,Animal Kingdom,Sunny,Yes,No,16,6,5,92,11.58,14,29.8,41.9,81.4,200,338.16,139.45,58.9,Spontaneous,Yes,Yes,Yes
+140,Animal Kingdom,Sunny,No,No,44,5,5,78.1,14.31,10,35,36.9,79.6,200,336.61,132.73,51.08,Planner,Yes,Yes,Yes
+141,Hollywood Studios,Cloudy,No,No,37,3,3,81.9,5.87,11,58,59.8,79.5,200,342.69,141.27,74.39,Planner,Yes,Yes,No
+142,Magic Kingdom,Sunny,No,No,38,9,7,76.5,11.5,17,35.2,54,76.8,400,384.18,190.41,104.87,Mixed,No,Yes,No
+143,Hollywood Studios,Cloudy,No,Yes,20,6,10,88.6,13.55,17,32.7,50.4,83.4,300,374.94,138.63,59.29,Spontaneous,Yes,Yes,Yes
+144,EPCOT,Cloudy,Yes,No,26,3,6,91.5,14.98,12,38.8,56.1,97.2,200,278.3,117.06,78.9,Spontaneous,Yes,Yes,Yes
+145,Hollywood Studios,Cloudy,No,No,13,3,5,74.5,12.65,5,44.4,50.3,57.1,300,303.47,166.09,58.56,Planner,No,No,No
+146,Magic Kingdom,Rainy,Yes,Yes,24,4,7,79.4,8.55,12,34.4,42.2,80.5,300,358.17,186.9,67.65,Spontaneous,No,No,Yes
+147,Magic Kingdom,Cloudy,No,Yes,37,4,3,81.6,10.61,8,49.8,65.6,64.5,200,245.6,146.03,38.08,Mixed,Yes,Yes,No
+148,Magic Kingdom,Sunny,Yes,Yes,48,6,5,71.3,10.25,16,47.2,51,87.6,300,305.67,175.92,30.83,Planner,No,Yes,Yes
+149,Animal Kingdom,Sunny,No,Yes,18,5,9,70.7,6.46,16,22.2,39.9,85.5,300,388.53,195.93,84.25,Spontaneous,No,No,No
+150,Animal Kingdom,Sunny,Yes,Yes,15,2,6,69.1,11.07,15,48.4,51.9,74,200,289.88,151,48.44,Planner,Yes,Yes,Yes
+151,Hollywood Studios,Cloudy,No,No,38,4,9,78.4,7.71,9,23.9,42.9,66.5,300,349.18,133.6,95.3,Planner,No,No,No
+152,Magic Kingdom,Sunny,No,Yes,44,2,7,74.5,8.09,17,40,56.6,73.4,400,313.59,146.22,47.4,Planner,No,Yes,No
+153,Magic Kingdom,Sunny,Yes,Yes,56,5,6,87.2,14.22,5,62.3,71.8,79.9,200,340.96,198.9,79.67,Planner,No,Yes,Yes
+154,Animal Kingdom,Rainy,No,No,19,3,8,56.3,11.62,16,15.3,29.2,70.5,200,262.43,148.51,59.53,Planner,Yes,Yes,Yes
+155,EPCOT,Cloudy,No,No,23,4,7,84.5,13.34,15,26.9,35,68.7,300,368.73,183.37,44.49,Planner,No,No,Yes
+156,EPCOT,Sunny,No,No,40,7,7,86.8,10.06,12,39.7,51.2,88,400,426.54,214.62,95.29,Planner,Yes,Yes,Yes
+157,EPCOT,Cloudy,Yes,No,31,4,5,96.5,11.31,16,27.6,48.8,70.6,300,295.5,105.16,64.33,Planner,No,No,No
+158,Animal Kingdom,Cloudy,No,Yes,46,3,7,86,14.67,15,30.9,35.7,93.5,300,321.29,145.42,77.02,Planner,No,No,Yes
+159,EPCOT,Cloudy,Yes,No,34,1,10,83.8,10.7,21,20.9,26.9,67.7,400,373.66,145.81,131.12,Planner,No,No,Yes
+160,Animal Kingdom,Sunny,No,No,29,4,5,85,12.84,12,18.7,19.6,70,300,374.92,138.63,99.37,Mixed,Yes,Yes,No
+161,Hollywood Studios,Sunny,Yes,No,35,3,4,84.3,6.62,13,35.3,37.9,61.7,200,NA,NA,NA,Spontaneous,Yes,No,Yes
+162,Animal Kingdom,Cloudy,Yes,No,29,2,3,79.8,8.55,11,31.8,43.8,81.5,300,271.81,120.28,60.64,Planner,No,Yes,Yes
+163,Hollywood Studios,Rainy,No,No,28,6,7,68.2,10.33,11,25.1,47.9,70.8,300,342.26,184.19,87.83,Spontaneous,No,Yes,No
+164,EPCOT,Cloudy,Yes,Yes,78,5,3,76.7,12.68,13,34.2,57.7,93.7,300,290.39,129.41,67.42,Mixed,No,No,Yes
+165,EPCOT,Sunny,No,No,57,3,8,75.7,10.34,13,41.2,43.6,66.6,200,277.31,150.11,28.32,Planner,Yes,No,No
+166,Hollywood Studios,Cloudy,No,No,36,6,2,75.3,9.96,9,63.4,69.3,72.7,300,341.8,169.5,83.9,Mixed,No,Yes,No
+167,Hollywood Studios,Cloudy,No,Yes,48,3,1,85,9.99,10,41.9,53.2,79.9,200,208.93,208.93,NA,Mixed,Yes,Yes,Yes
+168,Hollywood Studios,Cloudy,No,No,6,4,4,71,16.35,11,35.2,46,78.8,200,299.14,149.34,72.69,Spontaneous,No,Yes,Yes
+169,Hollywood Studios,Cloudy,No,Yes,24,5,6,73.2,11.72,13,73.9,79.7,88.8,300,367.06,156.65,53.69,Mixed,Yes,Yes,Yes
+170,EPCOT,Sunny,Yes,Yes,32,5,4,81.6,8.17,12,20.4,36.5,82.5,200,307.31,178.19,29.15,Planner,Yes,No,Yes
+171,Magic Kingdom,Rainy,No,No,56,5,8,75.6,7.64,18,41.4,44,68.2,300,376.44,213.92,57.82,Planner,Yes,Yes,Yes
+172,Magic Kingdom,Sunny,No,No,13,1,6,92,9.62,13,54.9,58.2,66.6,200,302.88,168.13,51.35,Planner,Yes,Yes,No
+173,Magic Kingdom,Rainy,No,Yes,5,6,5,91.9,6.64,11,44.9,55.4,54.6,200,373.24,159.61,89.4,Spontaneous,No,Yes,Yes
+174,Animal Kingdom,Cloudy,Yes,Yes,17,4,8,87.8,12.08,20,21.7,26.5,97.7,400,359.79,162.98,73.51,Mixed,Yes,Yes,Yes
+175,Magic Kingdom,Sunny,No,No,54,4,6,84.6,10.77,13,35.2,46.3,66.6,300,356.54,151.74,67.53,Planner,Yes,Yes,Yes
+176,Magic Kingdom,Cloudy,No,Yes,27,2,6,75.3,8.28,8,56.1,70.1,77.8,300,279.76,124.34,37.73,Spontaneous,No,Yes,No
+177,Magic Kingdom,Sunny,Yes,No,14,3,5,86,12.82,14,58.9,68,76.9,300,298,114.21,97.01,Planner,Yes,Yes,Yes
+178,Animal Kingdom,Cloudy,Yes,No,33,3,9,83.7,12.4,16,45.6,54.7,66.9,300,317.51,164.72,44.05,Spontaneous,No,No,Yes
+179,Magic Kingdom,Cloudy,No,No,53,2,9,87,5.29,14,50.4,60.9,72.8,400,408.06,180.31,84.37,Planner,Yes,Yes,No
+180,Animal Kingdom,Sunny,No,No,44,6,5,102,12.06,11,40.5,45.7,82.1,200,352.1,133.18,86.15,Planner,No,No,No
+181,EPCOT,Sunny,Yes,No,47,5,3,82.2,8.78,11,37.2,56.3,93.6,200,302.35,172.59,56.21,Planner,Yes,Yes,Yes
+182,EPCOT,Sunny,Yes,No,43,4,6,76.2,14.36,14,32,47,78.2,200,313.51,132.71,56.99,Planner,No,Yes,No
+183,Animal Kingdom,Sunny,No,Yes,62,2,5,76,10.76,10,44.3,48.7,77.6,200,273.32,120.14,91.79,Planner,No,Yes,Yes
+184,Magic Kingdom,Cloudy,Yes,No,30,6,4,84.4,10.23,12,48.7,64.6,93.8,400,366.77,159.85,90.82,Spontaneous,No,No,Yes
+185,EPCOT,Sunny,No,Yes,26,4,7,85.3,12.53,19,27.9,40.1,95,200,319.28,139.06,99.87,Planner,No,No,Yes
+186,Hollywood Studios,Sunny,No,No,23,8,10,81.3,12.18,17,47.8,59,71.7,300,370.76,130.2,82.1,Planner,No,Yes,Yes
+187,Magic Kingdom,Cloudy,Yes,Yes,30,8,4,75.6,9.36,5,45.5,57,81.7,400,381.4,209.03,79.26,Mixed,No,No,No
+188,Magic Kingdom,Sunny,Yes,No,16,6,4,76.4,10.21,11,42.9,59.5,79.3,200,283.42,155.04,64.59,Mixed,Yes,Yes,Yes
+189,Magic Kingdom,Rainy,Yes,Yes,48,3,7,89.4,12.76,11,43.7,46.7,77,300,314.84,178.53,39.2,Spontaneous,Yes,Yes,Yes
+190,EPCOT,Sunny,Yes,Yes,41,5,5,82.6,7.89,8,43,47.6,71.7,300,349.55,179.14,37.99,Spontaneous,No,No,No
+191,Animal Kingdom,Sunny,Yes,No,32,5,6,85.6,7.73,15,14.9,29.4,99.4,300,349.28,172.69,104.95,Planner,No,Yes,Yes
+192,Animal Kingdom,Sunny,No,No,31,4,8,87.3,10.04,17,36.7,49.2,71.8,200,315.76,188.75,27.79,Spontaneous,No,Yes,No
+193,Animal Kingdom,Sunny,No,No,21,3,1,85,9.04,7,28,32.4,67.4,200,274.85,274.85,NA,Mixed,Yes,Yes,Yes
+194,Hollywood Studios,Sunny,No,No,50,6,4,84.9,11.37,11,52.5,50.1,53.8,200,360.73,203.61,35.28,Planner,No,Yes,No
+195,Hollywood Studios,Cloudy,No,Yes,45,3,4,85.4,11.64,11,35.9,40.2,95.3,200,240.95,125.92,23.23,Mixed,No,Yes,Yes
+196,Hollywood Studios,Cloudy,No,No,19,6,6,76.9,8.23,13,38,44.6,70.4,300,315.35,185.28,27.46,Mixed,Yes,Yes,No
+197,Hollywood Studios,Cloudy,No,No,47,2,3,59.1,14.52,8,55.4,64.8,85.5,200,258.87,149.27,64.88,Mixed,Yes,Yes,Yes
+198,EPCOT,Cloudy,Yes,No,30,5,5,96.7,10.29,11,19.3,31.3,88.4,200,267.57,158.99,32.2,Planner,No,No,Yes
+199,Animal Kingdom,Cloudy,Yes,No,32,4,4,66.1,10.14,11,26.1,44.7,78.7,300,274.67,116.62,65.99,Planner,Yes,Yes,Yes
+200,Magic Kingdom,Sunny,No,Yes,28,4,4,80,8.3,15,47,51.5,67.8,300,370.13,210.77,58.9,Spontaneous,Yes,No,Yes
+201,Magic Kingdom,Sunny,No,No,49,6,5,90.2,9.53,11,41.8,59.8,88,200,333.28,145.6,104.89,Planner,No,Yes,Yes
+202,EPCOT,Sunny,No,No,34,4,5,72.3,6.05,13,28.4,48.5,78.2,300,357.73,180.51,53.1,Planner,Yes,Yes,Yes
+203,Animal Kingdom,Sunny,No,Yes,16,5,5,80.4,11,9,49.8,57.6,68.7,300,330.5,197.07,79.94,Planner,No,Yes,No
+204,EPCOT,Sunny,Yes,No,43,3,2,85.5,12.49,14,28.3,40.7,84.8,400,333.63,134.59,89.74,Mixed,Yes,No,Yes
+205,Animal Kingdom,Sunny,No,No,22,3,8,81.7,12.73,11,42,43.8,64.9,200,318.62,118.04,76.69,Spontaneous,No,No,No
+206,Magic Kingdom,Sunny,No,Yes,48,5,3,79.8,8.52,15,43,44.6,75.2,200,297.09,145.48,76.86,Spontaneous,Yes,Yes,Yes
+207,EPCOT,Cloudy,No,No,45,4,5,93.7,5.97,13,25.5,41.9,76.3,300,425.63,229.8,75.25,Planner,No,No,Yes
+208,Magic Kingdom,Sunny,No,Yes,29,2,7,93.9,11.03,10,47.4,66.8,63.9,200,265.99,155.38,32.47,Mixed,Yes,Yes,No
+209,Magic Kingdom,Sunny,Yes,No,16,3,5,75.3,9.96,16,51.4,59.3,100,200,284.72,109.12,88.43,Spontaneous,Yes,Yes,Yes
+210,Hollywood Studios,Cloudy,Yes,Yes,48,3,14,67.6,8.23,22,47.1,64.8,72.2,300,424.65,250.34,50.8,Spontaneous,Yes,No,Yes
+211,Hollywood Studios,Cloudy,No,No,43,2,3,96.4,10.63,11,26.8,34.9,72.7,200,227.95,83.96,62.68,Planner,Yes,Yes,Yes
+212,EPCOT,Cloudy,No,Yes,26,6,3,90.4,13.81,15,30.7,40.9,58.7,300,NA,NA,NA,Mixed,Yes,Yes,No
+213,Hollywood Studios,Sunny,No,No,21,5,4,93.9,11.02,13,29.1,43.8,63.6,300,323.44,149.96,39.33,Mixed,Yes,No,No
+214,Magic Kingdom,Sunny,No,No,7,4,4,89.7,12.19,8,60.3,69.3,79.8,200,248.4,142.64,34.74,Mixed,Yes,Yes,Yes
+215,Animal Kingdom,Sunny,No,No,47,4,6,64.8,10.97,11,39.1,42.7,67.7,200,283.07,123.5,87.13,Spontaneous,Yes,Yes,No
+216,Hollywood Studios,Sunny,No,No,52,4,4,86.2,11.79,9,46.4,57.2,76.2,200,240.39,122.92,53.5,Mixed,No,No,Yes
+217,Magic Kingdom,Sunny,Yes,Yes,53,3,7,81.4,9.61,13,59.6,52.7,100,300,367.07,134.14,121.06,Spontaneous,No,No,Yes
+218,Hollywood Studios,Cloudy,No,Yes,34,5,5,88.3,13.31,21,49.8,52.8,56.9,300,350.83,151.89,114.69,Spontaneous,No,No,No
+219,Animal Kingdom,Sunny,No,No,48,3,6,77.4,9.73,9,27.4,31.6,86.3,200,273.59,141.06,39.23,Mixed,No,No,Yes
+220,Animal Kingdom,Rainy,No,No,29,3,4,92.2,8.27,9,31.9,48.1,93.5,200,193.87,94.48,59.28,Mixed,No,Yes,Yes
+221,EPCOT,Rainy,No,Yes,34,6,2,90.2,12.05,8,35.4,52,60.9,300,336.08,134.24,72.58,Spontaneous,Yes,No,No
+222,Magic Kingdom,Sunny,Yes,No,34,2,5,79.5,14.04,7,55,73.7,82.5,200,250.76,134.6,26.86,Spontaneous,Yes,Yes,Yes
+223,Animal Kingdom,Cloudy,Yes,No,40,6,4,95.7,11.86,13,34.6,42,84.7,400,431.45,229.39,116.36,Mixed,No,No,No
+224,Animal Kingdom,Cloudy,Yes,Yes,3,9,7,81.6,11.83,6,13.9,30,72.9,300,349.1,140.87,101.73,Spontaneous,Yes,Yes,Yes
+225,Magic Kingdom,Sunny,Yes,Yes,45,4,3,89.6,10.8,10,70.3,76.4,73.8,300,242.31,113.37,45.62,Mixed,No,No,Yes
+226,EPCOT,Sunny,No,No,45,2,8,93.6,5.8,23,31.5,45.4,78.8,200,407.4,200.08,94.83,Planner,No,No,Yes
+227,Magic Kingdom,Sunny,Yes,No,3,6,5,82.8,11.44,11,46.1,50.8,73.3,200,342.78,199.83,42.84,Spontaneous,Yes,Yes,No
+228,Animal Kingdom,Sunny,Yes,Yes,39,5,4,78.2,10.59,13,37.7,54.7,83.9,300,330.57,133.75,73.07,Planner,Yes,No,No
+229,Hollywood Studios,Cloudy,Yes,No,24,3,7,97,10.49,17,27.9,34.2,79.1,200,417.27,207.93,58.7,Planner,No,Yes,Yes
+230,Hollywood Studios,Sunny,No,Yes,28,4,8,84.4,6.13,13,59,52,69.7,300,341.72,139.27,85.05,Spontaneous,No,No,Yes
+231,Hollywood Studios,Sunny,No,No,27,2,8,88.4,8.7,15,48.3,52.5,71.3,300,344.25,172.07,77.83,Mixed,Yes,Yes,Yes
+232,Magic Kingdom,Sunny,No,No,66,3,5,82.9,11.52,17,47.8,61.2,76.9,300,352.63,187.78,36.27,Mixed,Yes,Yes,Yes
+233,Hollywood Studios,Cloudy,Yes,Yes,45,4,3,82.6,6.68,8,48.2,63.9,90.8,200,282.96,101.64,89.58,Planner,No,Yes,Yes
+234,Hollywood Studios,Sunny,No,Yes,63,6,5,89.9,10.57,14,26,35.9,74.9,300,334.17,140.8,111.69,Spontaneous,Yes,No,Yes
+235,Magic Kingdom,Cloudy,No,No,27,2,5,81.8,11.03,10,27.7,36.9,90.9,300,268.57,150.99,26.69,Planner,Yes,Yes,Yes
+236,Animal Kingdom,Rainy,No,Yes,33,3,5,92.2,6.21,13,22,37.3,72.3,200,254.92,112.86,70.49,Planner,Yes,Yes,Yes
+237,Animal Kingdom,Rainy,No,No,44,5,6,94.3,9.61,14,13.4,25.4,84.3,400,421.43,194.17,89.22,Planner,No,No,Yes
+238,Hollywood Studios,Sunny,No,Yes,37,7,8,88,13.83,21,37.9,60.1,84.5,400,420.28,157.04,155.45,Spontaneous,Yes,Yes,Yes
+239,Hollywood Studios,Sunny,Yes,Yes,56,1,6,62.8,5.93,12,44.8,58.5,100,200,271.01,151.66,27.43,Spontaneous,No,No,Yes
+240,Hollywood Studios,Sunny,No,No,27,3,8,83.2,7.13,15,47.2,57.3,76.6,200,261,109.73,90.02,Planner,Yes,Yes,Yes
+241,Magic Kingdom,Cloudy,No,No,24,4,7,81.3,11.57,15,62.6,63.8,71.7,300,354.14,168.63,77.58,Mixed,Yes,No,No
+242,Animal Kingdom,Sunny,Yes,Yes,30,7,8,78.8,19.03,23,19.4,33.1,74.1,500,415.04,169.38,71.28,Planner,No,No,No
+243,Animal Kingdom,Cloudy,No,No,62,3,6,85.4,7.23,13,36.7,49.9,77.9,400,344.7,137.68,49.57,Mixed,No,No,Yes
+244,Magic Kingdom,Sunny,No,No,33,2,5,83.3,9.44,9,59.7,69.3,75.2,200,325.8,116.71,54.2,Spontaneous,No,No,Yes
+245,EPCOT,Sunny,Yes,No,43,2,9,79.9,18.29,17,20.5,29.7,71.8,300,315.12,136.49,60.85,Mixed,No,No,Yes
+246,EPCOT,Cloudy,Yes,No,36,3,4,72.2,10.92,12,27,37,88.5,200,289.43,113.66,52.59,Spontaneous,No,No,Yes
+247,EPCOT,Rainy,Yes,Yes,40,3,5,76.3,9.36,13,31,50,78.8,200,291.38,106.06,93.35,Planner,No,No,No
+248,Magic Kingdom,Sunny,No,No,24,5,4,87.2,12.65,6,62,75.4,80.8,200,326.41,160.66,60.76,Spontaneous,No,Yes,Yes
+249,EPCOT,Cloudy,No,No,13,4,4,87.2,8.61,13,30.8,39.3,71.6,200,210.36,83.13,31.15,Mixed,No,No,No
+250,Animal Kingdom,Cloudy,No,Yes,42,8,4,87.1,8.21,10,34.1,43.7,81.5,300,378.65,159.09,68.01,Mixed,No,Yes,Yes
+251,Magic Kingdom,Sunny,Yes,No,63,3,6,83.5,9.98,11,53.9,54.7,76.7,300,280.87,144.55,47.61,Planner,No,No,Yes
+252,EPCOT,Sunny,Yes,No,39,2,8,85.2,9.85,18,62.4,68.5,76.9,200,342.54,164.43,100.7,Mixed,No,Yes,Yes
+253,Hollywood Studios,Rainy,No,Yes,30,3,5,80.3,10.08,15,49.8,58.8,70.5,300,363.05,142.69,99.59,Spontaneous,No,Yes,Yes
+254,Magic Kingdom,Sunny,No,No,37,6,4,80.4,14.11,12,65.2,69.2,54.9,200,317.45,129.86,70.97,Spontaneous,No,No,No
+255,EPCOT,Sunny,No,No,62,3,3,82.7,7.21,7,47.4,56.8,100,200,246.27,98.03,72.74,Mixed,No,Yes,Yes
+256,Magic Kingdom,Sunny,No,No,36,3,8,95.2,6.67,14,45,44.2,74.1,200,343.09,138.13,119.32,Mixed,No,No,No
+257,Magic Kingdom,Rainy,Yes,Yes,48,4,6,87,10.58,18,32.5,40.6,80.9,300,403.87,174.41,96.67,Mixed,Yes,No,Yes
+258,Magic Kingdom,Sunny,No,Yes,58,2,7,81.2,8.08,14,68.1,86.9,67.9,300,379.6,204.44,62.98,Planner,Yes,Yes,Yes
+259,EPCOT,Cloudy,Yes,No,14,4,7,91.9,6.34,16,43.1,55.5,83.1,300,335,136.51,74.97,Mixed,Yes,Yes,Yes
+260,Animal Kingdom,Sunny,Yes,Yes,34,6,6,87,11.88,14,34.9,56.1,77.8,300,343.68,165.83,75.6,Planner,Yes,Yes,Yes
+261,Magic Kingdom,Sunny,Yes,No,28,4,11,81.4,5.15,21,40.1,44,100,300,410.82,166.73,120.91,Spontaneous,No,No,Yes
+262,Magic Kingdom,Sunny,No,Yes,37,6,3,79.2,14.84,11,46.2,50.8,76.3,200,296.88,115.76,68.09,Spontaneous,No,No,Yes
+263,Hollywood Studios,Rainy,No,No,42,5,6,93.2,14,16,36.6,51.5,68.3,300,389.72,207.29,90.74,Spontaneous,No,No,Yes
+264,EPCOT,Cloudy,No,No,38,3,6,98.9,5.7,14,44.2,52.4,55.2,300,294.56,163.6,70.99,Planner,Yes,Yes,No
+265,Animal Kingdom,Cloudy,Yes,No,11,3,4,72.5,12.23,12,22.8,37.7,81.3,200,274.13,97.24,39.57,Spontaneous,Yes,Yes,Yes
+266,EPCOT,Sunny,No,Yes,28,3,7,93.5,7.89,18,49.4,53.8,69.5,300,335.68,151.31,92.36,Planner,No,Yes,No
+267,Magic Kingdom,Rainy,Yes,No,49,3,4,87.4,9.76,12,32.6,42.5,97.4,200,233.24,136.7,24.38,Planner,No,No,Yes
+268,EPCOT,Cloudy,Yes,Yes,16,5,4,64.5,8.23,4,40.8,43.9,74.1,200,NA,NA,NA,Mixed,Yes,No,No
+269,EPCOT,Sunny,Yes,No,27,3,7,78.1,9.59,9,35.4,53.2,81.1,200,NA,NA,NA,Spontaneous,No,No,Yes
+270,EPCOT,Sunny,No,Yes,21,9,7,80.1,13.49,18,49.6,60.4,67.2,300,379.25,150.12,75.5,Planner,No,Yes,No
+271,EPCOT,Rainy,Yes,No,22,5,8,88.6,13.57,14,28.3,32.7,80.1,300,387.9,189.44,92.16,Planner,Yes,Yes,Yes
+272,Animal Kingdom,Sunny,Yes,Yes,46,2,6,80.4,6.11,6,27.9,31,80.6,300,287.68,103.45,89.79,Mixed,No,No,Yes
+273,EPCOT,Sunny,No,No,26,5,5,87.6,8.76,16,24.8,43.2,53.3,400,343.48,146.62,88.43,Mixed,No,No,No
+274,Hollywood Studios,Sunny,Yes,No,53,1,7,80.1,13.33,15,30.3,46,77.1,200,249.88,135.73,36.72,Planner,No,No,No
+275,EPCOT,Sunny,No,Yes,27,5,8,88.6,7.2,18,54.8,63.3,79.2,500,436.02,259.67,39.07,Planner,Yes,Yes,Yes
+276,Hollywood Studios,Sunny,No,No,47,2,6,73.5,6.7,14,28.8,43,87.5,300,262.31,149.79,33.41,Planner,No,Yes,Yes
+277,Hollywood Studios,Sunny,Yes,No,21,6,4,85.4,14.33,8,57.1,49.1,82.6,300,316.49,142.27,92.15,Planner,No,No,No
+278,EPCOT,Sunny,No,Yes,22,6,4,70.3,11.09,14,14.2,34,78.7,300,327.21,153.81,89.13,Mixed,Yes,No,Yes
+279,Hollywood Studios,Sunny,Yes,Yes,31,7,7,88.9,16.18,15,52.9,50,69.6,300,353.71,139.76,113.33,Mixed,Yes,Yes,Yes
+280,Magic Kingdom,Sunny,No,Yes,27,2,4,79.9,12.3,14,78,83.4,87.3,200,270.11,105.62,90.89,Mixed,No,No,Yes
+281,Magic Kingdom,Sunny,No,Yes,11,4,5,85.5,9.66,13,62.2,70.5,66.7,300,306.21,164.43,44.53,Mixed,Yes,Yes,No
+282,EPCOT,Cloudy,No,No,35,3,6,70.9,12.26,16,53.7,58.6,68.2,300,325.26,126.41,107.72,Mixed,No,No,No
+283,Magic Kingdom,Sunny,No,No,13,5,2,85.1,7.23,12,54,68.4,69,200,245.77,121.02,44.06,Spontaneous,No,No,Yes
+284,Animal Kingdom,Sunny,No,No,34,5,7,92.9,8.08,12,23.6,47,71.9,300,342.93,192.79,56.62,Mixed,No,No,Yes
+285,Magic Kingdom,Sunny,Yes,Yes,26,3,5,92.1,11.76,12,51.2,59.1,77.3,200,281.39,146.19,53.19,Planner,Yes,Yes,Yes
+286,EPCOT,Cloudy,No,Yes,21,2,1,64.7,15.41,10,49.1,58.5,90.2,200,255.93,255.93,NA,Planner,No,No,Yes
+287,Magic Kingdom,Rainy,No,No,41,9,6,68.8,13.16,11,34.5,48.7,80.1,300,430,228.97,86.96,Planner,No,No,No
+288,Hollywood Studios,Cloudy,Yes,No,46,4,6,84,16.34,14,51.6,74.1,65.9,200,266.62,122.32,70.77,Mixed,No,No,Yes
+289,Hollywood Studios,Sunny,No,No,32,5,6,85.8,5.55,14,56.8,61.8,94.7,300,286.76,116.22,58.7,Mixed,Yes,Yes,Yes
+290,Animal Kingdom,Sunny,No,No,41,3,6,79.1,13.59,16,35,42.7,66.6,300,286.02,106.65,40.3,Planner,No,Yes,No
+291,Animal Kingdom,Sunny,No,No,28,5,3,86.2,9.71,14,27.9,43,92.8,100,279,105.98,82.53,Spontaneous,No,Yes,Yes
+292,Animal Kingdom,Sunny,No,No,36,3,3,85.4,12.33,16,39.8,60.5,72.5,200,241.55,137.01,53.34,Planner,No,No,No
+293,EPCOT,Sunny,No,No,36,4,4,81,8.67,19,36,54,78.3,300,303.47,125.51,55.77,Spontaneous,Yes,Yes,Yes
+294,EPCOT,Sunny,Yes,Yes,29,8,4,79.5,11.11,9,43.7,50,53.3,300,332.62,192.76,32.91,Mixed,Yes,No,No
+295,Magic Kingdom,Rainy,No,Yes,35,2,4,62.1,10.23,14,14.1,32.2,61.2,100,263.57,100.83,45.83,Spontaneous,No,No,No
+296,Hollywood Studios,Sunny,No,Yes,19,6,6,95.8,11.5,10,46.6,60.1,81.7,300,347.86,156.6,68.72,Mixed,Yes,No,No
+297,Magic Kingdom,Sunny,No,No,41,5,9,97.2,3.03,17,31.6,47.8,75.5,400,NA,NA,NA,Mixed,No,Yes,Yes
+298,Magic Kingdom,Sunny,No,No,37,6,5,69.5,10.86,11,56.3,59.5,73,300,321.41,123.75,94.63,Planner,No,No,Yes
+299,Animal Kingdom,Sunny,No,No,49,4,7,91.5,7.54,16,5,23.2,90.8,300,346.48,187.54,39,Planner,No,No,No
+300,EPCOT,Cloudy,No,Yes,28,2,8,75.4,14.64,16,24.1,24.3,64.7,300,355.28,139.13,55.83,Spontaneous,Yes,No,No
+301,Animal Kingdom,Cloudy,Yes,No,13,4,5,75.9,12.02,18,35.9,52.2,84.6,200,327.72,163.63,57.54,Planner,No,No,No
+302,Hollywood Studios,Cloudy,No,No,30,4,6,86.7,10.71,18,40.2,44.7,74.3,300,300.86,148.53,81.89,Planner,No,No,No
+303,Animal Kingdom,Sunny,No,Yes,24,4,6,82,8.24,13,42,50.7,90.7,300,262.14,131.54,34.55,Mixed,Yes,Yes,Yes
+304,EPCOT,Sunny,Yes,Yes,20,4,6,82.7,8.24,12,43.3,56.3,85.4,200,259.89,131.97,37.48,Planner,Yes,Yes,Yes
+305,EPCOT,Sunny,No,No,40,6,3,95.6,4.82,8,61.5,61.3,75,400,347.94,123.13,92.17,Planner,Yes,No,No
+306,Animal Kingdom,Cloudy,Yes,Yes,42,2,2,89.1,4.74,15,36.6,33,80.7,300,266.57,123.21,34.16,Planner,No,No,Yes
+307,Hollywood Studios,Sunny,Yes,Yes,34,3,8,74.8,7.67,17,61.1,68.8,80.8,300,321.7,154.89,92.62,Mixed,Yes,Yes,Yes
+308,EPCOT,Sunny,No,No,62,3,3,74.6,9.08,9,44.1,55.2,61,300,297.89,108.62,55.63,Mixed,No,No,No
+309,Hollywood Studios,Rainy,No,No,62,3,5,86.2,6.02,14,10.5,22.3,62.9,300,NA,NA,NA,Spontaneous,No,No,Yes
+310,Hollywood Studios,Sunny,No,No,26,4,5,86.3,7.08,9,45.7,66.8,66.1,200,305.41,139.03,84.26,Mixed,No,No,No
+311,Hollywood Studios,Sunny,Yes,No,24,2,8,91.2,9.27,14,44.5,52.8,71.7,200,342.51,151.68,94.86,Planner,No,No,Yes
+312,EPCOT,Cloudy,Yes,Yes,25,5,3,91.7,6.35,7,34.3,34.1,90.9,200,222.17,99.07,47.73,Mixed,No,Yes,Yes
+313,EPCOT,Rainy,No,Yes,43,4,3,73.8,12.58,9,48.1,64.9,78.8,200,283.04,104.85,70.16,Spontaneous,No,Yes,Yes
+314,EPCOT,Sunny,Yes,Yes,37,2,7,90,11.24,15,28.2,41.7,84.4,300,278.94,152.09,29.07,Planner,No,No,Yes
+315,EPCOT,Cloudy,Yes,No,36,6,5,76.9,15.16,12,43.7,38.1,81.3,400,328.49,129.59,100.38,Planner,Yes,Yes,Yes
+316,Magic Kingdom,Sunny,Yes,Yes,34,2,10,74.5,3.56,17,40.9,56.7,68.7,300,365.78,151.61,63.11,Mixed,Yes,No,Yes
+317,Magic Kingdom,Rainy,Yes,No,25,3,8,68.1,4.67,18,37.9,43.3,64.9,200,337.08,201.8,62.21,Mixed,Yes,Yes,Yes
+318,Magic Kingdom,Sunny,No,No,33,6,3,78.2,4.63,14,51.8,59.4,90.8,200,299.77,128.96,54.74,Planner,No,No,Yes
+319,Animal Kingdom,Sunny,Yes,Yes,62,2,4,89.1,4.87,7,26,37.8,66.9,200,231.1,123.89,51.56,Mixed,No,Yes,No
+320,Magic Kingdom,Cloudy,Yes,Yes,31,4,5,80.7,13.96,11,38.5,57.6,80.1,200,370.1,176.36,100.3,Planner,Yes,No,Yes
+321,Hollywood Studios,Cloudy,Yes,No,29,4,3,81.4,13.31,11,49.4,57.6,71.7,300,301.88,129.13,98.5,Spontaneous,Yes,No,Yes
+322,Hollywood Studios,Rainy,Yes,Yes,37,4,5,77.6,6.66,13,27.6,40.3,69.2,200,333.23,190.03,85.72,Spontaneous,Yes,No,Yes
+323,Magic Kingdom,Sunny,Yes,Yes,44,2,8,74.7,5.23,13,47.4,59.8,93.2,300,305.68,137.76,69.7,Mixed,Yes,No,Yes
+324,Hollywood Studios,Sunny,No,No,45,8,8,75.3,10.81,14,53,77,83,300,442.42,168.76,65.4,Planner,No,No,Yes
+325,Magic Kingdom,Rainy,Yes,No,33,2,1,81.5,10.08,8,26.5,35,90.4,200,196.75,196.75,NA,Planner,Yes,Yes,Yes
+326,EPCOT,Cloudy,Yes,Yes,48,4,3,78,15.54,9,58.9,60.4,67.7,400,351.62,207.05,82.02,Spontaneous,No,Yes,No
+327,Hollywood Studios,Cloudy,Yes,No,9,8,4,74,10.94,12,50.5,59.3,69.9,300,316.9,174.63,61.18,Planner,Yes,Yes,No
+328,Magic Kingdom,Sunny,No,No,25,6,4,95.8,10.55,10,49.2,55.8,92.8,300,NA,NA,NA,Planner,No,No,Yes
+329,Magic Kingdom,Sunny,Yes,Yes,16,4,7,102,7.21,17,60.7,64.3,78.4,300,384.56,137.44,117.53,Spontaneous,Yes,No,Yes
+330,Animal Kingdom,Sunny,No,No,44,3,4,88.3,12.93,8,45,42.4,91.8,200,NA,NA,NA,Planner,Yes,Yes,Yes
+331,Magic Kingdom,Sunny,Yes,Yes,31,4,1,79.1,11.2,8,68.3,80.1,77.7,200,266.07,266.07,NA,Planner,No,No,Yes
+332,Animal Kingdom,Sunny,No,Yes,35,3,2,91.6,9.92,10,29.1,37.4,86.7,200,322.18,190.94,56.46,Mixed,Yes,Yes,No
+333,Magic Kingdom,Sunny,No,Yes,37,4,6,75.8,6.91,15,45.6,65.9,70.4,400,337.96,180.19,58.21,Planner,Yes,Yes,Yes
+334,Animal Kingdom,Cloudy,Yes,No,34,4,5,66.2,9.6,14,29.3,27.8,67.8,200,275.27,113.08,45.92,Mixed,No,No,Yes
+335,Animal Kingdom,Sunny,No,No,48,3,9,83.8,10.98,14,37.9,37,85.6,300,361.03,154.6,71.97,Spontaneous,Yes,Yes,Yes
+336,Magic Kingdom,Sunny,No,No,3,3,6,77.9,15.43,11,49.8,44.1,56.4,300,264.42,130.72,77.4,Planner,No,No,No
+337,Magic Kingdom,Rainy,No,No,36,4,3,84.9,9.71,9,34.1,62.4,77.3,200,249.97,127.94,42.36,Spontaneous,No,Yes,No
+338,Magic Kingdom,Sunny,Yes,No,31,4,5,85,10.94,16,51.3,53.8,74.2,300,335.19,142.24,114.78,Spontaneous,Yes,No,No
+339,EPCOT,Rainy,No,Yes,55,6,6,82.5,11.11,14,31.2,43.3,54,400,393.63,139.75,62.11,Planner,No,No,Yes
+340,Magic Kingdom,Cloudy,No,No,33,5,5,87.5,8.3,15,50.9,51.1,92.2,400,367.63,165.04,89.17,Planner,No,Yes,Yes
+341,EPCOT,Rainy,Yes,No,25,5,7,95.5,10.2,16,17.3,19.6,73.6,300,461.39,270,95.29,Mixed,No,No,No
+342,Magic Kingdom,Sunny,Yes,No,42,7,7,92.5,14.02,13,39.9,40.4,91.6,400,437.6,215.69,119.79,Planner,No,No,Yes
+343,Hollywood Studios,Sunny,No,Yes,45,4,3,98.7,12.07,9,50.7,63.8,67.3,100,262.67,94.89,37.92,Mixed,Yes,Yes,No
+344,Magic Kingdom,Sunny,Yes,No,42,6,3,90.3,6.55,8,58.4,72.1,71.5,200,297.32,146.06,37.79,Mixed,Yes,Yes,Yes
+345,Animal Kingdom,Sunny,No,Yes,25,3,5,92.8,6.33,13,21.5,29.1,85.2,300,314.77,158.2,50.78,Planner,No,Yes,Yes
+346,Animal Kingdom,Cloudy,No,No,33,7,2,65.3,5.56,11,25.6,28.5,76.6,200,232.43,129.25,38.63,Planner,No,No,No
+347,Magic Kingdom,Cloudy,No,Yes,42,2,9,80.2,8.28,20,24.6,45.6,84.5,400,329.58,158.92,94.75,Planner,Yes,No,Yes
+348,EPCOT,Cloudy,Yes,Yes,47,5,6,79.6,13.25,15,40.6,44.4,97.7,300,301.53,141.34,38.62,Spontaneous,Yes,Yes,Yes
+349,Hollywood Studios,Rainy,No,No,48,4,5,65.8,12.91,16,37.7,38.7,83.2,400,370.41,186.97,43.78,Spontaneous,Yes,Yes,Yes
+350,Animal Kingdom,Sunny,Yes,No,49,6,5,81,11.02,10,26.6,33.7,83.3,300,334.46,185.65,71.8,Spontaneous,No,No,No
+351,EPCOT,Sunny,No,Yes,57,2,5,89.6,10.2,9,55,65.4,75.2,300,300.67,172.88,62.62,Spontaneous,Yes,Yes,No
+352,Magic Kingdom,Sunny,No,No,49,2,6,88.4,11.38,12,27.9,45.8,81,200,240.55,107.63,66.69,Mixed,Yes,No,Yes
+353,Magic Kingdom,Sunny,Yes,No,39,2,4,78.7,9.37,8,32.8,49.2,90.5,200,224.54,100.8,40.64,Planner,No,No,Yes
+354,EPCOT,Sunny,No,Yes,28,6,5,73,10.3,15,35.6,48.7,77.9,400,350.59,206.87,78.77,Planner,No,No,Yes
+355,Hollywood Studios,Cloudy,No,No,43,7,9,85.1,15.35,14,29.6,42.3,77.6,300,390.46,189.82,77.37,Planner,No,No,No
+356,Hollywood Studios,Sunny,No,Yes,32,1,8,72.1,8.4,15,25.2,35.2,73.2,300,251.05,132.68,57.53,Spontaneous,No,No,No
+357,Magic Kingdom,Sunny,Yes,No,38,8,4,82.6,10.35,12,31.6,43.7,78.1,300,349.62,154.08,116.36,Mixed,No,No,Yes
+358,EPCOT,Rainy,No,Yes,55,7,8,85,12.06,14,16.7,27.6,72.4,300,452.87,254.03,98.93,Mixed,No,No,Yes
+359,EPCOT,Sunny,No,Yes,26,5,1,82.4,10.82,9,32.8,36.8,58.9,200,275.76,275.76,NA,Planner,No,Yes,Yes
+360,Magic Kingdom,Sunny,No,Yes,35,5,6,86.9,6.76,12,57,67,70.9,300,383.65,155.43,76.75,Mixed,No,No,No
+361,Magic Kingdom,Sunny,No,Yes,48,8,8,86.5,9.51,16,33,40.4,76.8,400,450.61,184.23,126.16,Planner,No,No,Yes
+362,EPCOT,Sunny,No,No,54,3,5,93,14.33,14,28.6,47.1,97.9,200,341.47,189.99,72.7,Spontaneous,Yes,Yes,Yes
+363,Animal Kingdom,Sunny,No,No,69,5,5,72,5.49,11,13.9,39,59.9,300,332.69,198.08,60.75,Planner,Yes,Yes,No
+364,Animal Kingdom,Sunny,No,Yes,8,3,4,80.4,7.1,12,27.7,36.2,83.1,200,281.56,157.61,64.08,Mixed,Yes,No,No
+365,Animal Kingdom,Cloudy,Yes,No,33,5,3,70.7,10.28,12,5,7.2,100,300,313.39,167.68,52.07,Mixed,No,No,Yes
+366,Magic Kingdom,Cloudy,No,No,51,7,5,72.7,10.16,16,81,93.7,71.1,300,314.05,174.19,45.2,Mixed,Yes,No,No
+367,EPCOT,Rainy,No,Yes,37,3,4,91.7,8.53,14,23.7,36.3,82.4,300,339,171.92,86.41,Mixed,No,Yes,No
+368,Magic Kingdom,Cloudy,No,Yes,23,3,5,78.1,6.37,17,64.5,73.2,57.8,300,282.22,161.33,40.78,Spontaneous,No,No,No
+369,Animal Kingdom,Sunny,Yes,Yes,46,8,4,92.3,9.94,14,31.8,49.3,84.1,300,387,208.14,42.21,Mixed,No,Yes,Yes
+370,Hollywood Studios,Cloudy,No,No,51,4,8,76.6,6.72,14,59.5,62.5,89.8,300,378.58,163.33,75.96,Spontaneous,No,No,Yes
+371,Magic Kingdom,Sunny,No,No,39,4,4,74,5.11,12,37.7,54,91.2,300,296.46,162.18,66.32,Planner,No,Yes,Yes
+372,Hollywood Studios,Cloudy,No,Yes,20,3,4,72.1,9.2,11,40.2,54.8,73.3,200,209.07,114.06,45.02,Mixed,Yes,No,No
+373,Animal Kingdom,Sunny,Yes,Yes,62,2,2,102,16.86,13,11.3,27.4,85.8,200,267.64,133.33,73.9,Planner,Yes,Yes,Yes
+374,Magic Kingdom,Sunny,No,Yes,39,3,4,87.3,16.06,11,55.5,58.5,81.6,200,361.13,130.56,108.03,Mixed,No,No,Yes
+375,Magic Kingdom,Sunny,No,Yes,45,5,3,75.6,14.17,13,48.3,61.8,62.9,300,366.35,162.49,57.2,Spontaneous,No,No,No
+376,Magic Kingdom,Rainy,Yes,Yes,40,3,5,88.7,10.34,15,46.6,50.7,95.6,300,307.42,127.36,44.86,Spontaneous,No,No,Yes
+377,Animal Kingdom,Rainy,No,No,31,4,7,73.2,14.99,10,16.9,33,75.5,200,281.15,161.11,42.43,Mixed,Yes,Yes,Yes
+378,Magic Kingdom,Sunny,Yes,Yes,42,5,4,76.1,19.03,12,50.1,56.5,81.3,200,258.06,135,32.99,Planner,No,No,Yes
+379,Magic Kingdom,Cloudy,No,Yes,17,1,10,87.2,13.45,21,58.5,59.9,65.7,100,267.47,129.12,48.08,Planner,No,Yes,No
+380,Magic Kingdom,Sunny,Yes,No,42,3,4,90.6,10.27,13,55.9,74.3,83.4,300,285.58,161.1,37.39,Planner,No,No,Yes
+381,Animal Kingdom,Sunny,Yes,Yes,23,1,4,79.5,9.97,19,24.9,36.4,68.6,200,274.56,108.21,93.32,Planner,Yes,Yes,Yes
+382,EPCOT,Cloudy,No,Yes,21,6,5,85.8,8.71,9,18.5,29.4,79.1,400,378.95,161.3,127.43,Planner,Yes,Yes,Yes
+383,Hollywood Studios,Sunny,No,No,33,4,6,85.4,9.26,15,29.8,52.1,92,200,NA,NA,NA,Mixed,No,No,Yes
+384,Hollywood Studios,Sunny,No,Yes,28,4,7,91.4,14.54,13,47.1,53,69.8,300,370.29,215.61,82.51,Mixed,Yes,Yes,No
+385,Animal Kingdom,Rainy,No,Yes,26,2,4,71.8,5.52,10,36.2,49.3,66.3,300,269.1,159.01,60.31,Mixed,No,No,Yes
+386,Animal Kingdom,Sunny,Yes,Yes,43,3,4,85.4,9.46,10,32.9,44.9,84.9,300,274.52,146.8,38.12,Planner,No,No,Yes
+387,Magic Kingdom,Rainy,Yes,No,15,4,8,80.1,9.35,19,58.6,66.6,83.9,300,332.61,129.33,64.15,Spontaneous,Yes,Yes,Yes
+388,Magic Kingdom,Cloudy,No,No,32,5,9,81.8,5.99,18,51.4,56.7,65.2,300,372.38,174.87,44.39,Spontaneous,Yes,Yes,Yes
+389,Magic Kingdom,Sunny,No,Yes,34,2,4,93.7,9.34,12,57.5,73.1,70.9,300,321.25,133.58,53.14,Planner,No,Yes,No
+390,Hollywood Studios,Sunny,Yes,No,24,4,6,73.8,10.04,8,49.5,60.4,70.8,200,283.99,117.42,97.6,Spontaneous,Yes,Yes,Yes
+391,Animal Kingdom,Sunny,No,Yes,21,5,5,90.7,13.91,8,13.4,27.4,74.7,400,385.28,203.71,106.3,Mixed,Yes,No,Yes
+392,Animal Kingdom,Rainy,Yes,Yes,32,3,6,82.9,10.26,13,19,31.8,62.7,300,285.79,115.86,83.15,Mixed,Yes,Yes,Yes
+393,Animal Kingdom,Cloudy,No,No,20,7,5,70.1,14.85,15,25.7,33.2,86.2,300,347.21,195.77,84.58,Planner,No,No,Yes
+394,Animal Kingdom,Cloudy,Yes,Yes,45,3,4,99.1,9.43,15,32.2,33.2,71.7,300,359.38,198.49,67.01,Planner,No,No,Yes
+395,Animal Kingdom,Rainy,No,Yes,56,3,4,70.3,9.79,13,30.1,36.3,84.5,300,266.88,130.41,36.15,Spontaneous,No,No,Yes
+396,Magic Kingdom,Sunny,Yes,No,24,6,5,79,14.93,13,47.6,62.9,79.6,300,339.76,183.65,57.5,Mixed,Yes,No,Yes
+397,Animal Kingdom,Cloudy,No,No,19,8,5,70.3,6.21,12,20.5,17.1,67,200,377.1,136.55,115.98,Planner,No,No,Yes
+398,Hollywood Studios,Rainy,No,Yes,38,3,2,95.4,9.55,10,25.3,43.1,66.2,200,234.83,84.49,43.24,Spontaneous,No,No,No
+399,Magic Kingdom,Rainy,No,Yes,35,6,6,81.5,8.74,18,32.1,46.7,85.4,300,336.31,201.34,45.56,Planner,No,No,Yes
+400,EPCOT,Cloudy,Yes,Yes,38,4,6,83.2,8.7,13,35.3,43.3,86.8,300,344.18,121.62,112.31,Planner,Yes,Yes,Yes
+401,EPCOT,Sunny,No,No,19,6,7,83.4,10.51,15,19.8,27.3,71.7,400,333.1,140.84,106.08,Spontaneous,No,No,No
+402,Hollywood Studios,Sunny,No,Yes,26,4,6,88.1,5.84,13,55.8,64.5,77.1,300,329.92,194.78,69.89,Mixed,Yes,Yes,No
+403,EPCOT,Sunny,No,Yes,29,4,4,87.7,12.43,18,33.5,46,78.3,200,295,124.6,38.46,Planner,Yes,Yes,No
+404,Magic Kingdom,Cloudy,No,No,26,4,7,94.9,10.21,16,30.1,40.4,70.8,300,376.78,195.31,107.1,Mixed,Yes,Yes,Yes
+405,Magic Kingdom,Sunny,Yes,No,39,5,8,101.2,9.06,18,53.4,60.4,80.1,400,408.76,194.77,90.6,Spontaneous,No,No,Yes
+406,Magic Kingdom,Cloudy,No,Yes,42,2,7,93.8,9.53,13,44.6,54.1,78,300,421.65,214.88,95.82,Spontaneous,Yes,Yes,No
+407,Animal Kingdom,Cloudy,No,Yes,47,3,5,102,13.74,13,37.4,57.2,85.5,300,393.04,219.39,49.81,Mixed,No,No,Yes
+408,Magic Kingdom,Cloudy,Yes,No,29,5,2,89,5.21,5,64.3,62.5,70.8,100,227.47,129.86,39.38,Planner,No,Yes,No
+409,EPCOT,Sunny,No,No,53,3,6,72.1,8.64,15,38.8,41.6,86.5,200,327.12,127.03,101.48,Mixed,Yes,Yes,No
+410,Magic Kingdom,Rainy,No,Yes,51,4,4,83.8,8.94,11,39.1,45.3,60.8,300,332.47,152.51,77.23,Spontaneous,No,No,No
+411,Hollywood Studios,Cloudy,No,No,34,3,1,79.5,6.51,10,43.8,54,64.5,200,269.62,269.62,NA,Planner,Yes,Yes,No
+412,EPCOT,Sunny,No,No,18,5,8,89.4,12.41,19,26.2,38.2,70.4,300,280.32,130.12,39.66,Planner,Yes,No,No
+413,Animal Kingdom,Sunny,No,No,31,7,5,87.6,11.85,13,38,50.5,74.3,400,407.05,152.87,58.99,Mixed,Yes,Yes,No
+414,Hollywood Studios,Sunny,No,No,20,4,4,83.7,12.27,16,37.9,49.1,75.8,200,260.59,128.45,77.27,Planner,No,No,Yes
+415,Hollywood Studios,Cloudy,No,No,50,5,4,72.9,7.55,17,36.2,66.1,77,200,271.59,125.44,58.07,Mixed,Yes,Yes,No
+416,Hollywood Studios,Sunny,Yes,No,22,8,3,87.1,7.83,15,43.1,49.3,83.3,300,306.67,161.6,77.4,Spontaneous,No,No,Yes
+417,Magic Kingdom,Cloudy,Yes,Yes,39,1,9,77.6,10.29,15,59.9,65.6,89.8,400,357.13,180.77,53.82,Planner,No,No,Yes
+418,Animal Kingdom,Sunny,No,Yes,36,6,6,92.2,12.37,13,54.8,53.6,88.7,200,304.35,138.96,75.78,Spontaneous,No,No,Yes
+419,Magic Kingdom,Sunny,No,No,53,4,5,68.8,10.91,12,46,54.4,96.6,400,351.64,202.81,88.53,Planner,Yes,Yes,Yes
+420,Hollywood Studios,Cloudy,No,Yes,23,3,3,85.6,5.02,13,37.2,50.3,62.9,200,252.83,143.43,37.22,Mixed,No,Yes,No
+421,Magic Kingdom,Sunny,Yes,Yes,54,4,8,87.9,16.54,12,46.6,52.4,83,400,434.09,247.14,101.89,Planner,Yes,No,Yes
+422,EPCOT,Cloudy,Yes,Yes,38,4,9,65.7,11.65,15,27.9,54.3,74.4,300,355.31,203.7,37.65,Spontaneous,Yes,Yes,Yes
+423,Magic Kingdom,Sunny,Yes,Yes,33,3,8,79.5,16.07,16,48.3,49.1,78.9,400,351.99,191.15,36.88,Mixed,No,No,Yes
+424,EPCOT,Sunny,No,Yes,40,8,9,82.5,11.11,16,45.5,53,76.6,300,403.06,208.54,89.31,Mixed,Yes,Yes,Yes
+425,Animal Kingdom,Cloudy,No,Yes,58,4,6,74.7,13.52,12,7.8,18.4,64,300,368.26,186.58,86.05,Planner,No,No,No
+426,Magic Kingdom,Sunny,No,No,48,3,3,72.9,10.47,11,70.3,72.1,89.3,200,195.13,104.49,23.92,Mixed,No,No,Yes
+427,Magic Kingdom,Sunny,Yes,Yes,32,2,6,84.6,2.64,13,58.4,73.6,82.2,300,325.12,125.82,118.05,Planner,No,Yes,No
+428,Hollywood Studios,Sunny,No,Yes,23,1,7,78.1,13.86,14,49.3,56.5,71.6,300,327.59,181.77,39.63,Mixed,Yes,Yes,Yes
+429,Hollywood Studios,Sunny,No,No,42,3,2,94.6,9.56,5,56.5,63.4,80.6,200,239.45,99.57,34.05,Mixed,No,No,Yes
+430,Magic Kingdom,Cloudy,Yes,Yes,39,3,8,84.4,12.57,12,35.8,42.6,58.4,200,304.91,151.8,60.12,Mixed,Yes,Yes,No
+431,Magic Kingdom,Sunny,Yes,No,46,3,5,76.2,12.57,13,40.2,52.4,84.8,200,262.59,119.49,74.76,Planner,Yes,No,Yes
+432,Animal Kingdom,Rainy,No,No,45,2,5,69.3,12.97,10,16.7,18.8,92.7,200,242.19,121.47,28.3,Spontaneous,No,No,Yes
+433,EPCOT,Sunny,No,No,41,5,6,84.9,9.07,14,28.7,35.9,61.5,300,375.26,219.55,63.09,Planner,Yes,Yes,No
+434,Hollywood Studios,Sunny,No,No,27,6,6,81.8,13.03,13,55.1,69.3,73.7,200,356.63,148.69,54.54,Planner,No,No,Yes
+435,Hollywood Studios,Sunny,Yes,Yes,74,4,14,83.6,9.68,21,42.9,51.8,73.5,400,504.78,287.48,102.66,Spontaneous,No,Yes,Yes
+436,Animal Kingdom,Cloudy,No,Yes,32,4,8,86.2,10.21,14,28.2,46.8,84.7,300,453.67,256.18,59.26,Mixed,Yes,Yes,Yes
+437,EPCOT,Cloudy,No,No,33,5,7,83.8,9.9,10,20.3,21.5,75.6,400,341.1,177.55,67.3,Planner,No,No,No
+438,Hollywood Studios,Cloudy,No,No,56,3,10,84,9.75,20,37.6,45.5,86.1,400,413.52,178.33,91.64,Spontaneous,No,No,Yes
+439,EPCOT,Sunny,No,Yes,13,5,7,89.6,13.49,16,41.4,42.5,77,300,394.31,167.42,97.25,Planner,Yes,Yes,No
+440,Magic Kingdom,Sunny,No,Yes,48,2,8,85.3,11.66,18,40.1,57.1,79.4,200,346.15,182.79,51.02,Mixed,No,No,No
+441,EPCOT,Cloudy,No,No,36,3,2,91.5,5.26,9,40.4,41.5,65.7,200,311.66,167.89,85.57,Spontaneous,Yes,No,Yes
+442,Hollywood Studios,Sunny,Yes,Yes,58,3,6,83.2,15.05,15,40.5,50.2,77.7,300,341.83,169.25,71.29,Planner,No,Yes,Yes
+443,Hollywood Studios,Cloudy,No,Yes,38,7,7,86.7,13.91,14,50,42.2,68.6,300,342.61,193.09,52.84,Planner,Yes,No,Yes
+444,Magic Kingdom,Sunny,No,No,31,2,5,68.4,12.16,16,71.2,73.8,100,200,303.09,118.48,92.77,Planner,Yes,Yes,Yes
+445,Hollywood Studios,Sunny,No,No,31,3,4,85.4,9,7,51.5,58.7,66.6,300,340,190.35,89.29,Mixed,No,Yes,No
+446,Hollywood Studios,Cloudy,No,No,57,6,3,78.5,14.75,12,40.3,55.2,70.5,300,290.15,149.92,69.91,Mixed,No,Yes,No
+447,Magic Kingdom,Cloudy,No,No,29,2,5,84.9,6.96,16,21.7,34.9,60.3,200,322.4,117.77,91.84,Planner,No,No,No
+448,EPCOT,Rainy,No,Yes,39,4,6,86.3,11.57,9,39.2,40.1,84.4,300,262.73,137.12,60.95,Spontaneous,No,Yes,Yes
+449,EPCOT,Rainy,Yes,Yes,10,4,5,81.7,10.78,17,33.5,41,100,300,280.04,104.48,90.44,Planner,No,No,Yes
+450,EPCOT,Sunny,No,Yes,34,4,10,74.1,7.94,17,19.6,40.2,61.1,300,411.76,240.61,92.15,Planner,No,No,No
+451,Magic Kingdom,Cloudy,Yes,No,35,4,5,87.4,7.74,20,37.5,39.8,88.2,300,301.24,151.8,76.24,Spontaneous,Yes,Yes,Yes
+452,EPCOT,Sunny,No,No,54,5,5,89.7,13.59,12,26.6,34.1,90.6,400,385.41,213.22,70.33,Planner,No,Yes,Yes
+453,Hollywood Studios,Rainy,No,No,29,5,8,77.7,12.67,20,37.7,47.5,70.9,400,418.61,233.7,68.82,Planner,No,No,No
+454,Magic Kingdom,Sunny,No,Yes,19,3,7,100.3,7.17,12,63.6,82.9,74.8,200,356.74,211.39,68.98,Spontaneous,No,No,Yes
+455,Magic Kingdom,Sunny,No,Yes,23,3,6,79.7,16.53,12,33,56,72.3,300,340.79,201.69,81.45,Mixed,No,No,No
+456,Hollywood Studios,Cloudy,Yes,No,25,5,9,96.5,13.76,13,60.3,76.7,85,400,426.23,217.65,97.42,Spontaneous,No,No,Yes
+457,Animal Kingdom,Sunny,No,Yes,23,5,5,82.1,15.36,15,41,48.3,76.6,300,296.74,155.98,51.1,Spontaneous,No,No,No
+458,EPCOT,Cloudy,No,Yes,35,2,6,87.3,8.67,13,36.7,36.3,95,200,278.27,97.49,63.52,Planner,No,No,Yes
+459,Magic Kingdom,Rainy,No,Yes,32,4,5,79.3,10.51,16,46,59.1,77.6,200,298.89,113.44,48.14,Planner,Yes,No,Yes
+460,Magic Kingdom,Cloudy,No,No,12,1,14,91.8,9.18,24,64.7,76.7,76.7,200,366.94,161.31,117.1,Planner,No,Yes,Yes
+461,Animal Kingdom,Sunny,No,No,3,4,9,80.7,9.57,16,27.3,30.9,65.3,300,345.86,170.8,68.02,Planner,No,Yes,Yes
+462,Hollywood Studios,Rainy,No,Yes,38,5,5,80.6,14.71,15,23.1,38.2,75.6,300,259.38,133.58,40.63,Spontaneous,Yes,Yes,No
+463,Animal Kingdom,Cloudy,Yes,Yes,42,3,4,81.6,8.34,10,34,44.3,92,300,294.66,172.06,62.05,Mixed,No,No,Yes
+464,EPCOT,Cloudy,No,Yes,31,7,3,78.9,5.9,15,23.7,31.6,78.5,300,327.29,119.32,69.95,Planner,Yes,Yes,Yes
+465,EPCOT,Cloudy,No,No,41,6,5,88.8,5.94,19,24.9,56.6,74.1,400,429.58,235.35,98.51,Mixed,Yes,Yes,No
+466,Animal Kingdom,Rainy,Yes,Yes,34,4,8,89,12.58,13,23,32.8,78.2,300,426.8,160.66,153.41,Planner,Yes,Yes,Yes
+467,Magic Kingdom,Rainy,No,No,19,3,5,80.4,9.72,10,17.6,23.8,86.7,200,332.39,154.11,37.07,Planner,Yes,Yes,Yes
+468,Animal Kingdom,Cloudy,No,Yes,62,2,7,86.9,5.29,12,30.8,37.4,76,300,279.86,130.07,85.42,Planner,Yes,No,No
+469,Magic Kingdom,Sunny,No,Yes,27,3,7,81.5,8.31,13,72.2,81.3,66.4,200,339.76,152.5,89.38,Planner,Yes,Yes,No
+470,Hollywood Studios,Cloudy,Yes,No,38,2,6,74,10.88,16,54.2,58.1,81.9,200,319.52,113.57,48.84,Planner,Yes,Yes,Yes
+471,Magic Kingdom,Sunny,Yes,Yes,17,4,7,83.6,8.65,11,43.1,62.4,74.4,200,326.24,139.58,75.16,Spontaneous,Yes,Yes,Yes
+472,Hollywood Studios,Sunny,No,Yes,31,1,5,83.5,9.54,11,31.7,38.4,63.7,300,269.82,120.92,85.53,Planner,No,No,Yes
+473,Magic Kingdom,Sunny,No,No,41,4,3,87.9,7.03,16,48.6,52.3,90.4,300,355.85,156.57,87.53,Planner,Yes,No,Yes
+474,Animal Kingdom,Sunny,No,Yes,27,8,3,85.2,5.8,12,41.2,49.9,70,300,295.97,139.18,65.67,Spontaneous,Yes,Yes,No
+475,EPCOT,Cloudy,No,No,58,3,8,81.8,8.29,19,32.2,54.8,75.8,300,300.32,151.08,62.35,Mixed,No,No,Yes
+476,Animal Kingdom,Sunny,No,Yes,37,5,6,89.9,10.05,14,6.4,13.9,74.7,400,345.57,150.55,52.98,Spontaneous,No,No,No
+477,Magic Kingdom,Sunny,No,Yes,33,8,3,75,11.44,12,52.6,62.5,79.4,300,342.26,138.13,67.72,Planner,Yes,Yes,Yes
+478,Hollywood Studios,Sunny,Yes,Yes,29,3,4,80.1,9.93,17,56.4,60.7,83.6,300,291.26,172.8,30.03,Spontaneous,No,No,Yes
+479,EPCOT,Sunny,Yes,Yes,42,3,6,94.7,8.98,15,39.9,41.3,77.6,300,369.57,148.17,126.47,Spontaneous,No,No,Yes
+480,EPCOT,Rainy,No,Yes,19,5,6,86.5,7.6,11,24.7,36,63.5,200,326.54,115.14,114.12,Mixed,Yes,Yes,Yes
+481,Animal Kingdom,Sunny,No,Yes,40,8,6,89.4,15.42,14,36.1,47.3,83.3,400,468.66,242.39,128.19,Spontaneous,Yes,Yes,Yes
+482,Magic Kingdom,Cloudy,Yes,Yes,54,5,3,99.2,14.28,16,36.8,54.5,71.5,300,337.9,137.87,94.26,Spontaneous,No,No,Yes
+483,Magic Kingdom,Cloudy,No,No,29,6,6,93.8,6.57,15,45,53.8,75.2,400,415.77,209.54,57.03,Spontaneous,No,Yes,No
+484,Magic Kingdom,Sunny,No,Yes,36,4,5,83.4,7.04,14,50.9,77.6,63.6,300,346.38,167.56,84.54,Planner,No,No,No
+485,Magic Kingdom,Cloudy,No,Yes,33,2,8,92.5,14.9,19,29.4,44.2,84.1,200,311.71,179.94,56.11,Mixed,Yes,Yes,Yes
+486,Magic Kingdom,Sunny,No,Yes,27,3,6,85.4,12.9,12,30.2,39.8,62,300,351.74,125.84,129.06,Mixed,No,No,No
+487,Magic Kingdom,Sunny,No,No,10,6,6,74.3,12.51,16,65.5,67.2,70.1,300,367.82,147.37,114.5,Planner,No,Yes,No
+488,Animal Kingdom,Cloudy,Yes,No,49,4,3,90.1,5.74,10,36.3,47.7,92.8,200,273.91,162.63,38.57,Mixed,Yes,Yes,Yes
+489,Animal Kingdom,Cloudy,No,Yes,42,5,4,85,5.57,9,30.3,54.4,83.1,300,327.56,163.62,46.82,Planner,Yes,Yes,Yes
+490,EPCOT,Cloudy,Yes,Yes,50,4,5,90.1,5.23,7,39.4,50,98.4,100,147.87,78.28,36.8,Planner,No,No,Yes
+491,Hollywood Studios,Sunny,No,No,56,5,3,89.9,7.26,9,44.3,43.2,78.6,300,331.78,135.14,67.43,Planner,No,No,No
+492,EPCOT,Rainy,No,Yes,13,7,5,89,14.49,11,14.6,21.6,57.9,300,372.32,159.7,93.51,Spontaneous,Yes,No,No
+493,Magic Kingdom,Cloudy,No,No,51,3,3,75.8,10.84,11,57.4,63.5,79.6,200,277.71,106.58,43.14,Planner,Yes,Yes,Yes
+494,EPCOT,Sunny,No,No,27,3,7,83.4,8.83,12,33.2,54.3,81.2,200,297.04,164.45,57.45,Mixed,Yes,Yes,Yes
+495,Magic Kingdom,Rainy,No,No,44,7,7,84.6,14.51,14,57.8,56.9,80.1,400,347.34,128.83,99.47,Spontaneous,No,Yes,Yes
+496,Magic Kingdom,Sunny,No,No,11,7,7,68.8,5.25,12,68.5,69,58.7,300,350.26,184.61,96.43,Mixed,No,Yes,No
+497,Magic Kingdom,Sunny,No,Yes,24,2,3,75.6,15.27,7,40.5,55.9,62.5,200,243.4,130.61,56.82,Spontaneous,No,Yes,Yes
+498,EPCOT,Sunny,No,No,67,3,10,94.1,10.06,18,31,31.2,78.7,500,474.85,177.39,158.47,Mixed,No,Yes,Yes
+499,EPCOT,Sunny,No,Yes,42,4,3,86.3,12.38,9,34.3,54,89.4,200,312.54,177.7,47.78,Mixed,Yes,Yes,Yes
+500,Animal Kingdom,Rainy,Yes,No,36,6,4,79.7,14.76,11,30.8,36,80.5,400,408.26,243.03,88.1,Planner,No,Yes,Yes
+501,EPCOT,Cloudy,Yes,Yes,40,5,8,83.7,8.83,13,34.3,31.8,70.6,300,408.32,153.01,146.27,Planner,No,No,Yes
+502,EPCOT,Cloudy,No,No,47,5,5,78.2,10.03,12,28.6,35.3,82.7,300,426.91,240.92,72.99,Planner,No,No,Yes
+503,Animal Kingdom,Sunny,No,No,33,1,5,96.4,10.18,13,37.9,53.3,77.9,200,304.42,112.96,57.51,Mixed,No,Yes,Yes
+504,Magic Kingdom,Sunny,No,Yes,55,2,5,84.4,5.17,15,45.6,58.8,54.7,300,247.87,113.2,49.84,Planner,Yes,Yes,No
+505,Magic Kingdom,Sunny,No,No,24,6,5,78.7,16.86,17,39.6,57.5,79.7,200,275.6,140.03,77.22,Planner,Yes,No,No
+506,Magic Kingdom,Sunny,No,Yes,36,4,5,77.1,8.07,11,62.2,77.7,63.4,200,314.3,172.54,75.25,Planner,Yes,Yes,Yes
+507,Magic Kingdom,Cloudy,No,Yes,58,1,8,86.9,15.99,15,47.4,61.5,68.4,200,332.93,190.28,47.73,Planner,Yes,Yes,No
+508,Magic Kingdom,Rainy,No,Yes,24,4,7,86.3,12.92,23,49.4,64.9,87.3,300,389.62,191.52,46.68,Planner,No,No,Yes
+509,Hollywood Studios,Sunny,No,No,44,9,6,77.5,9.63,12,46.4,59.1,74.6,400,416.41,207.15,87.71,Spontaneous,Yes,No,Yes
+510,EPCOT,Cloudy,Yes,No,35,4,4,83.1,6.66,12,47.1,56.2,79.6,200,331.19,190.84,66,Mixed,No,Yes,Yes
+511,Magic Kingdom,Sunny,No,Yes,27,5,7,88.3,12.44,13,40.6,45.3,71.7,300,365.98,162.96,51.44,Spontaneous,No,No,Yes
+512,Animal Kingdom,Cloudy,Yes,Yes,20,3,4,90,11.77,16,20.4,34.7,85.8,300,336.68,156.39,63.59,Mixed,No,No,Yes
+513,Magic Kingdom,Sunny,Yes,No,28,3,2,82.2,14.45,12,63.7,80.7,73.3,200,272.72,142.65,56.48,Spontaneous,No,Yes,Yes
+514,Magic Kingdom,Cloudy,No,Yes,56,3,5,87.4,9.75,9,46.4,56.7,67.4,200,250.16,108.58,64.74,Planner,No,No,No
+515,Hollywood Studios,Sunny,Yes,No,30,4,5,86.8,8.19,12,50.6,59.2,94.3,300,338.58,184.31,34.05,Spontaneous,No,No,Yes
+516,Hollywood Studios,Sunny,No,No,37,7,5,59,9.99,12,29,44.1,72.2,200,313.22,123.1,56.95,Planner,No,No,Yes
+517,Magic Kingdom,Rainy,Yes,Yes,10,2,5,79.5,12.35,15,49.7,62.8,71.5,200,263.29,137.85,73.16,Spontaneous,No,No,Yes
+518,Magic Kingdom,Cloudy,No,Yes,22,5,4,78,13.95,14,61.7,68.1,74.6,400,340.93,182.27,78.13,Mixed,Yes,Yes,Yes
+519,Magic Kingdom,Rainy,No,Yes,58,3,5,81.2,8.97,12,22.2,34,69.5,300,392.08,187.51,112.45,Planner,Yes,Yes,No
+520,Animal Kingdom,Sunny,No,No,27,4,4,78,16.17,10,17.8,35.6,87.5,200,260.37,105.34,68.95,Mixed,No,No,Yes
+521,EPCOT,Sunny,Yes,No,42,1,5,88.3,8.71,13,36.7,59.2,58.5,200,297.02,153.31,64.94,Mixed,No,No,No
+522,Magic Kingdom,Cloudy,No,No,46,5,4,81.2,13.43,11,55.9,57.9,66.4,300,298.15,167.39,40.29,Mixed,No,No,No
+523,Magic Kingdom,Rainy,Yes,No,53,4,10,75.4,12.29,20,40.9,49.5,65.7,400,457.2,269.35,105.22,Planner,Yes,Yes,Yes
+524,Hollywood Studios,Sunny,No,No,33,3,8,86.1,8.69,17,22.7,37,57.4,200,271.19,145.3,30.51,Mixed,No,Yes,No
+525,Animal Kingdom,Rainy,No,Yes,6,4,6,79.4,12.05,14,15.2,24.9,82.4,300,290.27,148.41,40.45,Mixed,Yes,Yes,No
+526,EPCOT,Cloudy,No,Yes,22,6,5,97.6,12.81,14,17.5,29.5,86.4,300,356.81,179.02,41.9,Spontaneous,Yes,Yes,Yes
+527,Animal Kingdom,Cloudy,Yes,No,25,5,3,96.8,10.4,9,50.2,50.8,69.1,200,290.81,117.59,78.52,Spontaneous,Yes,Yes,No
+528,EPCOT,Cloudy,No,No,15,7,7,89.3,7.47,10,15.2,38.5,79.1,300,377.14,208.03,88.88,Planner,No,No,Yes
+529,Hollywood Studios,Cloudy,No,Yes,35,5,6,75.1,16.52,15,43.2,38.1,80.6,300,316.98,185.82,50.42,Spontaneous,Yes,Yes,Yes
+530,EPCOT,Sunny,No,No,49,5,5,85.5,10.33,7,42.6,62.7,58.1,400,343.83,126.5,45.03,Planner,No,No,No
+531,Hollywood Studios,Rainy,No,Yes,35,1,7,101.3,6.06,10,29.3,47.1,66.7,200,290.21,144.16,31.43,Planner,Yes,Yes,Yes
+532,Animal Kingdom,Sunny,Yes,No,45,5,5,88.7,5.64,6,32.8,29.4,68.6,200,306.72,131.82,102.78,Mixed,No,No,Yes
+533,Magic Kingdom,Cloudy,Yes,No,14,4,7,82,12.5,19,50.5,59.7,76.4,200,345.98,169.09,60.53,Planner,Yes,Yes,No
+534,Animal Kingdom,Sunny,No,No,46,2,8,86,11.41,18,29.3,27.2,71.8,300,328.54,174.25,35.64,Mixed,Yes,Yes,No
+535,Animal Kingdom,Sunny,No,No,46,3,5,92.4,9.25,13,14,19.7,72.5,200,318.75,157.7,43.82,Mixed,Yes,Yes,Yes
+536,Magic Kingdom,Cloudy,No,No,55,4,5,94.8,6.68,11,51.3,57.5,78.6,300,284.23,141.83,77.93,Mixed,Yes,Yes,No
+537,EPCOT,Rainy,No,Yes,15,4,6,90.3,12.17,11,47.6,49.7,78,300,302.91,113.82,50.87,Planner,No,No,Yes
+538,Hollywood Studios,Cloudy,No,Yes,26,3,7,90.5,11.15,12,42.2,56.6,85.5,400,375.93,185.25,91.2,Planner,No,No,Yes
+539,Hollywood Studios,Rainy,Yes,Yes,50,8,6,85.4,9.97,11,39.5,46.6,74.9,400,387.02,152.74,99.81,Mixed,No,No,No
+540,Animal Kingdom,Sunny,Yes,Yes,30,4,4,78.9,16.27,12,26.8,32,82,300,301.92,161.28,43.38,Planner,No,No,Yes
+541,Hollywood Studios,Rainy,No,Yes,45,4,8,91.9,10.71,13,26.7,34.3,73.6,200,338.1,129.44,112.77,Mixed,No,No,Yes
+542,Magic Kingdom,Sunny,No,Yes,48,5,3,81.5,6.81,11,51.7,61.9,84,300,344.73,206.84,78.64,Mixed,No,Yes,Yes
+543,EPCOT,Rainy,No,No,40,2,8,81.3,10.45,11,26.8,45.6,76.4,200,273.21,115.47,32.63,Planner,No,No,Yes
+544,Magic Kingdom,Sunny,Yes,Yes,36,3,10,85.1,11.94,22,50.3,64.2,80.4,300,297.31,156.45,62.64,Mixed,Yes,Yes,No
+545,Magic Kingdom,Rainy,No,Yes,37,3,9,93.4,9.91,17,29.9,36.6,73.2,300,387.01,198.33,74.73,Mixed,Yes,Yes,Yes
+546,EPCOT,Sunny,No,No,44,8,4,88.3,9.87,6,27.7,29.6,86.9,200,352.22,207.77,74.5,Planner,No,No,Yes
+547,Magic Kingdom,Rainy,Yes,Yes,27,9,7,101.6,6.57,15,41.2,51.6,74.3,300,454.48,264.77,61.2,Mixed,No,Yes,Yes
+548,Magic Kingdom,Sunny,Yes,No,17,6,8,92,12.91,14,49,61.7,71.9,300,398.11,194.61,58.47,Mixed,No,Yes,Yes
+549,Animal Kingdom,Sunny,No,No,30,2,8,73.8,13.19,9,42.7,60.5,90.7,200,251.61,139.59,59.54,Spontaneous,No,Yes,Yes
+550,Magic Kingdom,Sunny,Yes,No,17,4,2,75,8.97,12,45.7,68.2,100,300,NA,NA,NA,Planner,Yes,No,Yes
+551,Magic Kingdom,Sunny,No,Yes,23,5,4,87.4,8.97,14,43,55.7,89.6,200,377.16,183.01,51.87,Mixed,Yes,No,No
+552,EPCOT,Cloudy,No,No,26,5,2,92.3,12.35,10,29.3,31.5,86.5,100,256.2,106.5,46.79,Mixed,Yes,Yes,No
+553,Magic Kingdom,Sunny,No,Yes,14,5,3,82.1,8.28,8,63,74.3,67.1,200,264.18,110.01,41.46,Planner,Yes,No,Yes
+554,Magic Kingdom,Sunny,No,Yes,41,4,10,83.1,8.22,19,66.2,71.6,63.7,300,NA,NA,NA,Planner,No,Yes,No
+555,EPCOT,Cloudy,No,No,7,4,6,75.1,11.7,13,23.3,42.5,83.7,200,296.77,134.43,76.51,Planner,No,Yes,Yes
+556,Magic Kingdom,Cloudy,Yes,No,29,3,5,73.1,15.45,15,28.9,33.5,100,300,280.1,157.44,54.49,Planner,No,No,Yes
+557,Hollywood Studios,Rainy,No,No,13,4,3,91.5,11.99,12,39.2,40.7,78.5,200,241.33,96.27,59.84,Planner,Yes,No,Yes
+558,Magic Kingdom,Cloudy,Yes,No,9,4,7,75.5,14.46,16,61.6,66.3,69.6,200,324.26,119.16,48.4,Mixed,No,Yes,Yes
+559,EPCOT,Sunny,Yes,Yes,45,5,5,70.5,11.32,13,44.9,47.9,63.9,300,292.19,128.52,46.06,Planner,No,No,No
+560,Animal Kingdom,Rainy,Yes,Yes,42,5,8,71.6,11.57,12,38.5,44.7,74.3,200,365.37,157.61,53.73,Mixed,No,Yes,Yes
+561,Magic Kingdom,Cloudy,Yes,Yes,4,4,8,90.2,7.55,14,49.1,47.4,80,400,354.84,205.51,37.9,Mixed,Yes,Yes,Yes
+562,EPCOT,Cloudy,Yes,Yes,31,2,6,88.6,8.22,21,36.3,36.7,74.2,200,241.69,94.4,38.53,Planner,No,No,No
+563,Magic Kingdom,Sunny,Yes,No,36,1,3,78.3,7.67,8,35.2,42.1,89.2,100,219.2,111.16,46.82,Mixed,No,No,Yes
+564,EPCOT,Sunny,No,No,15,5,4,72.4,12.89,13,44.7,59.5,85.8,200,323.65,188.86,59.81,Mixed,No,No,Yes
+565,Magic Kingdom,Sunny,No,No,31,4,4,74,6.82,16,56.6,74.6,66,300,323.28,189.67,47.46,Mixed,No,No,No
+566,Animal Kingdom,Cloudy,Yes,No,32,6,11,84.1,6.26,18,27.6,36.4,80.3,300,420.23,196.19,46.48,Mixed,Yes,Yes,Yes
+567,Hollywood Studios,Rainy,Yes,No,19,5,3,85.5,9.53,8,52.4,50.7,86.8,200,320.69,177.48,53.72,Planner,No,No,Yes
+568,Magic Kingdom,Sunny,Yes,No,52,3,2,90.6,14.5,8,56.1,68.2,96,200,236.67,98.35,31.21,Mixed,Yes,Yes,Yes
+569,Animal Kingdom,Cloudy,Yes,No,27,7,2,86.4,5.08,12,40.7,42.7,74.6,300,279.18,136.69,82.57,Spontaneous,No,No,No
+570,Magic Kingdom,Sunny,Yes,No,29,4,4,71.9,12.17,9,59.5,67.7,85.8,300,316.19,144.42,66.08,Spontaneous,No,No,Yes
+571,Hollywood Studios,Sunny,No,No,5,4,8,80.8,12.79,10,45,66.8,76.7,400,385.28,146.08,123.73,Planner,No,No,Yes
+572,EPCOT,Cloudy,Yes,Yes,22,4,5,92.6,15.72,11,43,38.5,91.7,300,309.78,170.84,54.83,Spontaneous,No,Yes,Yes
+573,Magic Kingdom,Cloudy,No,Yes,15,5,6,82.1,15.2,13,47.2,51,77.6,300,322.98,117.47,77.95,Planner,Yes,Yes,No
+574,Hollywood Studios,Cloudy,Yes,Yes,23,4,5,83.9,11.45,9,24.2,26.8,86.9,200,324.28,127.67,59.15,Planner,Yes,Yes,Yes
+575,Animal Kingdom,Sunny,No,No,28,4,6,84,7.85,16,17.4,29.5,76.5,200,346.33,198.45,38.39,Planner,Yes,Yes,Yes
+576,Magic Kingdom,Sunny,No,Yes,35,4,3,83.1,8.82,8,45.3,63.4,80.1,300,295.66,114.55,68.35,Spontaneous,No,No,Yes
+577,Hollywood Studios,Rainy,Yes,No,59,2,2,85.8,10.05,9,54.4,71.2,88.8,200,277.22,134.77,31.17,Planner,No,No,Yes
+578,Magic Kingdom,Cloudy,No,Yes,34,2,5,98.2,9.36,7,47.2,56.5,84.9,300,308.29,133.55,72.96,Mixed,Yes,Yes,Yes
+579,Hollywood Studios,Sunny,No,Yes,34,1,4,95.7,8.07,12,55.3,61.8,66.5,200,212.1,119.54,24.71,Spontaneous,No,No,No
+580,Magic Kingdom,Sunny,No,Yes,37,4,5,84,11.1,14,18.9,31.1,70.2,300,324.82,128.6,114.52,Mixed,No,No,No
+581,EPCOT,Rainy,No,No,3,5,7,64.5,11.14,10,26.2,50,88.8,400,349.34,135.18,47.85,Planner,Yes,Yes,Yes
+582,Hollywood Studios,Cloudy,No,Yes,29,4,4,82.4,11.39,11,41.7,60.3,72.2,200,313.27,129.88,102.98,Planner,No,No,Yes
+583,Magic Kingdom,Sunny,No,Yes,69,4,6,75,3.84,12,30.7,38.7,86.1,300,NA,NA,NA,Mixed,No,Yes,Yes
+584,Animal Kingdom,Sunny,No,No,10,4,3,84.6,9.98,11,55.7,62.2,80,300,263.04,139.45,39.54,Planner,Yes,Yes,Yes
+585,Hollywood Studios,Sunny,No,No,50,4,6,81.8,6.25,14,51.4,59.4,73.5,300,282.66,142.55,56.22,Mixed,Yes,Yes,Yes
+586,EPCOT,Sunny,No,Yes,69,4,6,89.1,13.19,12,36,37.7,70.9,300,370.26,152.94,123.2,Planner,No,No,No
+587,Magic Kingdom,Sunny,No,No,32,4,3,73.7,14.77,12,61.4,70.9,68.8,200,246.05,114.46,59.65,Planner,No,No,No
+588,Animal Kingdom,Cloudy,No,No,27,5,6,90.5,11.92,14,7.5,32.5,75.8,200,340.67,153.92,77.09,Planner,No,No,Yes
+589,Magic Kingdom,Sunny,No,No,22,6,4,94.9,12.72,12,49.8,69.5,83.5,300,345.14,124.63,115.94,Planner,No,No,Yes
+590,EPCOT,Sunny,No,No,57,8,10,89.1,5.8,22,32.8,41.3,71.1,500,511.27,207.63,141.41,Planner,Yes,Yes,Yes
+591,EPCOT,Sunny,No,Yes,12,5,5,95.5,9.34,13,41.4,50.6,73.9,300,291.59,147.78,73.65,Spontaneous,Yes,No,Yes
+592,Magic Kingdom,Sunny,Yes,No,10,4,7,82.5,8.07,17,42.6,54.8,84.2,200,291.02,137.39,77,Spontaneous,Yes,Yes,Yes
+593,Animal Kingdom,Sunny,No,No,51,6,5,86.3,8.2,4,21.9,30.4,81.1,200,316.02,153.32,54.74,Spontaneous,No,No,Yes
+594,EPCOT,Sunny,No,No,42,3,5,88.5,10.23,6,35.1,35.7,69.5,300,275.03,138.18,67.62,Mixed,No,No,No
+595,EPCOT,Sunny,No,No,18,4,7,94.7,8.8,15,27.4,41,77.1,300,350.44,179.9,49.15,Mixed,Yes,Yes,No
+596,Animal Kingdom,Cloudy,Yes,Yes,9,5,1,81.2,13.79,7,26.2,40,66.6,200,218.2,218.2,NA,Planner,Yes,No,Yes
+597,EPCOT,Sunny,No,Yes,46,3,8,80,9.64,12,32.8,32.9,82.8,300,308.87,146.76,70.94,Planner,Yes,No,Yes
+598,Hollywood Studios,Rainy,Yes,No,35,5,6,86.1,11.95,12,45,59.7,74.6,200,344.86,132.52,56.86,Spontaneous,Yes,Yes,Yes
+599,Magic Kingdom,Cloudy,No,No,41,5,4,82.4,9.59,12,40.9,58.9,64.6,300,355.74,144.55,90.51,Spontaneous,Yes,Yes,No
+600,EPCOT,Rainy,No,Yes,3,3,6,66.2,8.62,12,18.2,43.4,74.7,300,NA,NA,NA,Planner,No,No,Yes
+601,Magic Kingdom,Rainy,No,Yes,26,4,11,86.9,8.17,14,38,56.2,77.6,300,440.43,234.86,84.69,Mixed,No,Yes,No
+602,Magic Kingdom,Rainy,Yes,Yes,27,6,5,71.1,17.07,14,53.1,70.6,64.7,200,342.55,164.09,76.29,Mixed,Yes,Yes,Yes
+603,Animal Kingdom,Sunny,Yes,No,14,4,6,87.3,15.27,10,28.7,31.4,64.6,200,283.17,161.3,49.29,Planner,No,No,Yes
+604,Magic Kingdom,Cloudy,No,Yes,31,1,8,76.5,5.66,15,42.7,52.1,83.8,200,290.85,133.29,74.99,Mixed,No,Yes,Yes
+605,Magic Kingdom,Sunny,No,Yes,43,3,6,74.1,7.73,19,49.4,56.9,79,400,378.87,219.84,52.57,Planner,Yes,No,No
+606,Animal Kingdom,Sunny,Yes,No,29,4,5,102,12.39,14,9.8,20.6,73.5,200,336.91,199.93,51.89,Planner,Yes,No,No
+607,EPCOT,Sunny,No,Yes,54,1,3,93,14.06,14,34.8,34.1,91.8,300,257,138.41,27.74,Spontaneous,No,Yes,Yes
+608,Magic Kingdom,Sunny,Yes,Yes,21,3,6,77,11.18,13,48.5,56.2,56.2,300,317.04,156.91,51.5,Mixed,No,Yes,No
+609,Magic Kingdom,Sunny,No,No,33,5,5,90.1,8.75,10,48.4,62.9,76,300,254.89,96.52,62.81,Planner,No,No,Yes
+610,Hollywood Studios,Sunny,No,No,38,6,8,97.1,10.32,11,42.4,64.1,67.5,300,357.18,137.95,126.7,Mixed,No,No,No
+611,Hollywood Studios,Sunny,Yes,No,43,3,4,71.3,10.24,10,47.1,50.9,70.8,200,284.36,114.53,40.22,Planner,No,No,Yes
+612,EPCOT,Sunny,No,Yes,36,3,3,89.5,9.85,8,49.3,66.7,73.4,300,NA,NA,NA,Planner,No,No,Yes
+613,EPCOT,Cloudy,No,Yes,31,4,4,79.2,13.36,18,46.8,44.4,77.3,200,281.32,127.93,51.22,Planner,Yes,Yes,No
+614,Magic Kingdom,Cloudy,Yes,No,42,8,4,92.8,10.7,7,51.5,72.6,71.8,300,303.89,111.4,103.51,Mixed,No,Yes,No
+615,Magic Kingdom,Cloudy,No,Yes,7,5,1,90.9,7.26,7,47.4,59.8,86.8,100,230.16,230.16,NA,Spontaneous,No,No,Yes
+616,Magic Kingdom,Rainy,No,Yes,18,4,4,88.6,10.84,18,24.5,32.4,90.9,400,327.62,172.95,80.63,Spontaneous,No,No,Yes
+617,Hollywood Studios,Rainy,No,Yes,33,3,4,82.7,11.14,14,45.5,52.8,77.5,200,277.7,131.69,56.03,Planner,No,No,No
+618,Hollywood Studios,Sunny,No,Yes,46,5,5,78.5,12.49,12,48.7,49.9,68.7,400,327.02,157.05,95.24,Planner,No,No,No
+619,Hollywood Studios,Cloudy,Yes,Yes,21,3,3,82.8,13.45,13,42.9,50.6,84.1,200,210.79,121.26,38.18,Mixed,No,No,Yes
+620,EPCOT,Rainy,No,Yes,33,7,7,76.3,11.42,17,36.9,46.8,73.1,300,394.49,153.18,93.9,Mixed,No,Yes,No
+621,Magic Kingdom,Sunny,No,Yes,78,3,7,80.5,9.74,15,49.9,49.2,82.3,300,351.4,156.72,91.67,Planner,No,No,Yes
+622,Hollywood Studios,Sunny,No,No,35,6,5,70,9.42,13,34.9,50.6,84.6,200,303.92,125.78,95.67,Planner,No,No,Yes
+623,Magic Kingdom,Rainy,No,No,60,3,5,83.6,9.66,11,47.5,59.1,78.2,300,262.25,117.87,64.55,Mixed,Yes,Yes,No
+624,Animal Kingdom,Cloudy,No,Yes,34,6,4,74.6,3.06,14,27.8,46.3,65.4,400,NA,NA,NA,Spontaneous,No,Yes,No
+625,Animal Kingdom,Cloudy,No,Yes,32,4,7,75,13.19,12,32,40.2,81,300,329.5,188.78,56.13,Spontaneous,Yes,Yes,No
+626,Magic Kingdom,Sunny,Yes,No,3,5,7,83.5,12.64,22,56.5,70.2,80.4,300,348.9,175.43,61.03,Spontaneous,Yes,Yes,Yes
+627,Magic Kingdom,Rainy,No,No,11,3,5,82.6,8.73,12,28.2,49.4,83.9,400,NA,NA,NA,Mixed,No,Yes,No
+628,EPCOT,Cloudy,No,No,43,4,9,76.3,6.68,23,31.9,33,80.2,500,408.7,181.5,79.69,Spontaneous,Yes,No,Yes
+629,Magic Kingdom,Rainy,No,Yes,29,4,4,80.7,11.15,14,31.6,55,76.7,200,247.6,129.08,33.73,Mixed,No,Yes,No
+630,Hollywood Studios,Sunny,No,Yes,11,6,4,99.6,7.59,7,30,50.5,76.9,300,354.06,209.44,53.79,Planner,No,No,Yes
+631,EPCOT,Sunny,Yes,No,35,1,6,86.3,4.28,18,42.2,53.3,72.8,300,330.42,192.43,29.2,Planner,No,No,No
+632,EPCOT,Rainy,No,No,25,3,5,87.1,9.35,9,24.6,44.7,68.4,200,362.63,130.86,95,Spontaneous,Yes,No,No
+633,Animal Kingdom,Sunny,No,Yes,55,5,7,80.2,11.65,12,13.2,17.5,79.5,300,388.49,220.97,76.79,Planner,No,Yes,Yes
+634,Magic Kingdom,Rainy,No,Yes,26,5,6,83.5,11.22,18,43.6,48.3,76.8,300,388.36,186.05,70.4,Planner,No,Yes,Yes
+635,Magic Kingdom,Sunny,No,No,56,6,2,79.4,6.94,4,37,58.2,87.5,200,253.33,121.71,30.71,Planner,Yes,Yes,No
+636,EPCOT,Cloudy,No,Yes,40,6,8,89.7,9.43,15,35.8,35.5,66.7,300,450.03,233.86,65.42,Spontaneous,No,No,No
+637,Magic Kingdom,Rainy,Yes,No,49,1,6,80.5,9.18,17,33.6,35.3,55.5,300,306.56,170.56,66.95,Spontaneous,No,No,Yes
+638,Animal Kingdom,Sunny,No,Yes,21,7,4,87.6,9.86,13,11.5,29.2,79.2,300,357.59,162.1,98.6,Mixed,No,No,Yes
+639,Magic Kingdom,Sunny,No,No,32,6,5,92.3,7.88,13,61.3,67.8,60.9,200,334.09,189.58,65.36,Spontaneous,Yes,Yes,Yes
+640,Animal Kingdom,Rainy,Yes,Yes,3,5,4,92.7,8.47,6,35.3,30.2,71.1,200,303.87,152.42,39.85,Planner,No,No,No
+641,EPCOT,Cloudy,No,No,6,4,6,74,8.61,17,14.4,26.6,81.5,200,272.43,130.21,53.6,Planner,Yes,No,Yes
+642,Magic Kingdom,Cloudy,No,Yes,40,6,9,81.3,19.36,15,33.6,40.8,72,400,368.9,140.43,89.22,Planner,Yes,Yes,Yes
+643,Magic Kingdom,Sunny,No,No,50,6,3,79.8,9.35,10,48.4,65.8,67.9,200,318.36,159.27,65.59,Mixed,No,No,Yes
+644,EPCOT,Rainy,No,Yes,45,2,5,83.1,11.34,14,30.9,26,71.3,300,318.93,186.53,38.25,Mixed,Yes,No,Yes
+645,Hollywood Studios,Sunny,Yes,No,29,5,9,93.6,11.97,17,62.4,71.9,89.1,300,426.01,155.06,117.59,Mixed,Yes,Yes,Yes
+646,EPCOT,Cloudy,No,No,19,4,4,86.7,11.21,16,21.4,32.4,65.5,100,278.18,138.73,40.69,Planner,No,No,No
+647,EPCOT,Sunny,No,No,53,3,6,72.7,8.02,16,37.6,52.9,76.4,200,260.2,134.94,42.35,Planner,No,Yes,Yes
+648,Magic Kingdom,Sunny,No,No,36,2,9,85.4,13.66,20,42.2,53.1,71.9,400,364.25,178.29,74.23,Mixed,No,Yes,Yes
+649,Hollywood Studios,Rainy,Yes,No,32,2,4,94.5,7.16,10,34.9,41.9,100,200,291.49,149.78,53.61,Spontaneous,Yes,Yes,Yes
+650,EPCOT,Sunny,Yes,No,17,5,6,81.4,9.17,12,28.5,41,85.2,300,328.16,187.66,58.03,Mixed,No,No,Yes
+651,Magic Kingdom,Rainy,Yes,No,43,2,9,71.9,10.52,17,36.9,46.7,87.6,300,332.52,193.3,76.37,Planner,No,Yes,Yes
+652,Animal Kingdom,Cloudy,No,No,17,4,4,74.9,14.29,8,34.1,37.1,74.9,200,357.7,209.93,56.02,Planner,No,No,No
+653,Hollywood Studios,Rainy,No,Yes,36,3,4,74.6,15.23,11,18.3,33.5,80,400,357.05,135.87,82.58,Planner,Yes,No,No
+654,Animal Kingdom,Sunny,No,No,51,5,6,77.3,7.97,17,50.8,53.6,76.1,300,368.63,153.15,95.78,Planner,No,No,No
+655,EPCOT,Sunny,No,Yes,44,2,7,82.7,11.36,19,52.1,55.4,85.9,200,309.5,151.77,89.89,Mixed,No,No,Yes
+656,Hollywood Studios,Cloudy,Yes,No,26,5,5,84.2,8.23,15,47.7,55.4,82.6,400,377.53,132.7,135.53,Spontaneous,No,No,Yes
+657,EPCOT,Sunny,No,No,28,7,6,88.3,10.91,19,39.3,48.3,78.4,400,417.25,151.87,140.86,Spontaneous,No,No,Yes
+658,Animal Kingdom,Rainy,Yes,No,41,5,7,90.2,7.78,14,36.7,41.4,78.5,400,419.32,232.45,110.68,Mixed,No,Yes,Yes
+659,Magic Kingdom,Sunny,No,No,35,4,3,87.2,9.58,11,50.3,58.8,69.5,300,260.02,113.28,85.65,Mixed,No,No,No
+660,EPCOT,Sunny,Yes,Yes,38,5,8,74.2,11.99,16,41.7,41.8,95.9,400,447.14,191.1,116.88,Spontaneous,No,No,Yes
+661,Hollywood Studios,Sunny,No,Yes,38,5,4,93,8.18,7,34.6,39.3,71.7,300,304.42,178.01,69.82,Mixed,Yes,Yes,No
+662,Animal Kingdom,Sunny,No,No,29,3,2,77.3,4.08,9,21.9,33.1,83.5,300,256.02,92.93,80.37,Spontaneous,No,No,Yes
+663,EPCOT,Sunny,No,No,7,6,2,78.4,10.71,3,14.2,19.8,64.7,200,298.89,133.82,96.24,Spontaneous,No,No,Yes
+664,EPCOT,Sunny,No,No,45,5,7,71.8,5.62,19,28.1,43.7,53.8,300,390.17,163.33,94.77,Spontaneous,No,Yes,No
+665,Magic Kingdom,Sunny,Yes,No,31,6,8,83.5,10.69,14,41.2,52.2,63.6,400,403,161.43,122.17,Planner,No,No,No
+666,EPCOT,Sunny,Yes,No,46,9,5,85.5,9.77,11,50.2,55.3,63.9,300,413.7,244.39,60.54,Planner,No,No,No
+667,Hollywood Studios,Cloudy,No,No,40,7,9,79.1,10.74,10,24,52.3,88.5,300,376.26,175.54,67.55,Spontaneous,Yes,No,Yes
+668,Hollywood Studios,Sunny,No,No,30,2,3,96.4,5.8,10,56,65.3,74.1,200,317.37,172.68,66.59,Planner,No,No,Yes
+669,Magic Kingdom,Cloudy,No,No,50,6,6,82.5,9.21,12,67.7,76,70.8,300,356.53,178.01,56.11,Mixed,Yes,No,Yes
+670,Hollywood Studios,Cloudy,No,No,29,5,5,93.3,10.19,13,24.5,45.1,62.4,200,259.42,141.94,54.92,Mixed,No,Yes,Yes
+671,Hollywood Studios,Cloudy,No,Yes,47,3,10,79.9,9.31,16,54.2,62.6,82.7,300,331.29,176.08,48.36,Spontaneous,No,Yes,Yes
+672,Hollywood Studios,Sunny,No,No,60,3,7,83.4,4.01,18,46.8,46.4,67.8,300,334.42,187.27,81.85,Mixed,Yes,Yes,No
+673,EPCOT,Cloudy,No,Yes,37,7,1,81.7,12.13,7,26.6,35.7,75.6,300,306.8,306.8,NA,Planner,No,No,Yes
+674,Magic Kingdom,Sunny,No,No,23,6,7,76.3,9.93,12,58.6,59.1,69,200,407.94,213.57,58.87,Planner,No,No,No
+675,EPCOT,Sunny,No,Yes,31,5,3,87.6,10.39,11,31.3,47.4,61,200,279.64,139.12,57.11,Planner,No,No,Yes
+676,Magic Kingdom,Sunny,No,Yes,45,2,4,92.5,9.43,13,43.6,56.4,69.3,200,229.94,116.3,40.66,Mixed,Yes,No,No
+677,Magic Kingdom,Rainy,No,Yes,23,4,3,79,10,13,22.2,23.4,68.7,300,301.26,178.53,32.93,Mixed,No,No,No
+678,Magic Kingdom,Sunny,Yes,Yes,40,5,14,83.3,11.01,22,60.8,63.9,90.9,500,NA,NA,NA,Spontaneous,No,No,Yes
+679,Magic Kingdom,Sunny,Yes,No,46,4,6,94.7,8.92,11,33.5,48.4,77.3,300,287.36,163.25,43.47,Planner,Yes,Yes,Yes
+680,Magic Kingdom,Cloudy,Yes,No,25,7,6,79,10.02,7,36.3,42.6,84.3,300,358.07,199.9,37.01,Spontaneous,No,No,Yes
+681,EPCOT,Sunny,Yes,Yes,52,5,6,70.9,5.24,15,31.1,29.6,82,300,356.21,183.13,86.74,Planner,No,No,Yes
+682,Animal Kingdom,Sunny,No,No,40,2,5,92.5,12.18,13,20.7,39.3,86.6,300,316.02,120.47,49.46,Spontaneous,Yes,Yes,Yes
+683,Hollywood Studios,Sunny,No,No,33,5,2,86.2,10.33,8,42.4,47.6,71.3,200,285.59,124.08,64.96,Planner,No,No,No
+684,Magic Kingdom,Rainy,No,No,17,3,2,102,4.74,12,40.4,55.4,88.6,200,279.41,109.2,49.88,Mixed,No,Yes,Yes
+685,Magic Kingdom,Sunny,No,No,56,4,7,84.7,14.39,12,42.9,45.3,83.4,300,319.95,162.28,90.69,Planner,Yes,Yes,Yes
+686,Magic Kingdom,Cloudy,No,Yes,35,4,6,102,11.02,15,44.9,54,72.5,400,375.74,174.23,50.34,Spontaneous,Yes,Yes,Yes
+687,Magic Kingdom,Sunny,No,Yes,39,3,3,89.6,9.83,14,59.5,64.4,98.3,300,337.92,178.32,44.82,Planner,Yes,Yes,Yes
+688,Animal Kingdom,Sunny,No,No,20,3,4,88.3,13.52,12,45.7,62.8,73.8,300,275.3,119.92,65.61,Planner,Yes,Yes,Yes
+689,Hollywood Studios,Sunny,No,No,40,4,2,78.3,13.95,12,51.6,58.7,62.5,300,316.34,150.75,83.3,Planner,Yes,Yes,No
+690,Magic Kingdom,Sunny,No,Yes,42,4,10,84.7,7.48,18,54.1,56.5,66.9,400,399.25,207.13,51.03,Planner,Yes,Yes,No
+691,EPCOT,Rainy,No,No,24,4,2,92.5,7.6,10,19.8,28.7,90.3,300,277.97,106.85,65.74,Planner,Yes,No,Yes
+692,Magic Kingdom,Cloudy,Yes,No,55,3,8,79.4,6.16,17,42.1,50.3,73.6,300,340.23,129.19,96.71,Mixed,Yes,Yes,No
+693,EPCOT,Sunny,Yes,Yes,40,4,8,86,14.52,16,44,49.9,78.7,200,352.47,198.56,56.31,Planner,Yes,Yes,No
+694,Hollywood Studios,Rainy,No,No,55,4,5,77.4,6.55,11,43,59.1,59.7,300,331.92,144.42,100.08,Planner,No,Yes,No
+695,Hollywood Studios,Sunny,Yes,No,44,5,7,76.5,15.92,15,33.9,42.3,69.2,300,317.27,119.18,104.83,Mixed,No,No,Yes
+696,Magic Kingdom,Cloudy,No,Yes,40,6,5,87.2,7.17,16,48.2,64.3,75.4,400,462.63,206.3,92.96,Spontaneous,No,No,No
+697,EPCOT,Rainy,No,Yes,37,3,8,97.3,4.33,11,25.5,43.9,68.9,200,328.43,162.04,38.17,Mixed,No,No,Yes
+698,EPCOT,Sunny,No,Yes,37,3,2,81.2,14.27,11,31.9,49.7,84.5,200,261.49,120.18,70.23,Spontaneous,No,No,Yes
+699,Magic Kingdom,Rainy,Yes,Yes,29,3,4,85.2,14.44,12,44.3,53.7,75.4,300,307.52,142.12,40.02,Spontaneous,Yes,No,Yes
+700,EPCOT,Sunny,No,No,12,8,7,84.5,10.23,12,35.9,47.5,62.9,400,389.1,160.12,96.86,Spontaneous,Yes,Yes,Yes
+701,Magic Kingdom,Sunny,No,Yes,57,3,9,83.7,12.82,17,55.4,82.8,63.7,300,368.65,165.14,42,Mixed,No,No,Yes
+702,Magic Kingdom,Cloudy,No,Yes,40,2,6,94.5,9.08,14,48.3,50.6,75.1,100,254.29,141.91,28.68,Mixed,Yes,Yes,No
+703,Animal Kingdom,Cloudy,No,Yes,44,6,3,78.1,12.86,11,24.1,40.1,54.7,400,332.33,152.11,65.92,Mixed,No,Yes,No
+704,Animal Kingdom,Sunny,No,No,18,5,5,83.3,9.6,10,32,33.5,62.7,300,316.49,140.77,47.8,Planner,No,Yes,Yes
+705,EPCOT,Sunny,No,No,54,2,6,78.9,8.59,15,56.9,74.8,87.5,300,347.03,188.71,43.19,Spontaneous,No,No,Yes
+706,Magic Kingdom,Rainy,No,Yes,52,3,2,84.6,6.56,8,35,50.9,79,200,236.67,94.11,36.62,Planner,Yes,Yes,Yes
+707,Animal Kingdom,Sunny,No,Yes,31,4,8,72.5,8.05,16,34.8,35.6,84.7,300,357.6,137.74,114.41,Mixed,Yes,No,Yes
+708,Hollywood Studios,Cloudy,No,No,36,2,7,76,15.36,9,46.4,50.4,67.8,300,301.5,132.79,34.52,Planner,No,No,No
+709,Hollywood Studios,Sunny,Yes,No,23,2,6,78,9.12,12,40.1,52.7,93.8,300,345.2,145.85,49.52,Mixed,Yes,Yes,Yes
+710,Magic Kingdom,Cloudy,No,No,52,2,7,60.7,10.49,15,63.8,62.1,71.5,400,419.21,238.92,107.61,Spontaneous,Yes,Yes,Yes
+711,EPCOT,Cloudy,No,Yes,11,2,4,87.8,10.82,10,39.3,46,88.2,200,262.92,116.94,72.95,Planner,No,Yes,Yes
+712,Hollywood Studios,Cloudy,No,Yes,16,4,4,71.5,5.77,10,42.1,55.1,58.4,200,270.13,106.47,62.05,Spontaneous,Yes,Yes,Yes
+713,Hollywood Studios,Cloudy,Yes,No,26,1,3,80.1,8.37,6,41.4,51.5,68.8,200,208.67,120.51,44.59,Planner,No,No,No
+714,Hollywood Studios,Cloudy,No,Yes,48,2,4,102,12.02,13,32.8,46.3,75.5,300,291.56,158.18,63.66,Mixed,No,Yes,No
+715,Animal Kingdom,Sunny,Yes,No,41,4,4,85.6,12.19,11,30.1,42.1,79.5,300,356.26,168.76,51.19,Planner,No,Yes,No
+716,Magic Kingdom,Cloudy,No,Yes,57,3,4,79.2,11.5,11,47.4,50.6,75.9,200,254.66,141.31,63.19,Mixed,No,No,Yes
+717,EPCOT,Cloudy,No,No,8,4,3,92.9,12.88,15,31.2,41.2,61.9,200,196.78,74.45,38.49,Planner,No,No,No
+718,Magic Kingdom,Rainy,Yes,No,25,4,6,79.9,10.27,15,39.5,41.1,97.3,300,347.91,172.84,96.01,Mixed,No,No,Yes
+719,Animal Kingdom,Sunny,No,Yes,22,1,6,88,5.54,13,48,54.4,70.3,200,195.29,97.39,58.49,Planner,No,No,No
+720,Magic Kingdom,Rainy,No,No,52,5,4,83.2,13.24,7,60.7,57.1,80,200,280.58,113.37,54.88,Mixed,Yes,No,No
+721,EPCOT,Cloudy,Yes,Yes,28,5,9,83.2,8.27,15,45.8,53.8,80.1,300,462.11,163.78,116.4,Mixed,No,No,No
+722,Animal Kingdom,Rainy,Yes,No,40,1,6,91.4,10.13,15,37.3,45,71.2,200,272.8,131.95,69.77,Planner,No,Yes,No
+723,Hollywood Studios,Sunny,No,No,38,3,6,89.6,10.76,16,58.1,73.1,87.2,200,348.68,138.78,67.79,Mixed,Yes,Yes,Yes
+724,Magic Kingdom,Sunny,Yes,No,40,3,8,78.5,13.19,17,46,54.4,64.8,300,343.93,158.96,42.81,Planner,No,No,Yes
+725,EPCOT,Sunny,No,No,28,6,9,75.6,9.76,16,35.6,53.6,74.9,200,357.52,162.9,108.24,Planner,Yes,Yes,No
+726,Hollywood Studios,Sunny,Yes,Yes,18,5,4,66.5,6.81,10,25.4,25.6,79,200,NA,NA,NA,Spontaneous,No,No,Yes
+727,Animal Kingdom,Cloudy,No,No,46,5,3,82.6,7.28,8,33.2,36.3,84.5,300,357.07,197.56,49.66,Mixed,Yes,No,Yes
+728,Animal Kingdom,Rainy,Yes,Yes,23,6,6,77.4,5.62,15,7.5,19.1,67.3,300,457.76,251.31,78.03,Planner,Yes,Yes,No
+729,Magic Kingdom,Cloudy,No,No,29,7,4,79.5,11.28,7,41.8,59.1,75.8,300,388.97,182.94,79.41,Planner,Yes,Yes,No
+730,Magic Kingdom,Cloudy,Yes,No,48,5,3,84.3,15.16,11,42.9,40.7,77.5,200,351.44,208.86,79.02,Spontaneous,No,Yes,No
+731,Magic Kingdom,Cloudy,No,Yes,19,8,6,84.4,9.72,10,37.3,44.8,85.5,300,322.64,156.26,91.66,Planner,No,Yes,No
+732,Magic Kingdom,Sunny,Yes,Yes,25,4,5,87.3,9.3,10,29,41.7,91.9,200,253.86,111.37,67.91,Planner,No,No,Yes
+733,Hollywood Studios,Cloudy,No,Yes,40,4,5,78,12.63,8,54.4,70.2,86,300,334.25,195.7,79.24,Planner,Yes,No,Yes
+734,Animal Kingdom,Rainy,No,No,40,5,6,77.2,11.58,12,17.7,37.6,89.9,300,362.91,184.3,38.7,Spontaneous,No,No,Yes
+735,Animal Kingdom,Cloudy,Yes,No,42,4,7,100,8.49,13,38.4,36.9,85.6,300,365.75,158.71,109.59,Spontaneous,No,No,Yes
+736,Magic Kingdom,Rainy,No,Yes,12,4,5,69.2,9.17,12,36.8,51.3,61.8,200,222.58,122.18,23.2,Planner,No,No,No
+737,Hollywood Studios,Sunny,No,No,31,4,4,94,7.66,15,83.5,81.6,63,200,262.26,125.41,59.34,Planner,Yes,No,No
+738,Animal Kingdom,Sunny,No,Yes,23,3,4,83.1,9.49,15,34.8,42,83.6,200,262.15,107.28,67.2,Planner,No,Yes,No
+739,EPCOT,Cloudy,No,Yes,14,2,8,86.1,10.46,13,44.5,45.2,84.3,300,362.89,153.68,81.94,Mixed,Yes,Yes,No
+740,Magic Kingdom,Sunny,Yes,No,31,4,4,92.8,9.43,16,51.7,76.7,94.8,300,285.29,155.07,69.74,Mixed,Yes,Yes,Yes
+741,Magic Kingdom,Sunny,No,No,30,4,3,82,13.39,13,43.6,69.5,68.4,200,243.35,126.8,48.89,Spontaneous,Yes,Yes,No
+742,EPCOT,Sunny,Yes,No,45,4,1,83.9,9.66,15,48.6,63.3,81.6,300,309.19,309.19,NA,Planner,No,No,Yes
+743,Animal Kingdom,Sunny,No,Yes,48,5,2,81.1,9.61,12,22,46.1,73.1,300,301.36,162.83,44.54,Spontaneous,No,No,No
+744,EPCOT,Sunny,No,No,36,3,4,83.1,11.3,12,17.1,22.2,68.4,300,373.78,212.09,54.62,Mixed,No,No,Yes
+745,Hollywood Studios,Sunny,No,Yes,38,2,10,87.5,9.74,15,57.8,64.6,81.8,300,391.61,181.77,59.31,Spontaneous,No,Yes,Yes
+746,Magic Kingdom,Sunny,No,No,19,3,3,73.5,7.36,16,59.2,60.2,78.5,100,260.02,124.36,55.87,Planner,No,Yes,Yes
+747,Animal Kingdom,Cloudy,No,No,22,1,6,77.1,10.61,7,20.7,22.7,65.8,200,303.26,107.92,78.53,Planner,No,No,No
+748,EPCOT,Cloudy,No,No,51,6,7,80.7,9.26,14,39,54.9,90.6,300,384.78,166.32,119.56,Planner,No,No,Yes
+749,Animal Kingdom,Sunny,No,Yes,68,6,7,83.3,10.6,13,42.1,66.1,57.7,300,384.06,188.97,102.17,Spontaneous,No,No,No
+750,Magic Kingdom,Rainy,No,Yes,15,2,2,86,10.29,6,46.3,60.7,55.9,100,198.19,71.67,69.59,Mixed,No,No,No
+751,Magic Kingdom,Sunny,No,Yes,34,5,9,81,8.78,15,37.7,46.9,76.7,400,443.28,234.91,112.39,Spontaneous,No,No,Yes
+752,EPCOT,Sunny,Yes,Yes,44,8,8,75.8,7.33,9,37.5,56.5,75.1,400,478.45,253.13,102.62,Planner,No,No,No
+753,EPCOT,Sunny,Yes,Yes,61,3,5,91.8,10.96,12,36.5,46.8,74.9,200,314.93,121.35,41.09,Planner,Yes,Yes,Yes
+754,Animal Kingdom,Cloudy,No,No,25,2,6,87.7,9.31,11,17.6,21.6,81.8,300,296.02,138.53,68.39,Mixed,No,Yes,Yes
+755,Magic Kingdom,Sunny,Yes,No,27,5,6,86.6,8.09,9,32.2,50.6,79,300,NA,NA,NA,Planner,No,No,Yes
+756,Hollywood Studios,Sunny,Yes,Yes,30,5,8,89.1,16.04,14,46.5,62,100,300,392.85,163.55,74.06,Mixed,No,No,Yes
+757,Magic Kingdom,Cloudy,No,Yes,39,2,3,89.2,5.68,12,40,35.6,79,300,280.88,151.29,64.04,Spontaneous,Yes,Yes,Yes
+758,Hollywood Studios,Cloudy,No,No,40,1,3,72,7,7,48.7,59.9,70.6,100,231.14,121.57,60.89,Planner,No,Yes,No
+759,Animal Kingdom,Rainy,No,Yes,46,2,4,94.3,7.81,8,15.7,31.7,59.9,200,225.97,97.27,40.26,Planner,No,No,No
+760,Magic Kingdom,Cloudy,No,Yes,27,5,6,75.5,8.46,16,45.9,45.9,90.9,300,302.65,164.85,62.38,Planner,Yes,Yes,Yes
+761,Animal Kingdom,Cloudy,No,No,56,5,6,92.7,10.28,17,27.3,39.9,58.5,200,306.13,164.98,39.54,Planner,Yes,Yes,No
+762,Hollywood Studios,Cloudy,Yes,Yes,8,2,9,81.2,11.46,18,5,10.2,71.1,300,395.39,196.1,60.26,Planner,No,Yes,Yes
+763,Animal Kingdom,Rainy,Yes,Yes,39,4,4,71.5,13.89,9,17.9,40.2,65.1,300,305.76,181.87,31.72,Planner,No,Yes,Yes
+764,Animal Kingdom,Sunny,No,Yes,15,4,4,85.6,9.54,10,10.9,23.9,76,300,327.05,164.41,59.45,Planner,No,No,Yes
+765,Hollywood Studios,Sunny,Yes,No,28,5,4,79.8,10.75,11,33.5,44.7,69.4,300,300.05,166.97,70.39,Planner,Yes,Yes,Yes
+766,EPCOT,Sunny,Yes,Yes,51,2,7,82.1,12.09,16,41.3,38.5,67.7,300,396.27,207.36,44.46,Planner,No,Yes,Yes
+767,Magic Kingdom,Sunny,No,No,50,4,4,80.3,12.57,18,41.5,47.8,77.7,200,259.48,113.94,40.45,Planner,No,No,Yes
+768,EPCOT,Cloudy,No,No,45,5,7,77.5,9.78,13,35.4,38,87.9,200,365.93,154.6,120.4,Planner,Yes,No,Yes
+769,Hollywood Studios,Cloudy,No,No,42,6,2,81.1,9.98,11,54.1,65.8,66.8,300,359.4,159.84,62.4,Spontaneous,No,No,No
+770,Magic Kingdom,Sunny,No,No,27,7,4,91.1,10.41,14,49.6,52.9,74.1,400,441.18,219.31,105.59,Mixed,Yes,Yes,Yes
+771,Animal Kingdom,Sunny,No,No,31,6,6,88.2,8.87,16,41.8,44.3,60.4,300,354.71,142.05,76.27,Mixed,Yes,Yes,No
+772,Hollywood Studios,Cloudy,No,No,29,5,6,90.3,10.29,9,28.1,43,88.9,200,280.22,117.84,34.67,Planner,No,No,Yes
+773,Magic Kingdom,Sunny,No,No,50,5,5,82.4,13.18,13,32,45.1,80.6,300,337.43,187.89,47.66,Mixed,No,No,No
+774,Hollywood Studios,Cloudy,Yes,Yes,28,4,2,84.4,10.88,13,46.7,57,62.3,200,203.47,114.62,18.08,Planner,No,No,No
+775,Hollywood Studios,Sunny,No,Yes,55,4,9,96.3,5.46,17,26.6,46.1,74.9,400,426.21,195.97,86.91,Spontaneous,Yes,Yes,Yes
+776,Animal Kingdom,Sunny,No,Yes,8,8,3,90.2,18.18,12,37,41,75.2,300,359.19,135.78,59.93,Planner,Yes,Yes,No
+777,EPCOT,Cloudy,No,Yes,26,5,8,70.3,6.72,13,17.3,23.8,65.9,400,433.16,171.52,113.6,Planner,Yes,Yes,No
+778,Magic Kingdom,Sunny,No,Yes,58,2,6,85.5,6.11,15,66,74.1,66.9,300,370.89,206.39,61.72,Spontaneous,Yes,Yes,Yes
+779,Hollywood Studios,Cloudy,No,No,43,4,5,91.4,7.59,13,38.7,50.2,70.1,300,286.54,113.5,81.81,Spontaneous,Yes,Yes,No
+780,EPCOT,Cloudy,No,No,32,2,5,73.5,10.84,9,55.3,71,68.2,200,254.03,145.18,34.08,Planner,No,Yes,No
+781,Magic Kingdom,Cloudy,No,Yes,33,6,3,78.7,6.69,8,56.2,72.9,76.7,200,264.1,117.31,71.77,Planner,No,No,No
+782,Animal Kingdom,Cloudy,No,No,20,4,9,84.9,13.55,20,35.1,44.7,89.3,400,365.42,196.7,78.89,Planner,Yes,Yes,Yes
+783,Magic Kingdom,Sunny,No,No,17,5,8,78.3,7.14,13,45.1,61.1,76.8,200,276.56,136.34,38.71,Planner,Yes,Yes,Yes
+784,Hollywood Studios,Sunny,No,Yes,12,3,7,94.8,12.98,16,31,47.3,53.2,300,371.21,195.79,73.09,Mixed,Yes,Yes,No
+785,EPCOT,Sunny,No,Yes,29,6,4,90.4,9.2,12,35.6,46.3,88.2,300,336.47,180.97,33.85,Planner,No,Yes,Yes
+786,Hollywood Studios,Sunny,No,Yes,48,4,7,99.8,11.86,10,37.7,41.9,58.7,300,413.38,198.41,113.34,Mixed,No,No,No
+787,Magic Kingdom,Rainy,No,Yes,32,3,3,76.1,8.38,9,50,61.2,77.1,200,242.72,93.51,59.65,Planner,Yes,Yes,Yes
+788,Magic Kingdom,Cloudy,No,Yes,38,3,4,93.7,11.52,14,73.8,80.6,78.1,300,NA,NA,NA,Planner,Yes,Yes,No
+789,EPCOT,Sunny,No,No,51,1,6,75.8,6.69,17,22.7,32.9,81.1,300,308.81,173.05,58.77,Spontaneous,Yes,Yes,Yes
+790,Magic Kingdom,Sunny,Yes,Yes,18,3,7,78.1,5.58,18,26.8,52.4,83.6,200,286.26,127.39,73.3,Planner,No,No,Yes
+791,EPCOT,Sunny,Yes,Yes,54,3,2,67.5,8.07,8,46.7,53.5,80.7,200,177.04,73.77,40.71,Spontaneous,Yes,Yes,Yes
+792,Animal Kingdom,Cloudy,No,No,33,9,7,87.3,9.97,16,27.3,36.6,92.8,300,356.93,131.07,64.19,Spontaneous,Yes,Yes,Yes
+793,Magic Kingdom,Rainy,No,No,45,4,1,84.7,6.02,12,37.3,54.1,59.7,200,253.87,253.87,NA,Mixed,Yes,Yes,No
+794,Magic Kingdom,Sunny,No,Yes,26,5,6,78.6,8.01,13,41,46.9,78.8,300,399.5,223,69.3,Mixed,Yes,Yes,Yes
+795,Magic Kingdom,Cloudy,No,No,41,4,7,84.3,9.05,12,58.7,59.7,83.5,400,406.86,217.19,82.78,Spontaneous,Yes,No,Yes
+796,Magic Kingdom,Sunny,No,No,45,2,6,86.1,11.16,17,35.6,60.9,89.7,200,336.24,150.53,50.16,Mixed,No,No,Yes
+797,Magic Kingdom,Sunny,No,No,49,4,5,74.2,8.77,16,54.1,68.2,53.3,300,309.75,130.13,80.86,Spontaneous,Yes,Yes,No
+798,Animal Kingdom,Cloudy,No,Yes,58,4,4,85,7.98,13,30.4,44.1,94.5,300,331.98,117.95,43.32,Planner,Yes,Yes,Yes
+799,Animal Kingdom,Sunny,Yes,No,50,4,6,78.1,16.48,15,31.8,45.6,74.4,300,275.1,139.97,46.91,Spontaneous,No,No,No
+800,Animal Kingdom,Sunny,No,Yes,17,6,5,94.3,9.34,8,20.3,27.7,67.4,300,320.75,128.49,45.17,Mixed,No,No,Yes
