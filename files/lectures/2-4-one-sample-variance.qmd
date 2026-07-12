@@ -1,0 +1,47 @@
+---
+title: "One-Sample Variances"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+editor: source
+---
+
+## Introduction
+
+## `R` Setup 
+
+## Confidence Interval for $\sigma^2$
+
+- (1--$\alpha$)100% CI for a population variance, $\sigma^2$
+
+## Confidence Interval for $\sigma$
+
+- (1--$\alpha$)100% CI for a population proportion, $\sigma^2$
+
+## Hypothesis Test for $\sigma^2$
+
+## Statistical Inference on One Variance (`R`)
+
+## Example 1
+
+## Example 2
+
+## Wrap Up
+

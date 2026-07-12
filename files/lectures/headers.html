@@ -1,0 +1,46 @@
+<style>
+/* -------------------------------------------------------
+   High-specificity overrides injected after Reveal init.
+   Handles elements where Quarto's own styles win specificity
+   battles against style_lecture.css.
+   UWF palette: Heritage Blue · Cannon Green · Luna Blue
+------------------------------------------------------- */
+
+/* Slide number */
+div.reveal .slide-number,
+div.reveal .slide-number a {
+  color: #003A6B;
+  font-family: 'DM Sans', 'Source Serif 4', Georgia, sans-serif;
+  font-size: 0.8em;
+  font-weight: 500;
+  text-decoration: none;
+  bottom: 12px;
+  right: 14px;
+  position: fixed;
+}
+
+/* Table header — force UWF dark blue over Quarto/Bootstrap defaults */
+div.reveal table thead tr th,
+div.reveal table th {
+  background-color: #003A6B !important;
+  color: #ffffff !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.82em;
+  border-color: #003A6B !important;
+}
+
+/* Accent bar under every slide's h2 heading
+   (Reveal sometimes strips border-bottom at high specificity) */
+div.reveal .slides section h2 {
+  border-bottom: 3px solid #A8C96A !important;
+  padding-bottom: 0.2em !important;
+}
+
+/* Ensure title-slide bottom accent survives */
+div.reveal .title-slide {
+  border-bottom: 5px solid #4A7B4F !important;
+}
+</style>

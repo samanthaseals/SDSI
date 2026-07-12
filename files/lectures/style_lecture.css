@@ -1,0 +1,353 @@
+/* -----------------------------------------
+   Fonts: DM Sans (headings/UI), Source Serif 4 (body)
+   Math-friendly serif; pairs well with KaTeX/MathJax
+   UWF palette: Heritage Blue · Cannon Green · Luna Blue · Spring Green
+------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
+
+/* -----------------------------------------
+   UWF Color Tokens
+------------------------------------------ */
+:root {
+  --uwf-blue-dark:   #003A6B;
+  --uwf-blue:        #005EA6;
+  --uwf-blue-light:  #7DB9D9;
+  --uwf-green-dark:  #2E5233;
+  --uwf-green:       #4A7B4F;
+  --uwf-green-light: #A8C96A;
+  --uwf-bg:          #f5f4f0;
+  --uwf-text:        #2c2b28;
+  --uwf-text-muted:  #5f5e5a;
+}
+
+/* -----------------------------------------
+   Base Reveal Styling
+------------------------------------------ */
+.reveal {
+  background-color: var(--uwf-bg) !important;
+  font-family: 'Source Serif 4', Georgia, serif;
+  color: var(--uwf-text);
+}
+
+.reveal p,
+.reveal li,
+.reveal ul,
+.reveal ol,
+.reveal blockquote,
+.reveal th,
+.reveal td,
+.reveal .footer,
+.reveal .callout {
+  color: var(--uwf-text) !important;
+}
+
+.reveal .slide,
+.reveal .title-slide {
+  padding: 1.5rem;
+}
+
+/* -----------------------------------------
+   Title Slide
+------------------------------------------ */
+.reveal .title-slide {
+  background-color: var(--uwf-blue-dark) !important;
+  border-bottom: 5px solid var(--uwf-green) !important;
+}
+
+.reveal .title-slide h1 {
+  color: #ffffff !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+.reveal .title-slide h2,
+.reveal .title-slide .subtitle {
+  color: var(--uwf-blue-light) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 500 !important;
+  text-shadow: none !important;
+}
+
+.reveal .title-slide p {
+  color: var(--uwf-green-light) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  text-shadow: none !important;
+}
+
+/* -----------------------------------------
+   Headings
+------------------------------------------ */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6,
+.reveal .slide h1,
+.reveal .slide h2,
+.reveal .slide h3 {
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+.reveal h1 { color: var(--uwf-blue-dark) !important; }
+
+.reveal h2 {
+  color: var(--uwf-blue) !important;
+  border-bottom: 3px solid var(--uwf-green-light);
+  padding-bottom: 0.2em;
+}
+
+.reveal h3 { color: var(--uwf-green) !important; font-weight: 600 !important; }
+
+/* -----------------------------------------
+   Bold text — Heritage Blue
+------------------------------------------ */
+.reveal strong,
+.reveal b {
+  color: var(--uwf-blue) !important;
+  font-weight: 700 !important;
+}
+
+/* -----------------------------------------
+   Code Chunks & Inline Code
+------------------------------------------ */
+.reveal pre code {
+  background-color: #ffffff !important;
+  font-size: 1.5em !important;
+  padding: 0.5em;
+  border-radius: 0.5rem;
+  display: block;
+  overflow-x: auto;
+  border: 1px solid #c8d8e8;
+}
+
+.reveal code {
+  background-color: #eceae5 !important;
+  color: var(--uwf-blue-dark) !important;
+  border-radius: 0.3rem;
+  padding: 0.1em 0.35em;
+  border: 1px solid #d0cec8;
+  font-size: 0.92em;
+}
+
+/* -----------------------------------------
+   Output Chunks
+------------------------------------------ */
+.reveal .cell-output pre,
+.reveal .cell-output {
+  font-size: 0.8em !important;
+  line-height: 1.3em !important;
+  padding: 0.4em 0.6em !important;
+  border-radius: 0.5rem;
+  white-space: pre-wrap !important;
+  margin-top: 0em !important;
+  background-color: #edf2f8 !important;
+  border-left: 3px solid var(--uwf-blue-light);
+}
+
+/* Inline code inside prose/headings */
+.reveal p code,
+.reveal li code,
+.reveal h1 code,
+.reveal h2 code,
+.reveal h3 code {
+  background-color: #eceae5 !important;
+  color: var(--uwf-blue-dark) !important;
+  border-radius: 0.3rem;
+  padding: 0.1em 0.3em;
+  border: none;
+  font-size: 0.9em;
+}
+
+/* Small output helper class */
+.small-output .reveal pre code {
+  font-size: 0.6em;
+}
+
+/* -----------------------------------------
+   Tables
+------------------------------------------ */
+.reveal table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9em;
+  border: 1px solid #c8d8e8 !important;
+}
+
+.reveal table thead tr th,
+.reveal th {
+  background-color: var(--uwf-blue-dark) !important;
+  color: #ffffff !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.82em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.55em 0.9em;
+  text-align: left;
+  border: 1px solid var(--uwf-blue-dark) !important;
+}
+
+.reveal td {
+  color: var(--uwf-text) !important;
+  padding: 0.5em 0.9em;
+  border: 1px solid #d0dde8 !important;
+}
+
+.reveal tr:nth-child(odd) td {
+  background-color: #edf2f8 !important;
+}
+
+.reveal tr:nth-child(even) td {
+  background-color: #ffffff !important;
+}
+
+/* -----------------------------------------
+   Links
+------------------------------------------ */
+.reveal a {
+  color: var(--uwf-blue) !important;
+  text-decoration: underline dotted;
+}
+
+.reveal a:hover,
+.reveal a:focus {
+  color: var(--uwf-green) !important;
+  text-decoration: underline;
+}
+
+/* -----------------------------------------
+   Callouts
+   Tip → Cannon Green
+   Note → Heritage Blue
+   Important / Caution → warm amber
+   Warning → Spring Green
+------------------------------------------ */
+.reveal .callout {
+  border-radius: 0 0.5em 0.5em 0;
+  padding: 0.85em 1em;
+  margin: 1em 0;
+}
+
+.reveal .callout .callout-title,
+.reveal .callout-tip .callout-title,
+.reveal .callout-note .callout-title,
+.reveal .callout-important .callout-title,
+.reveal .callout-warning .callout-title,
+.reveal .callout-caution .callout-title {
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 700;
+  font-size: 0.78em;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.reveal .callout-icon { display: none; }
+
+/* Note: Heritage Blue */
+.reveal .callout-note {
+  border-left: 5px solid var(--uwf-blue) !important;
+  background-color: #e6f1fb !important;
+}
+.reveal .callout-note .callout-title { color: var(--uwf-blue-dark) !important; }
+
+/* Tip: Cannon Green */
+.reveal .callout-tip {
+  border-left: 5px solid var(--uwf-green) !important;
+  background-color: #eaf3de !important;
+}
+.reveal .callout-tip .callout-title { color: var(--uwf-green-dark) !important; }
+
+/* Important: warm amber */
+.reveal .callout-important,
+.reveal .callout-caution {
+  border-left: 5px solid #BA7517 !important;
+  background-color: #faeeda !important;
+}
+.reveal .callout-important .callout-title,
+.reveal .callout-caution .callout-title { color: #633806 !important; }
+
+/* Warning: Spring Green */
+.reveal .callout-warning {
+  border-left: 5px solid var(--uwf-green-light) !important;
+  background-color: #f2f8e6 !important;
+}
+.reveal .callout-warning .callout-title { color: var(--uwf-green-dark) !important; }
+
+/* -----------------------------------------
+   Footer
+------------------------------------------ */
+.reveal .footer,
+#quarto-content .reveal .footer {
+  text-align: left !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 0.75em !important;
+  color: var(--uwf-text-muted) !important;
+  letter-spacing: 0.02em;
+}
+
+/* -----------------------------------------
+   Slide Number
+   (also overridden in headers.html for specificity)
+------------------------------------------ */
+.reveal .slide-number,
+.reveal .slide-number a {
+  color: var(--uwf-blue-dark) !important;
+  font-family: 'DM Sans', sans-serif !important;
+  text-decoration: none !important;
+}
+
+/* -----------------------------------------
+   DataTables
+------------------------------------------ */
+.dataTables_filter input {
+  font-size: 1em;
+  padding: 0.3em;
+}
+
+.dataTable {
+  font-size: 1em;
+}
+
+/* -----------------------------------------
+   Print Fix
+------------------------------------------ */
+@media print {
+  .reveal,
+  .reveal .slide {
+    background-color: var(--uwf-bg) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .reveal .title-slide {
+    background-color: var(--uwf-blue-dark) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .reveal h1 { color: var(--uwf-blue-dark) !important; }
+  .reveal h2 { color: var(--uwf-blue) !important; }
+  .reveal h3 { color: var(--uwf-green) !important; }
+
+  .reveal p,
+  .reveal li,
+  .reveal ul,
+  .reveal ol,
+  .reveal th,
+  .reveal td,
+  .reveal blockquote,
+  .reveal .footer,
+  .reveal .callout {
+    color: var(--uwf-text) !important;
+    text-shadow: none !important;
+  }
+
+  pre, code, pre code, code span {
+    background-color: inherit !important;
+  }
+}

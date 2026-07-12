@@ -1,0 +1,43 @@
+---
+title: "One-Sample Proportions"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+editor: source
+---
+
+## Introduction
+
+## `R` Setup 
+
+## Confidence Interval for $\pi$
+
+- (1--$\alpha$)100% CI for a population proportion, $\pi$
+
+## Hypothesis Test for $\pi$
+
+## Statistical Inference on One Proportion (`R`)
+
+## Example 1
+
+## Example 2
+
+## Wrap Up
+

@@ -1,0 +1,46 @@
+---
+title: "Two-Way ANOVA"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+editor: source
+---
+
+## Introduction
+
+## `R` Setup 
+
+## Interactions
+
+## Hypothesis Test for an Interaction
+
+## Hypothesis Test for an Interaction (`R`)
+
+## Example 1
+
+## Example 2
+
+## Hypothesis Test for Main Effects
+
+## Hypothesis Test for Main Effects (`R`)
+
+## Example 2
+
+## Wrap Up

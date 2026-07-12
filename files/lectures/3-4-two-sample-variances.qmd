@@ -1,0 +1,47 @@
+---
+title: "Two-Sample Variances"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+editor: source
+---
+
+## Introduction
+
+## `R` Setup 
+
+## Confidence Interval for $\sigma^2_1/\sigma^2_2$
+
+- (1--$\alpha$)100% CI for two population variances, $\sigma^2_1/\sigma_2^2$
+
+## Confidence Interval for $\sigma_1/\sigma_2$
+
+- (1--$\alpha$)100% CI for two population variances, $\sigma_1/\sigma_2$
+
+## Hypothesis Test for $\sigma_1^2/\sigma_2^2$
+
+## Statistical Inference on Two Variances (`R`)
+
+## Example 1
+
+## Example 2
+
+## Wrap Up
+

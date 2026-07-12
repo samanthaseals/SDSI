@@ -1,0 +1,75 @@
+---
+title: "One-Sample Means and Medians"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+editor: source
+---
+
+## Introduction
+
+## `R` Setup 
+
+```{r}
+library(tidyverse)
+library(ssstats)
+```
+
+
+
+## Confidence Interval for $\mu$
+
+- (1--$\alpha$)100% CI for a population mean, $\mu$
+
+$$\bar{y} \pm t_{\alpha/2, n-1} \frac{s}{\sqrt{n}}$$
+
+- $t$ has $n-1$ degrees of freedom (df). 
+
+
+## Hypothesis Test for $\mu$
+
+## Statistical Inference on One Mean (`R`)
+
+## Example 1
+
+## Example 2
+
+## Assumption on One-Sample *t*
+
+## Checking Normality (`R`)
+
+## Example 1
+
+## Example 2
+
+## Nonparametric Alternatives
+
+## Confidence Interval for $M$
+
+## Hypothesis Test for $M$
+
+## Statistical Inference on One Median (`R`)
+
+## Example 2
+
+## Example 3
+
+## Wrap Up
+

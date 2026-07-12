@@ -1,0 +1,226 @@
+---
+title: "Basics of Probability and Statistics"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+editor: source
+---
+
+## Introduction: Probability and Statistics
+
+```{r}
+#| echo: false
+library(kableExtra)
+library(tidyverse)
+```
+
+- In this lecture we will review:
+    - What is statistics?
+    - What is probability?
+    - What terminology do we use in probability and statistics?
+
+## Introduction: Probability and Statistics
+
+- What is (the practice of) statistics?
+    - The science of collecting, organizing, summarizing, and analyzing information to draw conclusions or answer questions. 
+    - This provides a measure of confidence in any conclusions.
+    
+- How do we measure confidence?
+    - We use probability to quantify the likelihood of an event or outcome occurring. 
+    - This allows us to make informed decisions based on data and uncertainty.        
+
+## Terminology for Probability and Statistics
+
+```{=html}
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg"
+     style="width: 88%; max-width: 880px; display: block; margin: 0 auto;
+            font-family: 'DM Sans', sans-serif;">
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4A7B4F"/>
+    </marker>
+  </defs>
+
+  <!-- Large outer ellipse: the population (blue, solid) -->
+  <ellipse cx="220" cy="170" rx="205" ry="145"
+           fill="none" stroke="#005EA6" stroke-width="2.5"/>
+
+  <!-- Inner dashed ellipse (green, dashed) -->
+  <ellipse cx="245" cy="190" rx="115" ry="80"
+           fill="none" stroke="#4A7B4F" stroke-width="2"
+           stroke-dasharray="8,5"/>
+
+  <!-- Curved arrow (green) -->
+  <path d="M 355 245 C 415 265, 460 275, 500 278"
+        fill="none" stroke="#4A7B4F" stroke-width="2"
+        marker-end="url(#arrow)"/>
+
+  <!-- Sample ellipse: right side -->
+  <ellipse cx="575" cy="278" rx="95" ry="62"
+           fill="none" stroke="#4A7B4F" stroke-width="2"
+           stroke-dasharray="8,5"/>
+
+  <!-- Population label: moved up near top of outer ellipse -->
+  <text x="220" y="75" text-anchor="middle"
+        font-size="17" fill="#2c2b28">Set of all measurements:</text>
+  <text x="220" y="93" text-anchor="middle"
+        font-size="17" fill="#2c2b28" font-weight="700">the population</text>
+
+  <!-- Sample label -->
+  <text x="575" y="258" text-anchor="middle"
+        font-size="14" fill="#2c2b28">Set of measurements</text>
+  <text x="575" y="276" text-anchor="middle"
+        font-size="14" fill="#2c2b28">selected from the</text>
+  <text x="575" y="294" text-anchor="middle"
+        font-size="14" fill="#2c2b28">population: <tspan font-weight="700">the sample</tspan></text>
+
+</svg>
+```
+
+## Probability
+
+- **Classical probability:** 
+
+    - Suppose $N_e$ is the number of outcomes favorable to the event and $N$ is the total number of outcomes in the sample space. Then,
+
+$$
+P[\text{event}] = \frac{N_e}{N}
+$$
+
+- **Relative probability:**
+
+    - Suppose an experiment is conducted $n$ different times, and the event occurs $n_e$ times. Then,
+    
+$$
+P[\text{event}] = \frac{n_e}{n}
+$$
+
+## Unions 
+
+- The **union** of two events $A$ and $B$, $A \cup B$, is the set of all outcomes that are included in *either* $A$ *or* $B$ (or both).
+
+```{=html}
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg"
+     style="width: 88%; max-width: 880px; display: block; margin: 0 auto;
+            font-family: 'DM Sans', sans-serif;">
+  <!-- Event A circle (blue, shaded) -->
+  <circle cx="226" cy="190" r="115"
+          fill="#005EA6" fill-opacity="0.18"
+          stroke="#005EA6" stroke-width="2.5"/>
+  <!-- Event B circle (green, shaded) -->
+  <circle cx="398" cy="190" r="115"
+          fill="#4A7B4F" fill-opacity="0.18"
+          stroke="#4A7B4F" stroke-width="2.5"/>
+  <!-- Event A label -->
+  <text x="226" y="138" text-anchor="middle"
+        font-size="22" fill="#2c2b28" font-weight="700">Event A</text>
+  <!-- Event B label -->
+  <text x="398" y="138" text-anchor="middle"
+        font-size="22" fill="#2c2b28" font-weight="700">Event B</text>
+</svg>
+```
+
+## Intersection
+
+- The **intersection** of two events $A$ and $B$, $A \cap B$, is the set of all outcomes that are included in both $A$ and $B$. 
+
+```{=html}
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg"
+     style="width: 88%; max-width: 880px; display: block; margin: 0 auto;
+            font-family: 'DM Sans', sans-serif;">
+  <defs>
+    <clipPath id="clipA">
+      <circle cx="226" cy="190" r="115"/>
+    </clipPath>
+  </defs>
+  <!-- Intersection shading only: circle B, clipped to circle A's boundary -->
+  <circle cx="398" cy="190" r="115"
+          fill="#3B6E64" fill-opacity="0.4"
+          clip-path="url(#clipA)"/>
+  <!-- Event A outline -->
+  <circle cx="226" cy="190" r="115"
+          fill="none" stroke="#005EA6" stroke-width="2.5"/>
+  <!-- Event B outline -->
+  <circle cx="398" cy="190" r="115"
+          fill="none" stroke="#4A7B4F" stroke-width="2.5"/>
+  <!-- Event A label -->
+  <text x="226" y="138" text-anchor="middle"
+        font-size="22" fill="#2c2b28" font-weight="700">Event A</text>
+  <!-- Event B label -->
+  <text x="398" y="138" text-anchor="middle"
+        font-size="22" fill="#2c2b28" font-weight="700">Event B</text>
+</svg>
+```
+
+
+
+## Mutually Exclusive
+
+- Two events $A$ and $B$ are said to be **mutually exclusive** if the occurrence of one of the events excludes the possibility of the occurrence of the other event.
+
+```{=html}
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg"
+     style="width: 88%; max-width: 880px; display: block; margin: 0 auto;
+            font-family: 'DM Sans', sans-serif;">
+  <!-- Event A circle (blue, solid) -->
+  <circle cx="190" cy="190" r="115"
+          fill="none" stroke="#005EA6" stroke-width="2.5"/>
+  <!-- Event B circle (green, solid) -->
+  <circle cx="490" cy="190" r="115"
+          fill="none" stroke="#4A7B4F" stroke-width="2.5"/>
+  <!-- Event A label -->
+  <text x="190" y="138" text-anchor="middle"
+        font-size="22" fill="#2c2b28" font-weight="700">Event A</text>
+  <!-- Event B label -->
+  <text x="490" y="138" text-anchor="middle"
+        font-size="22" fill="#2c2b28" font-weight="700">Event B</text>
+</svg>
+```
+
+## Complement
+
+- The **complement** of an event $A$, $A^c$, is the event that $A$ *does not* occur.
+
+```{=html}
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg"
+     style="width: 88%; max-width: 880px; display: block; margin: 0 auto;
+            font-family: 'DM Sans', sans-serif;">
+  <!-- Complement shading: rectangle minus circle, via evenodd fill rule -->
+  <path fill-rule="evenodd"
+        d="M50,50 H630 V310 H50 Z
+           M240,180 a100,100 0 1,0 200,0 a100,100 0 1,0 -200,0 Z"
+        fill="#4A7B4F" fill-opacity="0.18"/>
+  <!-- Sample space rectangle outline -->
+  <rect x="50" y="50" width="580" height="260" rx="10"
+        fill="none" stroke="#2c2b28" stroke-width="2"/>
+  <!-- Event A circle outline -->
+  <circle cx="340" cy="180" r="100"
+          fill="none" stroke="#005EA6" stroke-width="2.5"/>
+  <!-- Sample space label: A with superscript c -->
+  <text x="72" y="76" text-anchor="start"
+        font-size="22" font-family="'DM Sans', sans-serif"
+        fill="#2c2b28" font-weight="700">A<tspan baseline-shift="super" font-size="15">c</tspan></text>
+  <!-- Event A label -->
+  <text x="340" y="188" text-anchor="middle"
+        font-size="22" font-family="'DM Sans', sans-serif"
+        fill="#2c2b28" font-weight="700">A</text>
+</svg>
+```

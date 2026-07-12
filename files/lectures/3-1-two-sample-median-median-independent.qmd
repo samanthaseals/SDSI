@@ -1,0 +1,68 @@
+---
+title: "Two-Sample Means and Medians"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+editor: source
+---
+
+## Introduction
+
+## `R` Setup 
+
+## Confidence Interval for $\mu_1-\mu_2$
+
+- (1--$\alpha$)100% CI for a population mean, $\mu_1-\mu_2$
+
+$$\bar{y} \pm t_{\alpha/2, n-1} \frac{s}{\sqrt{n}}$$
+
+- $t$ has $n-1$ degrees of freedom (df). 
+
+
+## Hypothesis Test for $\mu_1-\mu_2$
+
+## Statistical Inference on One Mean (`R`)
+
+## Example 1
+
+## Example 2
+
+## Assumptions on Two-Sample *t*
+
+## Checking Normality (`R`)
+
+## Example 1
+
+## Example 2
+
+## Nonparametric Alternatives
+
+## Confidence Interval for $M_1-M_2$
+
+## Hypothesis Test for $M_1-M_2$
+
+## Statistical Inference on Two Medians (`R`)
+
+## Example 2
+
+## Example 3
+
+## Wrap Up
+

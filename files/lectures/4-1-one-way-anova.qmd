@@ -1,0 +1,40 @@
+---
+title: "One-Way ANOVA"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+editor: source
+---
+
+## Introduction
+
+## `R` Setup 
+
+## Analysis of Variance
+
+## Hypothesis Test for $\mu_1 = \mu_2 = ... = \mu_k$
+
+## Statistical Inference on $k$ Means (`R`)
+
+## Example 1
+
+## Example 2
+
+## Wrap Up

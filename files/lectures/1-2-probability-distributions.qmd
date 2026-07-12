@@ -1,0 +1,53 @@
+---
+title: "Probability Distributions"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+editor: source
+---
+
+## Introduction: Probability Distributions
+
+## Normal Distribution
+
+## Standard Normal Distribution
+
+## Normal Distribution in `R`
+
+## Examples: Normal Distribution
+
+## *t* Distribution
+
+## *t* Distribution in `R`
+
+## Examples: *t* Distribution
+
+## $\chi$<sup>2</sup> Distribution
+
+## $\chi$<sup>2</sup> Distribution in `R`
+
+## Examples: $\chi$<sup>2</sup> Distribution
+
+## *F* Distribution
+
+## *F* Distribution in `R`
+
+## Examples: *F* Distribution
+
+## Summary of Probability Distributions
