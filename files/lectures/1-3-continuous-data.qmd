@@ -1,5 +1,746 @@
 ---
-title: "1-3-continuous-data"
-format: html
+title: "Describing and Visualizing Continuous Variables"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    code-annotations: hover
+    incremental: false
+editor: source
 ---
+
+## Introduction
+
+```{r}
+#| echo: false
+uwf_blue <- "#004C97"
+uwf_green <- "#007A33"
+uwf_marigold <- "#FFB81C"
+uwf_midnight <- "#003865"
+```
+
+- Before we can "analyze data" we must know what the data *looks like*. 
+
+- This lecture covers the first step in any analysis: **describing** a variable before you test a claim about it.
+
+    - We will focus only on continuous variables in this lecture. 
+    
+    - The next lecture covers discrete variables.
+    
+- Ultimately, we should look first and ask (...or answer) questions later.    
+
+## `R`? Oh No!
+
+- This lecture begins our journey in `R`.
+
+    - Installing `R` on your own computer:
+    
+        - Download `R` from CRAN: [https://cran.r-project.org/](https://cran.r-project.org/)
+        
+        - Download RStudio or Positron from Posit: [https://posit.co/downloads](https://posit.co/downloads)
+        
+    - Using the HMCSE-maintained RStudio Workbench: [https://rstudio.hmcse.uwf.edu](https://rstudio.hmcse.uwf.edu)
+    
+        - Only recommended for those that cannot download and install programs to their computers.
+        
+- There are other languages (or *tools*):
+
+    - SAS
+    - Stata
+    - SPSS
+    - python
+        
+## `R` Setup        
+
+- To follow along with lecture, please install the `tidyverse` and `ssstats` packages:
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+if (!requireNamespace("pak", quietly = TRUE)) {
+  install.packages("pak")
+}
+pak::pak("sealslab/ssstats")
+```
+
+- Then, we must call the packages to access their functions:
+
+```{r}
+library(tidyverse)
+library(ssstats)
+```
+
+## Data from Zootropolis
+
+- It's your first week as a city analyst for the Zootropolis Police Department (ZPD). 
+
+    - Deputy Chief Okonkwo walks you over to a desk, gives you a thumb drive full of data, and says: *"Your first task is to get to know this data. Tell me what's normal. Tell me what's not."*
+
+- In particular, we will focus on the following variables:
+
+- *academy_exam_score*: how new recruits performed on their academy entrance exam
+- *hustle_earnings*: side income recruits reported earning around the district
+- *district_temp_f*: average temperature logged across ZPD's patrol districts
+
+## Data from Zootropolis
+
+- After getting your computer set up, you read the data in:
+
+```{r}
+zootopia <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv")
+```
+
+```{r}
+#| echo: false
+
+head(zootopia, n = 5)
+```
+
+## Describing the Center of the Data
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Measures of Centrality
+:::
+For a set of numeric values, the number that describes the typical or central value is called a **measure of centrality**.
+:::
+
+- Note that the "center" is not a fixed idea, but a concept. We will choose from:
+
+    - Mean
+    
+    - Median
+    
+    - Mode
+
+## Mean
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Mean
+:::
+The **mean** can be considered the "balance point" of the data.
+:::
+
+$$
+\text{mean} = \frac{\text{sum of all values}}{\text{number of values}}
+$$
+
+- Every single value gets a vote when we calculate the mean, even the extreme ones. 
+
+    - Extreme values will *skew* the mean, implying the mean is not robust to outliers.
+
+## Median
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Median
+:::
+The **median** is the middle value of the sorted data. Half the values fall below it, the other half fall above.
+:::
+
+- There is not quite a formula for the median, but the process is simple:
+
+    - Odd number of values → the median is the literal middle one
+    - Even number of values → the median is the average of the two middle values
+
+- The median is appropriate for skewed data because it is robust to outliers.
+
+    - We are using the *location* to determine the median -- it does not depend on the actual values of the data.
+    
+## Mode
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Mode
+:::
+The **mode** is the most frequently occurring value.
+:::
+
+- A distribution can have one mode, two modes, or many modes.
+
+    - Unimodal: just one mode.
+    
+    - Bimodal: two modes.
+    
+    - Multimodal: more than one mode.
+
+- The mode is not reported often for continuous data, but we should be aware.
+
+    - When looking at graphs, we may see multiple modes.
+    
+    - This is suggesting there may be underlying clustering or grouping.
+    
+## Describing the Spread of the Data
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Measures of Spread
+:::
+For a set of numeric values, the number that describes how spread out or *dispersed* the values are is called a **measure of spread**.
+:::
+
+- We will use the variance and standard deviation to describe the spread of data.
+
+$$
+\text{variance} \approx \frac{\text{sum(deviation from the mean)}^2}{\text{number of values}}
+$$
+
+  and
+
+$$
+\text{standard deviation} =  \sqrt{\text{variance}}
+$$
+
+## Variance and Standard Deviation
+
+$$
+\text{variance} \approx \frac{\text{sum(deviation from the mean)}^2}{\text{number of values}}
+$$
+
+  and
+
+$$
+\text{standard deviation} =  \sqrt{\text{variance}}
+$$
+
+- Why do we use the standard deviation?
+
+    - The standard deviation is in the same units as the data, while the variance is in squared units.
+    
+    - Suppose we are looking at the price of carrots (in Z) over time.
+
+        - The variance would be in Z^2^ while the standard deviation would be in Z, or the same units as the data.
+
+## Interquartile Range
+
+- If we are using the median to describe the center of data, it is appropriate to use the interquartile range (IQR) to describe the spread of data.
+
+$$
+\text{IQR} = \text{(value at the 75th percentile)} - \text{(value at the 25th percentile)}
+$$
+
+- The IQR tells us the spread of the middle 50% of the data.
+
+## Describing the Data (`R`)
+
+- We will use the `mean_median()` function from the `ssstats` package to describe the center and spread of our continuous data.
+
+```{r}
+#| eval: false
+dataset_name |> # <1> 
+  mean_median(variable1, variable2, ...) # <2>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `mean_median()` returns the mean, median, SD, and IQR for any variable(s) you list.
+
+- We can also use `group_by()` to get the mean, median, SD, and IQR for each group of a categorical variable.
+
+```{r}
+#| eval: false
+dataset_name |> # <1>
+  group_by() |> # <2>
+  mean_median(variable1, variable2, ...) # <3>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `group_by()` allows us to group the data by categorical variables.
+3. `mean_median()` returns the mean, median, SD, and IQR for any variable(s) you list.
+
+- Note: if you need help getting started in R, please see the R module on Canvas.
+
+## Describing the Data
+
+- For illustrative purposes, we will describe the `academy_exam_score` variable in the `zootopia` dataset.
+
+```{r}
+zootopia |> 
+  mean_median(academy_exam_score)
+```
+
+- This tells us that for academy exam scores, 
+
+    - the mean is 77.3 with a standard deviation of 8.0, 
+    - the median is 77.0 with an IQR of 10.8
+
+## Dot Plot
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Dot plot
+:::
+A **dot plot** places one dot for every observation along a number line. 
+:::
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+
+zootopia |>
+  ggplot(aes(x = academy_exam_score)) +
+  geom_dotplot(fill = "#004C97", color = "white", dotsize = 0.8) +
+  labs(x = "Academy Exam Score", y = NULL) +
+  theme_minimal(base_size = 20) +
+  theme(axis.text.y = element_blank())
+```
+
+## Dot Plot (`R`)
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Dot plot
+:::
+A **dot plot** places one dot for every observation along a number line. 
+:::
+
+```{r}
+#| eval: false
+dataset_name |> # <1>
+  ggplot(aes(x = outcome_name)) + # <2>
+  geom_dotplot() # <3>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `ggplot()` is the function that creates a plot. The `aes()` function inside it tells R which variable to plot.
+3. `geom_dotplot()` is the function that creates a dot plot.
+
+## Histogram
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Histogram
+:::
+A **histogram** takes the same points and groups them into bins, showing how many values fall in each range.
+:::
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+zootopia |>
+  ggplot(aes(x = academy_exam_score)) +
+  geom_histogram(fill = "#004C97", color = "white", bins = 10) +
+  labs(x = "Academy Exam Score", y = "Count") +
+  theme_minimal(base_size = 20)
+```
+
+
+## Histogram (`R`)
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Histogram
+:::
+A **histogram** takes the same points and groups them into bins, showing how many values fall in each range.
+:::
+
+```{r}
+#| eval: false
+dataset_name |> # <1>
+  ggplot(aes(x = outcome_name)) + # <2>
+  geom_histogram(bins = number_of_bins) # <3>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `ggplot()` is the function that creates a plot. The `aes()` function inside it tells R which variable to plot.
+3. `geom_histogram()` is the function that creates a histogram.
+
+## Density Plot
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Density plot
+:::
+A **density plot** is a histogram with the rough edges smoothed away.
+:::
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+zootopia |>
+  ggplot(aes(x = academy_exam_score)) +
+  geom_density(color = "#007A33") +
+  labs(x = "Academy Exam Score", y = "Density") +
+  theme_minimal()
+```
+
+## Density Plot (`R`)
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Density plot
+:::
+A **density plot** is a histogram with the rough edges smoothed away.
+:::
+
+```{r}
+#| eval: false
+dataset_name |> # <1>
+  ggplot(aes(x = outcome_name)) + # <2>
+  geom_density() # <3>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `ggplot()` is the function that creates a plot. The `aes()` function inside it tells R which variable to plot.
+3. `geom_density()` is the function that creates a density plot
+
+## Boxplot
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Boxplot
+:::
+A **boxplot** visualizes the five number summary: minimum, Q1, median, Q3, and maximum.
+:::
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+
+zootopia |>
+  ggplot(aes(x = academy_exam_score)) +
+  geom_boxplot(fill = uwf_marigold) +
+  labs(x = "Academy Exam Score") +
+  theme_minimal(base_size = 20) +
+  theme(axis.text.y = element_blank())
+```
+
+## Boxplot (`R`)
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Boxplot
+:::
+A **boxplot** visualizes the five number summary: minimum, Q1, median, Q3, and maximum.
+:::
+
+```{r}
+#| eval: false
+
+dataset_name |> # <1>
+  ggplot(aes(x = outcome_name)) + # <2>
+  geom_boxplot() # <3>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `ggplot()` is the function that creates a plot. The `aes()` function inside it tells R which variable to plot.
+3. `geom_boxplot()` is the function that creates a boxplot
+
+## Scatterplot
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Scatterplot
+:::
+A **scatterplot** is a graph that shows the relationship between two continuous variables.
+:::
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+
+zootopia |>
+  ggplot(aes(x = sleep_hours, y = academy_exam_score)) +
+  geom_point(color = "#003865", size = 2) +
+  labs(x = "Sleep Hours", y = "Academy Exam Score") +
+  theme_minimal(base_size = 20)
+```
+
+## Scatterplot (`R`)
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Scatterplot
+:::
+A **scatterplot** is a graph that shows the relationship between two continuous variables.
+:::
+
+```{r}
+#| eval: false
+
+dataset_name |> # <1>
+  ggplot(aes(x = predictor_name, y = outcome_name)) + # <2>
+  geom_point() # <3>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `ggplot()` is the function that creates a plot. The `aes()` function inside it tells R which variable to plot.
+3. `geom_point()` is the function that plots the points on the scatterplot.
+
+## Example 1
+
+- Deputy Chief Okonokwo is curious about the `hustle_earnings` data. He wants to know how much recruits are earning on the side.
+
+- Our first task is to summarize the data.
+
+    - Summary statistics.
+    - Visualizations -- check for weird patterns.
+    
+        - Dot plot
+        - Histogram / density
+        - Boxplot
+
+## Example 1
+
+- Our first step in any analysis should be to literally look at the data.
+
+    - Note: we are printing the data below for slide/lecture purposes. In "real life," we can open the dataset to examine.
+
+```{r}
+#| echo: false
+zootopia |> 
+  select(resident_name, department, district, hustle_earnings) |>
+  head()
+```
+
+## Example 1
+
+- Then, we look at the histogram/density plots:
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+zootopia |>
+  ggplot(aes(x = hustle_earnings)) +
+  geom_histogram(aes(y = after_stat(density)), fill = uwf_blue, color = "white", bins = 10) +
+  geom_density(color = uwf_midnight, linewidth = 1) +
+  labs(x = "Hustle Earnings", 
+       y = "Density") +
+  theme_minimal(base_size = 20)
+```
+
+## Example 1 (Code)
+
+- Then, we look at the histogram/density plots:
+
+```{r}
+#| eval: false
+zootopia |>
+  ggplot(aes(x = hustle_earnings)) +
+  geom_histogram(aes(y = after_stat(density)), fill = uwf_blue, color = "white", bins = 10) +
+  geom_density(color = uwf_midnight, linewidth = 1) +
+  labs(x = "Hustle Earnings", 
+       y = "Density") +
+  theme_minimal(base_size = 20)
+```
+
+## Example 1
+
+- Now, let's look at the distribution of the data using a boxplot,
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+zootopia |>
+  ggplot(aes(x = hustle_earnings)) +
+  geom_boxplot(fill = uwf_marigold) +
+  labs(x = "Hustle Earnings") +
+  theme_minimal(base_size = 20) +
+  theme(axis.text.y = element_blank())
+```
+
+## Example 1 (Code)
+
+- Now, let's look at the distribution of the data using a boxplot,
+
+```{r}
+#| eval: false
+zootopia |>
+  ggplot(aes(x = hustle_earnings)) +
+  geom_boxplot(fill = uwf_marigold) +
+  labs(x = "Hustle Earnings") +
+  theme_minimal(base_size = 20) +
+  theme(axis.text.y = element_blank())
+```
+
+## Example 1
+
+- We can also split the box plots by district,
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+zootopia |>
+  ggplot(aes(x = hustle_earnings, y = district, fill = district)) +
+  geom_boxplot() +
+  labs(x = "Hustle Earnings", y = NULL) +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = "none")
+```
+
+## Example 1 (Code)
+
+- We can also split the box plots by district,
+
+```{r}
+#| eval: false
+zootopia |>
+  ggplot(aes(x = hustle_earnings, y = district, fill = district)) +
+  geom_boxplot() +
+  labs(x = "Hustle Earnings", y = NULL) +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = "none")
+```
+
+## Example 1
+
+- The boxplot confirms that there are extreme values.
+
+- Exploring the extreme values,
+
+```{r}
+zootopia |> 
+  select(resident_name, department, district, hustle_earnings) |>
+  filter(hustle_earnings > 80)
+```
+
+## Example 1
+
+- Now, we can find the descriptive statistics. That requires `mean_median()`,
+
+```{r}
+zootopia |> 
+  mean_median(hustle_earnings)
+```
+
+- The difference between the mean and median suggests the data is skewed, as we saw with the histogram.
+
+- The overall mean is helpful, but we should look at this more granularly to give the city better information.
+        
+## Example 1
+
+- Let's now find the descriptive statistics by district. That requires `mean_median()`, but now we add in `group_by()`,
+
+```{r}
+zootopia |> 
+  group_by(district) |> 
+  mean_median(hustle_earnings)
+```
+
+## Visualizing the Summary Statistics
+
+- Until now, we've focused on describing the *entire distribution* of a variable.
+
+- Sometimes, we want to communicate just a single number (e.g., mean) and how much to trust it. 
+
+    - We will graph a single value with a range around it showing uncertainty or spread.
+    
+- We have two choices to show the uncertainty:
+
+    - Standard deviation
+    
+        - This is the spread of the data around the mean.
+    
+    - Standard error
+    
+        - This describes how precise the estimate of the mean is.
+
+## Standard Error
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Standard error
+:::
+**Standard error (SE)** describes how *precise* the estimate of the mean is
+:::
+
+$$
+\text{SE} = \frac{\text{SD}}{\sqrt{n}}
+$$
+
+- This is the standard deviation adjusted for the sample size.
+
+## Visualizing the Mean
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+earnings_summary <- zootopia |>
+  summarise(
+    mean_earnings = mean(hustle_earnings), 
+    sd_earnings = sd(hustle_earnings),
+    n = n(),
+    se_earnings = sd_earnings / sqrt(n) 
+  )
+
+earnings_summary |>
+  pivot_longer(
+    cols = c(sd_earnings, se_earnings), 
+    names_to = "error_type",
+    values_to = "error_value"
+  ) |>
+  mutate(error_type = if_else(error_type == "sd_earnings", "SD", "SE")) |>
+  ggplot(aes(x = error_type, y = mean_earnings, color = error_type)) +
+  geom_point(size = 4) +
+  geom_errorbar(
+    aes(ymin = mean_earnings - error_value, ymax = mean_earnings + error_value), 
+    width = 0.1
+  ) +
+  scale_color_manual(values = c(uwf_blue, uwf_marigold)) +
+  labs(x = NULL, y = "Hustle Earnings") +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = "none")
+```
+
+
+
+## Visualizing the Mean
+
+- Finally, we can of course, split this out by district,
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+zootopia |>
+  group_by(district) |> # <1>
+  summarise(
+    mean_earnings = mean(hustle_earnings),
+    sd_earnings = sd(hustle_earnings),
+    n = n(),
+    se_earnings = sd_earnings / sqrt(n)
+  ) |>
+  ggplot(aes(x = district, y = mean_earnings, color = district)) +
+  geom_point(size = 4) +
+  geom_errorbar(
+    aes(ymin = mean_earnings - se_earnings, ymax = mean_earnings + se_earnings), # <2>
+    width = 0.15
+  ) +
+  labs(x = NULL, y = "Hustle Earnings") +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = "none")
+```
+
+## Visualizing the Mean
+
+- Some notes from a professional point of view:
+
+    - Some folks like to use bar graphs to represent the mean. This is inaccurate.
+    
+    - How to choose between using SD and SE? I always use SE.
+    
+        - Preview for the next module: the SE is used in the calculation of confidence intervals.
+        
+## Wrap Up
+
+- We have covered basics for describing and visualizing continuous variables.
+
+    - Center:
+    
+        - Mean
+        - Median
+        - Mode
+        
+    - Spread:
+    
+        - Variance
+        - Standard deviation
+        - (Standard error)
+        - Interquartile range
 

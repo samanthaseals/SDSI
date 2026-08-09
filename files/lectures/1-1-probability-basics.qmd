@@ -22,205 +22,429 @@ format:
 editor: source
 ---
 
-## Introduction: Probability and Statistics
+## Welcome to the ZPD 
 
 ```{r}
 #| echo: false
 library(kableExtra)
 library(tidyverse)
 ```
+ 
+- You've just been hired by the [Zootopia Police Department](https://disney.fandom.com/wiki/Zootopia_Police_Department).
 
-- In this lecture we will review:
-    - What is statistics?
-    - What is probability?
-    - What terminology do we use in probability and statistics?
+- ... Not as an officer, but as the City's **Data Analyst**.
 
-## Introduction: Probability and Statistics
+- A stack of paperwork lands on your desk.
 
-- What is (the practice of) statistics?
-    - The science of collecting, organizing, summarizing, and analyzing information to draw conclusions or answer questions. 
-    - This provides a measure of confidence in any conclusions.
+    - *"Every year, ZPD puts out a report,"* she says. *"Hiring numbers, exam scores, patrol stats, you name it. The mayor's office wants someone independent to check it. That's you now."*
+
+    - She taps the folder. *"Before you can check anything, though, you need to understand chance. Random noise looks a lot like a pattern if you don't know what you're looking at."*
+
+
+## A Random Experiment
+
+::: {.tab-callout .tab-blue}
+::: {.tab-label}
+Definition
+:::
+
+A **random experiment** is any process whose outcome can't be predicted with certainty in advance, but we do know the possible outcomes.
+:::
+
+- ZPD randomly selects one recruit from this year's academy class to review.
+
+    - The recruit is selected at random from the pool of all recruits in the class.
     
-- How do we measure confidence?
-    - We use probability to quantify the likelihood of an event or outcome occurring. 
-    - This allows us to make informed decisions based on data and uncertainty.        
+- We do not know *who* will be selected, but we know the pool of *candidates*.
 
-## Terminology for Probability and Statistics
+## Outcomes, Sample Space, and Events
 
-```{=html}
-<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg"
-     style="width: 88%; max-width: 880px; display: block; margin: 0 auto;
-            font-family: 'DM Sans', sans-serif;">
 
-  <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="7"
-            refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#4A7B4F"/>
-    </marker>
-  </defs>
+- An **outcome** is one specific result of the experiment. 
 
-  <!-- Large outer ellipse: the population (blue, solid) -->
-  <ellipse cx="220" cy="170" rx="205" ry="145"
-           fill="none" stroke="#005EA6" stroke-width="2.5"/>
-
-  <!-- Inner dashed ellipse (green, dashed) -->
-  <ellipse cx="245" cy="190" rx="115" ry="80"
-           fill="none" stroke="#4A7B4F" stroke-width="2"
-           stroke-dasharray="8,5"/>
-
-  <!-- Curved arrow (green) -->
-  <path d="M 355 245 C 415 265, 460 275, 500 278"
-        fill="none" stroke="#4A7B4F" stroke-width="2"
-        marker-end="url(#arrow)"/>
-
-  <!-- Sample ellipse: right side -->
-  <ellipse cx="575" cy="278" rx="95" ry="62"
-           fill="none" stroke="#4A7B4F" stroke-width="2"
-           stroke-dasharray="8,5"/>
-
-  <!-- Population label: moved up near top of outer ellipse -->
-  <text x="220" y="75" text-anchor="middle"
-        font-size="17" fill="#2c2b28">Set of all measurements:</text>
-  <text x="220" y="93" text-anchor="middle"
-        font-size="17" fill="#2c2b28" font-weight="700">the population</text>
-
-  <!-- Sample label -->
-  <text x="575" y="258" text-anchor="middle"
-        font-size="14" fill="#2c2b28">Set of measurements</text>
-  <text x="575" y="276" text-anchor="middle"
-        font-size="14" fill="#2c2b28">selected from the</text>
-  <text x="575" y="294" text-anchor="middle"
-        font-size="14" fill="#2c2b28">population: <tspan font-weight="700">the sample</tspan></text>
-
-</svg>
-```
-
-## Probability
-
-- **Classical probability:** 
-
-    - Suppose $N_e$ is the number of outcomes favorable to the event and $N$ is the total number of outcomes in the sample space. Then,
-
-$$
-P[\text{event}] = \frac{N_e}{N}
-$$
-
-- **Relative probability:**
-
-    - Suppose an experiment is conducted $n$ different times, and the event occurs $n_e$ times. Then,
+    - e.g., Officer Hopps
     
-$$
-P[\text{event}] = \frac{n_e}{n}
-$$
+- The **sample space** is the set of *all* possible outcomes. 
 
-## Unions 
+    - e.g., the graduating class of 2025
+    
+- An **event** is any collection of outcomes we care about. 
 
-- The **union** of two events $A$ and $B$, $A \cup B$, is the set of all outcomes that are included in *either* $A$ *or* $B$ (or both).
+    - e.g., the recruit picked works Patrol
 
-```{=html}
-<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg"
-     style="width: 88%; max-width: 880px; display: block; margin: 0 auto;
-            font-family: 'DM Sans', sans-serif;">
-  <!-- Event A circle (blue, shaded) -->
-  <circle cx="226" cy="190" r="115"
-          fill="#005EA6" fill-opacity="0.18"
-          stroke="#005EA6" stroke-width="2.5"/>
-  <!-- Event B circle (green, shaded) -->
-  <circle cx="398" cy="190" r="115"
-          fill="#4A7B4F" fill-opacity="0.18"
-          stroke="#4A7B4F" stroke-width="2.5"/>
-  <!-- Event A label -->
-  <text x="226" y="138" text-anchor="middle"
-        font-size="22" fill="#2c2b28" font-weight="700">Event A</text>
-  <!-- Event B label -->
-  <text x="398" y="138" text-anchor="middle"
-        font-size="22" fill="#2c2b28" font-weight="700">Event B</text>
+::: {.tab-callout .tab-blue}
+::: {.tab-label}
+Looking Forward
+:::
+
+**Probability** is just a way of assigning a number to how likely an *event* is, based on the *sample space* it came from.
+:::
+
+
+## Probability Ground Rules 
+
+1. **Every probability is between 0 and 1.**
+   $$0 \le P(A) \le 1$$
+   where
+   $$P(A) =
+\begin{cases}
+0, & \text{A is impossible} \\
+1, & \text{A is guaranteed}
+\end{cases}$$
+
+2. **All possible outcomes, added together, equal 1.**
+   
+   - The full sample space accounts for 100% of the possibilities.
+
+## The Complement Rule
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+The Complement Rule
+:::
+
+$$P(A^c) = 1 - P(A)$$
+
+The probability an event *doesn't* happen is 1 minus the probability it does.
+:::
+
+- **Why it's useful:** sometimes the *complement* of what you want is much easier to work out directly.
+
+## Practice: Complement Rule
+
+::: {.tab-callout .tab-green}
+::: {.tab-label}
+Example
+:::
+
+If 72% of recruits work Patrol, what fraction work Desk duty?
+:::
+
+- $P(\text{Desk}) = 1 - P(\text{Patrol}) = 1 - 0.72 = 0.28$
+    
+- 28% of recruits work Desk duty.
+
+## Practice: Complement Rule
+
+::: {.tab-callout .tab-green}
+::: {.tab-label}
+Example
+:::
+
+ZPD's records show that 15% of academy applicants fail the physical exam. What's the probability a randomly chosen applicant passes?
+:::
+
+- $P(\text{pass}) = 1 - P(\text{fail}) = 1 - 0.15 = 0.85$
+
+- We expect that a randomly chosen applicant will pass 85% of the time.
+
+## Conditional Probability
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Conditional probability
+:::
+
+$$P(A \mid B)$$
+
+The probability of A, given that B has *already happened*. New information ($B$) changes what we believe is likely.
+:::
+
+- Conditional probability shrinks the sample space down to the part we now <u>know is true</u>, then calculates the probability.
+
+## Practice: Conditional Probability
+
+::: {.tab-callout .tab-green}
+::: {.tab-label}
+Example
+:::
+Suppose ZPD's weather log shows it rains fairly often in Rainforest District, but almost never in Sahara Square. You are asked to find $P(\text{rain} \mid \text{Rainforest District})$. How is this different from $P(\text{rain})$?
+:::
+
+- $P(\text{rain})$ is for *all* of Zootropolis.
+
+- $P(\text{rain} \mid \text{Rainforest District})$ is for *only* the Rainforest District.
+
+## Practice: Conditional Probability
+
+::: {.tab-callout .tab-green}
+::: {.tab-label}
+Example
+:::
+
+Among all ZPD recruits, 60% work in Tundratown. Among *Tundratown* recruits specifically, 10% passed the academy exam on their first attempt.
+:::
+
+- What does $P(\text{pass} \mid \text{Tundratown}) = 0.10$ actually tell you?
+
+    - If you already know a recruit is stationed in Tundratown, there's a 10% chance they passed the exam the first time they took it.
+    
+    - This is a more specific number than the first-time pass rate for ZPD as a whole.
+    
+
+
+## Independence
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Independent Events
+:::
+
+Two events are **independent** when knowing one tells you *nothing* about the other:
+$$P(A \mid B) = P(A)$$
+:::
+
+- Independence means shrinking the sample space *changes nothing*; eliminating part of it doesn't change the probability at all.
+
+
+## Practice: Independence
+
+::: {.tab-callout .tab-green}
+::: {.tab-label}
+Example
+:::
+
+Suppose $P(\text{pass exam}) = 0.85$ overall, and $P(\text{pass exam} \mid \text{Tundratown}) = 0.10$. Are "passing the exam" and "being assigned to Tundratown" independent?
+:::
+
+- No. If they were independent, both numbers would be equal.
+
+- Because they are not, this implies that, knowing someone's district *does* change what we'd expect about their exam outcome.
+
+## Practice: Independence
+
+::: {.tab-callout .tab-green}
+::: {.tab-label}
+Example
+:::
+Suppose $P(\text{pass exam}) = 0.85$ overall, and among recruits whose last name starts with a vowel, $P(\text{pass exam} \mid \text{vowel last name}) = 0.85$ as well. Are "passing the exam" and "having a last name that starts with a vowel" independent?
+:::
+
+- Both numbers are equal. Knowing a recruit's last name starts with a vowel doesn't change the probability they passed the exam.
+
+- $P(A \mid B) = P(A)$, therefore, A is independent of B.
+
+## Unions and Intersections
+
+- Before we talk more about probability we should first discuss unions and intersections.
+
+<div style="display: flex; justify-content: space-around; align-items: flex-start; margin-top: .5em;">
+
+<div style="text-align: center; width: 45%;">
+
+<svg viewBox="0 0 300 200" width="90%" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="115" cy="100" r="70" fill="var(--uwf-blue)" fill-opacity="0.45" stroke="var(--uwf-blue)" stroke-width="2.5"/>
+  <circle cx="185" cy="100" r="70" fill="var(--uwf-green)" fill-opacity="0.45" stroke="var(--uwf-green)" stroke-width="2.5"/>
+  <text x="80" y="60" font-family="DM Sans, sans-serif" font-weight="700" font-size="18" fill="var(--uwf-blue-dark)">A</text>
+  <text x="212" y="60" font-family="DM Sans, sans-serif" font-weight="700" font-size="18" fill="var(--uwf-green-dark)">B</text>
 </svg>
-```
 
-## Intersection
+<p style="font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--uwf-blue-dark); margin-top: 0.5em;">
+Union: A $\cup$ B
+</p>
+<p style="font-size: 0.85em;">
+Everything in A, B, *or* both.
+</p>
 
-- The **intersection** of two events $A$ and $B$, $A \cap B$, is the set of all outcomes that are included in both $A$ and $B$. 
+</div>
 
-```{=html}
-<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg"
-     style="width: 88%; max-width: 880px; display: block; margin: 0 auto;
-            font-family: 'DM Sans', sans-serif;">
+<div style="text-align: center; width: 45%;">
+
+<svg viewBox="0 0 300 200" width="90%" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <clipPath id="clipA">
-      <circle cx="226" cy="190" r="115"/>
+    <clipPath id="circleA">
+      <circle cx="115" cy="100" r="70"/>
+    </clipPath>
+    <clipPath id="circleB">
+      <circle cx="185" cy="100" r="70"/>
     </clipPath>
   </defs>
-  <!-- Intersection shading only: circle B, clipped to circle A's boundary -->
-  <circle cx="398" cy="190" r="115"
-          fill="#3B6E64" fill-opacity="0.4"
-          clip-path="url(#clipA)"/>
-  <!-- Event A outline -->
-  <circle cx="226" cy="190" r="115"
-          fill="none" stroke="#005EA6" stroke-width="2.5"/>
-  <!-- Event B outline -->
-  <circle cx="398" cy="190" r="115"
-          fill="none" stroke="#4A7B4F" stroke-width="2.5"/>
-  <!-- Event A label -->
-  <text x="226" y="138" text-anchor="middle"
-        font-size="22" fill="#2c2b28" font-weight="700">Event A</text>
-  <!-- Event B label -->
-  <text x="398" y="138" text-anchor="middle"
-        font-size="22" fill="#2c2b28" font-weight="700">Event B</text>
+  <circle cx="115" cy="100" r="70" fill="none" stroke="var(--uwf-blue)" stroke-width="2.5"/>
+  <circle cx="185" cy="100" r="70" fill="none" stroke="var(--uwf-green)" stroke-width="2.5"/>
+  <g clip-path="url(#circleA)">
+    <g clip-path="url(#circleB)">
+      <rect x="0" y="0" width="300" height="200" fill="var(--uwf-marigold)" fill-opacity="0.85"/>
+    </g>
+  </g>
+  <text x="80" y="60" font-family="DM Sans, sans-serif" font-weight="700" font-size="18" fill="var(--uwf-blue-dark)">A</text>
+  <text x="212" y="60" font-family="DM Sans, sans-serif" font-weight="700" font-size="18" fill="var(--uwf-green-dark)">B</text>
 </svg>
-```
 
+<p style="font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--uwf-marigold-dark); margin-top: 0.5em;">
+Intersection: A $\cap$ B
+</p>
+<p style="font-size: 0.85em;">
+What's in both A *and* B together.
+</p>
 
+</div>
 
-## Mutually Exclusive
+</div>
 
-- Two events $A$ and $B$ are said to be **mutually exclusive** if the occurrence of one of the events excludes the possibility of the occurrence of the other event.
+## Mutually Exclusive Events
 
-```{=html}
-<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg"
-     style="width: 88%; max-width: 880px; display: block; margin: 0 auto;
-            font-family: 'DM Sans', sans-serif;">
-  <!-- Event A circle (blue, solid) -->
-  <circle cx="190" cy="190" r="115"
-          fill="none" stroke="#005EA6" stroke-width="2.5"/>
-  <!-- Event B circle (green, solid) -->
-  <circle cx="490" cy="190" r="115"
-          fill="none" stroke="#4A7B4F" stroke-width="2.5"/>
-  <!-- Event A label -->
-  <text x="190" y="138" text-anchor="middle"
-        font-size="22" fill="#2c2b28" font-weight="700">Event A</text>
-  <!-- Event B label -->
-  <text x="490" y="138" text-anchor="middle"
-        font-size="22" fill="#2c2b28" font-weight="700">Event B</text>
+- **Mutually exclusive** events are events that can *never* happen together.
+
+    - There is no intersection.
+
+<div style="display: flex; justify-content: center; margin-top: .5em;">
+
+<div style="text-align: center; width: 55%;">
+
+<svg viewBox="0 0 300 200" width="90%" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="70" cy="100" r="65" fill="var(--uwf-blue)" fill-opacity="0.45" stroke="var(--uwf-blue)" stroke-width="2.5"/>
+  <circle cx="230" cy="100" r="65" fill="var(--uwf-green)" fill-opacity="0.45" stroke="var(--uwf-green)" stroke-width="2.5"/>
+  <text x="30" y="75" font-family="DM Sans, sans-serif" font-weight="700" font-size="18" fill="var(--uwf-blue-dark)">A</text>
+  <text x="255" y="75" font-family="DM Sans, sans-serif" font-weight="700" font-size="18" fill="var(--uwf-green-dark)">B</text>
 </svg>
-```
 
-## Complement
+<p style="font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--uwf-blue-dark); margin-top: 0.5em;">
+$P(A \cap B) = 0$
+</p>
 
-- The **complement** of an event $A$, $A^c$, is the event that $A$ *does not* occur.
+</div>
 
-```{=html}
-<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg"
-     style="width: 88%; max-width: 880px; display: block; margin: 0 auto;
-            font-family: 'DM Sans', sans-serif;">
-  <!-- Complement shading: rectangle minus circle, via evenodd fill rule -->
-  <path fill-rule="evenodd"
-        d="M50,50 H630 V310 H50 Z
-           M240,180 a100,100 0 1,0 200,0 a100,100 0 1,0 -200,0 Z"
-        fill="#4A7B4F" fill-opacity="0.18"/>
-  <!-- Sample space rectangle outline -->
-  <rect x="50" y="50" width="580" height="260" rx="10"
-        fill="none" stroke="#2c2b28" stroke-width="2"/>
-  <!-- Event A circle outline -->
-  <circle cx="340" cy="180" r="100"
-          fill="none" stroke="#005EA6" stroke-width="2.5"/>
-  <!-- Sample space label: A with superscript c -->
-  <text x="72" y="76" text-anchor="start"
-        font-size="22" font-family="'DM Sans', sans-serif"
-        fill="#2c2b28" font-weight="700">A<tspan baseline-shift="super" font-size="15">c</tspan></text>
-  <!-- Event A label -->
-  <text x="340" y="188" text-anchor="middle"
-        font-size="22" font-family="'DM Sans', sans-serif"
-        fill="#2c2b28" font-weight="700">A</text>
-</svg>
-```
+</div>
+
+## The Addition Rule
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Addition Rule
+:::
+
+If we have two events, $A$ and $B$, the probability of $A \text{ or } B$ is given by:
+
+$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+
+If A and B are mutually exclusive, this simplifies to:
+$$P(A \cup B) = P(A) + P(B)$$
+:::
+
+## Practice: Addition Rule
+
+::: {.tab-callout .tab-green}
+::: {.tab-label}
+Example
+:::
+A recruit is randomly selected. ZPD wants to know the probability this recruit works in either Sahara Square (20%) or Tundratown (60%). Which approach is appropriate?
+:::
+
+::: {.fragment}
+- A recruit cannot work in more than one district, so these are mutually exclusive events.
+
+$$
+\begin{align*}
+P(\text{Sahara $\cup$ Tundra}) &= P(\text{Sahara}) + P(\text{Tundra}) - P(\text{Sahara $\cap$ Tundra}) \\
+&= P(\text{Sahara}) + P(\text{Tundra})  \\
+&= 0.20 + 0.60  \\
+&= 0.80
+\end{align*}
+$$
+
+:::
+
+## Practice: Addition Rule
+
+::: {.tab-callout .tab-green}
+::: {.tab-label}
+Example
+:::
+A recruit is randomly selected. 30% of recruits work Patrol, and 45% report getting 8+ hours of sleep. 15% of recruits both work Patrol and get 8+ hours of sleep. What's the probability a recruit works Patrol or gets 8+ hours of sleep?
+:::
+
+::: {.fragment}
+- A recruit can work Patrol and get plenty of sleep (they are *not* mutually exclusive).
+
+$$
+\begin{align*}
+P(\text{Patrol $\cup$ 8+ hrs}) &= P(\text{Patrol}) + P(\text{8+ hrs}) - P(\text{Patrol $\cap$ 8+ hrs}) \\
+&= 0.30 + 0.45 - 0.15 \\ 
+&= 0.60
+\end{align*}
+$$ 
+
+:::
+
+## The Multiplication Rule (Independent Events)
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Multiplication Rule
+:::
+
+For **independent** events:
+$$P(A \cap B) = P(A) \times P(B)$$
+:::
+
+- If knowing B doesn't change A, then the chance of *both* happening is just the product of their individual chances.
+
+## The Multiplication Rule (Dependent Events)
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Multiplication Rule
+:::
+
+For **dependent** events:
+$$P(A \cap B) = P(A) \times P(B \mid A)$$
+:::
+
+- We are accounting for the dependence between $A$ and $B$ with the conditional probability.
+
+## Practice: Multiplication Rule
+
+::: {.tab-callout .tab-green}
+::: {.tab-label}
+Example
+:::
+
+Suppose $P(\text{passes exam}) = 0.85$ and $P(\text{reports 8+ hrs sleep}) = 0.40$. Further, we know that $P(\text{reports 8+ hrs sleep} \mid \text{passes exam}) = 0.40$. What's the probability a randomly chosen recruit passes the exam *and* reports 8+ hours of sleep?
+:::
+
+::: {.fragment}
+$$
+\begin{align*}
+P(\text{passes exam $\cap$ 8+ hrs}) &= P(\text{passes exam}) \times P(\text{8+ hrs} \mid \text{passes exam}) \\
+&= P(\text{passes exam}) \times P(\text{8+ hrs}) \\
+&= 0.85 \times 0.40 \\
+&= 0.34
+\end{align*}
+$$
+:::
+
+## Practice: Multiplication Rule 
+
+::: {.tab-callout .tab-green}
+::: {.tab-label}
+Example
+:::
+Suppose $P(\text{Tundratown}) = 0.60$, and among Tundratown recruits specifically, $P(\text{passes exam} \mid \text{Tundratown}) = 0.10$. What's the probability a randomly chosen recruit is assigned to Tundratown *and* passes the exam on their first attempt?
+:::
+
+::: {.fragment}
+$$
+\begin{align*}
+P(\text{Tundra} \cap \text{pass exam}) &= P(\text{Tundra}) \times P(\text{pass exam} \mid \text{Tundra}) \\
+&= 0.60 \times 0.10 \\
+&= 0.06
+\end{align*}
+$$
+:::
+
+## Wrap Up
+
+- This lecture gave an overview of probability basics.
+
+    1. **Complement:** $P(A^c) = 1 - P(A)$
+    
+    2. **Conditional:** $P(A \mid B)$
+    
+    3. **Independence:** $P(A \mid B) = P(A)$
+    
+    4. **Addition:** $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+    
+    5. **Multiplication:** $P(A \text{ and } B) = P(A) \times P(B \mid A)$
+
+
+- The next lecture covers probability *distribution* basics.

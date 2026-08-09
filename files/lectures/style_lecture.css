@@ -1,7 +1,7 @@
 /* -----------------------------------------
    Fonts: DM Sans (headings/UI), Source Serif 4 (body)
    Math-friendly serif; pairs well with KaTeX/MathJax
-   UWF palette: Heritage Blue · Cannon Green · Luna Blue · Spring Green
+   UWF palette: Heritage Blue · Cannon Green · Luna Blue · Spring Green · Marigold
 ------------------------------------------ */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
 
@@ -15,6 +15,8 @@
   --uwf-green-dark:  #2E5233;
   --uwf-green:       #4A7B4F;
   --uwf-green-light: #A8C96A;
+  --uwf-marigold:    #FFB81C;
+  --uwf-marigold-dark: #6b4a05;
   --uwf-bg:          #f5f4f0;
   --uwf-text:        #2c2b28;
   --uwf-text-muted:  #5f5e5a;
@@ -231,6 +233,14 @@
   border-radius: 0 0.5em 0.5em 0;
   padding: 0.85em 1em;
   margin: 1em 0;
+  font-size: 1em !important;
+}
+
+.reveal .callout p,
+.reveal .callout li,
+.reveal .callout .callout-body,
+.reveal .callout .callout-body-container {
+  font-size: 1em !important;
 }
 
 .reveal .callout .callout-title,
@@ -277,6 +287,106 @@
   background-color: #f2f8e6 !important;
 }
 .reveal .callout-warning .callout-title { color: var(--uwf-green-dark) !important; }
+
+/* -----------------------------------------
+   Tabbed Callout System
+   Color-coded boxes with a small tab/label,
+   choose your color per callout.
+
+   Usage in .qmd:
+
+   ::: {.tab-callout .tab-blue}
+   ::: {.tab-label}
+   Note
+   :::
+
+   Your content here.
+   :::
+
+   Colors available: .tab-marigold, .tab-blue, .tab-green
+
+   Backward-compatible: `.notebook-entry` / `.notebook-tab`
+   still work and render as the marigold variant —
+   used for the Zootopia case-study "notebook entries."
+------------------------------------------ */
+.reveal .tab-callout,
+.reveal .notebook-entry {
+  position: relative;
+  border-radius: 0 0.5em 0.5em 0;
+  padding: 1.4em 1.1em 0.9em 1.1em;
+  margin: 1.6em 0 1em 0;
+  font-size: 1em !important;
+}
+
+.reveal .tab-callout p,
+.reveal .tab-callout li,
+.reveal .notebook-entry p,
+.reveal .notebook-entry li {
+  font-size: 1em !important;
+}
+
+.reveal .tab-callout h2,
+.reveal .tab-callout h3,
+.reveal .notebook-entry h2,
+.reveal .notebook-entry h3 {
+  margin-top: 0.2em;
+  border-bottom: none !important;
+}
+
+.reveal .tab-label,
+.reveal .notebook-tab {
+  position: absolute;
+  top: -0.85em;
+  left: 1.1em;
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 700;
+  font-size: 0.7em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border-radius: 0.3em 0.3em 0 0;
+  line-height: 1;
+}
+
+/* Marigold variant (default / notebook-entry) */
+.reveal .tab-marigold,
+.reveal .notebook-entry {
+  background-color: #fff8e8 !important;
+  border-left: 5px solid var(--uwf-marigold) !important;
+}
+
+.reveal .tab-marigold .tab-label,
+.reveal .tab-marigold .tab-label p,
+.reveal .notebook-tab,
+.reveal .notebook-tab p {
+  background-color: var(--uwf-marigold) !important;
+  color: var(--uwf-marigold-dark) !important;
+}
+
+/* Blue variant */
+.reveal .tab-blue {
+  background-color: #e6f1fb !important;
+  border-left: 5px solid var(--uwf-blue) !important;
+}
+
+.reveal .tab-blue .tab-label,
+.reveal .tab-blue .tab-label p {
+  background-color: var(--uwf-blue) !important;
+  color: #ffffff !important;
+}
+
+/* Green variant */
+.reveal .tab-green {
+  background-color: #eaf3de !important;
+  border-left: 5px solid var(--uwf-green) !important;
+}
+
+.reveal .tab-green .tab-label,
+.reveal .tab-green .tab-label p {
+  background-color: var(--uwf-green) !important;
+  color: #ffffff !important;
+}
 
 /* -----------------------------------------
    Footer
@@ -350,4 +460,81 @@
   pre, code, pre code, code span {
     background-color: inherit !important;
   }
+
+  .reveal .tab-callout,
+  .reveal .notebook-entry {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .reveal .tab-marigold,
+  .reveal .notebook-entry {
+    background-color: #fff8e8 !important;
+  }
+
+  .reveal .tab-blue { background-color: #e6f1fb !important; }
+  .reveal .tab-green { background-color: #eaf3de !important; }
+
+  .reveal .tab-label,
+  .reveal .notebook-tab {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .reveal .tab-marigold .tab-label,
+  .reveal .notebook-tab {
+    background-color: var(--uwf-marigold) !important;
+    color: var(--uwf-marigold-dark) !important;
+  }
+
+  .reveal .tab-blue .tab-label {
+    background-color: var(--uwf-blue) !important;
+    color: #ffffff !important;
+  }
+
+  .reveal .tab-green .tab-label {
+    background-color: var(--uwf-green) !important;
+    color: #ffffff !important;
+  }
+}
+
+/* -----------------------------------------
+   Hypothesis Test Columns (plain, no boxes)
+------------------------------------------ */
+.reveal .hyp-columns {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-between;
+  margin-top: -1em;
+  margin-bottom: 0.5em;
+  padding-left: 1.2em; /* matches .hyp-bullet indent */
+}
+
+.reveal .hyp-columns .column {
+  box-sizing: border-box;
+  flex: 1 1 0;
+  padding: 0 0.75em;
+}
+
+.reveal .hyp-columns .column strong {
+  font-family: 'DM Sans', sans-serif !important;
+  color: var(--uwf-blue-dark) !important;
+  font-weight: 700;
+  font-size: 0.95em;
+  letter-spacing: 0.03em;
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.reveal .hyp-bullet {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0.3em;
+}
+
+.reveal .hyp-bullet::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--uwf-text);
 }

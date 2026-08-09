@@ -32,44 +32,691 @@ library(tidyverse)
 library(ssstats)
 ```
 
+## Data Setup 
 
+- Recall our Zootopia data,
+
+```{r}
+zootopia <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv")
+```
+
+```{r}
+#| echo: false
+
+head(zootopia, n = 5)
+```
 
 ## Confidence Interval for $\mu$
 
-- (1--$\alpha$)100% CI for a population mean, $\mu$
+- **(1--$\alpha$)100% CI for a population mean, $\mu$**
 
 $$\bar{y} \pm t_{\alpha/2, n-1} \frac{s}{\sqrt{n}}$$
 
-- $t$ has $n-1$ degrees of freedom (df). 
+- where
 
+    - $\bar{y}$ is the sample mean (the point estimate)
+
+    - $t$ has $n-1$ degrees of freedom (the critical value)
+
+    - $s$ is the sample standard deviation and $n$ is the sample size ($s/\sqrt{n}$ is the standard error of the mean)
 
 ## Hypothesis Test for $\mu$
 
+- **Hypotheses**
+
+::: {.hyp-columns .columns}
+
+::: {.column width="30%"}
+**Two-Tailed**
+
+$H_0: \mu = \mu_0$
+
+$H_1: \mu \ne \mu_0$
+:::
+
+::: {.column width="30%"}
+**Left-Tailed**
+
+$H_0: \mu \ge \mu_0$
+
+$H_1: \mu < \mu_0$
+:::
+
+::: {.column width="30%"}
+**Right-Tailed**
+
+$H_0: \mu \le \mu_0$
+
+$H_1: \mu > \mu_0$
+:::
+
+:::
+
+
+- $\mu$ is the population mean,
+
+- $\mu_0$ is the hypothesized value of $\mu$.
+
+## Hypothesis Test for $\mu$
+
+- **Test Statistic**
+
+$$t_0 = \frac{\bar{y} - \mu_0}{s/\sqrt{n}}$$
+
+- where
+
+    - $\bar{y}$ is the sample mean
+
+    - $\mu_0$ is the hypothesized value of $\mu$
+
+    - $s$ is the sample standard deviation
+
+    - $n$ is the sample size
+
 ## Statistical Inference on One Mean (`R`)
+
+- We will use the `one_mean()` function from `library(ssstats)` to perform statistical inference.
+
+```{r}
+#| eval: false
+dataset_name %>% one_mean(outcome = variable_name,
+                          mu = hypothesized_value,
+                          alternative = "two" | "less" | "greater",
+                          alpha = alpha_level)
+```
+
+- where
+
+    - `outcome` is the variable name of the outcome variable
+    
+    - `mu` is the hypothesized value of the population mean
+    
+    - `alternative` is the alternative hypothesis (default = "two")
+
+    - `alpha` is the significance level (default = 0.05)
 
 ## Example 1
 
+- The ZPD Academy claims that the passing exam average is 72 points. As Zootopia's data analyst, you've been asked to check whether that claim actually holds up. We will use the `zootopia` dataset to answer the following question:
+
+    - Is the true average exam score for this cohort actually 72, or has it shifted?
+    
+- First, we need to describe the data.
+
+    - We start with point and interval estimates.
+    
+- Then, we will perform a hypothesis test to answer the question.
+    
+## Example 1
+    
+- Point and interval estimates:
+
+```{r}
+zootopia %>% one_mean(outcome = academy_exam_score)
+```
+
+- The average exam score is 77.3  (95% CI: 74.3, 80.3).
+
+## Example 1
+
+- Then, we will perform a hypothesis test to answer the question.    
+
+    - Is the true average exam score for this cohort actually 72, or has it shifted?
+    
+- How do we translate this into hypotheses?  
+
+    - $H_0: \mu = 72$
+    - $H_1: \mu \ne 72$
+    
+- For the `one_mean()` function, we will set 
+
+    - `mu = 72`
+    - `alternative = "two"`.    
+    
+## Example 1
+
+- Is the true average exam score for this cohort actually 72, or has it shifted?
+
+```{r}
+zootopia %>% one_mean(outcome = academy_exam_score,
+                      mu = 72,
+                      alternative = "two")
+```
+    
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0: \mu = 72$
+    - $H_1: \mu \ne 72$
+    
+- **Test Statistic and *p*-Value**
+
+    - $t_0 = 3.641$
+    - $p = 0.001$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that the current average exam score is different from the assumed average of 72. 
+  
 ## Example 2
 
+- Not everyone in Zootopia earns a paycheck the same way. Some residents have steady side hustles that bring in predictable income. The Zootopia City Council has claimed that the typical resident hustle income is Z 35. As the data analyst, you've been asked to check. We will use the `zootopia` dataset to answer the following question:
+
+    - Is the typical side hustle income actually Z 35, or are residents earning more?
+
+- First, we need to describe the data.
+
+- Then, we will perform a hypothesis test to answer the question.    
+
+## Example 2
+
+- Point and interval estimates:
+
+```{r}
+zootopia %>% one_mean(outcome = hustle_earnings)
+```
+
+- The average income is Z = 36.7 (95% CI: 28.2, 45.2). 
+
+## Example 2
+
+- Then, we will perform a hypothesis test to answer the question.    
+
+    - Is the typical side hustle income actually Z 35, or are residents earning more?
+    
+- How do we translate this into hypotheses?  
+
+    - $H_0: \mu \le 35$
+    - $H_1: \mu > 35$
+    
+- For the `one_mean()` function, we will set 
+
+    - `mu = 35`
+    - `alternative = "greater"`.   
+
+## Example 2
+
+- Is the typical side hustle income actually Z 35, or are residents earning more?
+
+```{r}
+zootopia %>% one_mean(outcome = hustle_earnings,
+                      mu = 35,
+                      alternative = "greater")
+```
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: \mu \le 35$
+    - $H_1: \mu > 35$
+    
+- **Test Statistic and *p*-Value**
+
+    - $t_0 = 0.412$
+    - $p = 0.342$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that the current average income is greater than the assumed average of 35 
+  
 ## Assumption on One-Sample *t*
+
+- We assume that the data has an approximate mound-shaped and symmetric distribution.
+
+    - i.e., $y_1, y_2, \ldots, y_n \sim N(\mu, \sigma^2)$
+
+- We will use a quantile-quantile plot (Q-Q plot) to check the assumption of normality.
+
+    - We will also eyeball a histogram to further check the assumption of normality.
+    
+## Quantile-Quantile Plots    
+
+- A QQ plot ("quantile-quantile plot") is a quick visual check for one question: does my data look *roughly* normal?
+
+    - We do not need perfection -- we just need "close enough."
+    
+```{r}
+#| echo: false
+#| fig-align: 'center'
+set.seed(2012)                                       
+tibble(sample_data = rnorm(30, mean = 0, sd = 1)) |> 
+  ggplot(aes(sample = sample_data)) +               
+  stat_qq() +                                         
+  stat_qq_line(color = "gray40", linewidth = 1) +     
+  labs(x = "Theoretical quantiles", y = "Sample quantiles") +
+  theme_minimal(base_size = 16)
+```
+
+
+- Each dot compares one thing: where the observed data falls, versus where it *would* fall if your data were "perfectly normal."
+
+    - The diagonal line on the plot represents "perfectly normal." 
+
+## Quantile-Quantile Plots
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+library(ggpubr)
+
+set.seed(1983)
+skew_data <- tibble(sample_data = rbeta(50, shape1 = 25, shape2 = 1))
+
+qq_plot <- skew_data |>
+  ggplot(aes(sample = sample_data)) +
+  stat_qq() +
+  stat_qq_line(color = "gray40", linewidth = 1) +
+  labs(x = "Theoretical quantiles", y = "Sample quantiles") +
+  theme_minimal(base_size = 16)
+
+hist_plot <- skew_data |>
+  ggplot(aes(x = sample_data)) +
+  geom_histogram(bins = 10, fill = "gray70", color = "black") +
+  labs(x = "Measured outcome", y = "Num. observations") +
+  theme_minimal(base_size = 16)
+
+ggarrange(qq_plot, hist_plot, ncol = 2)
+```
+
+- Look at the left side of the plot: the dots dip below the line instead of following it.
+
+    - This indicates *left-skewed* data.
+
+- The histogram confirms that the data does not have a mound-shaped and symmetric distribution.
+
+## Quantile-Quantile Plots
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+
+set.seed(1980)
+skew_data <- tibble(sample_data = rnorm(50, mean = 0, sd = 1))
+
+qq_plot <- skew_data |>
+  ggplot(aes(sample = sample_data)) +
+  stat_qq() +
+  stat_qq_line(color = "gray40", linewidth = 1) +
+  labs(x = "Theoretical quantiles", y = "Sample quantiles") +
+  theme_minimal(base_size = 16)
+
+hist_plot <- skew_data |>
+  ggplot(aes(x = sample_data)) +
+  geom_histogram(bins = 10, fill = "gray70", color = "black") +
+  labs(x = "Measured outcome", y = "Num. observations") +
+  theme_minimal(base_size = 16)
+
+ggarrange(qq_plot, hist_plot, ncol = 2)
+```
+
+
+- Notice how closely the dots hug the diagonal line, especially through the middle.
+
+    - A little wiggle at the very ends is normal, especially with small samples. 
+    
+- The histogram confirms that the data has a mound-shaped and symmetric distribution.    
+
+## Quantile-Quantile Plots
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+
+set.seed(1983)
+skew_data <- tibble(sample_data = rbeta(50, shape1 = 1, shape2 = 25))
+
+qq_plot <- skew_data |>
+  ggplot(aes(sample = sample_data)) +
+  stat_qq() +
+  stat_qq_line(color = "gray40", linewidth = 1) +
+  labs(x = "Theoretical quantiles", y = "Sample quantiles") +
+  theme_minimal(base_size = 16)
+hist_plot <- skew_data |>
+  ggplot(aes(x = sample_data)) +
+  geom_histogram(bins = 10, fill = "gray70", color = "black") +
+  labs(x = "Measured outcome", y = "Num. observations") +
+  theme_minimal(base_size = 16)
+ggarrange(qq_plot, hist_plot, ncol = 2)
+```
+
+- Look at the right side of the plot: the dots rise above the line instead of following it.
+
+    - This indicates *right-skewed* data.
+    
+- The historgram confirms that the data does not have a mound-shaped and symmetric distribution.   
+
+## Quantile-Quantile Plots
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+
+library(ggpubr)
+
+set.seed(2012)
+skew_data <- tibble(sample_data = rpois(100, lambda = 6))
+
+qq_plot <- skew_data |>
+  ggplot(aes(sample = sample_data)) +
+  stat_qq() +
+  stat_qq_line(color = "gray40", linewidth = 1) +
+  labs(x = "Theoretical quantiles", y = "Sample quantiles") +
+  theme_minimal(base_size = 16)
+
+hist_plot <- skew_data |>
+  ggplot(aes(x = sample_data)) +
+  geom_histogram(bins = 10, fill = "gray70", color = "black") +
+  labs(x = "Measured outcome", y = "Num. observations") +
+  theme_minimal(base_size = 16)
+
+ggarrange(qq_plot, hist_plot, ncol = 2)
+```
+
+- Notice the dots aren't a smooth curve, but instead are clustered like a staircase.
+
+    - This happens because count (discrete) data can only take whole-number values (0, 1, 2, 3...). Many observations land on the exact same number, so the step represents the "density" of observations at that value.
+    
+- Again, the histogram confirms that the data does not have a mound-shaped and symmetric distribution.
+
 
 ## Checking Normality (`R`)
 
+- We will use the `one_qq()` function from `library(ssstats)` to eyeball normality.
+
+```{r}
+#| eval: false
+dataset_name %>% one_qq(outcome = variable_name)
+```
+
+- where
+
+    - `outcome` is the variable name of the outcome variable
+
 ## Example 1
 
+- Let's check the normality assumption for the `academy_exam_score` variable.
+
+```{r}
+#| fig-align: 'center'
+zootopia %>% one_qq(outcome = academy_exam_score)
+```
+
 ## Example 2
+
+- Let's check the normality assumption for the `hustle_earnings` variable.
+
+```{r}
+#| fig-align: 'center'
+zootopia %>% one_qq(outcome = hustle_earnings)
+```
 
 ## Nonparametric Alternatives
 
+- The $t$-test we have learned is considered a parametric method.
+
+    - There is a distributional assumption on the test (normality).
+    
+- Nonparametric methods do not have distributional assumptions.
+
+    - We perform calculations on transformed data rather than the raw, observed data.
+
+- Why don't we always use nonparametric methods?
+
+    - They are often less efficient: a larger sample size is required to achieve the same probability of a Type I error.
+
+    - They discard useful information :(  
+
 ## Confidence Interval for $M$
+
+- **(1--$\alpha$)100% CI for a population median, $M$**
+
+$$(M_L, M_U) = (y_{(L_{\alpha/2})}, y_{(U_{\alpha/2})})$$
+
+- where
+
+    - $L_{\alpha/2}$ is the lower critical value of a binomial distribution with parameters $n$ and $p = 0.5$
+
+    - $U_{\alpha/2}$ is the upper critical value of a binomial distribution with parameters $n$ and $p = 0.5$
+
+- In R, linear interpolation is used to find the lower and upper bounds of the confidence interval.
+
+    - This makes it a precise $(1--\alpha)100\%$ confidence interval.
 
 ## Hypothesis Test for $M$
 
+- **Hypotheses**
+
+::: {.hyp-columns .columns}
+
+::: {.column width="30%"}
+**Two-Tailed**
+
+$H_0: M = M_0$
+
+$H_1: M \ne M_0$
+:::
+
+::: {.column width="30%"}
+**Left-Tailed**
+
+$H_0: M \ge M_0$  
+
+$H_1: M < M_0$
+:::
+
+::: {.column width="30%"}
+**Right-Tailed**
+
+$H_0: M \le M_0$
+
+$H_1: M > M_0$
+:::
+
+:::
+
+- where
+
+    - $M$ is the population median,
+
+    - $M_0$ is the hypothesized value of $M$.
+
+## Hypothesis Test for $M$
+
+- **Test Statistic**
+
+$$S = \sum_{i=1}^n I_{(y_i > M_0)}$$
+
+- where
+
+    - $I$ is an indicator function that results in a 1 or a 0
+
+        - The criteria is $y_i > M_0$ (1 if true, 0 if false); i.e., $S$ is the number of observations greater than the hypothesized median, $M_0$.
+
+    - $n$ is the sample size
+
 ## Statistical Inference on One Median (`R`)
+
+- We will use the `one_median()` function from `library(ssstats)` to perform statistical inference.
+
+```{r}
+#| eval: false
+dataset_name %>% one_median(outcome = variable_name,
+                            m = hypothesized_value,
+                            alternative = "two" | "less" | "greater",
+                            alpha = alpha_level)
+```
+
+- where
+
+    - `outcome` is the variable name of the outcome variable
+    
+    - `m` is the hypothesized value of the population median
+    
+    - `alternative` is the alternative hypothesis (default = "two")
+    
+    - `alpha` is the significance level (default = 0.05)
+    
 
 ## Example 2
 
+- Recall in the Zootopia data, we were investigating the typical income from side hustles. The research question was
+
+    - Is the typical side hustle income actually Z 35, or are residents earning more?
+    
+- We saw that the normality was questionable, thus, we now want to apply a nonparametric approach.
+
+- Our hypotheses now become
+
+    - $H_0: M \le 35$
+    - $H_1: M > 35$
+    
+## Example 2
+
+- Is the typical side hustle income actually Z 35, or are residents earning more?
+
+- Applying the `one_median()` function, 
+
+```{r}
+zootopia %>% one_median(outcome = hustle_earnings,
+                        m = 35,
+                        alternative = "greater")
+```
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: M \le 35$
+    - $H_1: M > 35$
+    
+- **Test Statistic and *p*-Value**
+
+    - $S = 13$ (13/30 were greater than 35)
+    - $p = 0.819$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that the current median income is greater than the assumed median of 35 
+  
+## Example 2
+
+- Looking at the confidence interval,
+
+```{r}
+zootopia %>% one_median(outcome = hustle_earnings,
+                        m = 35,
+                        alternative = "greater")
+```
+
+- We see that we are 95% confident that the true median income is between Z 23.14 and Z 37.99.
+
 ## Example 3
+
+- The Zootopia Weather Bureau has publicly claimed that the average daily temperature across the city is 75°F. As the data analyst, you have a sample of daily temperature readings (*district_temp_f*).
+
+    - Is the true average daily temperature actually 75°F, or does the data suggest otherwise?
+
+- Our analysis steps:
+
+    - QQ plot: should we describe the mean or median?
+    - Point and interval estimation for mean/median
+    - Hypothesis test for mean/median
+    
+## Example 3
+
+- Checking the normality assumption for the `district_temp_f` variable.
+
+```{r}
+#| fig-align: 'center'
+zootopia %>% one_qq(outcome = district_temp_f)
+```    
+
+## Example 3
+
+- Point and interval estimates:
+
+```{r}
+zootopia %>% one_median(outcome = district_temp_f)
+```
+
+- The median temperature is 71.3°F  (95% CI: 65.1, 76.7).
+
+## Example 3
+
+- Then, we will perform a hypothesis test to answer the question.    
+
+    - Is the true average daily temperature actually 75°F, or does the data suggest otherwise?
+    
+- How do we translate this into hypotheses?  
+
+    - $H_0: M = 75$
+    - $H_1: M \ne 75$
+    
+- For the `one_median()` function, we will set 
+
+    - `m = 75`
+    - `alternative = "two"`.   
+
+## Example 3
+
+- Is the true average daily temperature actually 75°F, or does the data suggest otherwise?
+
+```{r}
+zootopia %>% one_median(outcome = district_temp_f,
+                        m = 75,
+                        alternative = "two")
+```
+
+## Example 3
+
+- **Hypotheses**
+
+    - $H_0: M = 75$
+    - $H_1: M \ne 75$
+    
+- **Test Statistic and *p*-Value**
+
+    - $S = 10$
+    - $p = 0.099$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that the current median daily temperature is different from the assumed median of 75°F.
 
 ## Wrap Up
 
+- Using a $t$-test to examine the mean ($\mu$) requires normality.
+    
+    - We check normality with a quantile-quantile plot (`one_qq()`).
+
+- The analysis you choose should match the needed method:
+
+    - If we meet normality (`one_mean()`):
+    
+        - Point estimate: $\bar{y}$ to estimate $\mu$
+        - Interval estimate: CI for $\mu$
+        - One-sample $t$-test for $\mu$
+        
+    - If we do not meet normality (`one_median()`):
+    
+        - Point estimate: $m$(edian) to estimate $M$
+        - Interval estimate: CI for $M$
+        - One-sample sign test for $M$

@@ -1,5 +1,481 @@
 ---
-title: "1-4-categorical-data"
-format: html
+title: "Describing and Visualizing Categorical Variables"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    code-annotations: hover
+    incremental: false
+editor: source
 ---
 
+## Introduction
+
+```{r}
+#| echo: false
+uwf_blue <- "#004C97"
+uwf_green <- "#007A33"
+uwf_marigold <- "#FFB81C"
+uwf_midnight <- "#003865"
+```
+
+- Last lecture, we described **continuous** variables: things measured on a number line, like a score or an income.
+
+- Today we describe **categorical** variables: things that sort recruits into *groups* rather than measuring them on a scale.
+
+    - There is no "average" district the way there is an average exam score.
+
+- The goal is the same as always: look first, ask questions later.
+
+## Data from Zootropolis
+
+- You're back at your desk at ZPD. Deputy Chief Okonkwo drops by again: *"Numbers are great, but I also need to know who's where. Break the recruits down by group for me."*
+
+- Today we'll focus on:
+
+- *department*: whether a recruit is assigned to Patrol or Desk duty
+- *district*: which of the four ZPD districts a recruit works in (Rainforest District, Downtown, Sahara Square, Tundratown)
+- *academy_status*: whether a recruit passed or failed the academy entrance exam
+
+## Data from Zootropolis
+
+```{r}
+library(tidyverse)
+library(ssstats)
+```
+
+```{r}
+zootopia <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv")
+```
+
+```{r}
+#| echo: false
+zootopia |>
+  select(resident_name, department, district, academy_status) |>
+  head(n = 5)
+```
+
+## Describing Categorical Data
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Categorical Data
+:::
+For categorical variables, we describe data by counting how many observations fall into each category, not by averaging values.
+:::
+
+- We have two main tools for describing a categorical variable:
+
+    - Frequency
+    - Relative frequency (proportion)
+
+- There's no "mean" or "standard deviation" for a category like Sahara Square — it wouldn't mean anything to average two districts together.
+
+## Frequency
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Frequency
+:::
+The **frequency** of a category is simply a count: how many observations fall into that group.
+:::
+
+- Frequencies answer the question: *how many?*
+
+    - How many recruits are in Patrol?
+    - How many recruits work in Sahara Square?
+
+- Frequencies are useful, but they depend on the size of your dataset — 18 Patrol recruits sounds different in a department of 30 than in a department of 3,000.
+
+## Relative Frequency (Proportion)
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Relative Frequency
+:::
+The **relative frequency**, or **proportion**, is the frequency divided by the total number of observations.
+:::
+
+$$
+\text{proportion} = \frac{\text{count in category}}{\text{total number of observations}}
+$$
+
+- Proportions answer the question: *what share?*
+
+    - What share of recruits are in Patrol?
+    - What share of recruits work in Sahara Square?
+
+- Because proportions are standardized, they let us compare groups of very different sizes — 60% Patrol means the same thing whether you have 30 recruits or 3,000.
+
+## Mode, Revisited
+
+- Recall from last lecture: the **mode** is the most frequently occurring value.
+
+- For categorical data, the mode is the *most natural* measure of centrality — it's really the only one that makes sense.
+
+    - The modal district is whichever district has the most recruits.
+    - A department (Patrol/Desk) can only ever be unimodal or bimodal (tied), since there are only two categories.
+
+## What About Spread?
+
+- For continuous data, we described spread with variance, standard deviation, and the IQR.
+
+- Categories don't have a distance between them — Sahara Square isn't "two units" away from Downtown the way 80 is two units away from 78.
+
+    - So variance and standard deviation don't apply to categorical data.
+
+- Instead, when we talk about "spread" for categorical data, we're really asking: *are the observations spread evenly across categories, or concentrated in just one or two?*
+
+    - We'll answer that visually, with bar charts, rather than with a single number.
+
+## Describing the Data (`R`)
+
+- We will use the `n_pct()` function from the `ssstats` package to describe the frequency and proportion of our categorical data.
+
+```{r}
+#| eval: false
+dataset_name |> # <1>
+  n_pct(variable1, variable2, ...) # <2>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `n_pct()` returns the count (n) and percentage for each category of any variable(s) you list.
+
+- Just like `mean_median()`, we can use `group_by()` to get counts and percentages broken down by another categorical variable.
+
+```{r}
+#| eval: false
+dataset_name |> # <1>
+  group_by() |> # <2>
+  n_pct(variable1, variable2, ...) # <3>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `group_by()` allows us to group the data by a categorical variable before counting.
+3. `n_pct()` returns the count and percentage for each category, within each group.
+
+- Note: if you need help getting started in R, please see the R module on Canvas.
+
+## Describing the Data
+
+- For illustrative purposes, we will describe the `department` variable in the `zootopia` dataset.
+
+```{r}
+zootopia |>
+  n_pct(department)
+```
+
+- This tells us that of the 30 recruits,
+
+    - 18 (60.0%) are in Patrol,
+    - 12 (40.0%) are on Desk duty.
+
+## Bar Chart (Counts)
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Bar chart
+:::
+A **bar chart** shows one bar per category, with the height of the bar equal to the number (or percentage) of observations in that category.
+:::
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+zootopia |>
+  ggplot(aes(x = department, fill = department)) +
+  geom_bar() +
+  scale_fill_manual(values = c(uwf_blue, uwf_marigold)) +
+  labs(x = "Department", y = "Count") +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = "none")
+```
+
+## Bar Chart (Counts) (`R`)
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Bar chart
+:::
+A **bar chart** shows one bar per category, with the height of the bar equal to the number (or percentage) of observations in that category.
+:::
+
+```{r}
+#| eval: false
+dataset_name |> # <1>
+  ggplot(aes(x = category_name)) + # <2>
+  geom_bar() # <3>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `ggplot()` is the function that creates a plot. The `aes()` function inside it tells R which variable to plot.
+3. `geom_bar()` counts the observations in each category and draws a bar for each — you don't need to calculate the counts yourself.
+
+## Bar Chart (Proportions)
+
+- Sometimes we'd rather show the *share* of recruits in each category instead of the raw count.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+zootopia |>
+  ggplot(aes(x = department, y = after_stat(count) / sum(after_stat(count)), fill = department)) +
+  geom_bar() +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c(uwf_blue, uwf_marigold)) +
+  labs(x = "Department", y = "Percent of Recruits") +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = "none")
+```
+
+## Bar Chart (Proportions) (`R`)
+
+- Sometimes we'd rather show the *share* of recruits in each category instead of the raw count.
+
+```{r}
+#| eval: false
+dataset_name |> # <1>
+  ggplot(aes(x = category_name, y = after_stat(count) / sum(after_stat(count)))) + # <2>
+  geom_bar() + # <3>
+  scale_y_continuous(labels = scales::percent) # <4>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `after_stat(count) / sum(after_stat(count))` converts the raw counts `geom_bar()` calculates into a proportion of the total.
+3. `geom_bar()` still does the counting — we're just changing what's plotted on the y-axis.
+4. `scale_y_continuous(labels = scales::percent)` relabels the y-axis as a percentage instead of a decimal.
+
+## A Word on Pie Charts
+
+- You've almost certainly seen categorical data shown as a pie chart. We are not going to use them in this course.
+
+- The human eye is bad at comparing *angles* and *areas* — it's very good at comparing the *height* of bars lined up on the same baseline.
+
+    - Try to tell, at a glance, whether Sahara Square's slice is bigger than Downtown's. Now try it on the bar chart from a few slides ago.
+
+- A bar chart shows the same information as a pie chart, but it's easier to read accurately — and it scales to more categories without turning into a mess of slivers.
+
+    - As a working analyst, if a pie chart crosses your desk, a bar chart is almost always the fix.
+
+## Two-Way Tables
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Two-way table
+:::
+A **two-way table** shows how two categorical variables relate to one another, by counting observations at every combination of categories.
+:::
+
+- So far we've described one categorical variable at a time.
+
+- Just like a scatterplot let us compare two continuous variables, a two-way table lets us compare two categorical variables.
+
+    - Is department evenly split across every district, or do some districts lean more Patrol or more Desk?
+
+## Two-Way Tables (`R`)
+
+- We build a two-way table the same way we built a grouped summary before — with `group_by()` and `n_pct()`.
+
+```{r}
+#| eval: false
+dataset_name |> # <1>
+  group_by(grouping_variable) |> # <2>
+  n_pct(second_variable) # <3>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `group_by()` splits the data into groups based on the first categorical variable.
+3. `n_pct()` then counts and calculates percentages of the second variable, *within* each group.
+
+## Grouped Bar Chart
+
+::: {.notebook-entry}
+::: {.notebook-tab}
+Grouped bar chart
+:::
+A **grouped bar chart** places bars for a second category side by side within each level of the first category, so you can visually compare the split.
+:::
+
+```{r}
+#| eval: false
+dataset_name |> # <1>
+  ggplot(aes(x = category_1, fill = category_2)) + # <2>
+  geom_bar(position = "dodge") # <3>
+```
+1. `dataset_name` is the name of the dataset you are working with.
+2. `fill = category_2` colors the bars by the second categorical variable.
+3. `position = "dodge"` places the bars for each `category_2` level side by side, instead of stacking them.
+
+## Example 1
+
+- Deputy Chief Okonkwo wants to know how recruits are distributed across ZPD's four districts.
+
+- Our first task is to summarize the data.
+
+    - Summary statistics.
+    - Visualizations — check for imbalance across districts.
+
+        - Bar chart (counts)
+        - Bar chart (proportions)
+
+## Example 1
+
+- As always, our first step is to look at the data itself.
+
+```{r}
+#| echo: false
+zootopia |>
+  select(resident_name, department, district) |>
+  head()
+```
+
+## Example 1
+
+- Next, the bar chart of counts:
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+zootopia |>
+  ggplot(aes(x = district, fill = district)) +
+  geom_bar() +
+  scale_fill_manual(values = c(uwf_blue, uwf_green, uwf_marigold, uwf_midnight)) +
+  labs(x = NULL, y = "Count") +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = "none")
+```
+
+## Example 1 (Code)
+
+- Next, the bar chart of counts:
+
+```{r}
+#| eval: false
+zootopia |>
+  ggplot(aes(x = district, fill = district)) +
+  geom_bar() +
+  labs(x = NULL, y = "Count") +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = "none")
+```
+
+## Example 1
+
+- Now the bar chart of proportions:
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+zootopia |>
+  ggplot(aes(x = district, y = after_stat(count) / sum(after_stat(count)), fill = district)) +
+  geom_bar() +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c(uwf_blue, uwf_green, uwf_marigold, uwf_midnight)) +
+  labs(x = NULL, y = "Percent of Recruits") +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = "none")
+```
+
+## Example 1 (Code)
+
+- Now the bar chart of proportions:
+
+```{r}
+#| eval: false
+zootopia |>
+  ggplot(aes(x = district, y = after_stat(count) / sum(after_stat(count)), fill = district)) +
+  geom_bar() +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = NULL, y = "Percent of Recruits") +
+  theme_minimal(base_size = 20) +
+  theme(legend.position = "none")
+```
+
+## Example 1
+
+- Now we find the exact numbers with `n_pct()`,
+
+```{r}
+zootopia |>
+  n_pct(district)
+```
+
+- Sahara Square has the most recruits (9, or 30.0%), and Tundratown has the fewest (6, or 20.0%) — but no district is dramatically over- or under-staffed compared to the others.
+
+## Example 1
+
+- Deputy Chief Okonkwo has a follow-up: *"Is Patrol/Desk assignment spread the same way across every district, or does that break down differently district by district?"*
+
+- That requires a two-way table. We add `group_by(district)` before `n_pct(department)`,
+
+```{r}
+zootopia |>
+  group_by(district) |>
+  n_pct(department)
+```
+
+## Example 1
+
+- Let's visualize that same breakdown with a grouped bar chart,
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+zootopia |>
+  ggplot(aes(x = district, fill = department)) +
+  geom_bar(position = "dodge") +
+  scale_fill_manual(values = c(uwf_blue, uwf_marigold)) +
+  labs(x = NULL, y = "Count") +
+  theme_minimal(base_size = 20)
+```
+
+## Example 1 (Code)
+
+- Let's visualize that same breakdown with a grouped bar chart,
+
+```{r}
+#| eval: false
+zootopia |>
+  ggplot(aes(x = district, fill = department)) +
+  geom_bar(position = "dodge") +
+  labs(x = NULL, y = "Count") +
+  theme_minimal(base_size = 20)
+```
+
+## Example 1
+
+- A few things stand out from the two-way table and grouped bar chart:
+
+    - Tundratown is the only district where Desk (4) outnumbers Patrol (2) — every other district leans Patrol.
+    - Downtown and Sahara Square both have a roughly 2-to-1 Patrol-to-Desk split.
+
+- On its own, the overall 60/40 Patrol/Desk split (from our first `n_pct(department)`) hides this — it's only by breaking things down by district that the Tundratown pattern shows up.
+
+    - This is the same lesson from last lecture's `hustle_earnings` example: the overall summary and the by-group summary can each tell a different part of the story. Good analysts check both.
+
+## Wrap Up
+
+- We have covered basics for describing and visualizing categorical variables.
+
+    - One categorical variable:
+
+        - Frequency (count)
+        - Relative frequency (proportion)
+        - Bar chart (counts)
+        - Bar chart (proportions)
+
+    - Two categorical variables:
+
+        - Two-way table
+        - Grouped bar chart
+
+- Next up: turning these descriptions into a testable claim about a proportion.

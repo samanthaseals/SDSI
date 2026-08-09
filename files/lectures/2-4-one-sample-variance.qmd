@@ -27,21 +27,202 @@ editor: source
 
 ## `R` Setup 
 
-## Confidence Interval for $\sigma^2$
+```{r}
+library(tidyverse)
+library(ssstats)
+```
 
-- (1--$\alpha$)100% CI for a population variance, $\sigma^2$
+## Data Setup 
+
+- Recall our Zootopia data,
+
+```{r}
+zootopia <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv")
+```
+
+```{r}
+#| echo: false
+
+head(zootopia, n = 5)
+```
+
+## Confidence Interval for $\sigma^2$ 
+
+- **(1--$\alpha$)100% CI for a population variance, $\sigma^2$**
+
+$$\left( \frac{(n-1)s^2}{\chi^2_{1-\alpha/2, n-1}}, \ \frac{(n-1)s^2}{\chi^2_{\alpha/2, n-1}} \right)$$
+
+- where
+
+    - $n$ is the sample size
+    
+    - $s^2$ is the sample variance
+    
+    - $\chi^2_{1-\alpha/2}$ and $\chi^2_{\alpha/2}$ are critical values from the $\chi^2$ distribution with $n-1$ degrees of freedom
+    
+- Note! This CI does not take the usual form of point estimate $\pm$ margin of error. 
 
 ## Confidence Interval for $\sigma$
 
-- (1--$\alpha$)100% CI for a population proportion, $\sigma^2$
+- **(1--$\alpha$)100% CI for a population standard deviation, $\sigma$**
+
+$$\left( \sqrt{\frac{(n-1)s^2}{\chi^2_{1-\alpha/2, n-1}}}, \ \sqrt{\frac{(n-1)s^2}{\chi^2_{\alpha/2, n-1}}} \ \right)$$
+
+- This is just the $\sqrt$ of the interval for $\sigma^2$.
 
 ## Hypothesis Test for $\sigma^2$
 
+- **Hypotheses**
+
+::: {.hyp-columns .columns}
+
+::: {.column width="30%"}
+**Two-Tailed**
+
+$H_0: \sigma^2 = \sigma^2_0$
+
+$H_1: \sigma^2 \ne \sigma^2_0$
+:::
+
+::: {.column width="30%"}
+**Left-Tailed**
+
+$H_0: \sigma^2 \ge \sigma^2_0$
+
+$H_1: \sigma^2 < \sigma^2_0$
+:::
+
+::: {.column width="30%"}
+**Right-Tailed**
+
+$H_0: \sigma^2 \le \sigma^2_0$
+
+$H_1: \sigma^2 > \sigma^2_0$
+:::
+
+:::
+
+- where
+
+    - $\sigma^2$ is the population variance,
+
+    - $\sigma^2_0$ is the hypothesized value of $\sigma^2$.
+
+## Hypothesis Test for $\sigma^2$
+
+- **Test Statistic**
+
+$$\chi^2_0=\frac{(n-1)s^2}{\sigma^2_0}$$
+
+- where
+
+    - $n$ is the sample size,
+
+    - $\sigma^2$ is the population variance,
+
+    - $\sigma^2_0$ is the hypothesized value of $\sigma^2$.
+    
 ## Statistical Inference on One Variance (`R`)
+
+- We will use the `one_variance()` function from `library(ssstats)` to perform statistical inference.
+
+```{r}
+#| eval: false
+dataset_name %>% one_variance(outcome = variable_name,
+                              sigma2 = hypothesized_value,
+                              alternative = "two" | "less" | "greater",
+                              alpha = alpha_level)
+```
+
+- where
+
+    - `outcome` is the variable name of the outcome variable
+    
+    - `sigma2` is the hypothesized value of the population variance (default = 1)
+    
+    - `alternative` is the alternative hypothesis (default = "two")
+
+    - `alpha` is the significance level (default = 0.05)
 
 ## Example 1
 
+- The Academy promises that its exam is calibrated with a target standard deviation of no more than 11 points. ZPD believes that the variability of their officer's exam scores is actually smaller. As Zootopia's data analyst, you've been asked to check that claim. We will use the `zootopia` dataset to answer:
+
+    - Is the consistency in ZPD officer exam scores better than $\sigma = 11$ points?
+
+- First, we need to describe the data.
+
+    - We start with point and interval estimates.
+    
+- Then, we will perform a hypothesis test to answer the question.
+
+## Example 1
+
+- Point and interval estimates:
+
+```{r}
+zootopia %>% one_variance(outcome = academy_exam_score)
+```
+
+- The estimated variance is $s^2 = 64.4$ with standard deviation $s = 8.0$. The 95% CI for $\sigma^2$ is $(40.8, 116.3)$, and the 95% CI for the population standard deviation is $(6.4, 10.8)$.
+
+## Example 1
+
+- Then, we will perform a hypothesis test to answer the question.    
+
+    - Is the consistency in ZPD officer exam scores better than $\sigma = 11$ points?
+    
+- How do we translate this into hypotheses?  
+
+    - $H_0: \sigma^2 > 121$ -- note that they gave us $\sigma$, not $\sigma^2$ 
+    - $H_1: \sigma^2 \le 121$
+    
+- For the `one_variance()` function, we will set 
+
+    - `sigma2 = 121`
+    - `alternative = "less"`.
+    - `alpha = 0.05`
+    
+## Example 1
+
+- Is the consistency in ZPD officer exam scores better than $\sigma = 11$ points?
+
+```{r}
+zootopia %>% one_variance(outcome = academy_exam_score,
+                          sigma2 = 121,
+                          alternative = "less",
+                          alpha = 0.05)
+```
+
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0: \sigma^2 \ge 121$
+    - $H_1: \sigma^2 < 121$
+    
+- **Test Statistic and *p*-Value**
+
+    - $\chi^2_0 = 1.1$
+    - $p = 0.019$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that the current standard deviation is smaller than 11 points.
+
 ## Example 2
+
+- The Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $1,200.
+
+As city analyst, you've been asked to check whether ZPD recruits' side-hustle earnings look consistent with that citywide benchmark, or whether recruits' earnings are unusually spread out (or unusually tight) compared to the rest of Zootopia.
+
+You pull side-hustle earnings from your sample of `30 recruits and want to answer one question:
+
+Is the standard deviation of recruit side-hustle earnings actually $1,200, or does it differ from the citywide benchmark?
 
 ## Wrap Up
 

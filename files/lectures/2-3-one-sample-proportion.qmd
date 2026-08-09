@@ -27,17 +27,283 @@ editor: source
 
 ## `R` Setup 
 
+```{r}
+library(tidyverse)
+library(ssstats)
+```
+
+## Data Setup 
+
+- Recall our Zootopia data,
+
+```{r}
+zootopia <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv")
+```
+
+```{r}
+#| echo: false
+
+head(zootopia, n = 5)
+```
+
 ## Confidence Interval for $\pi$
 
-- (1--$\alpha$)100% CI for a population proportion, $\pi$
+- **(1--$\alpha$)100% CI for a population proportion, $\pi$**
+
+$$\hat{p} \pm z_{\alpha/2} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
+
+- $\hat{p}$ is the sample proportion (the point estimate)
+
+- $z_{\alpha/2}$ comes from the standard normal distribution (the critical value)
+
+- $\hat{p}(1-\hat{p})$ is the variance of the Bernoulli distribution and $n$ is the sample size ($\sqrt{\hat{p}(1-\hat{p})/n}$ is the standard error of the mean)
 
 ## Hypothesis Test for $\pi$
 
+- **Hypotheses**
+
+::: {.hyp-columns .columns}
+
+::: {.column width="30%"}
+**Two-Tailed**
+
+$H_0: \pi = \pi_0$
+
+$H_1: \pi \ne \pi_0$
+:::
+
+::: {.column width="30%"}
+**Left-Tailed**
+
+$H_0: \pi \ge \pi_0$
+
+$H_1: \pi < \pi_0$
+:::
+
+::: {.column width="30%"}
+**Right-Tailed**
+
+$H_0: \pi \le \pi_0$
+
+$H_1: \pi > \pi_0$
+:::
+
+:::
+
+
+- $\pi$ is the population proportion,
+
+- $\pi_0$ is the hypothesized value of $\pi$.
+
+
+## Hypothesis Test for $\pi$
+
+- **Test Statistic**
+
+$$z_0 = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}$$
+
+- where
+
+    - $\hat{p}$ is the sample proportion
+
+    - $\pi_0$ is the hypothesized value of $\pi$
+
+    - $n$ is the sample size
+
 ## Statistical Inference on One Proportion (`R`)
+
+- We will use the `one_proportion()` function from `library(ssstats)` to perform statistical inference.
+
+```{r}
+#| eval: false
+dataset_name %>% one_proportion(outcome = variable_name,
+                                event = event_name_or_number,
+                                p = hypothesized_value,
+                                alternative = "two" | "less" | "greater",
+                                alpha = alpha_level)
+```
+
+- where
+
+    - `outcome` is the variable name of the outcome variable
+    
+    - `event` is the name or number of the event of interest
+    
+    - `p` is the hypothesized value of the population proportion (default = 0.05)
+    
+    - `alternative` is the alternative hypothesis (default = "two")
+
+    - `alpha` is the significance level (default = 0.05)
+
 
 ## Example 1
 
+- ZPD's official staffing policy states that 50% of officers are assigned to Patrol, with the rest working Desk duty. As Zootopia's data analyst, you believe thatatrol seems to make up a lot more than 50% of the department these days. We will use the `zootopia` dataset to answer:
+
+    - Has the true proportion of officers in Patrol increased from 50%?
+    
+- First, we need to describe the data.
+
+    - We start with point and interval estimates.
+    
+- Then, we will perform a hypothesis test to answer the question.
+
+## Example 1
+    
+- Point and interval estimates:
+
+```{r}
+zootopia %>% one_proportion(outcome = department)
+```
+
+- Oops! We need to make sure we specify the *event* of interest. Let's see how it's coded in the `department` variable.
+
+```{r}
+zootopia %>% n_pct(department)
+```
+
+## Example 1
+    
+- Point and interval estimates:
+
+```{r}
+zootopia %>% one_proportion(outcome = department,
+                            event = "Patrol")
+```
+
+- The estimated proportion of officers in Patrol is 60% (95% CI: 42.5%, 77.5%).
+
+## Example 1
+
+- Then, we will perform a hypothesis test to answer the question.    
+
+    - Has the true proportion of officers in Patrol increased from 50%?
+    
+- How do we translate this into hypotheses?  
+
+    - $H_0: \pi < 0.5$
+    - $H_1: \pi \ge 0.5$
+    
+- For the `one_proportion()` function, we will set 
+
+    - `p = 0.5`
+    - `alternative = "greater"`.    
+    
+
+## Example 1
+    
+- Has the true proportion of officers in Patrol increased from 50%?
+
+```{r}
+zootopia %>% one_proportion(outcome = department,
+                            event = "Patrol",
+                            p = 0.5,
+                            alternative = "greater",
+                            alpha = 0.05)
+```    
+
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0: \pi < 0.5$
+    - $H_1: \pi \ge 0.5$
+    
+- **Test Statistic and *p*-Value**
+
+    - $z_0 = 1.1$
+    - $p = 0.137$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that the current proportion of officers in Patrol has increased from 50%. 
+  
+
 ## Example 2
+
+- Zootopia's Housing Authority claims that 40% of officers live in Downtown. As data analyst, you believe Downtown might actually make up a smaller proportion of the roster than the Authority's number suggests. We will use the `zootopia` dataset to answer:
+
+    - Is the true proportion of officers living in Downtown actually less than 40%?
+    
+- First, we need to describe the data.
+
+    - We start with point and interval estimates.    
+
+- Then, we will perform a hypothesis test to answer the question.
+
+## Example 2
+
+- Looking at what is in `district`,
+
+```{r}
+zootopia %>% n_pct(district)
+```
+
+- We know that the event of interest is coded as `Downtown`.
+
+## Example 2
+
+- Point and interval estimates:
+
+```{r}
+zootopia %>% one_proportion(outcome = district,
+                            event = "Downtown")
+```
+
+- The estimated proportion of officers living in Downtown is 26.7% (95% CI: 10.8%, 42.5%).
+
+## Example 2
+
+- Then, we will perform a hypothesis test to answer the question.    
+
+    - Is the true proportion of officers living in Downtown actually less than 40%?
+    
+- How do we translate this into hypotheses?  
+
+    - $H_0: \pi > 0.4$
+    - $H_1: \pi \le 0.4$
+    
+- For the `one_proportion()` function, we will set 
+
+    - `p = 0.4`
+    - `alternative = "less"`.    
+    
+
+## Example 2
+    
+- Is the true proportion of officers living in Downtown actually less than 40%?
+
+```{r}
+zootopia %>% one_proportion(outcome = district,
+                            event = "Downtown",
+                            p = 0.4,
+                            alternative = "less",
+                            alpha = 0.05)
+```    
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: \pi < 0.4$
+    - $H_1: \pi \ge 0.4$
+    
+- **Test Statistic and *p*-Value**
+
+    - $z_0 = - 1.49$
+    - $p = 0.068$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that the current proportion of officers living in Downtown is less than 40%.
 
 ## Wrap Up
 
