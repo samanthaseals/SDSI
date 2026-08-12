@@ -1,0 +1,2389 @@
+[
+  {
+    "objectID": "files/schedule.html",
+    "href": "files/schedule.html",
+    "title": "Course Schedule",
+    "section": "",
+    "text": "All .qmd files for lectures can be found on GitHub: lecture folder\nAll data used in lecture can also be found on GitHub: data folder\n\n\n\n\n\n\nWeek 1: Summarizing Data\n\n\n\n\n\n\nLecture Schedule:\n\nBasics of Probability (.qmd file)\nProbability Distributions (.qmd file)\nDescribing and Visualizing Continuous Data (.qmd file)\nDescribing and Visualizing Categorical Data (.qmd file)\n\n\n\n\n\n\n\n\n\n\n\nWeek 2: Introduction to Statistical Inference\n\n\n\n\n\n\nLecture Schedule:\n\nIntroduction to Statistical Inference (.qmd file)\nOne-Sample Means and Medians (.qmd file)\nOne-Sample Proportions (.qmd file)\nOne-Sample Variances (.qmd file)\n\n\n\n\n\n\n\n\n\n\n\nWeek 3: Statistical Inference with Two Samples\n\n\n\n\n\n\nLecture Schedule:\n\nTwo-Sample Means and Medians (Independent) (.qmd file)\nTwo-Sample Means and Medians (Dependent) (.qmd file)\nTwo-Sample Proportions (.qmd file)\nTwo-Sample Variances (.qmd file)\n\n\n\n\n\n\n\n\n\n\n\nWeek 4: One-Way ANOVA\n\n\n\n\n\n\nLecture Schedule:\n\nOne-Way ANOVA (.qmd file)\nKruskal-Wallis (.qmd file)\nOne-Way Post-Hoc Testing (.qmd file)\nOne-Way Descriptives (.qmd file)\n\n\n\n\n\n\n\n\n\n\n\nWeek 5: Two-Way ANOVA\n\n\n\n\n\n\nLecture Schedule:\n\nTwo-Way ANOVA (.qmd file)\nNonparametric Two-Way ANOVA (.qmd file)\nTwo-Way Post-Hoc Testing (.qmd file)\nProfile Plots (.qmd file)\n\n\n\n\n\n\n\n\n\n\n\nWeek 6: Categorical Analysis\n\n\n\n\n\n\nLecture Schedule:\n\nGoodness of Fit (.qmd file)\nContingency Tables (.qmd file)\nPaired Categorical Data (.qmd file)\n\n\n\n\n\n\n\n\n\n\n\nWeek 7: Correlation and Linear Regression\n\n\n\n\n\n\nLecture Schedule:\n\nSwitching Gears in R… (.qmd file)\n\nCorrelation (.qmd file)\nGeneral Linear Models: Estimation and Intepretation (.qmd file)\n\nGeneral Linear Models: Inference and Prediction (.qmd file)\nGeneral Linear Models: Visualization (.qmd file)\n\n\n\n\n\n\n\n\n\n\n\nWeek 8: Final Exam\n\n\n\n\n\n\nFinal exam opens on Friday morning at 12 am and is due by Friday evening at 11:59 pm, Central.\n\nThis is a timed exam; once you open the exam on Canvas, you will have 3 hours for completion.\nThe exam is cumulative and will cover all material from the course.\nThe exam is conceptual and applied; none of the questions will require/ask for coding.\nNo make up exams will be given."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#introduction",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#introduction",
+    "title": "One-Sample Means and Medians",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#r-setup",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#r-setup",
+    "title": "One-Sample Means and Medians",
+    "section": "R Setup",
+    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#data-setup",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#data-setup",
+    "title": "One-Sample Means and Medians",
+    "section": "Data Setup",
+    "text": "Data Setup\n\nRecall our Zootopia data,\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8\n\n\nGreta Smith\nDesk\nTundratown\nPass\n81\n8.3\n36.10\n29.6\n\n\nOtto Meadowsly\nPatrol\nDowntown\nPass\n71\n7.5\n51.91\n65.2"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#confidence-interval-for-mu",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#confidence-interval-for-mu",
+    "title": "One-Sample Means and Medians",
+    "section": "Confidence Interval for \\mu",
+    "text": "Confidence Interval for \\mu\n\n(1–\\alpha)100% CI for a population mean, \\mu\n\n\\bar{y} \\pm t_{\\alpha/2, n-1} \\frac{s}{\\sqrt{n}}\n\nwhere\n\n\\bar{y} is the sample mean (the point estimate)\nt has n-1 degrees of freedom (the critical value)\ns is the sample standard deviation and n is the sample size (s/\\sqrt{n} is the standard error of the mean)"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#hypothesis-test-for-mu",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#hypothesis-test-for-mu",
+    "title": "One-Sample Means and Medians",
+    "section": "Hypothesis Test for \\mu",
+    "text": "Hypothesis Test for \\mu\n\nHypotheses\n\n\n\nTwo-Tailed\nH_0: \\mu = \\mu_0\nH_1: \\mu \\ne \\mu_0\n\nLeft-Tailed\nH_0: \\mu \\ge \\mu_0\nH_1: \\mu &lt; \\mu_0\n\nRight-Tailed\nH_0: \\mu \\le \\mu_0\nH_1: \\mu &gt; \\mu_0\n\n\n\\mu is the population mean,\n\\mu_0 is the hypothesized value of \\mu."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#hypothesis-test-for-mu-1",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#hypothesis-test-for-mu-1",
+    "title": "One-Sample Means and Medians",
+    "section": "Hypothesis Test for \\mu",
+    "text": "Hypothesis Test for \\mu\n\nTest Statistic\n\nt_0 = \\frac{\\bar{y} - \\mu_0}{s/\\sqrt{n}}\n\nwhere\n\n\\bar{y} is the sample mean\n\\mu_0 is the hypothesized value of \\mu\ns is the sample standard deviation\nn is the sample size"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#statistical-inference-on-one-mean-r",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#statistical-inference-on-one-mean-r",
+    "title": "One-Sample Means and Medians",
+    "section": "Statistical Inference on One Mean (R)",
+    "text": "Statistical Inference on One Mean (R)\n\nWe will use the one_mean() function from library(ssstats) to perform statistical inference.\n\n\ndataset_name %&gt;% one_mean(outcome = variable_name,\n                          mu = hypothesized_value,\n                          alternative = \"two\" | \"less\" | \"greater\",\n                          alpha = alpha_level)\n\n\nwhere\n\noutcome is the variable name of the outcome variable\nmu is the hypothesized value of the population mean\nalternative is the alternative hypothesis (default = “two”)\nalpha is the significance level (default = 0.05)"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-1",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-1",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nThe ZPD Academy claims that the passing exam average is 72 points. As Zootopia’s data analyst, you’ve been asked to check whether that claim actually holds up. We will use the zootopia dataset to answer the following question:\n\nIs the true average exam score for this cohort actually 72, or has it shifted?\n\nFirst, we need to describe the data.\n\nWe start with point and interval estimates.\n\nThen, we will perform a hypothesis test to answer the question."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-1-1",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-1-1",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_mean(outcome = academy_exam_score)\n\nOne-sample mean\n\nx̅ = 77.3333 (SD = 8.023)\n\n95% CI for μ: (74.3375, 80.3292)\n\nHypotheses:\nH₀: μ = 0\nH₁: μ ≠ 0\nTest statistic: t(29) = 52.795\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)\n\n\n\nThe average exam score is 77.3 (95% CI: 74.3, 80.3)."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-1-2",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-1-2",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the true average exam score for this cohort actually 72, or has it shifted?\n\nHow do we translate this into hypotheses?\n\nH_0: \\mu = 72\nH_1: \\mu \\ne 72\n\nFor the one_mean() function, we will set\n\nmu = 72\nalternative = \"two\"."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-1-3",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-1-3",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nIs the true average exam score for this cohort actually 72, or has it shifted?\n\n\nzootopia %&gt;% one_mean(outcome = academy_exam_score,\n                      mu = 72,\n                      alternative = \"two\")\n\nOne-sample mean\n\nx̅ = 77.3333 (SD = 8.023)\n\n95% CI for μ: (74.3375, 80.3292)\n\nHypotheses:\nH₀: μ = 72\nH₁: μ ≠ 72\nTest statistic: t(29) = 3.641\np-value: 0.001\nConclusion: Reject the null hypothesis (p = 0.001 &lt; α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-1-4",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-1-4",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nHypotheses\n\nH_0: \\mu = 72\nH_1: \\mu \\ne 72\n\nTest Statistic and p-Value\n\nt_0 = 3.641\np = 0.001\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nReject H_0. There is sufficient evidence to suggest that the current average exam score is different from the assumed average of 72."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-2",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nNot everyone in Zootopia earns a paycheck the same way. Some residents have steady side hustles that bring in predictable income. The Zootopia City Council has claimed that the typical resident hustle income is Z 35. As the data analyst, you’ve been asked to check. We will use the zootopia dataset to answer the following question:\n\nIs the typical side hustle income actually Z 35, or are residents earning more?\n\nFirst, we need to describe the data.\nThen, we will perform a hypothesis test to answer the question."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-1",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-1",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_mean(outcome = hustle_earnings)\n\nOne-sample mean\n\nx̅ = 36.7123 (SD = 22.7781)\n\n95% CI for μ: (28.2068, 45.2178)\n\nHypotheses:\nH₀: μ = 0\nH₁: μ ≠ 0\nTest statistic: t(29) = 8.828\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)\n\n\n\nThe average income is Z = 36.7 (95% CI: 28.2, 45.2)."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-2",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-2",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the typical side hustle income actually Z 35, or are residents earning more?\n\nHow do we translate this into hypotheses?\n\nH_0: \\mu \\le 35\nH_1: \\mu &gt; 35\n\nFor the one_mean() function, we will set\n\nmu = 35\nalternative = \"greater\"."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-3",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-3",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nIs the typical side hustle income actually Z 35, or are residents earning more?\n\n\nzootopia %&gt;% one_mean(outcome = hustle_earnings,\n                      mu = 35,\n                      alternative = \"greater\")\n\nOne-sample mean\n\nx̅ = 36.7123 (SD = 22.7781)\n\n95% CI for μ: (28.2068, 45.2178)\n\nHypotheses:\nH₀: μ ≤ 35\nH₁: μ &gt; 35\nTest statistic: t(29) = 0.412\np-value: 0.342\nConclusion: Fail to reject the null hypothesis (p = 0.342 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-4",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-4",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nHypotheses\n\nH_0: \\mu \\le 35\nH_1: \\mu &gt; 35\n\nTest Statistic and p-Value\n\nt_0 = 0.412\np = 0.342\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the current average income is greater than the assumed average of 35"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#assumption-on-one-sample-t",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#assumption-on-one-sample-t",
+    "title": "One-Sample Means and Medians",
+    "section": "Assumption on One-Sample t",
+    "text": "Assumption on One-Sample t\n\nWe assume that the data has an approximate mound-shaped and symmetric distribution.\n\ni.e., y_1, y_2, \\ldots, y_n \\sim N(\\mu, \\sigma^2)\n\nWe will use a quantile-quantile plot (Q-Q plot) to check the assumption of normality.\n\nWe will also eyeball a histogram to further check the assumption of normality."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#quantile-quantile-plots",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#quantile-quantile-plots",
+    "title": "One-Sample Means and Medians",
+    "section": "Quantile-Quantile Plots",
+    "text": "Quantile-Quantile Plots\n\nA QQ plot (“quantile-quantile plot”) is a quick visual check for one question: does my data look roughly normal?\n\nWe do not need perfection – we just need “close enough.”\n\n\n\n\nEach dot compares one thing: where the observed data falls, versus where it would fall if your data were “perfectly normal.”\n\nThe diagonal line on the plot represents “perfectly normal.”"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#quantile-quantile-plots-1",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#quantile-quantile-plots-1",
+    "title": "One-Sample Means and Medians",
+    "section": "Quantile-Quantile Plots",
+    "text": "Quantile-Quantile Plots\n\n\nLook at the left side of the plot: the dots dip below the line instead of following it.\n\nThis indicates left-skewed data.\n\nThe histogram confirms that the data does not have a mound-shaped and symmetric distribution."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#quantile-quantile-plots-2",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#quantile-quantile-plots-2",
+    "title": "One-Sample Means and Medians",
+    "section": "Quantile-Quantile Plots",
+    "text": "Quantile-Quantile Plots\n\n\nNotice how closely the dots hug the diagonal line, especially through the middle.\n\nA little wiggle at the very ends is normal, especially with small samples.\n\nThe histogram confirms that the data has a mound-shaped and symmetric distribution."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#quantile-quantile-plots-3",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#quantile-quantile-plots-3",
+    "title": "One-Sample Means and Medians",
+    "section": "Quantile-Quantile Plots",
+    "text": "Quantile-Quantile Plots\n\n\nLook at the right side of the plot: the dots rise above the line instead of following it.\n\nThis indicates right-skewed data.\n\nThe historgram confirms that the data does not have a mound-shaped and symmetric distribution."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#quantile-quantile-plots-4",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#quantile-quantile-plots-4",
+    "title": "One-Sample Means and Medians",
+    "section": "Quantile-Quantile Plots",
+    "text": "Quantile-Quantile Plots\n\n\nNotice the dots aren’t a smooth curve, but instead are clustered like a staircase.\n\nThis happens because count (discrete) data can only take whole-number values (0, 1, 2, 3…). Many observations land on the exact same number, so the step represents the “density” of observations at that value.\n\nAgain, the histogram confirms that the data does not have a mound-shaped and symmetric distribution."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#checking-normality-r",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#checking-normality-r",
+    "title": "One-Sample Means and Medians",
+    "section": "Checking Normality (R)",
+    "text": "Checking Normality (R)\n\nWe will use the one_qq() function from library(ssstats) to eyeball normality.\n\n\ndataset_name %&gt;% one_qq(outcome = variable_name)\n\n\nwhere\n\noutcome is the variable name of the outcome variable"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-1-5",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-1-5",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nLet’s check the normality assumption for the academy_exam_score variable.\n\n\nzootopia %&gt;% one_qq(outcome = academy_exam_score)"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-5",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-5",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nLet’s check the normality assumption for the hustle_earnings variable.\n\n\nzootopia %&gt;% one_qq(outcome = hustle_earnings)"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#nonparametric-alternatives",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#nonparametric-alternatives",
+    "title": "One-Sample Means and Medians",
+    "section": "Nonparametric Alternatives",
+    "text": "Nonparametric Alternatives\n\nThe t-test we have learned is considered a parametric method.\n\nThere is a distributional assumption on the test (normality).\n\nNonparametric methods do not have distributional assumptions.\n\nWe perform calculations on transformed data rather than the raw, observed data.\n\nWhy don’t we always use nonparametric methods?\n\nThey are often less efficient: a larger sample size is required to achieve the same probability of a Type I error.\nThey discard useful information :("
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#confidence-interval-for-m",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#confidence-interval-for-m",
+    "title": "One-Sample Means and Medians",
+    "section": "Confidence Interval for M",
+    "text": "Confidence Interval for M\n\n(1–\\alpha)100% CI for a population median, M\n\n(M_L, M_U) = (y_{(L_{\\alpha/2})}, y_{(U_{\\alpha/2})})\n\nwhere\n\nL_{\\alpha/2} is the lower critical value of a binomial distribution with parameters n and p = 0.5\nU_{\\alpha/2} is the upper critical value of a binomial distribution with parameters n and p = 0.5\n\nIn R, linear interpolation is used to find the lower and upper bounds of the confidence interval.\n\nThis makes it a precise (1--\\alpha)100\\% confidence interval."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#hypothesis-test-for-m",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#hypothesis-test-for-m",
+    "title": "One-Sample Means and Medians",
+    "section": "Hypothesis Test for M",
+    "text": "Hypothesis Test for M\n\nHypotheses\n\n\n\nTwo-Tailed\nH_0: M = M_0\nH_1: M \\ne M_0\n\nLeft-Tailed\nH_0: M \\ge M_0\nH_1: M &lt; M_0\n\nRight-Tailed\nH_0: M \\le M_0\nH_1: M &gt; M_0\n\n\nwhere\n\nM is the population median,\nM_0 is the hypothesized value of M."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#hypothesis-test-for-m-1",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#hypothesis-test-for-m-1",
+    "title": "One-Sample Means and Medians",
+    "section": "Hypothesis Test for M",
+    "text": "Hypothesis Test for M\n\nTest Statistic\n\nS = \\sum_{i=1}^n I_{(y_i &gt; M_0)}\n\nwhere\n\nI is an indicator function that results in a 1 or a 0\n\nThe criteria is y_i &gt; M_0 (1 if true, 0 if false); i.e., S is the number of observations greater than the hypothesized median, M_0.\n\nn is the sample size"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#statistical-inference-on-one-median-r",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#statistical-inference-on-one-median-r",
+    "title": "One-Sample Means and Medians",
+    "section": "Statistical Inference on One Median (R)",
+    "text": "Statistical Inference on One Median (R)\n\nWe will use the one_median() function from library(ssstats) to perform statistical inference.\n\n\ndataset_name %&gt;% one_median(outcome = variable_name,\n                            m = hypothesized_value,\n                            alternative = \"two\" | \"less\" | \"greater\",\n                            alpha = alpha_level)\n\n\nwhere\n\noutcome is the variable name of the outcome variable\nm is the hypothesized value of the population median\nalternative is the alternative hypothesis (default = “two”)\nalpha is the significance level (default = 0.05)"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-6",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-6",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nRecall in the Zootopia data, we were investigating the typical income from side hustles. The research question was\n\nIs the typical side hustle income actually Z 35, or are residents earning more?\n\nWe saw that the normality was questionable, thus, we now want to apply a nonparametric approach.\nOur hypotheses now become\n\nH_0: M \\le 35\nH_1: M &gt; 35"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-7",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-7",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nIs the typical side hustle income actually Z 35, or are residents earning more?\nApplying the one_median() function,\n\n\nzootopia %&gt;% one_median(outcome = hustle_earnings,\n                        m = 35,\n                        alternative = \"greater\")\n\nOne-sample median\n\nMedian = 31.07\n\n95% CI for M: (23.1486, 37.9992)\n\nHypotheses:\nH₀: M ≤ 35\nH₁: M &gt; 35\nTest statistic: S = 13\np-value: 0.819\nConclusion: Fail to reject the null hypothesis (p = 0.819 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-8",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-8",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nHypotheses\n\nH_0: M \\le 35\nH_1: M &gt; 35\n\nTest Statistic and p-Value\n\nS = 13 (13/30 were greater than 35)\np = 0.819\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the current median income is greater than the assumed median of 35"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-9",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-9",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nLooking at the confidence interval,\n\n\nzootopia %&gt;% one_median(outcome = hustle_earnings,\n                        m = 35,\n                        alternative = \"greater\")\n\nOne-sample median\n\nMedian = 31.07\n\n95% CI for M: (23.1486, 37.9992)\n\nHypotheses:\nH₀: M ≤ 35\nH₁: M &gt; 35\nTest statistic: S = 13\np-value: 0.819\nConclusion: Fail to reject the null hypothesis (p = 0.819 ≥ α = 0.050)\n\n\n\nWe see that we are 95% confident that the true median income is between Z 23.14 and Z 37.99."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-3",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-3",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 3",
+    "text": "Example 3\n\nThe Zootopia Weather Bureau has publicly claimed that the average daily temperature across the city is 75°F. As the data analyst, you have a sample of daily temperature readings (district_temp_f).\n\nIs the true average daily temperature actually 75°F, or does the data suggest otherwise?\n\nOur analysis steps:\n\nQQ plot: should we describe the mean or median?\nPoint and interval estimation for mean/median\nHypothesis test for mean/median"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-3-1",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-3-1",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 3",
+    "text": "Example 3\n\nChecking the normality assumption for the district_temp_f variable.\n\n\nzootopia %&gt;% one_qq(outcome = district_temp_f)"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-3-2",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-3-2",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 3",
+    "text": "Example 3\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_median(outcome = district_temp_f)\n\nOne-sample median\n\nMedian = 71.25\n\n95% CI for M: (65.1129, 76.7288)\n\nHypotheses:\nH₀: M = 0\nH₁: M ≠ 0\nTest statistic: S = 30\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)\n\n\n\nThe median temperature is 71.3°F (95% CI: 65.1, 76.7)."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-3-3",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-3-3",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 3",
+    "text": "Example 3\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the true average daily temperature actually 75°F, or does the data suggest otherwise?\n\nHow do we translate this into hypotheses?\n\nH_0: M = 75\nH_1: M \\ne 75\n\nFor the one_median() function, we will set\n\nm = 75\nalternative = \"two\"."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-3-4",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-3-4",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 3",
+    "text": "Example 3\n\nIs the true average daily temperature actually 75°F, or does the data suggest otherwise?\n\n\nzootopia %&gt;% one_median(outcome = district_temp_f,\n                        m = 75,\n                        alternative = \"two\")\n\nOne-sample median\n\nMedian = 71.25\n\n95% CI for M: (65.1129, 76.7288)\n\nHypotheses:\nH₀: M = 75\nH₁: M ≠ 75\nTest statistic: S = 10\np-value: 0.099\nConclusion: Fail to reject the null hypothesis (p = 0.099 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-3-5",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#example-3-5",
+    "title": "One-Sample Means and Medians",
+    "section": "Example 3",
+    "text": "Example 3\n\nHypotheses\n\nH_0: M = 75\nH_1: M \\ne 75\n\nTest Statistic and p-Value\n\nS = 10\np = 0.099\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the current median daily temperature is different from the assumed median of 75°F."
+  },
+  {
+    "objectID": "files/lectures/2-2-one-sample-mean-median.html#wrap-up",
+    "href": "files/lectures/2-2-one-sample-mean-median.html#wrap-up",
+    "title": "One-Sample Means and Medians",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\nUsing a t-test to examine the mean (\\mu) requires normality.\n\nWe check normality with a quantile-quantile plot (one_qq()).\n\nThe analysis you choose should match the needed method:\n\nIf we meet normality (one_mean()):\n\nPoint estimate: \\bar{y} to estimate \\mu\nInterval estimate: CI for \\mu\nOne-sample t-test for \\mu\n\nIf we do not meet normality (one_median()):\n\nPoint estimate: m(edian) to estimate M\nInterval estimate: CI for M\nOne-sample sign test for M"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#introduction",
+    "href": "files/lectures/3-4-two-sample-variances.html#introduction",
+    "title": "Two-Sample Variances",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#r-setup",
+    "href": "files/lectures/3-4-two-sample-variances.html#r-setup",
+    "title": "Two-Sample Variances",
+    "section": "R Setup",
+    "text": "R Setup"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#confidence-interval-for-sigma2_1sigma2_2",
+    "href": "files/lectures/3-4-two-sample-variances.html#confidence-interval-for-sigma2_1sigma2_2",
+    "title": "Two-Sample Variances",
+    "section": "Confidence Interval for \\sigma^2_1/\\sigma^2_2",
+    "text": "Confidence Interval for \\sigma^2_1/\\sigma^2_2\n\n(1–\\alpha)100% CI for two population variances, \\sigma^2_1/\\sigma_2^2"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#confidence-interval-for-sigma_1sigma_2",
+    "href": "files/lectures/3-4-two-sample-variances.html#confidence-interval-for-sigma_1sigma_2",
+    "title": "Two-Sample Variances",
+    "section": "Confidence Interval for \\sigma_1/\\sigma_2",
+    "text": "Confidence Interval for \\sigma_1/\\sigma_2\n\n(1–\\alpha)100% CI for two population variances, \\sigma_1/\\sigma_2"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#hypothesis-test-for-sigma_12sigma_22",
+    "href": "files/lectures/3-4-two-sample-variances.html#hypothesis-test-for-sigma_12sigma_22",
+    "title": "Two-Sample Variances",
+    "section": "Hypothesis Test for \\sigma_1^2/\\sigma_2^2",
+    "text": "Hypothesis Test for \\sigma_1^2/\\sigma_2^2"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#statistical-inference-on-two-variances-r",
+    "href": "files/lectures/3-4-two-sample-variances.html#statistical-inference-on-two-variances-r",
+    "title": "Two-Sample Variances",
+    "section": "Statistical Inference on Two Variances (R)",
+    "text": "Statistical Inference on Two Variances (R)"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#example-1",
+    "href": "files/lectures/3-4-two-sample-variances.html#example-1",
+    "title": "Two-Sample Variances",
+    "section": "Example 1",
+    "text": "Example 1"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#example-2",
+    "href": "files/lectures/3-4-two-sample-variances.html#example-2",
+    "title": "Two-Sample Variances",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#wrap-up",
+    "href": "files/lectures/3-4-two-sample-variances.html#wrap-up",
+    "title": "Two-Sample Variances",
+    "section": "Wrap Up",
+    "text": "Wrap Up"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#introduction",
+    "href": "files/lectures/1-2-probability-distributions.html#introduction",
+    "title": "Probability Distributions",
+    "section": "Introduction",
+    "text": "Introduction\n\nWe covered the ground rules:\n\nprobabilities are between 0 and 1, and\nall outcomes sum to 1.\n\nWe covered probability basics:\n\ncomplement\nindependence\nconditional probability\n\nNow, we zoom out: instead of asking about one event at a time, we’ll describe probability for any possible event."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#probability-distributions",
+    "href": "files/lectures/1-2-probability-distributions.html#probability-distributions",
+    "title": "Probability Distributions",
+    "section": "Probability Distributions",
+    "text": "Probability Distributions\n\nRecall from last lecture: a random experiment has a sample space, or the set of everything that could happen\n\n\n\nProbability distribution\n\n\nA probability distribution assigns a probability to every outcome in that sample space\n\n\n\nTwo requirements:\n\nEvery probability is between 0 and 1\nAll the probabilities together add up to 1"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#discrete-variables",
+    "href": "files/lectures/1-2-probability-distributions.html#discrete-variables",
+    "title": "Probability Distributions",
+    "section": "Discrete Variables",
+    "text": "Discrete Variables\nBefore we can describe a variable’s distribution, we have to know what kind of variable it is.\n\n\nDiscrete variables\n\nOutcomes that can be enumerated.\n\nCounts: how many? 0, 1, 2, …\nCategories: ordinal or nominal\nBinary: yes/no, true/false, 0/1, etc."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#example-discrete-variables",
+    "href": "files/lectures/1-2-probability-distributions.html#example-discrete-variables",
+    "title": "Probability Distributions",
+    "section": "Example: Discrete Variables",
+    "text": "Example: Discrete Variables\n\nExample: the ZPD role of each recruit"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#example-discrete-variables-1",
+    "href": "files/lectures/1-2-probability-distributions.html#example-discrete-variables-1",
+    "title": "Probability Distributions",
+    "section": "Example: Discrete Variables",
+    "text": "Example: Discrete Variables\n\nExample: recruits’ exam score categorization"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#continuous-variables",
+    "href": "files/lectures/1-2-probability-distributions.html#continuous-variables",
+    "title": "Probability Distributions",
+    "section": "Continuous Variables",
+    "text": "Continuous Variables\nBefore we can describe a variable’s distribution, we have to know what kind of variable it is.\n\n\nContinuous variables\n\nOutcomes that cannot be enumerated.\n\nThese are things we measure and could fall anywhere on a scale."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#example-continuous-variables",
+    "href": "files/lectures/1-2-probability-distributions.html#example-continuous-variables",
+    "title": "Probability Distributions",
+    "section": "Example: Continuous Variables",
+    "text": "Example: Continuous Variables\n\nExample: recruits’ exam score"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#example-continuous-variables-1",
+    "href": "files/lectures/1-2-probability-distributions.html#example-continuous-variables-1",
+    "title": "Probability Distributions",
+    "section": "Example: Continuous Variables",
+    "text": "Example: Continuous Variables\n\nExample: side hustle earnings"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#probability-mass-function-pmf",
+    "href": "files/lectures/1-2-probability-distributions.html#probability-mass-function-pmf",
+    "title": "Probability Distributions",
+    "section": "Probability Mass Function (PMF)",
+    "text": "Probability Mass Function (PMF)\n\nWe can formally describe the probability using a function.\n\n\n\nProbability mass function (PMF)\n\nFor a discrete variable, the rule that assigns a probability to each possible value is called the probability mass function (PMF).\n\n\ni.e., the PMF is just the bar chart in function form.\n\nPick any value of the variable and the PMF tells you the corresponding probability."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#probability-density-function-pdf",
+    "href": "files/lectures/1-2-probability-distributions.html#probability-density-function-pdf",
+    "title": "Probability Distributions",
+    "section": "Probability Density Function (PDF)",
+    "text": "Probability Density Function (PDF)\n\nWe can formally describe the probability using a function.\n\n\n\nProbability density function (PDF)\n\nFor a continuous variable, the rule that describes the probability a range of possible value is called the probability density function (PDF).\n\n\ni.e., the PDF is just the density plot in function form. However,\n\nThe curve itself is not a probability – we must find the probability by calculating the area under the curve for a range of values.\nThe total area under the whole curve is 1"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#cumulative-distribution-function-cdf",
+    "href": "files/lectures/1-2-probability-distributions.html#cumulative-distribution-function-cdf",
+    "title": "Probability Distributions",
+    "section": "Cumulative Distribution Function (CDF)",
+    "text": "Cumulative Distribution Function (CDF)\nBoth discrete and continuous variables share the cumulative distribution function (CDF).\n\n\nCumulative density function (CDF)\n\nFor either type of variable, the rule that gives the probability of being at or below a specific value is called the cumulative distribution function (CDF).\n\n\nThe CDF is a running total as you move left to right – it is the cumulative probability"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#pmf-vs-cdf",
+    "href": "files/lectures/1-2-probability-distributions.html#pmf-vs-cdf",
+    "title": "Probability Distributions",
+    "section": "PMF vs CDF",
+    "text": "PMF vs CDF\n\nComparing the PMF of ZPD assignment to the CMF:"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#pdf-vs-cdf",
+    "href": "files/lectures/1-2-probability-distributions.html#pdf-vs-cdf",
+    "title": "Probability Distributions",
+    "section": "PDF vs CDF",
+    "text": "PDF vs CDF\n\nComparing the PDF of academy exam scores to the CDF:"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#binomial-experiments",
+    "href": "files/lectures/1-2-probability-distributions.html#binomial-experiments",
+    "title": "Probability Distributions",
+    "section": "Binomial Experiments",
+    "text": "Binomial Experiments\n\nDeputy Chief Okonkwo wants to know:\n\n“If I pull n recruits at random, how many will be Patrol?”\n\nThis is a binomial experiment:\n\nThe experiment consists of n identical trials (pulling n recruits at random).\nEach trial has two possible outcomes: “success” (Patrol) or “failure” (Desk).\nThe probability of success (\\pi) is the same for each trial (0.72).\nThe trials are independent (the duty assignment of one recruit does not affect the duty assignment of another).\nThe random variable y is the number of successes (recruits on Patrol) in n trials."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-binomial-distribution",
+    "href": "files/lectures/1-2-probability-distributions.html#the-binomial-distribution",
+    "title": "Probability Distributions",
+    "section": "The Binomial Distribution",
+    "text": "The Binomial Distribution\n\nWe use the binomial distribution to describe the probabilities of binomial experiments,\n\n\n\nBinomial Distribution\n\nFor a fixed number of independent binary trials, the distribution that describes the probability of a specific number of “successes” is called the binomial distribution.\n\n\nIf y has a binomial distribution, we say y \\sim Bin(n, \\pi)."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-binomial-distribution-1",
+    "href": "files/lectures/1-2-probability-distributions.html#the-binomial-distribution-1",
+    "title": "Probability Distributions",
+    "section": "The Binomial Distribution",
+    "text": "The Binomial Distribution\n\nThe probability of observing y successes in n trials of a binomial experiment is given by\n\n\nP(y) = \\frac{n!}{y!(n-y)!} \\pi^y (1-\\pi)^{n-y}\n\n\nn = number of trials,\ny = number of successes,\n\\pi = probability of success on a single trial"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-binomial-distribution-2",
+    "href": "files/lectures/1-2-probability-distributions.html#the-binomial-distribution-2",
+    "title": "Probability Distributions",
+    "section": "The Binomial Distribution",
+    "text": "The Binomial Distribution\n\nDeputy Chief Okonkwo wants to know:\n\n“If I pull n recruits at random, how many will be Patrol?”\n\nThis question asks us to count the number of “successes” (e.g., Patrol) out of a fixed number of tries\nThe binomial distribution is appropriate here, as:\n\nn (number of recruits in sample)\ny (number of recruits in sample that are Patrol)\n\\pi (probability of an individual being Patrol)"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-binomial-distribution-3",
+    "href": "files/lectures/1-2-probability-distributions.html#the-binomial-distribution-3",
+    "title": "Probability Distributions",
+    "section": "The Binomial Distribution",
+    "text": "The Binomial Distribution\n\nThe shape of the binomial distribution depends on n and p.\n\n\n\nIf we have more recruits or a different success rate, our expectations change."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-normal-distribution",
+    "href": "files/lectures/1-2-probability-distributions.html#the-normal-distribution",
+    "title": "Probability Distributions",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\n\nDeputy Chief Okonkwo wants to know:\n\n“How are academy exam scores distributed across all recruits?”\n\nThe normal distribution is the right tool when:\n\nThe random variable is continuous (exam scores can take any value along a scale).\nThe distribution is symmetric, with values clustering around a central average.\nValues far from the average become progressively less likely, tapering off evenly in both directions."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-1",
+    "href": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-1",
+    "title": "Probability Distributions",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\n\nWe use the normal distribution to describe continuous variables that cluster symmetrically around an average,\n\n\n\nNormal Distribution\n\nFor a continuous variable that clusters symmetrically around an average, the distribution that describes the probability of a range of values is called the normal distribution.\n\n\nIf y has a normal distribution, we say y \\sim N(\\mu, \\sigma)."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-2",
+    "href": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-2",
+    "title": "Probability Distributions",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\n\nThe probability density of a normal distribution at a value y is given by\n\n\nf(y) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{1}{2}\\left(\\frac{y - \\mu}{\\sigma}\\right)^2}\n\n\n\\mu = population mean,\n\\sigma = population standard deviation,\ny = a possible value of the variable"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-3",
+    "href": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-3",
+    "title": "Probability Distributions",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\n\nDeputy Chief Okonkwo wants to know:\n\n“How are academy exam scores distributed across all recruits?”\n\nThis question asks us to describe the pattern of a continuous variable around its average\nThe normal distribution is appropriate here, with:\n\n\\mu (average academy exam score across recruits)\n\\sigma (spread of academy exam scores around that average)\ny (a recruit’s individual exam score)"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-4",
+    "href": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-4",
+    "title": "Probability Distributions",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\n\nThe shape of the normal distribution depends on \\mu and \\sigma.\n\n\n\nNote that \\mu controls the location and \\sigma controls the shape."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-5",
+    "href": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-5",
+    "title": "Probability Distributions",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\n\nWhen we change \\mu,"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-6",
+    "href": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-6",
+    "title": "Probability Distributions",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\n\nWhen we change \\sigma,"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-7",
+    "href": "files/lectures/1-2-probability-distributions.html#the-normal-distribution-7",
+    "title": "Probability Distributions",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\n\nFinally, we have the standard normal, where z \\sim N(0, 1)."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-t-distribution",
+    "href": "files/lectures/1-2-probability-distributions.html#the-t-distribution",
+    "title": "Probability Distributions",
+    "section": "The t-Distribution",
+    "text": "The t-Distribution\n\nDeputy Chief Okonkwo wants to know:\n\n“Sahara Square only has 8 recruits — how confident can we be about their average sleep hours?”\n\nThe t-distribution is the right tool when:\n\nThe random variable is continuous (sleep hours can take “any” value).\nThe sample size is small (“small” meaning n &lt; 30).\nThe population standard deviation (\\sigma) is unknown, so we estimate it with the sample standard deviation (s).\n\nWe will see that estimating \\sigma with s adds uncertainty.\n\nThe t-distribution has heavier tails than the normal."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-t-distribution-1",
+    "href": "files/lectures/1-2-probability-distributions.html#the-t-distribution-1",
+    "title": "Probability Distributions",
+    "section": "The t-Distribution",
+    "text": "The t-Distribution\n\nWe use the t-distribution to describe a continuous variable estimated from a small sample with unknown population spread,\n\n\n\nt-Distribution\n\nFor a continuous variable estimated from a small sample with unknown population standard deviation, the distribution that describes the probability of a range of values is called the t-distribution."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-t-distribution-2",
+    "href": "files/lectures/1-2-probability-distributions.html#the-t-distribution-2",
+    "title": "Probability Distributions",
+    "section": "The t-Distribution",
+    "text": "The t-Distribution\n\nThe probability density of a t-distribution at a value y is given by\n\n\nf(y) = \\frac{\\Gamma\\left(\\frac{\\nu+1}{2}\\right)}{\\sqrt{\\nu\\pi}\\,\\Gamma\\left(\\frac{\\nu}{2}\\right)} \\left(1 + \\frac{y^2}{\\nu}\\right)^{-\\frac{\\nu+1}{2}}\n - \\nu = degrees of freedom"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-t-distribution-3",
+    "href": "files/lectures/1-2-probability-distributions.html#the-t-distribution-3",
+    "title": "Probability Distributions",
+    "section": "The t-Distribution",
+    "text": "The t-Distribution\n\nDeputy Chief Okonkwo wants to know:\n\n“Sahara Square only has 8 recruits — how confident can we be about their average sleep hours?”\n\nThis question asks us to estimate a population average from a small sample where we don’t know the true population spread\nThe t-distribution is appropriate here, with:\n\nn (number of recruits in the Sahara Square sample: 8)\ns (sample standard deviation of sleep hours)\n\\nu (degrees of freedom = n - 1 = 7 in this case)"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-t-distribution-4",
+    "href": "files/lectures/1-2-probability-distributions.html#the-t-distribution-4",
+    "title": "Probability Distributions",
+    "section": "The t-Distribution",
+    "text": "The t-Distribution\n\nThe shape of the t-distribution depends on its degrees of freedom (\\nu).\n\n\n\nAs \\nu grows larger (more data), the t-distribution’s tails shrink and it converges toward the standard normal."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-t-distribution-5",
+    "href": "files/lectures/1-2-probability-distributions.html#the-t-distribution-5",
+    "title": "Probability Distributions",
+    "section": "The t-Distribution",
+    "text": "The t-Distribution\n\n\nRecall: learning probabilities using tables in a book\n\nWhen you hit a “large enough” sample size, it goes to df = \\infty and the resulting values are the same as the standard normal.\nThat is because the t-distribution converges to the standard normal as \\nu \\to \\infty."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-chi2-distribution",
+    "href": "files/lectures/1-2-probability-distributions.html#the-chi2-distribution",
+    "title": "Probability Distributions",
+    "section": "The \\chi^2-Distribution",
+    "text": "The \\chi^2-Distribution\n\nDeputy Chief Okonkwo wants to know:\n\n“ZPD claims academy exam scores have a standard deviation of 10 — is our recruits’ spread consistent with that?”\n\nThe chi-squared distribution will be used in hypothesis testing, not for describing the shape of a variable itself.\n\nWe use it strictly as a tool for hypothesis testing.\nWe will see it across several topics, including one-sample tests for variance, two-sample tests for variance, and goodness-of-fit tests."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-chi2-distribution-1",
+    "href": "files/lectures/1-2-probability-distributions.html#the-chi2-distribution-1",
+    "title": "Probability Distributions",
+    "section": "The \\chi^2-Distribution",
+    "text": "The \\chi^2-Distribution\n\nWe use the \\chi^2-distribution to describe how sample variance behaves when testing a claim about population spread,\n\n\n\n\\chi^2-Distribution\n\nFor a quantity built from squared, standardized sample variance, the distribution that describes the probability of a range of values is called the chi-squared distribution."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-chi2-distribution-2",
+    "href": "files/lectures/1-2-probability-distributions.html#the-chi2-distribution-2",
+    "title": "Probability Distributions",
+    "section": "The \\chi^2-Distribution",
+    "text": "The \\chi^2-Distribution\n\nThe probability density of a chi-squared distribution at a value y is given by\n\n\nf(y) = \\frac{1}{2^{\\nu/2}\\Gamma\\left(\\frac{\\nu}{2}\\right)} y^{\\frac{\\nu}{2}-1} e^{-y/2}, \\quad y \\geq 0\n - \\nu = degrees of freedom"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-chi2-distribution-3",
+    "href": "files/lectures/1-2-probability-distributions.html#the-chi2-distribution-3",
+    "title": "Probability Distributions",
+    "section": "The \\chi^2-Distribution",
+    "text": "The \\chi^2-Distribution\n\nThe shape of the \\chi^2-distribution depends on its degrees of freedom (\\nu)."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-chi2-distribution-4",
+    "href": "files/lectures/1-2-probability-distributions.html#the-chi2-distribution-4",
+    "title": "Probability Distributions",
+    "section": "The \\chi^2-Distribution",
+    "text": "The \\chi^2-Distribution\n\nUnlike the t-distribution, the \\chi^2-distribution is not symmetric.\n\nAs \\nu grows larger, it becomes more symmetric and bell-shaped."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-f-distribution",
+    "href": "files/lectures/1-2-probability-distributions.html#the-f-distribution",
+    "title": "Probability Distributions",
+    "section": "The F-Distribution",
+    "text": "The F-Distribution\n\nWe use the F-distribution to describe how the ratio of two sample variances behaves when comparing spread across two groups,\n\n\n\nF-Distribution\n\nFor a quantity built from the ratio of two independent \\chi^2 variables, the distribution that describes the probability of a range of values is called the F-distribution."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-f-distribution-1",
+    "href": "files/lectures/1-2-probability-distributions.html#the-f-distribution-1",
+    "title": "Probability Distributions",
+    "section": "The F-Distribution",
+    "text": "The F-Distribution\n\nThe probability density of an F-distribution at a value y is given by\n\n\nf(y) = \\frac{\\sqrt{\\frac{(\\nu_1 y)^{\\nu_1} \\nu_2^{\\nu_2}}{(\\nu_1 y + \\nu_2)^{\\nu_1+\\nu_2}}}}{y \\, \\text{B}\\left(\\frac{\\nu_1}{2}, \\frac{\\nu_2}{2}\\right)}, \\quad y \\geq 0\n\n\n\\nu_1 = degrees of freedom, numerator\n\\nu_2 = degrees of freedom, denominator"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-f-distribution-2",
+    "href": "files/lectures/1-2-probability-distributions.html#the-f-distribution-2",
+    "title": "Probability Distributions",
+    "section": "The F-Distribution",
+    "text": "The F-Distribution\n\nThe shape of the F-distribution depends on two degrees of freedom, \\nu_1 and \\nu_2."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#the-f-distribution-3",
+    "href": "files/lectures/1-2-probability-distributions.html#the-f-distribution-3",
+    "title": "Probability Distributions",
+    "section": "The F-Distribution",
+    "text": "The F-Distribution\n\nLike the \\chi^2-distribution, the F-distribution is not symmetric and only takes non-negative values.\n\nAs \\nu_1 and \\nu_2 grow larger, it becomes more symmetric and bell-shaped."
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#wrap-up",
+    "href": "files/lectures/1-2-probability-distributions.html#wrap-up",
+    "title": "Probability Distributions",
+    "section": "Wrap Up",
+    "text": "Wrap Up\nThis lecture gave an overview of probability functions:\n\nPMF: probability mass function; for discrete variables.\nPDF: probability density function; for continuous variables.\nCDF: cumulative distribution function; for discrete and continuous variables\n\nand distributions:\n\nBinomial: for counting successes in a fixed number of independent trials.\nNormal: for continuous variables that cluster symmetrically around an average.\nt: for continuous variables estimated from a small sample with unknown population standard deviation.\nChi-squared: (hypothesis testing)\nF: (hypothesis testing)"
+  },
+  {
+    "objectID": "files/lectures/1-2-probability-distributions.html#looking-forward",
+    "href": "files/lectures/1-2-probability-distributions.html#looking-forward",
+    "title": "Probability Distributions",
+    "section": "Looking Forward",
+    "text": "Looking Forward\n\nIn the next module, you will use these concepts to answer questions such as:\n\n“ZPD claims their exam scores have a standard deviation of 10. You have real data. Is that claim believable?”\n\nWe will continue to see these distributions when learning various hypothesis tests.\nBefore we learn hypothesis testing, we will learn how to estimate population parameters from sample statistics.\n\nOur next lectures cover data description using point estimation and graphical methods."
+  },
+  {
+    "objectID": "files/lectures/4-2-kruskal-wallis.html#introduction",
+    "href": "files/lectures/4-2-kruskal-wallis.html#introduction",
+    "title": "Kruskal-Wallis",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "files/lectures/4-2-kruskal-wallis.html#r-setup",
+    "href": "files/lectures/4-2-kruskal-wallis.html#r-setup",
+    "title": "Kruskal-Wallis",
+    "section": "R Setup",
+    "text": "R Setup"
+  },
+  {
+    "objectID": "files/lectures/4-2-kruskal-wallis.html#assumptions-on-anova",
+    "href": "files/lectures/4-2-kruskal-wallis.html#assumptions-on-anova",
+    "title": "Kruskal-Wallis",
+    "section": "Assumptions on ANOVA",
+    "text": "Assumptions on ANOVA"
+  },
+  {
+    "objectID": "files/lectures/4-2-kruskal-wallis.html#checking-normality-r",
+    "href": "files/lectures/4-2-kruskal-wallis.html#checking-normality-r",
+    "title": "Kruskal-Wallis",
+    "section": "## Checking Normality (R)",
+    "text": "## Checking Normality (R)"
+  },
+  {
+    "objectID": "files/lectures/4-2-kruskal-wallis.html#example-1",
+    "href": "files/lectures/4-2-kruskal-wallis.html#example-1",
+    "title": "Kruskal-Wallis",
+    "section": "Example 1",
+    "text": "Example 1"
+  },
+  {
+    "objectID": "files/lectures/4-2-kruskal-wallis.html#example-2",
+    "href": "files/lectures/4-2-kruskal-wallis.html#example-2",
+    "title": "Kruskal-Wallis",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/4-2-kruskal-wallis.html#hypothesis-test-for-m_1-m_2-...-m_k",
+    "href": "files/lectures/4-2-kruskal-wallis.html#hypothesis-test-for-m_1-m_2-...-m_k",
+    "title": "Kruskal-Wallis",
+    "section": "Hypothesis Test for M_1 = M_2 = ... = M_k",
+    "text": "Hypothesis Test for M_1 = M_2 = ... = M_k"
+  },
+  {
+    "objectID": "files/lectures/4-2-kruskal-wallis.html#statistical-inference-on-k-medians-r",
+    "href": "files/lectures/4-2-kruskal-wallis.html#statistical-inference-on-k-medians-r",
+    "title": "Kruskal-Wallis",
+    "section": "Statistical Inference on k Medians (R)",
+    "text": "Statistical Inference on k Medians (R)"
+  },
+  {
+    "objectID": "files/lectures/4-2-kruskal-wallis.html#example-2-1",
+    "href": "files/lectures/4-2-kruskal-wallis.html#example-2-1",
+    "title": "Kruskal-Wallis",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/4-2-kruskal-wallis.html#example-3",
+    "href": "files/lectures/4-2-kruskal-wallis.html#example-3",
+    "title": "Kruskal-Wallis",
+    "section": "Example 3",
+    "text": "Example 3"
+  },
+  {
+    "objectID": "files/lectures/4-2-kruskal-wallis.html#wrap-up",
+    "href": "files/lectures/4-2-kruskal-wallis.html#wrap-up",
+    "title": "Kruskal-Wallis",
+    "section": "Wrap Up",
+    "text": "Wrap Up"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#introduction",
+    "href": "files/lectures/3-3-two-sample-proportions.html#introduction",
+    "title": "Two-Sample Proportions",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#r-setup",
+    "href": "files/lectures/3-3-two-sample-proportions.html#r-setup",
+    "title": "Two-Sample Proportions",
+    "section": "R Setup",
+    "text": "R Setup"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#confidence-interval-for-pi_1-pi_2",
+    "href": "files/lectures/3-3-two-sample-proportions.html#confidence-interval-for-pi_1-pi_2",
+    "title": "Two-Sample Proportions",
+    "section": "Confidence Interval for \\pi_1-\\pi_2",
+    "text": "Confidence Interval for \\pi_1-\\pi_2\n\n(1–\\alpha)100% CI for a population proportion, \\pi_1-\\pi_2"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#hypothesis-test-for-pi_1-pi_2",
+    "href": "files/lectures/3-3-two-sample-proportions.html#hypothesis-test-for-pi_1-pi_2",
+    "title": "Two-Sample Proportions",
+    "section": "Hypothesis Test for \\pi_1-\\pi_2",
+    "text": "Hypothesis Test for \\pi_1-\\pi_2"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#statistical-inference-on-two-proportions-r",
+    "href": "files/lectures/3-3-two-sample-proportions.html#statistical-inference-on-two-proportions-r",
+    "title": "Two-Sample Proportions",
+    "section": "Statistical Inference on Two Proportions (R)",
+    "text": "Statistical Inference on Two Proportions (R)"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#example-1",
+    "href": "files/lectures/3-3-two-sample-proportions.html#example-1",
+    "title": "Two-Sample Proportions",
+    "section": "Example 1",
+    "text": "Example 1"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#example-2",
+    "href": "files/lectures/3-3-two-sample-proportions.html#example-2",
+    "title": "Two-Sample Proportions",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#wrap-up",
+    "href": "files/lectures/3-3-two-sample-proportions.html#wrap-up",
+    "title": "Two-Sample Proportions",
+    "section": "Wrap Up",
+    "text": "Wrap Up"
+  },
+  {
+    "objectID": "files/syllabus.html",
+    "href": "files/syllabus.html",
+    "title": "Abbreviated Syllabus",
+    "section": "",
+    "text": "Note: this is an abbreviated syllabus. The full syllabus is available through Classmate and Canvas.\n\nInstructor Information\n\nDr. Samantha Seals\nOffice: 4/344\n\n\n\nOffice Hours\n\nMonday 9:00 am - 11:00 am (Central)\nTuesday 9:00 am - 11:00 am (Central)\nTuesday 2:00 pm - 4:00 pm (Central)\n\n\n\nGrading and Evaluation\nThe course grade will be determined as follows:\n\nPractice and Participation (10%): Students earn credit by engaging with course material through short 5 question quizzes after lecture.\nWeekly Projects (40%): All projects will be completed individually using R, formatted with Quarto. Projects are due on Tuesdays by 11:59 pm Central. Note: do not wait until Tuesday to start your projects.\n\nAssignments 1-6 are eligible for resubmission after initial grading. Please take the feedback given, update your submission, then resubmit to Canvas. Credit will be awarded back for corrected problems.\n\nComputational Final (20%): This will be a cumulative project that incorporates material from the entire course. It will be no different from other projects completed other than it combines all analysis approaches into one project. This project is exempt from the revision policy.\nConceptual Final Exam (30%): The timed, written (typed) final exam will be a concepts-based exam. While there may be minor calculations needed, you will not be processing raw data. There will be no programming expectations on the final exam.\n\nPlease see Canvas for your Final Exam date. The date of this exam will not change, so please make arrangements to be free for a continuous 3 hour block. Once the exam is open, the timer for 3 hours starts and continues, even if you close your browser window. No extensions will be granted nor will make up final exams be accepted."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Statistics for Data Science I",
+    "section": "",
+    "text": "Welcome to Statistics for Data Science I!\nThis is an 8 week asynchronous course that builds the foundations of statistics and data analysis. Our topics include:\n\nSummary statistics and basic data visualization\nProbability and probability distributions\nStatistical inference for continuous and categorical outcomes\n\nOne-sample inference\nTwo-sample inference\nMulti-sample inference\n\nCorrelation and regression modeling\n\nEach week will consist of multiple lecture videos culminating in a project to demonstrate understanding."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#introduction",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#introduction",
+    "title": "Two-Sample Means and Medians",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#r-setup",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#r-setup",
+    "title": "Two-Sample Means and Medians",
+    "section": "R Setup",
+    "text": "R Setup"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#confidence-interval-for-mu_1-mu_2",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#confidence-interval-for-mu_1-mu_2",
+    "title": "Two-Sample Means and Medians",
+    "section": "Confidence Interval for \\mu_1-\\mu_2",
+    "text": "Confidence Interval for \\mu_1-\\mu_2\n\n(1–\\alpha)100% CI for a population mean, \\mu_1-\\mu_2\n\n\\bar{y} \\pm t_{\\alpha/2, n-1} \\frac{s}{\\sqrt{n}}\n\nt has n-1 degrees of freedom (df)."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-mu_1-mu_2",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-mu_1-mu_2",
+    "title": "Two-Sample Means and Medians",
+    "section": "Hypothesis Test for \\mu_1-\\mu_2",
+    "text": "Hypothesis Test for \\mu_1-\\mu_2"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-one-mean-r",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-one-mean-r",
+    "title": "Two-Sample Means and Medians",
+    "section": "Statistical Inference on One Mean (R)",
+    "text": "Statistical Inference on One Mean (R)"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1",
+    "title": "Two-Sample Means and Medians",
+    "section": "Example 1",
+    "text": "Example 1"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2",
+    "title": "Two-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#assumptions-on-two-sample-t",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#assumptions-on-two-sample-t",
+    "title": "Two-Sample Means and Medians",
+    "section": "Assumptions on Two-Sample t",
+    "text": "Assumptions on Two-Sample t"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#checking-normality-r",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#checking-normality-r",
+    "title": "Two-Sample Means and Medians",
+    "section": "Checking Normality (R)",
+    "text": "Checking Normality (R)"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-1",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-1",
+    "title": "Two-Sample Means and Medians",
+    "section": "Example 1",
+    "text": "Example 1"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-1",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-1",
+    "title": "Two-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#nonparametric-alternatives",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#nonparametric-alternatives",
+    "title": "Two-Sample Means and Medians",
+    "section": "Nonparametric Alternatives",
+    "text": "Nonparametric Alternatives"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#confidence-interval-for-m_1-m_2",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#confidence-interval-for-m_1-m_2",
+    "title": "Two-Sample Means and Medians",
+    "section": "Confidence Interval for M_1-M_2",
+    "text": "Confidence Interval for M_1-M_2"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-m_1-m_2",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-m_1-m_2",
+    "title": "Two-Sample Means and Medians",
+    "section": "Hypothesis Test for M_1-M_2",
+    "text": "Hypothesis Test for M_1-M_2"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-two-medians-r",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-two-medians-r",
+    "title": "Two-Sample Means and Medians",
+    "section": "Statistical Inference on Two Medians (R)",
+    "text": "Statistical Inference on Two Medians (R)"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-2",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-2",
+    "title": "Two-Sample Means and Medians",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-3",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-3",
+    "title": "Two-Sample Means and Medians",
+    "section": "Example 3",
+    "text": "Example 3"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#wrap-up",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#wrap-up",
+    "title": "Two-Sample Means and Medians",
+    "section": "Wrap Up",
+    "text": "Wrap Up"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#introduction",
+    "href": "files/lectures/1-3-continuous-data.html#introduction",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Introduction",
+    "text": "Introduction\n\nBefore we can “analyze data” we must know what the data looks like.\nThis lecture covers the first step in any analysis: describing a variable before you test a claim about it.\n\nWe will focus only on continuous variables in this lecture.\nThe next lecture covers discrete variables.\n\nUltimately, we should look first and ask (…or answer) questions later."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#r-oh-no",
+    "href": "files/lectures/1-3-continuous-data.html#r-oh-no",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "R? Oh No!",
+    "text": "R? Oh No!\n\nThis lecture begins our journey in R.\n\nInstalling R on your own computer:\n\nDownload R from CRAN: https://cran.r-project.org/\nDownload RStudio or Positron from Posit: https://posit.co/downloads\n\nUsing the HMCSE-maintained RStudio Workbench: https://rstudio.hmcse.uwf.edu\n\nOnly recommended for those that cannot download and install programs to their computers.\n\n\nThere are other languages (or tools):\n\nSAS\nStata\nSPSS\npython"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#r-setup",
+    "href": "files/lectures/1-3-continuous-data.html#r-setup",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "R Setup",
+    "text": "R Setup\n\nTo follow along with lecture, please install the tidyverse and ssstats packages:\n\n\ninstall.packages(\"tidyverse\")\nif (!requireNamespace(\"pak\", quietly = TRUE)) {\n  install.packages(\"pak\")\n}\npak::pak(\"sealslab/ssstats\")\n\n\nThen, we must call the packages to access their functions:\n\n\nlibrary(tidyverse)\nlibrary(ssstats)"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#data-from-zootropolis",
+    "href": "files/lectures/1-3-continuous-data.html#data-from-zootropolis",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Data from Zootropolis",
+    "text": "Data from Zootropolis\n\nIt’s your first week as a city analyst for the Zootropolis Police Department (ZPD).\n\nDeputy Chief Okonkwo walks you over to a desk, gives you a thumb drive full of data, and says: “Your first task is to get to know this data. Tell me what’s normal. Tell me what’s not.”\n\nIn particular, we will focus on the following variables:\nacademy_exam_score: how new recruits performed on their academy entrance exam\nhustle_earnings: side income recruits reported earning around the district\ndistrict_temp_f: average temperature logged across ZPD’s patrol districts"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#data-from-zootropolis-1",
+    "href": "files/lectures/1-3-continuous-data.html#data-from-zootropolis-1",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Data from Zootropolis",
+    "text": "Data from Zootropolis\n\nAfter getting your computer set up, you read the data in:\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8\n\n\nGreta Smith\nDesk\nTundratown\nPass\n81\n8.3\n36.10\n29.6\n\n\nOtto Meadowsly\nPatrol\nDowntown\nPass\n71\n7.5\n51.91\n65.2"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#describing-the-center-of-the-data",
+    "href": "files/lectures/1-3-continuous-data.html#describing-the-center-of-the-data",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Describing the Center of the Data",
+    "text": "Describing the Center of the Data\n\n\nMeasures of Centrality\n\nFor a set of numeric values, the number that describes the typical or central value is called a measure of centrality.\n\n\nNote that the “center” is not a fixed idea, but a concept. We will choose from:\n\nMean\nMedian\nMode"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#mean",
+    "href": "files/lectures/1-3-continuous-data.html#mean",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Mean",
+    "text": "Mean\n\n\nMean\n\nThe mean can be considered the “balance point” of the data.\n\n\n\\text{mean} = \\frac{\\text{sum of all values}}{\\text{number of values}}\n\n\nEvery single value gets a vote when we calculate the mean, even the extreme ones.\n\nExtreme values will skew the mean, implying the mean is not robust to outliers."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#median",
+    "href": "files/lectures/1-3-continuous-data.html#median",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Median",
+    "text": "Median\n\n\nMedian\n\nThe median is the middle value of the sorted data. Half the values fall below it, the other half fall above.\n\n\nThere is not quite a formula for the median, but the process is simple:\n\nOdd number of values → the median is the literal middle one\nEven number of values → the median is the average of the two middle values\n\nThe median is appropriate for skewed data because it is robust to outliers.\n\nWe are using the location to determine the median – it does not depend on the actual values of the data."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#mode",
+    "href": "files/lectures/1-3-continuous-data.html#mode",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Mode",
+    "text": "Mode\n\n\nMode\n\nThe mode is the most frequently occurring value.\n\n\nA distribution can have one mode, two modes, or many modes.\n\nUnimodal: just one mode.\nBimodal: two modes.\nMultimodal: more than one mode.\n\nThe mode is not reported often for continuous data, but we should be aware.\n\nWhen looking at graphs, we may see multiple modes.\nThis is suggesting there may be underlying clustering or grouping."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#describing-the-spread-of-the-data",
+    "href": "files/lectures/1-3-continuous-data.html#describing-the-spread-of-the-data",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Describing the Spread of the Data",
+    "text": "Describing the Spread of the Data\n\n\nMeasures of Spread\n\nFor a set of numeric values, the number that describes how spread out or dispersed the values are is called a measure of spread.\n\n\nWe will use the variance and standard deviation to describe the spread of data.\n\n\n\\text{variance} \\approx \\frac{\\text{sum(deviation from the mean)}^2}{\\text{number of values}}\n\nand\n\n\\text{standard deviation} =  \\sqrt{\\text{variance}}"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#variance-and-standard-deviation",
+    "href": "files/lectures/1-3-continuous-data.html#variance-and-standard-deviation",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Variance and Standard Deviation",
+    "text": "Variance and Standard Deviation\n\n\\text{variance} \\approx \\frac{\\text{sum(deviation from the mean)}^2}{\\text{number of values}}\n\nand\n\n\\text{standard deviation} =  \\sqrt{\\text{variance}}\n\n\nWhy do we use the standard deviation?\n\nThe standard deviation is in the same units as the data, while the variance is in squared units.\nSuppose we are looking at the price of carrots (in Z) over time.\n\nThe variance would be in Z2 while the standard deviation would be in Z, or the same units as the data."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#interquartile-range",
+    "href": "files/lectures/1-3-continuous-data.html#interquartile-range",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Interquartile Range",
+    "text": "Interquartile Range\n\nIf we are using the median to describe the center of data, it is appropriate to use the interquartile range (IQR) to describe the spread of data.\n\n\n\\text{IQR} = \\text{(value at the 75th percentile)} - \\text{(value at the 25th percentile)}\n\n\nThe IQR tells us the spread of the middle 50% of the data."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#describing-the-data-r",
+    "href": "files/lectures/1-3-continuous-data.html#describing-the-data-r",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Describing the Data (R)",
+    "text": "Describing the Data (R)\n\nWe will use the mean_median() function from the ssstats package to describe the center and spread of our continuous data.\n\n\n1dataset_name |&gt;\n2  mean_median(variable1, variable2, ...)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nmean_median() returns the mean, median, SD, and IQR for any variable(s) you list.\n\n\n\n\n\nWe can also use group_by() to get the mean, median, SD, and IQR for each group of a categorical variable.\n\n\n1dataset_name |&gt;\n2  group_by() |&gt;\n3  mean_median(variable1, variable2, ...)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\ngroup_by() allows us to group the data by categorical variables.\n\n3\n\nmean_median() returns the mean, median, SD, and IQR for any variable(s) you list.\n\n\n\n\n\nNote: if you need help getting started in R, please see the R module on Canvas."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#describing-the-data",
+    "href": "files/lectures/1-3-continuous-data.html#describing-the-data",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Describing the Data",
+    "text": "Describing the Data\n\nFor illustrative purposes, we will describe the academy_exam_score variable in the zootopia dataset.\n\n\nzootopia |&gt; \n  mean_median(academy_exam_score)\n\n# A tibble: 1 × 3\n  variable           mean_sd    median_iqr \n  &lt;chr&gt;              &lt;chr&gt;      &lt;chr&gt;      \n1 academy_exam_score 77.3 (8.0) 77.0 (10.8)\n\n\n\nThis tells us that for academy exam scores,\n\nthe mean is 77.3 with a standard deviation of 8.0,\nthe median is 77.0 with an IQR of 10.8"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#dot-plot",
+    "href": "files/lectures/1-3-continuous-data.html#dot-plot",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Dot Plot",
+    "text": "Dot Plot\n\n\nDot plot\n\nA dot plot places one dot for every observation along a number line."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#dot-plot-r",
+    "href": "files/lectures/1-3-continuous-data.html#dot-plot-r",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Dot Plot (R)",
+    "text": "Dot Plot (R)\n\n\nDot plot\n\nA dot plot places one dot for every observation along a number line.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = outcome_name)) +\n3  geom_dotplot()\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nggplot() is the function that creates a plot. The aes() function inside it tells R which variable to plot.\n\n3\n\ngeom_dotplot() is the function that creates a dot plot."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#histogram",
+    "href": "files/lectures/1-3-continuous-data.html#histogram",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Histogram",
+    "text": "Histogram\n\n\nHistogram\n\nA histogram takes the same points and groups them into bins, showing how many values fall in each range."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#histogram-r",
+    "href": "files/lectures/1-3-continuous-data.html#histogram-r",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Histogram (R)",
+    "text": "Histogram (R)\n\n\nHistogram\n\nA histogram takes the same points and groups them into bins, showing how many values fall in each range.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = outcome_name)) +\n3  geom_histogram(bins = number_of_bins)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nggplot() is the function that creates a plot. The aes() function inside it tells R which variable to plot.\n\n3\n\ngeom_histogram() is the function that creates a histogram."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#density-plot",
+    "href": "files/lectures/1-3-continuous-data.html#density-plot",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Density Plot",
+    "text": "Density Plot\n\n\nDensity plot\n\nA density plot is a histogram with the rough edges smoothed away."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#density-plot-r",
+    "href": "files/lectures/1-3-continuous-data.html#density-plot-r",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Density Plot (R)",
+    "text": "Density Plot (R)\n\n\nDensity plot\n\nA density plot is a histogram with the rough edges smoothed away.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = outcome_name)) +\n3  geom_density()\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nggplot() is the function that creates a plot. The aes() function inside it tells R which variable to plot.\n\n3\n\ngeom_density() is the function that creates a density plot"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#boxplot",
+    "href": "files/lectures/1-3-continuous-data.html#boxplot",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Boxplot",
+    "text": "Boxplot\n\n\nBoxplot\n\nA boxplot visualizes the five number summary: minimum, Q1, median, Q3, and maximum."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#boxplot-r",
+    "href": "files/lectures/1-3-continuous-data.html#boxplot-r",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Boxplot (R)",
+    "text": "Boxplot (R)\n\n\nBoxplot\n\nA boxplot visualizes the five number summary: minimum, Q1, median, Q3, and maximum.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = outcome_name)) +\n3  geom_boxplot()\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nggplot() is the function that creates a plot. The aes() function inside it tells R which variable to plot.\n\n3\n\ngeom_boxplot() is the function that creates a boxplot"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#scatterplot",
+    "href": "files/lectures/1-3-continuous-data.html#scatterplot",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Scatterplot",
+    "text": "Scatterplot\n\n\nScatterplot\n\nA scatterplot is a graph that shows the relationship between two continuous variables."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#scatterplot-r",
+    "href": "files/lectures/1-3-continuous-data.html#scatterplot-r",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Scatterplot (R)",
+    "text": "Scatterplot (R)\n\n\nScatterplot\n\nA scatterplot is a graph that shows the relationship between two continuous variables.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = predictor_name, y = outcome_name)) +\n3  geom_point()\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nggplot() is the function that creates a plot. The aes() function inside it tells R which variable to plot.\n\n3\n\ngeom_point() is the function that plots the points on the scatterplot."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#example-1",
+    "href": "files/lectures/1-3-continuous-data.html#example-1",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nDeputy Chief Okonokwo is curious about the hustle_earnings data. He wants to know how much recruits are earning on the side.\nOur first task is to summarize the data.\n\nSummary statistics.\nVisualizations – check for weird patterns.\n\nDot plot\nHistogram / density\nBoxplot"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#example-1-1",
+    "href": "files/lectures/1-3-continuous-data.html#example-1-1",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nOur first step in any analysis should be to literally look at the data.\n\nNote: we are printing the data below for slide/lecture purposes. In “real life,” we can open the dataset to examine.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nhustle_earnings\n\n\n\n\nSable Jones\nDesk\nRainforest District\n14.72\n\n\nKevin Frostwhisker\nPatrol\nDowntown\n45.66\n\n\nJasper Duskrunner\nPatrol\nSahara Square\n30.91\n\n\nGreta Smith\nDesk\nTundratown\n36.10\n\n\nOtto Meadowsly\nPatrol\nDowntown\n51.91\n\n\nWilhelmina Underbrush\nDesk\nRainforest District\n20.76"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#example-1-2",
+    "href": "files/lectures/1-3-continuous-data.html#example-1-2",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nThen, we look at the histogram/density plots:"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#example-1-code",
+    "href": "files/lectures/1-3-continuous-data.html#example-1-code",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Example 1 (Code)",
+    "text": "Example 1 (Code)\n\nThen, we look at the histogram/density plots:\n\n\nzootopia |&gt;\n  ggplot(aes(x = hustle_earnings)) +\n  geom_histogram(aes(y = after_stat(density)), fill = uwf_blue, color = \"white\", bins = 10) +\n  geom_density(color = uwf_midnight, linewidth = 1) +\n  labs(x = \"Hustle Earnings\", \n       y = \"Density\") +\n  theme_minimal(base_size = 20)"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#example-1-3",
+    "href": "files/lectures/1-3-continuous-data.html#example-1-3",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nNow, let’s look at the distribution of the data using a boxplot,"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#example-1-code-1",
+    "href": "files/lectures/1-3-continuous-data.html#example-1-code-1",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Example 1 (Code)",
+    "text": "Example 1 (Code)\n\nNow, let’s look at the distribution of the data using a boxplot,\n\n\nzootopia |&gt;\n  ggplot(aes(x = hustle_earnings)) +\n  geom_boxplot(fill = uwf_marigold) +\n  labs(x = \"Hustle Earnings\") +\n  theme_minimal(base_size = 20) +\n  theme(axis.text.y = element_blank())"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#example-1-4",
+    "href": "files/lectures/1-3-continuous-data.html#example-1-4",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nWe can also split the box plots by district,"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#example-1-code-2",
+    "href": "files/lectures/1-3-continuous-data.html#example-1-code-2",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Example 1 (Code)",
+    "text": "Example 1 (Code)\n\nWe can also split the box plots by district,\n\n\nzootopia |&gt;\n  ggplot(aes(x = hustle_earnings, y = district, fill = district)) +\n  geom_boxplot() +\n  labs(x = \"Hustle Earnings\", y = NULL) +\n  theme_minimal(base_size = 20) +\n  theme(legend.position = \"none\")"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#example-1-5",
+    "href": "files/lectures/1-3-continuous-data.html#example-1-5",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nThe boxplot confirms that there are extreme values.\nExploring the extreme values,\n\n\nzootopia |&gt; \n  select(resident_name, department, district, hustle_earnings) |&gt;\n  filter(hustle_earnings &gt; 80)\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nhustle_earnings\n\n\n\n\nBarnaby Frostwhisker\nDesk\nTundratown\n111.83\n\n\nNadia Trunkston\nPatrol\nSahara Square\n81.04"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#example-1-6",
+    "href": "files/lectures/1-3-continuous-data.html#example-1-6",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nNow, we can find the descriptive statistics. That requires mean_median(),\n\n\nzootopia |&gt; \n  mean_median(hustle_earnings)\n\n# A tibble: 1 × 3\n  variable        mean_sd     median_iqr \n  &lt;chr&gt;           &lt;chr&gt;       &lt;chr&gt;      \n1 hustle_earnings 36.7 (22.8) 31.1 (22.2)\n\n\n\nThe difference between the mean and median suggests the data is skewed, as we saw with the histogram.\nThe overall mean is helpful, but we should look at this more granularly to give the city better information."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#example-1-7",
+    "href": "files/lectures/1-3-continuous-data.html#example-1-7",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nLet’s now find the descriptive statistics by district. That requires mean_median(), but now we add in group_by(),\n\n\nzootopia |&gt; \n  group_by(district) |&gt; \n  mean_median(hustle_earnings)\n\n# A tibble: 4 × 4\n  district            variable        mean_sd     median_iqr \n  &lt;chr&gt;               &lt;chr&gt;           &lt;chr&gt;       &lt;chr&gt;      \n1 Downtown            hustle_earnings 37.3 (19.6) 29.8 (22.1)\n2 Rainforest District hustle_earnings 32.9 (16.8) 31.2 (16.1)\n3 Sahara Square       hustle_earnings 33.4 (21.6) 30.3 (17.3)\n4 Tundratown          hustle_earnings 45.3 (35.5) 35.7 (21.3)"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#visualizing-the-summary-statistics",
+    "href": "files/lectures/1-3-continuous-data.html#visualizing-the-summary-statistics",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Visualizing the Summary Statistics",
+    "text": "Visualizing the Summary Statistics\n\nUntil now, we’ve focused on describing the entire distribution of a variable.\nSometimes, we want to communicate just a single number (e.g., mean) and how much to trust it.\n\nWe will graph a single value with a range around it showing uncertainty or spread.\n\nWe have two choices to show the uncertainty:\n\nStandard deviation\n\nThis is the spread of the data around the mean.\n\nStandard error\n\nThis describes how precise the estimate of the mean is."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#standard-error",
+    "href": "files/lectures/1-3-continuous-data.html#standard-error",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Standard Error",
+    "text": "Standard Error\n\n\nStandard error\n\nStandard error (SE) describes how precise the estimate of the mean is\n\n\n\\text{SE} = \\frac{\\text{SD}}{\\sqrt{n}}\n\n\nThis is the standard deviation adjusted for the sample size."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#visualizing-the-mean",
+    "href": "files/lectures/1-3-continuous-data.html#visualizing-the-mean",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Visualizing the Mean",
+    "text": "Visualizing the Mean"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#visualizing-the-mean-1",
+    "href": "files/lectures/1-3-continuous-data.html#visualizing-the-mean-1",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Visualizing the Mean",
+    "text": "Visualizing the Mean\n\nFinally, we can of course, split this out by district,"
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#visualizing-the-mean-2",
+    "href": "files/lectures/1-3-continuous-data.html#visualizing-the-mean-2",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Visualizing the Mean",
+    "text": "Visualizing the Mean\n\nSome notes from a professional point of view:\n\nSome folks like to use bar graphs to represent the mean. This is inaccurate.\nHow to choose between using SD and SE? I always use SE.\n\nPreview for the next module: the SE is used in the calculation of confidence intervals."
+  },
+  {
+    "objectID": "files/lectures/1-3-continuous-data.html#wrap-up",
+    "href": "files/lectures/1-3-continuous-data.html#wrap-up",
+    "title": "Describing and Visualizing Continuous Variables",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\nWe have covered basics for describing and visualizing continuous variables.\n\nCenter:\n\nMean\nMedian\nMode\n\nSpread:\n\nVariance\nStandard deviation\n(Standard error)\nInterquartile range"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#introduction",
+    "href": "files/lectures/1-4-categorical-data.html#introduction",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Introduction",
+    "text": "Introduction\n\nAt ZPD, Deputy Chief Okonkwo drops by again: “Numbers are great, but I also need to know who’s where. Break the recruits down by group for me.”\nIn the last lecture, we described continuous variables: things measured on a number line, like a score or an income.\nToday we will describe categorical variables: things that sort recruits into groups rather than measuring them on a scale.\n\nThere is no “average” district the way there is an average exam score."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#r-set-up",
+    "href": "files/lectures/1-4-categorical-data.html#r-set-up",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "R Set Up",
+    "text": "R Set Up\n\nlibrary(tidyverse)\nlibrary(ssstats)\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n\n\nGreta Smith\nDesk\nTundratown\nPass\n\n\nOtto Meadowsly\nPatrol\nDowntown\nPass"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#describing-categorical-data",
+    "href": "files/lectures/1-4-categorical-data.html#describing-categorical-data",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Describing Categorical Data",
+    "text": "Describing Categorical Data\n\n\nCategorical Data\n\nFor categorical variables, we describe data by counting how many observations fall into each category, not by averaging values.\n\n\nWe have two main tools for describing a categorical variable:\n\nFrequency\nRelative frequency (proportion)\n\nThere’s no “mean” or “standard deviation” for a category like Sahara Square — it wouldn’t mean anything to average two districts together."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#frequency",
+    "href": "files/lectures/1-4-categorical-data.html#frequency",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Frequency",
+    "text": "Frequency\n\n\nFrequency\n\nThe frequency of a category is simply a count: how many observations fall into that group.\n\n\nFrequencies answer the question: how many?\n\nHow many recruits are in Patrol?\nHow many recruits work in Sahara Square?\n\nFrequencies are useful, but they depend on the size of your dataset — 18 Patrol recruits sounds different in a department of 30 than in a department of 3,000."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#relative-frequency-proportion",
+    "href": "files/lectures/1-4-categorical-data.html#relative-frequency-proportion",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Relative Frequency (Proportion)",
+    "text": "Relative Frequency (Proportion)\n\n\nRelative Frequency\n\nThe relative frequency, or proportion, is the frequency divided by the total number of observations.\n\n\n\\text{proportion} = \\frac{\\text{count in category}}{\\text{total number of observations}}\n\n\nProportions answer the question: what share?\n\nWhat share of recruits are in Patrol?\nWhat share of recruits work in Sahara Square?\n\nBecause proportions are standardized, they let us compare groups of very different sizes — 60% Patrol means the same thing whether you have 30 recruits or 3,000."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#mode-revisited",
+    "href": "files/lectures/1-4-categorical-data.html#mode-revisited",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Mode, Revisited",
+    "text": "Mode, Revisited\n\nRecall from last lecture: the mode is the most frequently occurring value.\nFor categorical data, the mode is the most natural measure of centrality — it’s really the only one that makes sense.\n\nThe modal district is whichever district has the most recruits.\nA department (Patrol/Desk) can only ever be unimodal or bimodal (tied), since there are only two categories."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#what-about-spread",
+    "href": "files/lectures/1-4-categorical-data.html#what-about-spread",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "What About Spread?",
+    "text": "What About Spread?\n\nFor continuous data, we described spread with variance, standard deviation, and the IQR.\nCategories don’t have a distance between them — Sahara Square isn’t “two units” away from Downtown the way 80 is two units away from 78.\n\nSo variance and standard deviation don’t apply to categorical data.\n\nInstead, when we talk about “spread” for categorical data, we’re really asking: are the observations spread evenly across categories, or concentrated in just one or two?\n\nWe’ll answer that visually, with bar charts, rather than with a single number."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#describing-the-data-r",
+    "href": "files/lectures/1-4-categorical-data.html#describing-the-data-r",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Describing the Data (R)",
+    "text": "Describing the Data (R)\n\nWe will use the n_pct() function from the ssstats package to describe the frequency and proportion of our categorical data.\n\n\n1dataset_name |&gt;\n2  n_pct(variable1, variable2, ...)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nn_pct() returns the count (n) and percentage for each category of any variable(s) you list.\n\n\n\n\n\nJust like mean_median(), we can use group_by() to get counts and percentages broken down by another categorical variable.\n\n\n1dataset_name |&gt;\n2  group_by() |&gt;\n3  n_pct(variable1, variable2, ...)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\ngroup_by() allows us to group the data by a categorical variable before counting.\n\n3\n\nn_pct() returns the count and percentage for each category, within each group.\n\n\n\n\n\nNote: if you need help getting started in R, please see the R module on Canvas."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#describing-the-data",
+    "href": "files/lectures/1-4-categorical-data.html#describing-the-data",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Describing the Data",
+    "text": "Describing the Data\n\nFor illustrative purposes, we will describe the department variable in the zootopia dataset.\n\n\nzootopia |&gt;\n  n_pct(department)\n\n\n\n\n\ndepartment\nn (pct)\n\n\n\n\nDesk\n12 (40.0%)\n\n\nPatrol\n18 (60.0%)\n\n\n\n\n\n\n\nThis tells us that of the 30 recruits,\n\n18 (60.0%) are in Patrol,\n12 (40.0%) are on Desk duty."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#bar-chart-counts",
+    "href": "files/lectures/1-4-categorical-data.html#bar-chart-counts",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Bar Chart (Counts)",
+    "text": "Bar Chart (Counts)\n\n\nBar chart\n\nA bar chart shows one bar per category, with the height of the bar equal to the number (or percentage) of observations in that category."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#bar-chart-counts-r",
+    "href": "files/lectures/1-4-categorical-data.html#bar-chart-counts-r",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Bar Chart (Counts) (R)",
+    "text": "Bar Chart (Counts) (R)\n\n\nBar chart\n\nA bar chart shows one bar per category, with the height of the bar equal to the number (or percentage) of observations in that category.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = category_name)) +\n3  geom_bar()\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nggplot() is the function that creates a plot. The aes() function inside it tells R which variable to plot.\n\n3\n\ngeom_bar() counts the observations in each category and draws a bar for each — you don’t need to calculate the counts yourself."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#bar-chart-proportions",
+    "href": "files/lectures/1-4-categorical-data.html#bar-chart-proportions",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Bar Chart (Proportions)",
+    "text": "Bar Chart (Proportions)\n\nSometimes we’d rather show the share of recruits in each category instead of the raw count."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#bar-chart-proportions-r",
+    "href": "files/lectures/1-4-categorical-data.html#bar-chart-proportions-r",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Bar Chart (Proportions) (R)",
+    "text": "Bar Chart (Proportions) (R)\n\nSometimes we’d rather show the share of recruits in each category instead of the raw count.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = category_name, y = after_stat(count) / sum(after_stat(count)))) +\n3  geom_bar() +\n4  scale_y_continuous(labels = scales::percent)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nafter_stat(count) / sum(after_stat(count)) converts the raw counts geom_bar() calculates into a proportion of the total.\n\n3\n\ngeom_bar() still does the counting — we’re just changing what’s plotted on the y-axis.\n\n4\n\nscale_y_continuous(labels = scales::percent) relabels the y-axis as a percentage instead of a decimal."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#a-word-on-pie-charts",
+    "href": "files/lectures/1-4-categorical-data.html#a-word-on-pie-charts",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "A Word on Pie Charts",
+    "text": "A Word on Pie Charts\n\nYou’ve almost certainly seen categorical data shown as a pie chart. We are not going to use them in this course.\nThe human eye is bad at comparing angles and areas — it’s very good at comparing the height of bars lined up on the same baseline.\n\nTry to tell, at a glance, whether Sahara Square’s slice is bigger than Downtown’s. Now try it on the bar chart from a few slides ago.\n\nA bar chart shows the same information as a pie chart, but it’s easier to read accurately — and it scales to more categories without turning into a mess of slivers.\n\nAs a working analyst, if a pie chart crosses your desk, a bar chart is almost always the fix."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#two-way-tables",
+    "href": "files/lectures/1-4-categorical-data.html#two-way-tables",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Two-Way Tables",
+    "text": "Two-Way Tables\n\n\nTwo-way table\n\nA two-way table shows how two categorical variables relate to one another, by counting observations at every combination of categories.\n\n\nSo far we’ve described one categorical variable at a time.\nJust like a scatterplot let us compare two continuous variables, a two-way table lets us compare two categorical variables.\n\nIs department evenly split across every district, or do some districts lean more Patrol or more Desk?"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#two-way-tables-r",
+    "href": "files/lectures/1-4-categorical-data.html#two-way-tables-r",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Two-Way Tables (R)",
+    "text": "Two-Way Tables (R)\n\nWe build a two-way table the same way we built a grouped summary before — with group_by() and n_pct().\n\n\n1dataset_name |&gt;\n2  group_by(grouping_variable) |&gt;\n3  n_pct(second_variable)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\ngroup_by() splits the data into groups based on the first categorical variable.\n\n3\n\nn_pct() then counts and calculates percentages of the second variable, within each group."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#grouped-bar-chart",
+    "href": "files/lectures/1-4-categorical-data.html#grouped-bar-chart",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Grouped Bar Chart",
+    "text": "Grouped Bar Chart\n\n\nGrouped bar chart\n\nA grouped bar chart places bars for a second category side by side within each level of the first category, so you can visually compare the split.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = category_1, fill = category_2)) +\n3  geom_bar(position = \"dodge\")\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nfill = category_2 colors the bars by the second categorical variable.\n\n3\n\nposition = \"dodge\" places the bars for each category_2 level side by side, instead of stacking them."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#example-1",
+    "href": "files/lectures/1-4-categorical-data.html#example-1",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nDeputy Chief Okonkwo wants to know how recruits are distributed across ZPD’s four districts.\nOur first task is to summarize the data.\n\nSummary statistics.\nVisualizations — check for imbalance across districts.\n\nBar chart (counts)\nBar chart (proportions)"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#example-1-1",
+    "href": "files/lectures/1-4-categorical-data.html#example-1-1",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nAs always, our first step is to look at the data itself.\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\n\n\n\n\nSable Jones\nDesk\nRainforest District\n\n\nKevin Frostwhisker\nPatrol\nDowntown\n\n\nJasper Duskrunner\nPatrol\nSahara Square\n\n\nGreta Smith\nDesk\nTundratown\n\n\nOtto Meadowsly\nPatrol\nDowntown\n\n\nWilhelmina Underbrush\nDesk\nRainforest District"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#example-1-2",
+    "href": "files/lectures/1-4-categorical-data.html#example-1-2",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nNext, the bar chart of counts:"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#example-1-code",
+    "href": "files/lectures/1-4-categorical-data.html#example-1-code",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Example 1 (Code)",
+    "text": "Example 1 (Code)\n\nNext, the bar chart of counts:\n\n\nzootopia |&gt;\n  ggplot(aes(x = district, fill = district)) +\n  geom_bar() +\n  labs(x = NULL, y = \"Count\") +\n  theme_minimal(base_size = 20) +\n  theme(legend.position = \"none\")"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#example-1-3",
+    "href": "files/lectures/1-4-categorical-data.html#example-1-3",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nNow the bar chart of proportions:"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#example-1-code-1",
+    "href": "files/lectures/1-4-categorical-data.html#example-1-code-1",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Example 1 (Code)",
+    "text": "Example 1 (Code)\n\nNow the bar chart of proportions:\n\n\nzootopia |&gt;\n  ggplot(aes(x = district, y = after_stat(count) / sum(after_stat(count)), fill = district)) +\n  geom_bar() +\n  scale_y_continuous(labels = scales::percent) +\n  labs(x = NULL, y = \"Percent of Recruits\") +\n  theme_minimal(base_size = 20) +\n  theme(legend.position = \"none\")"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#example-1-4",
+    "href": "files/lectures/1-4-categorical-data.html#example-1-4",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nNow we find the exact numbers with n_pct(),\n\n\nzootopia |&gt;\n  n_pct(district)\n\n\n\n\n\ndistrict\nn (pct)\n\n\n\n\nDowntown\n8 (26.7%)\n\n\nRainforest District\n7 (23.3%)\n\n\nSahara Square\n9 (30.0%)\n\n\nTundratown\n6 (20.0%)\n\n\n\n\n\n\n\nSahara Square has the most recruits (9, or 30.0%), and Tundratown has the fewest (6, or 20.0%) — but no district is dramatically over- or under-staffed compared to the others."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#example-1-5",
+    "href": "files/lectures/1-4-categorical-data.html#example-1-5",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nDeputy Chief Okonkwo has a follow-up: “Is Patrol/Desk assignment spread the same way across every district, or does that break down differently district by district?”\nThat requires a two-way table. We add group_by(district) before n_pct(department),\n\n\nzootopia |&gt;\n  group_by(district) |&gt;\n  n_pct(department)\n\n\n\n\n\ndepartment\nn (pct)\n\n\n\n\nDesk\n12 (40.0%)\n\n\nPatrol\n18 (60.0%)"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#example-1-6",
+    "href": "files/lectures/1-4-categorical-data.html#example-1-6",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nLet’s visualize that same breakdown with a grouped bar chart,"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#example-1-code-2",
+    "href": "files/lectures/1-4-categorical-data.html#example-1-code-2",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Example 1 (Code)",
+    "text": "Example 1 (Code)\n\nLet’s visualize that same breakdown with a grouped bar chart,\n\n\nzootopia |&gt;\n  ggplot(aes(x = district, fill = department)) +\n  geom_bar(position = \"dodge\") +\n  labs(x = NULL, y = \"Count\") +\n  theme_minimal(base_size = 20)"
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#example-1-7",
+    "href": "files/lectures/1-4-categorical-data.html#example-1-7",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Example 1",
+    "text": "Example 1\n\nA few things stand out from the two-way table and grouped bar chart:\n\nTundratown is the only district where Desk (4) outnumbers Patrol (2) — every other district leans Patrol.\nDowntown and Sahara Square both have a roughly 2-to-1 Patrol-to-Desk split.\n\nOn its own, the overall 60/40 Patrol/Desk split (from our first n_pct(department)) hides this — it’s only by breaking things down by district that the Tundratown pattern shows up.\n\nThis is the same lesson from last lecture’s hustle_earnings example: the overall summary and the by-group summary can each tell a different part of the story. Good analysts check both."
+  },
+  {
+    "objectID": "files/lectures/1-4-categorical-data.html#wrap-up",
+    "href": "files/lectures/1-4-categorical-data.html#wrap-up",
+    "title": "Describing and Visualizing Categorical Variables",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\nWe have covered basics for describing and visualizing categorical variables.\n\nOne categorical variable:\n\nFrequency (count)\nRelative frequency (proportion)\nBar chart (counts)\nBar chart (proportions)\n\nTwo categorical variables:\n\nTwo-way table\nGrouped bar chart\n\n\nNext up: turning these descriptions into a testable claim about a proportion."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#welcome-to-the-zpd",
+    "href": "files/lectures/1-1-probability-basics.html#welcome-to-the-zpd",
+    "title": "Basics of Probability and Statistics",
+    "section": "Welcome to the ZPD",
+    "text": "Welcome to the ZPD\n\nYou’ve just been hired by the Zootopia Police Department.\n… Not as an officer, but as the City’s Data Analyst.\nA stack of paperwork lands on your desk.\n\n“Every year, ZPD puts out a report,” she says. “Hiring numbers, exam scores, patrol stats, you name it. The mayor’s office wants someone independent to check it. That’s you now.”\nShe taps the folder. “Before you can check anything, though, you need to understand chance. Random noise looks a lot like a pattern if you don’t know what you’re looking at.”"
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#a-random-experiment",
+    "href": "files/lectures/1-1-probability-basics.html#a-random-experiment",
+    "title": "Basics of Probability and Statistics",
+    "section": "A Random Experiment",
+    "text": "A Random Experiment\n\n\nDefinition\n\nA random experiment is any process whose outcome can’t be predicted with certainty in advance, but we do know the possible outcomes.\n\n\nZPD randomly selects one recruit from this year’s academy class to review.\n\nThe recruit is selected at random from the pool of all recruits in the class.\n\nWe do not know who will be selected, but we know the pool of candidates."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#outcomes-sample-space-and-events",
+    "href": "files/lectures/1-1-probability-basics.html#outcomes-sample-space-and-events",
+    "title": "Basics of Probability and Statistics",
+    "section": "Outcomes, Sample Space, and Events",
+    "text": "Outcomes, Sample Space, and Events\n\nAn outcome is one specific result of the experiment.\n\ne.g., Officer Hopps\n\nThe sample space is the set of all possible outcomes.\n\ne.g., the graduating class of 2025\n\nAn event is any collection of outcomes we care about.\n\ne.g., the recruit picked works Patrol\n\n\n\n\nLooking Forward\n\nProbability is just a way of assigning a number to how likely an event is, based on the sample space it came from."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#probability-ground-rules",
+    "href": "files/lectures/1-1-probability-basics.html#probability-ground-rules",
+    "title": "Basics of Probability and Statistics",
+    "section": "Probability Ground Rules",
+    "text": "Probability Ground Rules\n\nEvery probability is between 0 and 1. 0 \\le P(A) \\le 1 where P(A) =\n\\begin{cases}\n0, & \\text{A is impossible} \\\\\n1, & \\text{A is guaranteed}\n\\end{cases}\nAll possible outcomes, added together, equal 1.\n\nThe full sample space accounts for 100% of the possibilities."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#the-complement-rule",
+    "href": "files/lectures/1-1-probability-basics.html#the-complement-rule",
+    "title": "Basics of Probability and Statistics",
+    "section": "The Complement Rule",
+    "text": "The Complement Rule\n\n\nThe Complement Rule\n\nP(A^c) = 1 - P(A)\nThe probability an event doesn’t happen is 1 minus the probability it does.\n\n\nWhy it’s useful: sometimes the complement of what you want is much easier to work out directly."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#practice-complement-rule",
+    "href": "files/lectures/1-1-probability-basics.html#practice-complement-rule",
+    "title": "Basics of Probability and Statistics",
+    "section": "Practice: Complement Rule",
+    "text": "Practice: Complement Rule\n\n\nExample\n\nIf 72% of recruits work Patrol, what fraction work Desk duty?\n\n\nP(\\text{Desk}) = 1 - P(\\text{Patrol}) = 1 - 0.72 = 0.28\n28% of recruits work Desk duty."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#practice-complement-rule-1",
+    "href": "files/lectures/1-1-probability-basics.html#practice-complement-rule-1",
+    "title": "Basics of Probability and Statistics",
+    "section": "Practice: Complement Rule",
+    "text": "Practice: Complement Rule\n\n\nExample\n\nZPD’s records show that 15% of academy applicants fail the physical exam. What’s the probability a randomly chosen applicant passes?\n\n\nP(\\text{pass}) = 1 - P(\\text{fail}) = 1 - 0.15 = 0.85\nWe expect that a randomly chosen applicant will pass 85% of the time."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#conditional-probability",
+    "href": "files/lectures/1-1-probability-basics.html#conditional-probability",
+    "title": "Basics of Probability and Statistics",
+    "section": "Conditional Probability",
+    "text": "Conditional Probability\n\n\nConditional probability\n\nP(A \\mid B)\nThe probability of A, given that B has already happened. New information (B) changes what we believe is likely.\n\n\nConditional probability shrinks the sample space down to the part we now know is true, then calculates the probability."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#practice-conditional-probability",
+    "href": "files/lectures/1-1-probability-basics.html#practice-conditional-probability",
+    "title": "Basics of Probability and Statistics",
+    "section": "Practice: Conditional Probability",
+    "text": "Practice: Conditional Probability\n\n\nExample\n\nSuppose ZPD’s weather log shows it rains fairly often in Rainforest District, but almost never in Sahara Square. You are asked to find P(\\text{rain} \\mid \\text{Rainforest District}). How is this different from P(\\text{rain})?\n\n\nP(\\text{rain}) is for all of Zootropolis.\nP(\\text{rain} \\mid \\text{Rainforest District}) is for only the Rainforest District."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#practice-conditional-probability-1",
+    "href": "files/lectures/1-1-probability-basics.html#practice-conditional-probability-1",
+    "title": "Basics of Probability and Statistics",
+    "section": "Practice: Conditional Probability",
+    "text": "Practice: Conditional Probability\n\n\nExample\n\nAmong all ZPD recruits, 60% work in Tundratown. Among Tundratown recruits specifically, 10% passed the academy exam on their first attempt.\n\n\nWhat does P(\\text{pass} \\mid \\text{Tundratown}) = 0.10 actually tell you?\n\nIf you already know a recruit is stationed in Tundratown, there’s a 10% chance they passed the exam the first time they took it.\nThis is a more specific number than the first-time pass rate for ZPD as a whole."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#independence",
+    "href": "files/lectures/1-1-probability-basics.html#independence",
+    "title": "Basics of Probability and Statistics",
+    "section": "Independence",
+    "text": "Independence\n\n\nIndependent Events\n\nTwo events are independent when knowing one tells you nothing about the other: P(A \\mid B) = P(A)\n\n\nIndependence means shrinking the sample space changes nothing; eliminating part of it doesn’t change the probability at all."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#practice-independence",
+    "href": "files/lectures/1-1-probability-basics.html#practice-independence",
+    "title": "Basics of Probability and Statistics",
+    "section": "Practice: Independence",
+    "text": "Practice: Independence\n\n\nExample\n\nSuppose P(\\text{pass exam}) = 0.85 overall, and P(\\text{pass exam} \\mid \\text{Tundratown}) = 0.10. Are “passing the exam” and “being assigned to Tundratown” independent?\n\n\nNo. If they were independent, both numbers would be equal.\nBecause they are not, this implies that, knowing someone’s district does change what we’d expect about their exam outcome."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#practice-independence-1",
+    "href": "files/lectures/1-1-probability-basics.html#practice-independence-1",
+    "title": "Basics of Probability and Statistics",
+    "section": "Practice: Independence",
+    "text": "Practice: Independence\n\n\nExample\n\nSuppose P(\\text{pass exam}) = 0.85 overall, and among recruits whose last name starts with a vowel, P(\\text{pass exam} \\mid \\text{vowel last name}) = 0.85 as well. Are “passing the exam” and “having a last name that starts with a vowel” independent?\n\n\nBoth numbers are equal. Knowing a recruit’s last name starts with a vowel doesn’t change the probability they passed the exam.\nP(A \\mid B) = P(A), therefore, A is independent of B."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#unions-and-intersections",
+    "href": "files/lectures/1-1-probability-basics.html#unions-and-intersections",
+    "title": "Basics of Probability and Statistics",
+    "section": "Unions and Intersections",
+    "text": "Unions and Intersections\n\nBefore we talk more about probability we should first discuss unions and intersections.\n\n\n\n\n  A B\n\n\nUnion: A \\cup B\n\n\nEverything in A, B, or both.\n\n\n\n\n               A B\n\n\nIntersection: A \\cap B\n\n\nWhat’s in both A and B together."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#mutually-exclusive-events",
+    "href": "files/lectures/1-1-probability-basics.html#mutually-exclusive-events",
+    "title": "Basics of Probability and Statistics",
+    "section": "Mutually Exclusive Events",
+    "text": "Mutually Exclusive Events\n\nMutually exclusive events are events that can never happen together.\n\nThere is no intersection.\n\n\n\n\n\n  A B\n\n\nP(A \\cap B) = 0"
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#the-addition-rule",
+    "href": "files/lectures/1-1-probability-basics.html#the-addition-rule",
+    "title": "Basics of Probability and Statistics",
+    "section": "The Addition Rule",
+    "text": "The Addition Rule\n\n\nAddition Rule\n\nIf we have two events, A and B, the probability of A \\text{ or } B is given by:\nP(A \\cup B) = P(A) + P(B) - P(A \\cap B)\nIf A and B are mutually exclusive, this simplifies to: P(A \\cup B) = P(A) + P(B)"
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#practice-addition-rule",
+    "href": "files/lectures/1-1-probability-basics.html#practice-addition-rule",
+    "title": "Basics of Probability and Statistics",
+    "section": "Practice: Addition Rule",
+    "text": "Practice: Addition Rule\n\n\nExample\n\nA recruit is randomly selected. ZPD wants to know the probability this recruit works in either Sahara Square (20%) or Tundratown (60%). Which approach is appropriate?\n\n\n\nA recruit cannot work in more than one district, so these are mutually exclusive events.\n\n\n\\begin{align*}\nP(\\text{Sahara $\\cup$ Tundra}) &= P(\\text{Sahara}) + P(\\text{Tundra}) - P(\\text{Sahara $\\cap$ Tundra}) \\\\\n&= P(\\text{Sahara}) + P(\\text{Tundra})  \\\\\n&= 0.20 + 0.60  \\\\\n&= 0.80\n\\end{align*}"
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#practice-addition-rule-1",
+    "href": "files/lectures/1-1-probability-basics.html#practice-addition-rule-1",
+    "title": "Basics of Probability and Statistics",
+    "section": "Practice: Addition Rule",
+    "text": "Practice: Addition Rule\n\n\nExample\n\nA recruit is randomly selected. 30% of recruits work Patrol, and 45% report getting 8+ hours of sleep. 15% of recruits both work Patrol and get 8+ hours of sleep. What’s the probability a recruit works Patrol or gets 8+ hours of sleep?\n\n\n\nA recruit can work Patrol and get plenty of sleep (they are not mutually exclusive).\n\n\n\\begin{align*}\nP(\\text{Patrol $\\cup$ 8+ hrs}) &= P(\\text{Patrol}) + P(\\text{8+ hrs}) - P(\\text{Patrol $\\cap$ 8+ hrs}) \\\\\n&= 0.30 + 0.45 - 0.15 \\\\\n&= 0.60\n\\end{align*}"
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#the-multiplication-rule-independent-events",
+    "href": "files/lectures/1-1-probability-basics.html#the-multiplication-rule-independent-events",
+    "title": "Basics of Probability and Statistics",
+    "section": "The Multiplication Rule (Independent Events)",
+    "text": "The Multiplication Rule (Independent Events)\n\n\nMultiplication Rule\n\nFor independent events: P(A \\cap B) = P(A) \\times P(B)\n\n\nIf knowing B doesn’t change A, then the chance of both happening is just the product of their individual chances."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#the-multiplication-rule-dependent-events",
+    "href": "files/lectures/1-1-probability-basics.html#the-multiplication-rule-dependent-events",
+    "title": "Basics of Probability and Statistics",
+    "section": "The Multiplication Rule (Dependent Events)",
+    "text": "The Multiplication Rule (Dependent Events)\n\n\nMultiplication Rule\n\nFor dependent events: P(A \\cap B) = P(A) \\times P(B \\mid A)\n\n\nWe are accounting for the dependence between A and B with the conditional probability."
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#practice-multiplication-rule",
+    "href": "files/lectures/1-1-probability-basics.html#practice-multiplication-rule",
+    "title": "Basics of Probability and Statistics",
+    "section": "Practice: Multiplication Rule",
+    "text": "Practice: Multiplication Rule\n\n\nExample\n\nSuppose P(\\text{passes exam}) = 0.85 and P(\\text{reports 8+ hrs sleep}) = 0.40. Further, we know that P(\\text{reports 8+ hrs sleep} \\mid \\text{passes exam}) = 0.40. What’s the probability a randomly chosen recruit passes the exam and reports 8+ hours of sleep?\n\n\n\n\\begin{align*}\nP(\\text{passes exam $\\cap$ 8+ hrs}) &= P(\\text{passes exam}) \\times P(\\text{8+ hrs} \\mid \\text{passes exam}) \\\\\n&= P(\\text{passes exam}) \\times P(\\text{8+ hrs}) \\\\\n&= 0.85 \\times 0.40 \\\\\n&= 0.34\n\\end{align*}"
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#practice-multiplication-rule-1",
+    "href": "files/lectures/1-1-probability-basics.html#practice-multiplication-rule-1",
+    "title": "Basics of Probability and Statistics",
+    "section": "Practice: Multiplication Rule",
+    "text": "Practice: Multiplication Rule\n\n\nExample\n\nSuppose P(\\text{Tundratown}) = 0.60, and among Tundratown recruits specifically, P(\\text{passes exam} \\mid \\text{Tundratown}) = 0.10. What’s the probability a randomly chosen recruit is assigned to Tundratown and passes the exam on their first attempt?\n\n\n\n\\begin{align*}\nP(\\text{Tundra} \\cap \\text{pass exam}) &= P(\\text{Tundra}) \\times P(\\text{pass exam} \\mid \\text{Tundra}) \\\\\n&= 0.60 \\times 0.10 \\\\\n&= 0.06\n\\end{align*}"
+  },
+  {
+    "objectID": "files/lectures/1-1-probability-basics.html#wrap-up",
+    "href": "files/lectures/1-1-probability-basics.html#wrap-up",
+    "title": "Basics of Probability and Statistics",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\nThis lecture gave an overview of probability basics.\n\nComplement: P(A^c) = 1 - P(A)\nConditional: P(A \\mid B)\nIndependence: P(A \\mid B) = P(A)\nAddition: P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\nMultiplication: P(A \\text{ and } B) = P(A) \\times P(B \\mid A)\n\nThe next lecture covers probability distribution basics."
+  },
+  {
+    "objectID": "files/lectures/4-1-one-way-anova.html#introduction",
+    "href": "files/lectures/4-1-one-way-anova.html#introduction",
+    "title": "One-Way ANOVA",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "files/lectures/4-1-one-way-anova.html#r-setup",
+    "href": "files/lectures/4-1-one-way-anova.html#r-setup",
+    "title": "One-Way ANOVA",
+    "section": "R Setup",
+    "text": "R Setup"
+  },
+  {
+    "objectID": "files/lectures/4-1-one-way-anova.html#analysis-of-variance",
+    "href": "files/lectures/4-1-one-way-anova.html#analysis-of-variance",
+    "title": "One-Way ANOVA",
+    "section": "Analysis of Variance",
+    "text": "Analysis of Variance"
+  },
+  {
+    "objectID": "files/lectures/4-1-one-way-anova.html#hypothesis-test-for-mu_1-mu_2-...-mu_k",
+    "href": "files/lectures/4-1-one-way-anova.html#hypothesis-test-for-mu_1-mu_2-...-mu_k",
+    "title": "One-Way ANOVA",
+    "section": "Hypothesis Test for \\mu_1 = \\mu_2 = ... = \\mu_k",
+    "text": "Hypothesis Test for \\mu_1 = \\mu_2 = ... = \\mu_k"
+  },
+  {
+    "objectID": "files/lectures/4-1-one-way-anova.html#statistical-inference-on-k-means-r",
+    "href": "files/lectures/4-1-one-way-anova.html#statistical-inference-on-k-means-r",
+    "title": "One-Way ANOVA",
+    "section": "Statistical Inference on k Means (R)",
+    "text": "Statistical Inference on k Means (R)"
+  },
+  {
+    "objectID": "files/lectures/4-1-one-way-anova.html#example-1",
+    "href": "files/lectures/4-1-one-way-anova.html#example-1",
+    "title": "One-Way ANOVA",
+    "section": "Example 1",
+    "text": "Example 1"
+  },
+  {
+    "objectID": "files/lectures/4-1-one-way-anova.html#example-2",
+    "href": "files/lectures/4-1-one-way-anova.html#example-2",
+    "title": "One-Way ANOVA",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/4-1-one-way-anova.html#wrap-up",
+    "href": "files/lectures/4-1-one-way-anova.html#wrap-up",
+    "title": "One-Way ANOVA",
+    "section": "Wrap Up",
+    "text": "Wrap Up"
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#introduction",
+    "href": "files/lectures/2-3-one-sample-proportion.html#introduction",
+    "title": "One-Sample Proportions",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#r-setup",
+    "href": "files/lectures/2-3-one-sample-proportion.html#r-setup",
+    "title": "One-Sample Proportions",
+    "section": "R Setup",
+    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)"
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#data-setup",
+    "href": "files/lectures/2-3-one-sample-proportion.html#data-setup",
+    "title": "One-Sample Proportions",
+    "section": "Data Setup",
+    "text": "Data Setup\n\nRecall our Zootopia data,\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8\n\n\nGreta Smith\nDesk\nTundratown\nPass\n81\n8.3\n36.10\n29.6\n\n\nOtto Meadowsly\nPatrol\nDowntown\nPass\n71\n7.5\n51.91\n65.2"
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#confidence-interval-for-pi",
+    "href": "files/lectures/2-3-one-sample-proportion.html#confidence-interval-for-pi",
+    "title": "One-Sample Proportions",
+    "section": "Confidence Interval for \\pi",
+    "text": "Confidence Interval for \\pi\n\n(1–\\alpha)100% CI for a population proportion, \\pi\n\n\\hat{p} \\pm z_{\\alpha/2} \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}\n\n\\hat{p} is the sample proportion (the point estimate)\nz_{\\alpha/2} comes from the standard normal distribution (the critical value)\n\\hat{p}(1-\\hat{p}) is the variance of the Bernoulli distribution and n is the sample size (\\sqrt{\\hat{p}(1-\\hat{p})/n} is the standard error of the mean)"
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#hypothesis-test-for-pi",
+    "href": "files/lectures/2-3-one-sample-proportion.html#hypothesis-test-for-pi",
+    "title": "One-Sample Proportions",
+    "section": "Hypothesis Test for \\pi",
+    "text": "Hypothesis Test for \\pi\n\nHypotheses\n\n\n\nTwo-Tailed\nH_0: \\pi = \\pi_0\nH_1: \\pi \\ne \\pi_0\n\nLeft-Tailed\nH_0: \\pi \\ge \\pi_0\nH_1: \\pi &lt; \\pi_0\n\nRight-Tailed\nH_0: \\pi \\le \\pi_0\nH_1: \\pi &gt; \\pi_0\n\n\n\\pi is the population proportion,\n\\pi_0 is the hypothesized value of \\pi."
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#hypothesis-test-for-pi-1",
+    "href": "files/lectures/2-3-one-sample-proportion.html#hypothesis-test-for-pi-1",
+    "title": "One-Sample Proportions",
+    "section": "Hypothesis Test for \\pi",
+    "text": "Hypothesis Test for \\pi\n\nTest Statistic\n\nz_0 = \\frac{\\hat{p} - \\pi_0}{\\sqrt{\\frac{\\pi_0(1-\\pi_0)}{n}}}\n\nwhere\n\n\\hat{p} is the sample proportion\n\\pi_0 is the hypothesized value of \\pi\nn is the sample size"
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#statistical-inference-on-one-proportion-r",
+    "href": "files/lectures/2-3-one-sample-proportion.html#statistical-inference-on-one-proportion-r",
+    "title": "One-Sample Proportions",
+    "section": "Statistical Inference on One Proportion (R)",
+    "text": "Statistical Inference on One Proportion (R)\n\nWe will use the one_proportion() function from library(ssstats) to perform statistical inference.\n\n\ndataset_name %&gt;% one_proportion(outcome = variable_name,\n                                event = event_name_or_number,\n                                p = hypothesized_value,\n                                alternative = \"two\" | \"less\" | \"greater\",\n                                alpha = alpha_level)\n\n\nwhere\n\noutcome is the variable name of the outcome variable\nevent is the name or number of the event of interest\np is the hypothesized value of the population proportion (default = 0.05)\nalternative is the alternative hypothesis (default = “two”)\nalpha is the significance level (default = 0.05)"
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-1",
+    "title": "One-Sample Proportions",
+    "section": "Example 1",
+    "text": "Example 1\n\nZPD’s official staffing policy states that 50% of officers are assigned to Patrol, with the rest working Desk duty. As Zootopia’s data analyst, you believe thatatrol seems to make up a lot more than 50% of the department these days. We will use the zootopia dataset to answer:\n\nHas the true proportion of officers in Patrol increased from 50%?\n\nFirst, we need to describe the data.\n\nWe start with point and interval estimates.\n\nThen, we will perform a hypothesis test to answer the question."
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1-1",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-1-1",
+    "title": "One-Sample Proportions",
+    "section": "Example 1",
+    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_proportion(outcome = department)\n\nError in `one_proportion()`:\n! argument \"event\" is missing, with no default\n\n\n\nOops! We need to make sure we specify the event of interest. Let’s see how it’s coded in the department variable.\n\n\nzootopia %&gt;% n_pct(department)\n\n\n\n\n\ndepartment\nn (pct)\n\n\n\n\nDesk\n12 (40.0%)\n\n\nPatrol\n18 (60.0%)"
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1-2",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-1-2",
+    "title": "One-Sample Proportions",
+    "section": "Example 1",
+    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_proportion(outcome = department,\n                            event = \"Patrol\")\n\nOne-sample proportion\n\np̂ = 0.6 (18/30)\n\n95% CI for π: (0.4247, 0.7753)\n\nHypotheses:\nH₀: π = 0.5\nH₁: π ≠ 0.5\nTest statistic: z = 1.1\np-value: 0.273\nConclusion: Fail to reject the null hypothesis (p = 0.273 ≥ α = 0.050)\n\n\n\nThe estimated proportion of officers in Patrol is 60% (95% CI: 42.5%, 77.5%)."
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1-3",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-1-3",
+    "title": "One-Sample Proportions",
+    "section": "Example 1",
+    "text": "Example 1\n\nThen, we will perform a hypothesis test to answer the question.\n\nHas the true proportion of officers in Patrol increased from 50%?\n\nHow do we translate this into hypotheses?\n\nH_0: \\pi &lt; 0.5\nH_1: \\pi \\ge 0.5\n\nFor the one_proportion() function, we will set\n\np = 0.5\nalternative = \"greater\"."
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1-4",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-1-4",
+    "title": "One-Sample Proportions",
+    "section": "Example 1",
+    "text": "Example 1\n\nHas the true proportion of officers in Patrol increased from 50%?\n\n\nzootopia %&gt;% one_proportion(outcome = department,\n                            event = \"Patrol\",\n                            p = 0.5,\n                            alternative = \"greater\",\n                            alpha = 0.05)\n\nOne-sample proportion\n\np̂ = 0.6 (18/30)\n\n95% CI for π: (0.4247, 0.7753)\n\nHypotheses:\nH₀: π ≤ 0.5\nH₁: π &gt; 0.5\nTest statistic: z = 1.1\np-value: 0.137\nConclusion: Fail to reject the null hypothesis (p = 0.137 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1-5",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-1-5",
+    "title": "One-Sample Proportions",
+    "section": "Example 1",
+    "text": "Example 1\n\nHypotheses\n\nH_0: \\pi &lt; 0.5\nH_1: \\pi \\ge 0.5\n\nTest Statistic and p-Value\n\nz_0 = 1.1\np = 0.137\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the current proportion of officers in Patrol has increased from 50%."
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-2",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-2",
+    "title": "One-Sample Proportions",
+    "section": "Example 2",
+    "text": "Example 2\n\nZootopia’s Housing Authority claims that 40% of officers live in Downtown. As data analyst, you believe Downtown might actually make up a smaller proportion of the roster than the Authority’s number suggests. We will use the zootopia dataset to answer:\n\nIs the true proportion of officers living in Downtown actually less than 40%?\n\nFirst, we need to describe the data.\n\nWe start with point and interval estimates.\n\nThen, we will perform a hypothesis test to answer the question."
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-2-1",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-2-1",
+    "title": "One-Sample Proportions",
+    "section": "Example 2",
+    "text": "Example 2\n\nLooking at what is in district,\n\n\nzootopia %&gt;% n_pct(district)\n\n\n\n\n\ndistrict\nn (pct)\n\n\n\n\nDowntown\n8 (26.7%)\n\n\nRainforest District\n7 (23.3%)\n\n\nSahara Square\n9 (30.0%)\n\n\nTundratown\n6 (20.0%)\n\n\n\n\n\n\n\nWe know that the event of interest is coded as Downtown."
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-2-2",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-2-2",
+    "title": "One-Sample Proportions",
+    "section": "Example 2",
+    "text": "Example 2\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_proportion(outcome = district,\n                            event = \"Downtown\")\n\nOne-sample proportion\n\np̂ = 0.2667 (8/30)\n\n95% CI for π: (0.1084, 0.4249)\n\nHypotheses:\nH₀: π = 0.5\nH₁: π ≠ 0.5\nTest statistic: z = -2.56\np-value: 0.011\nConclusion: Reject the null hypothesis (p = 0.011 &lt; α = 0.050)\n\n\n\nThe estimated proportion of officers living in Downtown is 26.7% (95% CI: 10.8%, 42.5%)."
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-2-3",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-2-3",
+    "title": "One-Sample Proportions",
+    "section": "Example 2",
+    "text": "Example 2\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the true proportion of officers living in Downtown actually less than 40%?\n\nHow do we translate this into hypotheses?\n\nH_0: \\pi &gt; 0.4\nH_1: \\pi \\le 0.4\n\nFor the one_proportion() function, we will set\n\np = 0.4\nalternative = \"less\"."
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-2-4",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-2-4",
+    "title": "One-Sample Proportions",
+    "section": "Example 2",
+    "text": "Example 2\n\nIs the true proportion of officers living in Downtown actually less than 40%?\n\n\nzootopia %&gt;% one_proportion(outcome = district,\n                            event = \"Downtown\",\n                            p = 0.4,\n                            alternative = \"less\",\n                            alpha = 0.05)\n\nOne-sample proportion\n\np̂ = 0.2667 (8/30)\n\n95% CI for π: (0.1084, 0.4249)\n\nHypotheses:\nH₀: π ≥ 0.4\nH₁: π &lt; 0.4\nTest statistic: z = -1.49\np-value: 0.068\nConclusion: Fail to reject the null hypothesis (p = 0.068 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#example-2-5",
+    "href": "files/lectures/2-3-one-sample-proportion.html#example-2-5",
+    "title": "One-Sample Proportions",
+    "section": "Example 2",
+    "text": "Example 2\n\nHypotheses\n\nH_0: \\pi &lt; 0.4\nH_1: \\pi \\ge 0.4\n\nTest Statistic and p-Value\n\nz_0 = - 1.49\np = 0.068\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the current proportion of officers living in Downtown is less than 40%."
+  },
+  {
+    "objectID": "files/lectures/2-3-one-sample-proportion.html#wrap-up",
+    "href": "files/lectures/2-3-one-sample-proportion.html#wrap-up",
+    "title": "One-Sample Proportions",
+    "section": "Wrap Up",
+    "text": "Wrap Up"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#introduction",
+    "href": "files/lectures/2-1-statistical-inference.html#introduction",
+    "title": "Review of Statistical Inference",
+    "section": "Introduction",
+    "text": "Introduction\n\nThis lecture reviews the concepts of statistical estimation and inference:\n\npoint estimation\ninterval estimation\nhypothesis testing\n\nThere is an interactive widget in this lecture’s slides – please see class website :)"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#point-estimation",
+    "href": "files/lectures/2-1-statistical-inference.html#point-estimation",
+    "title": "Review of Statistical Inference",
+    "section": "Point Estimation",
+    "text": "Point Estimation\n\npoint estimate a sample statistic that estimates the value of a population parameter; this estimate is based on the sample data.\nSample statistics estimate population parameters.\n\n\\bar{x} estimates \\mu\ns estimates \\sigma\n\\hat{p}_1 - \\hat{p}_2 estimates \\pi_1 - \\pi_2"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#interval-estimation",
+    "href": "files/lectures/2-1-statistical-inference.html#interval-estimation",
+    "title": "Review of Statistical Inference",
+    "section": "Interval Estimation",
+    "text": "Interval Estimation\n\nconfidence interval a range of plausible values for the parameter under investigation; this estimate is based on the sample data.\n\nLower bound: minimum plausible value for the parameter according to the data\nUpper bound: maximum plausible value for the parameter according to the data\n\nConfidence intervals are found for population parameters.\n\nCI for \\pi\nCI for \\mu_1-\\mu_2\nCI for \\sigma^2"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#interval-estimation-1",
+    "href": "files/lectures/2-1-statistical-inference.html#interval-estimation-1",
+    "title": "Review of Statistical Inference",
+    "section": "Interval Estimation",
+    "text": "Interval Estimation\n\nlevel of estimation the expected proportion of intervals that will contain the true value of the population parameter if the population is repeatedly sampled.\nA common level of estimation is 95%.\n\nIf we were to draw 100 samples from the same population, we expect 95 of the estimated confidence intervals to contain the true value of the population parameter."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#confidence-intervals",
+    "href": "files/lectures/2-1-statistical-inference.html#confidence-intervals",
+    "title": "Review of Statistical Inference",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\nOften, confidence intervals will take the form\n\n\\text{point estimate} \\ \\pm \\ \\text{margin of error}\n\nLower bound = point estimate - margin of error\nUpper bound = point estimate + margin of error\nThe margin of error is the critical value \\times standard error.\n\nThe critical value will depend on the level of confidence and the sampling distribution of the point estimate.\nThe standard error corresponds to the point estimate."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#example-1",
+    "href": "files/lectures/2-1-statistical-inference.html#example-1",
+    "title": "Review of Statistical Inference",
+    "section": "Example 1",
+    "text": "Example 1\n\nThe Grand Floridian claims average wait time at the Beach Pool bar is 8 minutes, but guests believe it is longer.\n\nAnalyst determines that the 95% CI for \\mu is (8.09, 11.91)\nWe are 95% confident the true average wait time at the Beach Pool bar during summer break is between 8.09 and 11.91 minutes.\n\nTakeaway: because the interval is larger than 8, the average wait time is likely longer than 8 minutes."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#example-2",
+    "href": "files/lectures/2-1-statistical-inference.html#example-2",
+    "title": "Review of Statistical Inference",
+    "section": "Example 2",
+    "text": "Example 2\n\nDisney wonders if the nightly campfires are less popular at Port Orleans French Quarter than at Port Orleans Riverside.\n\nAnalyst determines that the 95% CI for \\pi_{\\text{POFQ}} - \\pi_{\\text{POR}} is ($-$0.321, 0.021).\nWe are 95% confident the true difference in campfire attendance proportions (POFQ − POR) is between $-$0.321 and 0.021.\n\nTakeaway: because the interval contains 0, we cannot conclude that one resort’s campfire is more popular than the other."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#hypothesis-testing",
+    "href": "files/lectures/2-1-statistical-inference.html#hypothesis-testing",
+    "title": "Review of Statistical Inference",
+    "section": "Hypothesis Testing",
+    "text": "Hypothesis Testing\n\nhypothesis testing a statistical procedure that allows us to make inferences about population parameters based on sample data.\nGeneral steps:\n\nMake a statement about the nature of the population.\nCollect evidence to test the statement.\nAnalyze the data to determine the plausibility of the statement."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#hypotheses",
+    "href": "files/lectures/2-1-statistical-inference.html#hypotheses",
+    "title": "Review of Statistical Inference",
+    "section": "Hypotheses",
+    "text": "Hypotheses\n\nhypothesis a statement regarding the population parameter.\nWe will be stating two hypotheses: the null and the alternative.\n\nH_0: null hypothesis a mathematical statement about the population parameter; this hypothesis is assumed true until evidence indicates otherwise.\nH_1: alternative hypothesis a statement about the population parameter that contradicts the null hypothesis; this is also called the research hypothesis.\n\nNote! H_0 + H_1 should cover the real line, \\mathbb{R}.\n\nSome textbooks teach that “=” is always used in H_0."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#hypotheses-1",
+    "href": "files/lectures/2-1-statistical-inference.html#hypotheses-1",
+    "title": "Review of Statistical Inference",
+    "section": "Hypotheses",
+    "text": "Hypotheses\n\nOne sample tests\n\nTwo-tailed test\n\nH_0: parameter = hypothesized value\nH_1: parameter \\ne hypothesized value\n\nLeft-tailed test\n\nH_0: parameter \\ge hypothesized value\n\nH_1: parameter &lt; hypothesized value\n\nRight-tailed test\n\nH_0: parameter \\le hypothesized value\n\nH_1: parameter &gt; hypothesized value"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#hypotheses-2",
+    "href": "files/lectures/2-1-statistical-inference.html#hypotheses-2",
+    "title": "Review of Statistical Inference",
+    "section": "Hypotheses",
+    "text": "Hypotheses\n\nExamples:\n\n“Guests spend more than $50/day at a theme park” \\to H_1: \\mu &gt; 50.\n“80% of guests are satisfied with their visit to the park” \\to H_1: \\pi = 0.80.\n“The variability in daily guest spending is less than $100” \\to H_1: \\sigma^2 &lt; 100.\n“The median wait time for an attraction at Hollywood Studios is greater than 30 minutes” \\to H_1: M &gt; 30.\n“Fewer than 25% of guests purchase popcorn buckets” \\to H_1: \\pi &lt; 0.25."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#hypotheses-3",
+    "href": "files/lectures/2-1-statistical-inference.html#hypotheses-3",
+    "title": "Review of Statistical Inference",
+    "section": "Hypotheses",
+    "text": "Hypotheses\n\nTwo sample tests\n\nTwo-tailed test\n\nH_0: parameter1 - parameter2 = hypothesized difference\nH_1: parameter1 - parameter2 \\ne hypothesized difference\n\nLeft-tailed test\n\nH_0: parameter1 - parameter2 \\ge hypothesized difference\nH_1: parameter1 - parameter2 &lt; hypothesized difference\n\nRight-tailed test\n\nH_0: parameter1 - parameter2 \\le hypothesized difference\nH_1: parameter1 - parameter2 &gt; hypothesized difference"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#hypotheses-4",
+    "href": "files/lectures/2-1-statistical-inference.html#hypotheses-4",
+    "title": "Review of Statistical Inference",
+    "section": "Hypotheses",
+    "text": "Hypotheses\n\nExamples:\n\n“Guests spend more at Disney’s Hollywood Studios than at Disney’s Animal Kingdom” \\to H_1: \\mu_{\\text{DHS}} &gt; \\mu_\\text{DAK}.\n“The proportion of guests who purchase Lightning Lane passes differs between annual passholders and single-day ticket holders” \\to H_1: \\pi_\\text{AP} \\ne \\pi_\\text{SD}.\n“The difference in Lightning Lane purchase rates between passholders and single-day guests less than 10 percentage points” \\to H_1: \\pi_\\text{AP} - \\pi_\\text{SD} &lt; 0.10.\n“The wait time for a ride is different in the morning vs. the afternoon on the same day” \\to H_1: \\mu_d \\ne 0, where \\mu_d =  \\mu_\\text{am} - \\mu_\\text{pm}."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#hypotheses-5",
+    "href": "files/lectures/2-1-statistical-inference.html#hypotheses-5",
+    "title": "Review of Statistical Inference",
+    "section": "Hypotheses",
+    "text": "Hypotheses\n\nOnce we have the alternative hypotheses, we know the null hypothesis is in the opposite direction.\n\n“Guests spend more than $50/day at a theme park”\n\nH_0: \\mu \\le 50\nH_1: \\mu &gt; 50\n\n“The difference in Lightning Lane purchase rates between passholders and single-day guests less than 10 percentage points”\n\nH_0: \\pi_\\text{AP} - \\pi_\\text{SD} \\ge 0.10\nH_1: \\pi_\\text{AP} - \\pi_\\text{SD} &lt; 0.10"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#hypotheses-6",
+    "href": "files/lectures/2-1-statistical-inference.html#hypotheses-6",
+    "title": "Review of Statistical Inference",
+    "section": "Hypotheses",
+    "text": "Hypotheses\n\nOnce we have the alternative hypotheses, we know the null hypothesis is in the opposite direction.\n\n“80% of guests are satisfied with their visit to the park”\n\nH_0: \\pi = 0.80\nH_1: \\pi \\ne 0.80\n\n“Guests spend more at Disney’s Hollywood Studios than at Disney’s Animal Kingdom”\n\nH_0: \\mu_{\\text{DHS}} \\le \\mu_\\text{DAK} \\to H_0: \\mu_{\\text{DHS}} - \\mu_\\text{DAK} \\le 0\nH_1: \\mu_{\\text{DHS}} &gt; \\mu_\\text{DAK} \\to H_1: \\mu_{\\text{DHS}} - \\mu_\\text{DAK} &gt; 0"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#test-statistics",
+    "href": "files/lectures/2-1-statistical-inference.html#test-statistics",
+    "title": "Review of Statistical Inference",
+    "section": "Test Statistics",
+    "text": "Test Statistics\n\nAfter stating our hypotheses, we will construct an appropriate test statistic.\n\nA test statisic is a measure of the distance from what you observed to what you are assuming to he true.\n\nThe choice of test statistic depends on:\n\nThe hypotheses being tested.\nAssumptions made about the data.\n\nThe value of the test statistic depends on the sample data.\n\nIf we were to draw a different sample, our calculations would result in a different value for the test statistic.\n\nWe will use the test statistic on our way to drawing conclusions about the hypotheses."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#p-value",
+    "href": "files/lectures/2-1-statistical-inference.html#p-value",
+    "title": "Review of Statistical Inference",
+    "section": "p-Value",
+    "text": "p-Value\n\np-value the probability of observing our test statistic or one more extreme.\n\nMore extreme?\n\nIf the alternative hypothesis is right-tailed, we will consider the right tail of the distribution.\nIf the alternative hypothesis is left-tailed, we will consider the left tail of the distribution.\nIf the alternative hypothesis is two-tailed, we will consider both tails of the distribution.\n\n\nWe use the p-value to determine if we reject the null (believe the alternative) or fail to reject the null (do not believe the alternative)."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#p-value-1",
+    "href": "files/lectures/2-1-statistical-inference.html#p-value-1",
+    "title": "Review of Statistical Inference",
+    "section": "p-Value",
+    "text": "p-Value\n\np-value the probability of observing our test statistic or one more extreme.\n\n\n  \n\n    \n    \n      Alternative hypothesis:\n       Upper-tailed\n       Lower-tailed\n       Two-tailed \n    \n\n    \n    \n      \n        \n        \n        \n        \n        \n      \n    \n\n    \n    \n      Test statistic\n      \n      1.50\n    \n\n    \n    \n      p-value = 0.1336"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#p-values",
+    "href": "files/lectures/2-1-statistical-inference.html#p-values",
+    "title": "Review of Statistical Inference",
+    "section": "p-Values",
+    "text": "p-Values\n\nMathematically, we are asking\n\nRight-tailed test: P[\\text{distribution} \\ge \\text{test statistic}]\nLeft-tailed test: P[\\text{distribution} \\le \\text{test statistic}]\nTwo-tailed test: P[\\text{distribution} \\ne \\text{test statistic}]"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#rejection-regions",
+    "href": "files/lectures/2-1-statistical-inference.html#rejection-regions",
+    "title": "Review of Statistical Inference",
+    "section": "Rejection Regions",
+    "text": "Rejection Regions\n\nWe use rejection regions to determine if we reject the null or fail to reject the null.\nClassical approach: critical values and statistical tables.\nModern approach: p-values.\n\np-value the probability of observing our test statistic or one more extreme.\n\nAll rejection regions will take the same form:\n\n\nReject H_0 if p &lt; \\alpha."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#errors-in-hypothesis-testing",
+    "href": "files/lectures/2-1-statistical-inference.html#errors-in-hypothesis-testing",
+    "title": "Review of Statistical Inference",
+    "section": "Errors in Hypothesis Testing",
+    "text": "Errors in Hypothesis Testing\n\nWait, what is \\alpha?\n\n\\alpha is the significance level of the test.\n\nA Type I error (\\alpha) means that we reject the null when we should not.\n\n\\alpha = P[\\text{reject } H_0 \\text{ when } H_0 \\text{ is true}]\n\nA Type II error (\\beta) means that we fail to reject the null when we should not.\n\n\\beta = P[\\text{fail to reject } H_0 \\text{ when } H_1 \\text{ is true}]\n\nWe should choose \\alpha based on the level of error we are willing to withstand.\n\nThe \\alpha that is commonly used is \\alpha=0.05.\nSometimes, smaller \\alpha is used. e.g., clinical trial \\to \\alpha=0.01."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#drawing-a-conclusion",
+    "href": "files/lectures/2-1-statistical-inference.html#drawing-a-conclusion",
+    "title": "Review of Statistical Inference",
+    "section": "Drawing a Conclusion",
+    "text": "Drawing a Conclusion\n\nWe draw a conclusion by following the instructions of our rejection region.\nIf p &lt; \\alpha, we reject the null hypothesis.\n\nThere is sufficient evidence to suggest that the alternative is true.\n\nIf p \\ge \\alpha, we fail to reject the null hypothesis.\n\nThere is not sufficient evidence to suggest that the alternative is true.\n\nNote the language – “fail to reject” is not the same as “accept.”\n\n\n\nWe never “accept” H_0."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#interpretation-of-results",
+    "href": "files/lectures/2-1-statistical-inference.html#interpretation-of-results",
+    "title": "Review of Statistical Inference",
+    "section": "Interpretation of Results",
+    "text": "Interpretation of Results\n\nWe will always report our results in the context of the problem.\nExamples:\n\nThere is sufficient evidence to suggest that the average daily spending of guests at Disney’s Hollywood Studios is greater than $50.\nThere is not sufficient evidence to suggest that the proportion of guests who purchase Lightning Lane passes differs between annual passholders and single-day ticket holders."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#putting-it-together",
+    "href": "files/lectures/2-1-statistical-inference.html#putting-it-together",
+    "title": "Review of Statistical Inference",
+    "section": "Putting it Together",
+    "text": "Putting it Together\n\nFor class purposes, you will be reporting all hypothesis test pieces.\n\nHypotheses\nTest Statistic and p-Value\nRejection Region\nConclusion and Interpretation"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#example-1-1",
+    "href": "files/lectures/2-1-statistical-inference.html#example-1-1",
+    "title": "Review of Statistical Inference",
+    "section": "Example 1",
+    "text": "Example 1\n\nThe Grand Floridian claims average wait time at the Beach Pool bar is 8 minutes, but guests believe it is longer.\nHypotheses\n\nH_0: \\mu \\le 8\nH_1: \\mu &gt; 8\n\nTest Statistic and p-Value\n\nt = 2.14\np = 0.021"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#example-1-2",
+    "href": "files/lectures/2-1-statistical-inference.html#example-1-2",
+    "title": "Review of Statistical Inference",
+    "section": "Example 1",
+    "text": "Example 1\n\nThe Grand Floridian claims average wait time at the Beach Pool bar is 8 minutes, but guests believe it is longer.\nTest Statistic and p-Value\n\nt = 2.14\np = 0.021\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\ \\alpha = 0.05\n\nConclusion and Interpretation\n\nReject H_0. There is sufficient evidence to suggest that the average wait time at the Beach Pool bar is greater than 8 minutes during summer break."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#example-2-1",
+    "href": "files/lectures/2-1-statistical-inference.html#example-2-1",
+    "title": "Review of Statistical Inference",
+    "section": "Example 2",
+    "text": "Example 2\n\nDisney wonders if the nightly campfires are less popular at Port Orleans French Quarter than at Port Orleans Riverside.\nHypotheses\n\nH_0: \\pi_{\\text{POFQ}} \\ge \\pi_{\\text{POR}}\nH_1: \\pi_{\\text{POFQ}} &lt; \\pi_{\\text{POR}}\n\nTest Statistic and p-Value\n\nz = 1.64\np = 0.051"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#example-2-2",
+    "href": "files/lectures/2-1-statistical-inference.html#example-2-2",
+    "title": "Review of Statistical Inference",
+    "section": "Example 2",
+    "text": "Example 2\n\nDisney wonders if the nightly campfires are less popular at Port Orleans French Quarter than at Port Orleans Riverside.\nTest Statistic and p-Value\n\nz = 1.64\np = 0.051\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\ \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that a smaller proportion of guests attend nightly campfires at Port Orleans French Quarter as compared to Port Orleans Riverside."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#example-3",
+    "href": "files/lectures/2-1-statistical-inference.html#example-3",
+    "title": "Review of Statistical Inference",
+    "section": "Example 3",
+    "text": "Example 3\n\nFor the purpose of beach towel distribution, the lead of Mousekeeping at Art of Animation asks if room type (Little Mermaid, Finding Nemo, Cars, or Lion King) affects pool preference (Big Blue, Cozy Cone, or Flippin’ Fins).\nHypotheses\n\nH_0: pool preference does not depend on room type\nH_1: pool preference depends on room type\n\nTest Statistic and p-Value\n\n\\chi^2 = 9.87\np = 0.020"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#example-3-1",
+    "href": "files/lectures/2-1-statistical-inference.html#example-3-1",
+    "title": "Review of Statistical Inference",
+    "section": "Example 3",
+    "text": "Example 3\n\nFor the purpose of beach towel distribution, the lead of Mousekeeping at Art of Animation asks if room type (Little Mermaid, Finding Nemo, Cars, or Lion King) affects pool preference (Big Blue, Cozy Cone, or Flippin’ Fins).\nTest Statistic and p-Value\n\n\\chi^2 = 9.87\np = 0.020\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\ \\alpha = 0.05\n\nConclusion and Interpretation\n\nReject H_0. There is sufficient evidence to suggest that pool preference depends on room type."
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#practical-vs.-statistical-significance",
+    "href": "files/lectures/2-1-statistical-inference.html#practical-vs.-statistical-significance",
+    "title": "Review of Statistical Inference",
+    "section": "Practical vs. Statistical Significance",
+    "text": "Practical vs. Statistical Significance\n\nHypothesis testing depends on sample size.\n\nAs the sample size increases, our test statistics increase.\nAs test statistics increase, our p-values decrease.\nAs p-values decrease, we are more likely to reject the null hypothesis.\n\nWe must ask ourselves if the value we are testing against makes practical sense.\n\nWould you care about a new weight loss medication where the average amount of weight lost was 1 lb over 6 months?\nWould you care about a new teaching method that only raised final exam scores by 2 points?"
+  },
+  {
+    "objectID": "files/lectures/2-1-statistical-inference.html#wrap-up",
+    "href": "files/lectures/2-1-statistical-inference.html#wrap-up",
+    "title": "Review of Statistical Inference",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\npoint estimation: best guess at the population parameter.\ninterval estimation: range of plausible values of the population parameter.\nhypothesis testing: formal way to evaluate evidence against a claim.\nAs we move forward, we will see how all of these concepts are connected.\n\nBoth confidence intervals and hypothesis tests are based on the same sampling distributions of point estimates.\nIn statistical theory, interval estimates are derived from test statistics."
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#introduction",
+    "href": "files/lectures/2-4-one-sample-variance.html#introduction",
+    "title": "One-Sample Variances",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#r-setup",
+    "href": "files/lectures/2-4-one-sample-variance.html#r-setup",
+    "title": "One-Sample Variances",
+    "section": "R Setup",
+    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)"
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#data-setup",
+    "href": "files/lectures/2-4-one-sample-variance.html#data-setup",
+    "title": "One-Sample Variances",
+    "section": "Data Setup",
+    "text": "Data Setup\n\nRecall our Zootopia data,\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8\n\n\nGreta Smith\nDesk\nTundratown\nPass\n81\n8.3\n36.10\n29.6\n\n\nOtto Meadowsly\nPatrol\nDowntown\nPass\n71\n7.5\n51.91\n65.2"
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#confidence-interval-for-sigma2",
+    "href": "files/lectures/2-4-one-sample-variance.html#confidence-interval-for-sigma2",
+    "title": "One-Sample Variances",
+    "section": "Confidence Interval for \\sigma^2",
+    "text": "Confidence Interval for \\sigma^2\n\n(1–\\alpha)100% CI for a population variance, \\sigma^2\n\n\\left( \\frac{(n-1)s^2}{\\chi^2_{1-\\alpha/2, n-1}}, \\ \\frac{(n-1)s^2}{\\chi^2_{\\alpha/2, n-1}} \\right)\n\nwhere\n\nn is the sample size\ns^2 is the sample variance\n\\chi^2_{1-\\alpha/2} and \\chi^2_{\\alpha/2} are critical values from the \\chi^2 distribution with n-1 degrees of freedom\n\nNote! This CI does not take the usual form of point estimate \\pm margin of error."
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#confidence-interval-for-sigma",
+    "href": "files/lectures/2-4-one-sample-variance.html#confidence-interval-for-sigma",
+    "title": "One-Sample Variances",
+    "section": "Confidence Interval for \\sigma",
+    "text": "Confidence Interval for \\sigma\n\n(1–\\alpha)100% CI for a population standard deviation, \\sigma\n\n\\left( \\sqrt{\\frac{(n-1)s^2}{\\chi^2_{1-\\alpha/2, n-1}}}, \\ \\sqrt{\\frac{(n-1)s^2}{\\chi^2_{\\alpha/2, n-1}}} \\ \\right)\n\nThis is just the \\sqrt of the interval for \\sigma^2."
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#hypothesis-test-for-sigma2",
+    "href": "files/lectures/2-4-one-sample-variance.html#hypothesis-test-for-sigma2",
+    "title": "One-Sample Variances",
+    "section": "Hypothesis Test for \\sigma^2",
+    "text": "Hypothesis Test for \\sigma^2\n\nHypotheses\n\n\n\nTwo-Tailed\nH_0: \\sigma^2 = \\sigma^2_0\nH_1: \\sigma^2 \\ne \\sigma^2_0\n\nLeft-Tailed\nH_0: \\sigma^2 \\ge \\sigma^2_0\nH_1: \\sigma^2 &lt; \\sigma^2_0\n\nRight-Tailed\nH_0: \\sigma^2 \\le \\sigma^2_0\nH_1: \\sigma^2 &gt; \\sigma^2_0\n\n\nwhere\n\n\\sigma^2 is the population variance,\n\\sigma^2_0 is the hypothesized value of \\sigma^2."
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#hypothesis-test-for-sigma2-1",
+    "href": "files/lectures/2-4-one-sample-variance.html#hypothesis-test-for-sigma2-1",
+    "title": "One-Sample Variances",
+    "section": "Hypothesis Test for \\sigma^2",
+    "text": "Hypothesis Test for \\sigma^2\n\nTest Statistic\n\n\\chi^2_0=\\frac{(n-1)s^2}{\\sigma^2_0}\n\nwhere\n\nn is the sample size,\n\\sigma^2 is the population variance,\n\\sigma^2_0 is the hypothesized value of \\sigma^2."
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#statistical-inference-on-one-variance-r",
+    "href": "files/lectures/2-4-one-sample-variance.html#statistical-inference-on-one-variance-r",
+    "title": "One-Sample Variances",
+    "section": "Statistical Inference on One Variance (R)",
+    "text": "Statistical Inference on One Variance (R)\n\nWe will use the one_variance() function from library(ssstats) to perform statistical inference.\n\n\ndataset_name %&gt;% one_variance(outcome = variable_name,\n                              sigma2 = hypothesized_value,\n                              alternative = \"two\" | \"less\" | \"greater\",\n                              alpha = alpha_level)\n\n\nwhere\n\noutcome is the variable name of the outcome variable\nsigma2 is the hypothesized value of the population variance (default = 1)\nalternative is the alternative hypothesis (default = “two”)\nalpha is the significance level (default = 0.05)"
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#example-1",
+    "href": "files/lectures/2-4-one-sample-variance.html#example-1",
+    "title": "One-Sample Variances",
+    "section": "Example 1",
+    "text": "Example 1\n\nThe Academy promises that its exam is calibrated with a target standard deviation of no more than 11 points. ZPD believes that the variability of their officer’s exam scores is actually smaller. As Zootopia’s data analyst, you’ve been asked to check that claim. We will use the zootopia dataset to answer:\n\nIs the consistency in ZPD officer exam scores better than \\sigma = 11 points?\n\nFirst, we need to describe the data.\n\nWe start with point and interval estimates.\n\nThen, we will perform a hypothesis test to answer the question."
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#example-1-1",
+    "href": "files/lectures/2-4-one-sample-variance.html#example-1-1",
+    "title": "One-Sample Variances",
+    "section": "Example 1",
+    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_variance(outcome = academy_exam_score)\n\nOne-sample variance\n\ns² = 64.3678 (s = 8.023)\n\n95% CI for σ²: (40.8262, 116.3244)\n\nHypotheses:\nH₀: σ² = 1\nH₁: σ² ≠ 1\nTest statistic: χ²(29) = 1866.666\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)\n\n\n\nThe estimated variance is s^2 = 64.4 with standard deviation s = 8.0. The 95% CI for \\sigma^2 is (40.8, 116.3), and the 95% CI for the population standard deviation is (6.4, 10.8)."
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#example-1-2",
+    "href": "files/lectures/2-4-one-sample-variance.html#example-1-2",
+    "title": "One-Sample Variances",
+    "section": "Example 1",
+    "text": "Example 1\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the consistency in ZPD officer exam scores better than \\sigma = 11 points?\n\nHow do we translate this into hypotheses?\n\nH_0: \\sigma^2 &gt; 121 – note that they gave us \\sigma, not \\sigma^2\nH_1: \\sigma^2 \\le 121\n\nFor the one_variance() function, we will set\n\nsigma2 = 121\nalternative = \"less\".\nalpha = 0.05"
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#example-1-3",
+    "href": "files/lectures/2-4-one-sample-variance.html#example-1-3",
+    "title": "One-Sample Variances",
+    "section": "Example 1",
+    "text": "Example 1\n\nIs the consistency in ZPD officer exam scores better than \\sigma = 11 points?\n\n\nzootopia %&gt;% one_variance(outcome = academy_exam_score,\n                          sigma2 = 121,\n                          alternative = \"less\",\n                          alpha = 0.05)\n\nOne-sample variance\n\ns² = 64.3678 (s = 8.023)\n\n95% CI for σ²: (40.8262, 116.3244)\n\nHypotheses:\nH₀: σ² ≥ 121\nH₁: σ² &lt; 121\nTest statistic: χ²(29) = 15.427\np-value: 0.019\nConclusion: Reject the null hypothesis (p = 0.019 &lt; α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#example-1-4",
+    "href": "files/lectures/2-4-one-sample-variance.html#example-1-4",
+    "title": "One-Sample Variances",
+    "section": "Example 1",
+    "text": "Example 1\n\nHypotheses\n\nH_0: \\sigma^2 \\ge 121\nH_1: \\sigma^2 &lt; 121\n\nTest Statistic and p-Value\n\n\\chi^2_0 = 1.1\np = 0.019\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nReject H_0. There is sufficient evidence to suggest that the current standard deviation is smaller than 11 points."
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#example-2",
+    "href": "files/lectures/2-4-one-sample-variance.html#example-2",
+    "title": "One-Sample Variances",
+    "section": "Example 2",
+    "text": "Example 2\n\nThe Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $1,200.\n\nAs city analyst, you’ve been asked to check whether ZPD recruits’ side-hustle earnings look consistent with that citywide benchmark, or whether recruits’ earnings are unusually spread out (or unusually tight) compared to the rest of Zootopia.\nYou pull side-hustle earnings from your sample of `30 recruits and want to answer one question:\nIs the standard deviation of recruit side-hustle earnings actually $1,200, or does it differ from the citywide benchmark?"
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#wrap-up",
+    "href": "files/lectures/2-4-one-sample-variance.html#wrap-up",
+    "title": "One-Sample Variances",
+    "section": "Wrap Up",
+    "text": "Wrap Up"
+  },
+  {
+    "objectID": "files/lectures/5-1-two-way-anova.html#introduction",
+    "href": "files/lectures/5-1-two-way-anova.html#introduction",
+    "title": "Two-Way ANOVA",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "files/lectures/5-1-two-way-anova.html#r-setup",
+    "href": "files/lectures/5-1-two-way-anova.html#r-setup",
+    "title": "Two-Way ANOVA",
+    "section": "R Setup",
+    "text": "R Setup"
+  },
+  {
+    "objectID": "files/lectures/5-1-two-way-anova.html#interactions",
+    "href": "files/lectures/5-1-two-way-anova.html#interactions",
+    "title": "Two-Way ANOVA",
+    "section": "Interactions",
+    "text": "Interactions"
+  },
+  {
+    "objectID": "files/lectures/5-1-two-way-anova.html#hypothesis-test-for-an-interaction",
+    "href": "files/lectures/5-1-two-way-anova.html#hypothesis-test-for-an-interaction",
+    "title": "Two-Way ANOVA",
+    "section": "Hypothesis Test for an Interaction",
+    "text": "Hypothesis Test for an Interaction"
+  },
+  {
+    "objectID": "files/lectures/5-1-two-way-anova.html#hypothesis-test-for-an-interaction-r",
+    "href": "files/lectures/5-1-two-way-anova.html#hypothesis-test-for-an-interaction-r",
+    "title": "Two-Way ANOVA",
+    "section": "Hypothesis Test for an Interaction (R)",
+    "text": "Hypothesis Test for an Interaction (R)"
+  },
+  {
+    "objectID": "files/lectures/5-1-two-way-anova.html#example-1",
+    "href": "files/lectures/5-1-two-way-anova.html#example-1",
+    "title": "Two-Way ANOVA",
+    "section": "Example 1",
+    "text": "Example 1"
+  },
+  {
+    "objectID": "files/lectures/5-1-two-way-anova.html#example-2",
+    "href": "files/lectures/5-1-two-way-anova.html#example-2",
+    "title": "Two-Way ANOVA",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/5-1-two-way-anova.html#hypothesis-test-for-main-effects",
+    "href": "files/lectures/5-1-two-way-anova.html#hypothesis-test-for-main-effects",
+    "title": "Two-Way ANOVA",
+    "section": "Hypothesis Test for Main Effects",
+    "text": "Hypothesis Test for Main Effects"
+  },
+  {
+    "objectID": "files/lectures/5-1-two-way-anova.html#hypothesis-test-for-main-effects-r",
+    "href": "files/lectures/5-1-two-way-anova.html#hypothesis-test-for-main-effects-r",
+    "title": "Two-Way ANOVA",
+    "section": "Hypothesis Test for Main Effects (R)",
+    "text": "Hypothesis Test for Main Effects (R)"
+  },
+  {
+    "objectID": "files/lectures/5-1-two-way-anova.html#example-2-1",
+    "href": "files/lectures/5-1-two-way-anova.html#example-2-1",
+    "title": "Two-Way ANOVA",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/5-1-two-way-anova.html#wrap-up",
+    "href": "files/lectures/5-1-two-way-anova.html#wrap-up",
+    "title": "Two-Way ANOVA",
+    "section": "Wrap Up",
+    "text": "Wrap Up"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#introduction",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#introduction",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#r-setup",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#r-setup",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "R Setup",
+    "text": "R Setup"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#hypothesis-test-for-mu_1-mu_2-...-mu_k",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#hypothesis-test-for-mu_1-mu_2-...-mu_k",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "Hypothesis Test for \\mu_1 = \\mu_2 = ... = \\mu_k",
+    "text": "Hypothesis Test for \\mu_1 = \\mu_2 = ... = \\mu_k"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#pairwise-comparisons",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#pairwise-comparisons",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "Pairwise Comparisons",
+    "text": "Pairwise Comparisons"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#pairwise-comparisons-r",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#pairwise-comparisons-r",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "Pairwise Comparisons (R)",
+    "text": "Pairwise Comparisons (R)"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#example-1",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#example-1",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "Example 1",
+    "text": "Example 1"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#hypothesis-test-for-m_1-m_2-...-m_k",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#hypothesis-test-for-m_1-m_2-...-m_k",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "Hypothesis Test for M_1 = M_2 = ... = M_k",
+    "text": "Hypothesis Test for M_1 = M_2 = ... = M_k"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#pairwise-comparisons-1",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#pairwise-comparisons-1",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "Pairwise Comparisons",
+    "text": "Pairwise Comparisons"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#pairwise-comparisons-r-1",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#pairwise-comparisons-r-1",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "Pairwise Comparisons (R)",
+    "text": "Pairwise Comparisons (R)"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#example-2",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#example-2",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#example-3",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#example-3",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "Example 3",
+    "text": "Example 3"
+  },
+  {
+    "objectID": "files/lectures/4-3-one-way-posthoc-testing.html#wrap-up",
+    "href": "files/lectures/4-3-one-way-posthoc-testing.html#wrap-up",
+    "title": "Posthoc Testing in One-Way Analyses",
+    "section": "Wrap Up",
+    "text": "Wrap Up"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#introduction",
+    "href": "files/lectures/4-4-one-way-descriptives.html#introduction",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Introduction",
+    "text": "Introduction"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#r-setup",
+    "href": "files/lectures/4-4-one-way-descriptives.html#r-setup",
+    "title": "Data Description in One-Way Analyses",
+    "section": "R Setup",
+    "text": "R Setup"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#simultaneous-confidence-intervals",
+    "href": "files/lectures/4-4-one-way-descriptives.html#simultaneous-confidence-intervals",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Simultaneous Confidence Intervals",
+    "text": "Simultaneous Confidence Intervals"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#simultaneous-confidence-intervals-r",
+    "href": "files/lectures/4-4-one-way-descriptives.html#simultaneous-confidence-intervals-r",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Simultaneous Confidence Intervals (R)",
+    "text": "Simultaneous Confidence Intervals (R)"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#example-1",
+    "href": "files/lectures/4-4-one-way-descriptives.html#example-1",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Example 1",
+    "text": "Example 1"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#example-2",
+    "href": "files/lectures/4-4-one-way-descriptives.html#example-2",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#example-3",
+    "href": "files/lectures/4-4-one-way-descriptives.html#example-3",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Example 3",
+    "text": "Example 3"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#data-visualization",
+    "href": "files/lectures/4-4-one-way-descriptives.html#data-visualization",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Data Visualization",
+    "text": "Data Visualization"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#data-visualization-1",
+    "href": "files/lectures/4-4-one-way-descriptives.html#data-visualization-1",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Data Visualization",
+    "text": "Data Visualization"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#example-1-1",
+    "href": "files/lectures/4-4-one-way-descriptives.html#example-1-1",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Example 1",
+    "text": "Example 1"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#example-2-1",
+    "href": "files/lectures/4-4-one-way-descriptives.html#example-2-1",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Example 2",
+    "text": "Example 2"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#example-3-1",
+    "href": "files/lectures/4-4-one-way-descriptives.html#example-3-1",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Example 3",
+    "text": "Example 3"
+  },
+  {
+    "objectID": "files/lectures/4-4-one-way-descriptives.html#wrap-up",
+    "href": "files/lectures/4-4-one-way-descriptives.html#wrap-up",
+    "title": "Data Description in One-Way Analyses",
+    "section": "Wrap Up",
+    "text": "Wrap Up"
+  },
+  {
+    "objectID": "files/data/lectures/information/1-zootopia.html",
+    "href": "files/data/lectures/information/1-zootopia.html",
+    "title": "Data Dictionary for the Zootopia Residents Survey",
+    "section": "",
+    "text": "Zootopia is a city where every mammal (be a tiny shrew or a towering elephant) lives, works, and gets along. For the first two weeks of this course, imagine you’ve just been hired as a data analyst for Zootopia’s local government. Your job isn’t to run code for funsies, but to help city officials make data-driven decisions.\n\n\n\nOur dataset is a survey of 30 Zootopia residents (note: this is simulated data). Here’s the general ideal of what we’re exploring:\n\nWhere they live. Zootopia has distinct districts: Tundratown, Sahara Square, Rainforest District, and Downtown. Residents’ reported temperatures may cluster by district.\nTheir work with the ZPD. Some residents work Patrol, others work Desk duty. City officials have made public claims about what percentage of the force is in each role.\nAcademy performance. Everyone who applied to the ZPD Academy has an exam score, and whether they passed or failed follows directly from that score.\nEveryday life. Sleep habits and side-hustle earnings to round out the snapshot of Zootopia residents.\n\nIf you want to follow along with lecture, you can load the data with the following code,\n\nlibrary(tidyverse)\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")"
+  },
+  {
+    "objectID": "files/data/lectures/information/1-zootopia.html#about-zootopia",
+    "href": "files/data/lectures/information/1-zootopia.html#about-zootopia",
+    "title": "Data Dictionary for the Zootopia Residents Survey",
+    "section": "",
+    "text": "Zootopia is a city where every mammal (be a tiny shrew or a towering elephant) lives, works, and gets along. For the first two weeks of this course, imagine you’ve just been hired as a data analyst for Zootopia’s local government. Your job isn’t to run code for funsies, but to help city officials make data-driven decisions."
+  },
+  {
+    "objectID": "files/data/lectures/information/1-zootopia.html#whats-in-the-survey",
+    "href": "files/data/lectures/information/1-zootopia.html#whats-in-the-survey",
+    "title": "Data Dictionary for the Zootopia Residents Survey",
+    "section": "",
+    "text": "Our dataset is a survey of 30 Zootopia residents (note: this is simulated data). Here’s the general ideal of what we’re exploring:\n\nWhere they live. Zootopia has distinct districts: Tundratown, Sahara Square, Rainforest District, and Downtown. Residents’ reported temperatures may cluster by district.\nTheir work with the ZPD. Some residents work Patrol, others work Desk duty. City officials have made public claims about what percentage of the force is in each role.\nAcademy performance. Everyone who applied to the ZPD Academy has an exam score, and whether they passed or failed follows directly from that score.\nEveryday life. Sleep habits and side-hustle earnings to round out the snapshot of Zootopia residents.\n\nIf you want to follow along with lecture, you can load the data with the following code,\n\nlibrary(tidyverse)\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")"
+  }
+]

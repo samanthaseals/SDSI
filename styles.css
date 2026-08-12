@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
+
+/* ── UWF Color Tokens ──────────────────────────────────────── */
+:root {
+  --uwf-blue-dark:   #003A6B;
+  --uwf-blue:        #005EA6;
+  --uwf-blue-light:  #7DB9D9;
+  --uwf-green-dark:  #2E5233;
+  --uwf-green:       #4A7B4F;
+  --uwf-green-light: #A8C96A;
+  --uwf-bg:          #f5f4f0;
+  --uwf-text:        #2c2b28;
+  --uwf-text-muted:  #5f5e5a;
+
+  /* Callout: Tip (own tokens, kept separate from the UWF palette) */
+  --callout-tip-bg:     #EEF6E7;
+  --callout-tip-border: #C7DDBB;
+}
+
+/* ── Typography ────────────────────────────────────────────── */
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--uwf-text);
+  background-color: var(--uwf-bg);
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar, .sidebar, .toc, .nav-link,
+.btn, label, caption {
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+h1 { color: var(--uwf-blue-dark); font-weight: 700; }
+h2 { color: var(--uwf-blue);      font-weight: 700; border-bottom: 2px solid var(--uwf-green-light); padding-bottom: 0.2em; }
+h3 { color: var(--uwf-green);     font-weight: 600; }
+h4, h5, h6 { color: var(--uwf-blue-dark); font-weight: 500; }
+
+/* ── Page Layout ───────────────────────────────────────────── */
+main {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 2px 12px rgba(0, 58, 107, 0.08);
+  margin-bottom: 2rem;
+}
+
+/* ── Navbar ────────────────────────────────────────────────── */
+.navbar {
+  background-color: var(--uwf-blue-dark) !important;
+  border-bottom: 3px solid var(--uwf-green);
+}
+
+.navbar-brand, .navbar-brand:hover {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+.nav-link {
+  color: var(--uwf-blue-light) !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.15s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--uwf-green-light) !important;
+}
+
+/* ── Sidebar ───────────────────────────────────────────────── */
+.sidebar {
+  background-color: #ffffff;
+  border-right: 0.5px solid #ddd;
+}
+
+.sidebar-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--uwf-green);
+  margin-top: 1.25rem;
+}
+
+.sidebar-item-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  color: var(--uwf-blue-dark);
+}
+
+.sidebar-item-text:hover { color: var(--uwf-blue); }
+
+.sidebar-item.active > .sidebar-item-text {
+  color: var(--uwf-blue);
+  font-weight: 600;
+  border-left: 3px solid var(--uwf-blue);
+  padding-left: 0.5rem;
+}
+
+/* ── Table of Contents ─────────────────────────────────────── */
+.toc-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--uwf-green);
+}
+
+#toc-target a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--uwf-text-muted);
+}
+
+#toc-target a:hover,
+#toc-target a.active {
+  color: var(--uwf-blue);
+  font-weight: 500;
+}
+
+/* ── Callouts ──────────────────────────────────────────────── */
+.callout {
+  border-radius: 0;
+  margin: 1.25rem 0;
+}
+
+.callout .callout-icon { display: none; }
+
+.callout .callout-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding-left: 0.5em;
+  letter-spacing: 0.02em;
+}
+
+/* Tip: white body, light green header, green-tinted drop shadow */
+.callout.callout-tip {
+  background-color: #ffffff;
+  border: 1px solid var(--callout-tip-border);
+  border-left: 1px solid var(--callout-tip-border) !important;
+  box-shadow: 0 4px 14px rgba(74, 123, 79, 0.25);
+}
+.callout.callout-tip .callout-header {
+  background-color: var(--callout-tip-bg) !important;
+}
+.callout.callout-tip .callout-body {
+  background-color: #ffffff !important;
+}
+.callout.callout-tip .callout-title { color: var(--uwf-green-dark); }
+
+/* Note: Heritage Blue */
+.callout.callout-note {
+  background-color: #e6f1fb;
+  border-left: 4px solid var(--uwf-blue);
+}
+.callout.callout-note .callout-title { color: var(--uwf-blue-dark); }
+
+/* Important: warm amber (visible but not alarming) */
+.callout.callout-important {
+  background-color: #faeeda;
+  border-left: 4px solid #BA7517;
+}
+.callout.callout-important .callout-title { color: #633806; }
+
+/* Warning: Spring Green */
+.callout.callout-warning {
+  background-color: #f2f8e6;
+  border-left: 4px solid var(--uwf-green-light);
+}
+.callout.callout-warning .callout-title { color: var(--uwf-green-dark); }
+
+/* ── Code Blocks ───────────────────────────────────────────── */
+pre, code {
+  font-size: 0.88rem;
+  border-radius: 6px;
+}
+
+pre {
+  background-color: #f0eeea;
+  border: 0.5px solid #d0cec8;
+  padding: 1rem 1.25rem;
+}
+
+code {
+  background-color: #eceae5;
+  color: var(--uwf-blue-dark);
+  padding: 0.1em 0.35em;
+}
+
+/* ── Links ─────────────────────────────────────────────────── */
+a {
+  color: var(--uwf-blue);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+a:hover {
+  color: var(--uwf-blue-dark);
+  border-bottom-color: var(--uwf-green-light);
+}
+
+/* ── Tables ────────────────────────────────────────────────── */
+table {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+thead {
+  background-color: var(--uwf-blue-dark);
+  color: #ffffff;
+}
+
+thead th {
+  font-weight: 600;
+  padding: 0.6rem 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+tbody tr:nth-child(even) { background-color: #edf2f8; }
+tbody tr:hover { background-color: #dde8f2; }
+tbody td { padding: 0.5rem 0.9rem; color: var(--uwf-text); }
+
+/* ── Footer ────────────────────────────────────────────────── */
+.nav-footer {
+  background-color: var(--uwf-blue-dark);
+  border-top: 3px solid var(--uwf-green);
+  color: var(--uwf-blue-light);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+}
+
+.nav-footer a { color: var(--uwf-green-light); }
+.nav-footer a:hover { color: #ffffff; }
+
+.zoo {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+}
+.zoo::before,
+.zoo::after {
+  content: "";
+  position: absolute;
+  top: -6%;
+  bottom: -6%;
+  width: 0.06em;
+  background: currentColor;
+}
+.zoo::before { left: 28%; }
+.zoo::after  { left: 58%; }
