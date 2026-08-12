@@ -1581,13 +1581,7 @@ margin-right: 0; }
 <li>Only recommended for those that cannot download and install programs to their computers.</li>
 </ul></li>
 </ul></li>
-<li><p>There are other languages (or <em>tools</em>):</p>
-<ul>
-<li>SAS</li>
-<li>Stata</li>
-<li>SPSS</li>
-<li>python</li>
-</ul></li>
+<li><p>There are other languages (or <em>tools</em>): python, SAS, Stata, SPSS, …</p></li>
 </ul>
 </section>
 <section id="r-setup" class="slide level2">
@@ -1596,18 +1590,50 @@ margin-right: 0; }
 <li>To follow along with lecture, please install the <code>tidyverse</code> and <code>ssstats</code> packages:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb1-2"><a></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;pak&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb1-3"><a></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pak&quot;</span>)</span>
-<span id="cb1-4"><a></a>}</span>
-<span id="cb1-5"><a></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">&quot;sealslab/ssstats&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;pak&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;pak&quot;</span>)</span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4"></a>}</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4">4</button><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">&quot;sealslab/ssstats&quot;</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Installs the <code>tidyverse</code> collection of packages. This only needs to run once <em>per computer</em> and <em>never</em> in a .qmd file.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Checks whether the <code>pak</code> package is already installed.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3">Installs <code>pak</code>, a package manager that can install packages directly from GitHub repositories.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="4">Uses <code>pak</code> to install <code>ssstats</code> from the <code>sealslab</code> GitHub repository.</span>
+</dd>
+</dl>
+</div>
 </div>
 <ul>
 <li>Then, we must call the packages to access their functions:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a></a><span class="fu">library</span>(ssstats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a><span class="fu">library</span>(tidyverse)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2"></a><span class="fu">library</span>(ssstats)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Loads the <code>tidyverse</code> collection of packages into the current R session.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2">Loads the <code>ssstats</code> course package into the current R session.</span>
+</dd>
+</dl>
+</div>
 </div>
 </section>
 <section id="data-from-zootropolis" class="slide level2">
@@ -1629,7 +1655,7 @@ margin-right: 0; }
 <li>After getting your computer set up, you read the data in:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>zootopia <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>zootopia <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1897,8 +1923,8 @@ margin-right: 0; }
 <li>For illustrative purposes, we will describe the <code>academy_exam_score</code> variable in the <code>zootopia</code> dataset.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>zootopia <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a></a>  <span class="fu">mean_median</span>(academy_exam_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>zootopia <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a></a>  <span class="fu">mean_median</span>(academy_exam_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   variable           mean_sd    median_iqr 
@@ -2212,13 +2238,13 @@ margin-right: 0; }
 <li>Then, we look at the histogram/density plots:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>zootopia <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> hustle_earnings)) <span class="sc">+</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">fill =</span> uwf_blue, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb6-4"><a></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> uwf_midnight, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb6-5"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hustle Earnings&quot;</span>, </span>
-<span id="cb6-6"><a></a>       <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>) <span class="sc">+</span></span>
-<span id="cb6-7"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>zootopia <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> hustle_earnings)) <span class="sc">+</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">fill =</span> uwf_blue, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> uwf_midnight, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hustle Earnings&quot;</span>, </span>
+<span id="cb4-6"><a></a>       <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-7"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-1-3" class="slide level2">
@@ -2234,12 +2260,12 @@ margin-right: 0; }
 <li>Now, let’s look at the distribution of the data using a boxplot,</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>zootopia <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> hustle_earnings)) <span class="sc">+</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> uwf_marigold) <span class="sc">+</span></span>
-<span id="cb7-4"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hustle Earnings&quot;</span>) <span class="sc">+</span></span>
-<span id="cb7-5"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
-<span id="cb7-6"><a></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>zootopia <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> hustle_earnings)) <span class="sc">+</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> uwf_marigold) <span class="sc">+</span></span>
+<span id="cb5-4"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hustle Earnings&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb5-6"><a></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-1-4" class="slide level2">
@@ -2255,12 +2281,12 @@ margin-right: 0; }
 <li>We can also split the box plots by district,</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>zootopia <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> hustle_earnings, <span class="at">y =</span> district, <span class="at">fill =</span> district)) <span class="sc">+</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb8-4"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hustle Earnings&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb8-5"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
-<span id="cb8-6"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>zootopia <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> hustle_earnings, <span class="at">y =</span> district, <span class="at">fill =</span> district)) <span class="sc">+</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Hustle Earnings&quot;</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb6-6"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-1-5" class="slide level2">
@@ -2270,9 +2296,9 @@ margin-right: 0; }
 <li><p>Exploring the extreme values,</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>zootopia <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a></a>  <span class="fu">select</span>(resident_name, department, district, hustle_earnings) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">filter</span>(hustle_earnings <span class="sc">&gt;</span> <span class="dv">80</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>zootopia <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a></a>  <span class="fu">select</span>(resident_name, department, district, hustle_earnings) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a></a>  <span class="fu">filter</span>(hustle_earnings <span class="sc">&gt;</span> <span class="dv">80</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top">
@@ -2309,8 +2335,8 @@ margin-right: 0; }
 <li>Now, we can find the descriptive statistics. That requires <code>mean_median()</code>,</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>zootopia <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a></a>  <span class="fu">mean_median</span>(hustle_earnings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>zootopia <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a></a>  <span class="fu">mean_median</span>(hustle_earnings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   variable        mean_sd     median_iqr 
@@ -2329,9 +2355,9 @@ margin-right: 0; }
 <li>Let’s now find the descriptive statistics by district. That requires <code>mean_median()</code>, but now we add in <code>group_by()</code>,</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>zootopia <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a></a>  <span class="fu">group_by</span>(district) <span class="sc">|&gt;</span> </span>
-<span id="cb12-3"><a></a>  <span class="fu">mean_median</span>(hustle_earnings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>zootopia <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a></a>  <span class="fu">group_by</span>(district) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a></a>  <span class="fu">mean_median</span>(hustle_earnings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   district            variable        mean_sd     median_iqr 
@@ -3729,7 +3755,7 @@ border-bottom: 5px solid #4A7B4F !important;
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
+          var filterRegex = new RegExp("https:\/\/samanthaseals\.github\.io\/SDSI\/");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
