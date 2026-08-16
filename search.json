@@ -53,7 +53,7 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#statistical-inference-on-one-mean-r",
     "title": "One-Sample Means and Medians",
     "section": "Statistical Inference on One Mean (R)",
-    "text": "Statistical Inference on One Mean (R)\n\nWe will use the one_mean() function from library(ssstats) to perform statistical inference.\n\n\ndataset_name %&gt;% one_mean(outcome = variable_name,\n                          mu = hypothesized_value,\n                          alternative = \"two\" | \"less\" | \"greater\",\n                          alpha = alpha_level)\n\n\nwhere\n\noutcome is the variable name of the outcome variable\nmu is the hypothesized value of the population mean\nalternative is the alternative hypothesis (default = “two”)\nalpha is the significance level (default = 0.05)"
+    "text": "Statistical Inference on One Mean (R)\n\nWe will use the one_mean() function from library(ssstats) to perform statistical inference.\n\n\n1dataset_name |&gt; one_mean(outcome = variable_name,\n2                         mu = hypothesized_value,\n3                         alternative = \"two\" | \"less\" | \"greater\",\n4                         alpha = alpha_level)\n\n\n1\n\nPipes dataset_name into one_mean(), and sets outcome to the variable being tested.\n\n2\n\nSets mu, the hypothesized population value the sample mean is being compared against.\n\n3\n\nSets alternative, the direction of the test: \"two\" for two-sided, \"less\" and \"greater\" for one-sided tests.\n\n4\n\nSets alpha, the significance level.\n\n\n\n\n\nwhere\n\noutcome is the variable name of the outcome variable\nmu is the hypothesized value of the population mean\nalternative is the alternative hypothesis (default = “two”)\nalpha is the significance level (default = 0.05)"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-1",
@@ -67,7 +67,7 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#example-1-1",
     "title": "One-Sample Means and Medians",
     "section": "Example 1",
-    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_mean(outcome = academy_exam_score)\n\nOne-sample mean\n\nx̅ = 77.3333 (SD = 8.023)\n\n95% CI for μ: (74.3375, 80.3292)\n\nHypotheses:\nH₀: μ = 0\nH₁: μ ≠ 0\nTest statistic: t(29) = 52.795\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)\n\n\n\nThe average exam score is 77.3 (95% CI: 74.3, 80.3)."
+    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia |&gt; one_mean(outcome = academy_exam_score)\n\nOne-sample mean\n\nx̅ = 77.3333 (SD = 8.023)\n\n95% CI for μ: (74.3375, 80.3292)\n\nHypotheses:\nH₀: μ = 0\nH₁: μ ≠ 0\nTest statistic: t(29) = 52.795\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)\n\n\n\nThe average exam score is 77.3 (95% CI: 74.3, 80.3)."
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-1-2",
@@ -81,7 +81,7 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#example-1-3",
     "title": "One-Sample Means and Medians",
     "section": "Example 1",
-    "text": "Example 1\n\nIs the true average exam score for this cohort actually 72, or has it shifted?\n\n\nzootopia %&gt;% one_mean(outcome = academy_exam_score,\n                      mu = 72,\n                      alternative = \"two\")\n\nOne-sample mean\n\nx̅ = 77.3333 (SD = 8.023)\n\n95% CI for μ: (74.3375, 80.3292)\n\nHypotheses:\nH₀: μ = 72\nH₁: μ ≠ 72\nTest statistic: t(29) = 3.641\np-value: 0.001\nConclusion: Reject the null hypothesis (p = 0.001 &lt; α = 0.050)"
+    "text": "Example 1\n\nIs the true average exam score for this cohort actually 72, or has it shifted?\n\n\nzootopia |&gt; one_mean(outcome = academy_exam_score,\n                      mu = 72,\n                      alternative = \"two\")\n\nOne-sample mean\n\nx̅ = 77.3333 (SD = 8.023)\n\n95% CI for μ: (74.3375, 80.3292)\n\nHypotheses:\nH₀: μ = 72\nH₁: μ ≠ 72\nTest statistic: t(29) = 3.641\np-value: 0.001\nConclusion: Reject the null hypothesis (p = 0.001 &lt; α = 0.050)"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-1-4",
@@ -102,7 +102,7 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-1",
     "title": "One-Sample Means and Medians",
     "section": "Example 2",
-    "text": "Example 2\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_mean(outcome = hustle_earnings)\n\nOne-sample mean\n\nx̅ = 36.7123 (SD = 22.7781)\n\n95% CI for μ: (28.2068, 45.2178)\n\nHypotheses:\nH₀: μ = 0\nH₁: μ ≠ 0\nTest statistic: t(29) = 8.828\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)\n\n\n\nThe average income is Z = 36.7 (95% CI: 28.2, 45.2)."
+    "text": "Example 2\n\nPoint and interval estimates:\n\n\nzootopia |&gt; one_mean(outcome = hustle_earnings)\n\nOne-sample mean\n\nx̅ = 36.7123 (SD = 22.7781)\n\n95% CI for μ: (28.2068, 45.2178)\n\nHypotheses:\nH₀: μ = 0\nH₁: μ ≠ 0\nTest statistic: t(29) = 8.828\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)\n\n\n\nThe average income is Z = 36.7 (95% CI: 28.2, 45.2)."
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-2",
@@ -116,7 +116,7 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-3",
     "title": "One-Sample Means and Medians",
     "section": "Example 2",
-    "text": "Example 2\n\nIs the typical side hustle income actually Z 35, or are residents earning more?\n\n\nzootopia %&gt;% one_mean(outcome = hustle_earnings,\n                      mu = 35,\n                      alternative = \"greater\")\n\nOne-sample mean\n\nx̅ = 36.7123 (SD = 22.7781)\n\n95% CI for μ: (28.2068, 45.2178)\n\nHypotheses:\nH₀: μ ≤ 35\nH₁: μ &gt; 35\nTest statistic: t(29) = 0.412\np-value: 0.342\nConclusion: Fail to reject the null hypothesis (p = 0.342 ≥ α = 0.050)"
+    "text": "Example 2\n\nIs the typical side hustle income actually Z 35, or are residents earning more?\n\n\nzootopia |&gt; one_mean(outcome = hustle_earnings,\n                      mu = 35,\n                      alternative = \"greater\")\n\nOne-sample mean\n\nx̅ = 36.7123 (SD = 22.7781)\n\n95% CI for μ: (28.2068, 45.2178)\n\nHypotheses:\nH₀: μ ≤ 35\nH₁: μ &gt; 35\nTest statistic: t(29) = 0.412\np-value: 0.342\nConclusion: Fail to reject the null hypothesis (p = 0.342 ≥ α = 0.050)"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-4",
@@ -172,21 +172,21 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#checking-normality-r",
     "title": "One-Sample Means and Medians",
     "section": "Checking Normality (R)",
-    "text": "Checking Normality (R)\n\nWe will use the one_qq() function from library(ssstats) to eyeball normality.\n\n\ndataset_name %&gt;% one_qq(outcome = variable_name)\n\n\nwhere\n\noutcome is the variable name of the outcome variable"
+    "text": "Checking Normality (R)\n\nWe will use the one_qq() function from library(ssstats) to eyeball normality.\n\n\n1dataset_name |&gt; one_qq(outcome = variable_name)\n\n\n1\n\nPipes dataset_name into one_qq(), generating a QQ plot for the outcome variable.\n\n\n\n\n\nwhere\n\noutcome is the variable name of the outcome variable"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-1-5",
     "href": "files/lectures/2-2-one-sample-mean-median.html#example-1-5",
     "title": "One-Sample Means and Medians",
     "section": "Example 1",
-    "text": "Example 1\n\nLet’s check the normality assumption for the academy_exam_score variable.\n\n\nzootopia %&gt;% one_qq(outcome = academy_exam_score)"
+    "text": "Example 1\n\nLet’s check the normality assumption for the academy_exam_score variable.\n\n\nzootopia |&gt; one_qq(outcome = academy_exam_score)"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-5",
     "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-5",
     "title": "One-Sample Means and Medians",
     "section": "Example 2",
-    "text": "Example 2\n\nLet’s check the normality assumption for the hustle_earnings variable.\n\n\nzootopia %&gt;% one_qq(outcome = hustle_earnings)"
+    "text": "Example 2\n\nLet’s check the normality assumption for the hustle_earnings variable.\n\n\nzootopia |&gt; one_qq(outcome = hustle_earnings)"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#nonparametric-alternatives",
@@ -221,7 +221,7 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#statistical-inference-on-one-median-r",
     "title": "One-Sample Means and Medians",
     "section": "Statistical Inference on One Median (R)",
-    "text": "Statistical Inference on One Median (R)\n\nWe will use the one_median() function from library(ssstats) to perform statistical inference.\n\n\ndataset_name %&gt;% one_median(outcome = variable_name,\n                            m = hypothesized_value,\n                            alternative = \"two\" | \"less\" | \"greater\",\n                            alpha = alpha_level)\n\n\nwhere\n\noutcome is the variable name of the outcome variable\nm is the hypothesized value of the population median\nalternative is the alternative hypothesis (default = “two”)\nalpha is the significance level (default = 0.05)"
+    "text": "Statistical Inference on One Median (R)\n\nWe will use the one_median() function from library(ssstats) to perform statistical inference.\n\n\n1dataset_name |&gt; one_median(outcome = variable_name,\n2                            m = hypothesized_value,\n3                            alternative = \"two\" | \"less\" | \"greater\",\n4                            alpha = alpha_level)\n\n\n1\n\nPipes dataset_name into one_median(), and sets outcome to the column being examined.\n\n2\n\nSets m, the hypothesized population median the sample median is being compared against.\n\n3\n\nSets alternative, the direction of the test: \"two\" for two-sided and \"less\" or \"greater\" for a one-sided test.\n\n4\n\nSets alpha, the significance level.\n\n\n\n\n\nwhere\n\noutcome is the variable name of the outcome variable\nm is the hypothesized value of the population median\nalternative is the alternative hypothesis (default = “two”)\nalpha is the significance level (default = 0.05)"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-6",
@@ -235,7 +235,7 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-7",
     "title": "One-Sample Means and Medians",
     "section": "Example 2",
-    "text": "Example 2\n\nIs the typical side hustle income actually Z 35, or are residents earning more?\nApplying the one_median() function,\n\n\nzootopia %&gt;% one_median(outcome = hustle_earnings,\n                        m = 35,\n                        alternative = \"greater\")\n\nOne-sample median\n\nMedian = 31.07\n\n95% CI for M: (23.1486, 37.9992)\n\nHypotheses:\nH₀: M ≤ 35\nH₁: M &gt; 35\nTest statistic: S = 13\np-value: 0.819\nConclusion: Fail to reject the null hypothesis (p = 0.819 ≥ α = 0.050)"
+    "text": "Example 2\n\nIs the typical side hustle income actually Z 35, or are residents earning more?\nApplying the one_median() function,\n\n\nzootopia |&gt; one_median(outcome = hustle_earnings,\n                        m = 35,\n                        alternative = \"greater\")\n\nOne-sample median\n\nMedian = 31.07\n\n95% CI for M: (23.1486, 37.9992)\n\nHypotheses:\nH₀: M ≤ 35\nH₁: M &gt; 35\nTest statistic: S = 13\np-value: 0.819\nConclusion: Fail to reject the null hypothesis (p = 0.819 ≥ α = 0.050)"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-2-8",
@@ -249,7 +249,7 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#example-2-9",
     "title": "One-Sample Means and Medians",
     "section": "Example 2",
-    "text": "Example 2\n\nLooking at the confidence interval,\n\n\nzootopia %&gt;% one_median(outcome = hustle_earnings,\n                        m = 35,\n                        alternative = \"greater\")\n\nOne-sample median\n\nMedian = 31.07\n\n95% CI for M: (23.1486, 37.9992)\n\nHypotheses:\nH₀: M ≤ 35\nH₁: M &gt; 35\nTest statistic: S = 13\np-value: 0.819\nConclusion: Fail to reject the null hypothesis (p = 0.819 ≥ α = 0.050)\n\n\n\nWe see that we are 95% confident that the true median income is between Z 23.14 and Z 37.99."
+    "text": "Example 2\n\nLooking at the confidence interval,\n\n\nzootopia |&gt; one_median(outcome = hustle_earnings,\n                        m = 35,\n                        alternative = \"greater\")\n\nOne-sample median\n\nMedian = 31.07\n\n95% CI for M: (23.1486, 37.9992)\n\nHypotheses:\nH₀: M ≤ 35\nH₁: M &gt; 35\nTest statistic: S = 13\np-value: 0.819\nConclusion: Fail to reject the null hypothesis (p = 0.819 ≥ α = 0.050)\n\n\n\nWe see that we are 95% confident that the true median income is between Z 23.14 and Z 37.99."
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-3",
@@ -263,14 +263,14 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#example-3-1",
     "title": "One-Sample Means and Medians",
     "section": "Example 3",
-    "text": "Example 3\n\nChecking the normality assumption for the district_temp_f variable.\n\n\nzootopia %&gt;% one_qq(outcome = district_temp_f)"
+    "text": "Example 3\n\nChecking the normality assumption for the district_temp_f variable.\n\n\nzootopia |&gt; one_qq(outcome = district_temp_f)"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-3-2",
     "href": "files/lectures/2-2-one-sample-mean-median.html#example-3-2",
     "title": "One-Sample Means and Medians",
     "section": "Example 3",
-    "text": "Example 3\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_median(outcome = district_temp_f)\n\nOne-sample median\n\nMedian = 71.25\n\n95% CI for M: (65.1129, 76.7288)\n\nHypotheses:\nH₀: M = 0\nH₁: M ≠ 0\nTest statistic: S = 30\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)\n\n\n\nThe median temperature is 71.3°F (95% CI: 65.1, 76.7)."
+    "text": "Example 3\n\nPoint and interval estimates:\n\n\nzootopia |&gt; one_median(outcome = district_temp_f)\n\nOne-sample median\n\nMedian = 71.25\n\n95% CI for M: (65.1129, 76.7288)\n\nHypotheses:\nH₀: M = 0\nH₁: M ≠ 0\nTest statistic: S = 30\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)\n\n\n\nThe median temperature is 71.3°F (95% CI: 65.1, 76.7)."
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-3-3",
@@ -284,7 +284,7 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#example-3-4",
     "title": "One-Sample Means and Medians",
     "section": "Example 3",
-    "text": "Example 3\n\nIs the true average daily temperature actually 75°F, or does the data suggest otherwise?\n\n\nzootopia %&gt;% one_median(outcome = district_temp_f,\n                        m = 75,\n                        alternative = \"two\")\n\nOne-sample median\n\nMedian = 71.25\n\n95% CI for M: (65.1129, 76.7288)\n\nHypotheses:\nH₀: M = 75\nH₁: M ≠ 75\nTest statistic: S = 10\np-value: 0.099\nConclusion: Fail to reject the null hypothesis (p = 0.099 ≥ α = 0.050)"
+    "text": "Example 3\n\nIs the true average daily temperature actually 75°F, or does the data suggest otherwise?\n\n\nzootopia |&gt; one_median(outcome = district_temp_f,\n                        m = 75,\n                        alternative = \"two\")\n\nOne-sample median\n\nMedian = 71.25\n\n95% CI for M: (65.1129, 76.7288)\n\nHypotheses:\nH₀: M = 75\nH₁: M ≠ 75\nTest statistic: S = 10\np-value: 0.099\nConclusion: Fail to reject the null hypothesis (p = 0.099 ≥ α = 0.050)"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#example-3-5",
@@ -1288,144 +1288,95 @@
     "text": "Describing the Data\n\nFor illustrative purposes, we will describe the department variable in the zootopia dataset.\n\n\nzootopia |&gt;\n  n_pct(department)\n\n\n\n\n\ndepartment\nn (pct)\n\n\n\n\nDesk\n12 (40.0%)\n\n\nPatrol\n18 (60.0%)\n\n\n\n\n\n\n\nThis tells us that of the 30 recruits,\n\n18 (60.0%) are in Patrol,\n12 (40.0%) are on Desk duty."
   },
   {
-    "objectID": "files/lectures/1-4-categorical-data.html#bar-chart-counts",
-    "href": "files/lectures/1-4-categorical-data.html#bar-chart-counts",
+    "objectID": "files/lectures/1-4-categorical-data.html#bar-graphs",
+    "href": "files/lectures/1-4-categorical-data.html#bar-graphs",
     "title": "Describing and Visualizing Categorical Variables",
-    "section": "Bar Chart (Counts)",
-    "text": "Bar Chart (Counts)\n\n\nBar chart\n\nA bar chart shows one bar per category, with the height of the bar equal to the number (or percentage) of observations in that category."
+    "section": "Bar Graphs",
+    "text": "Bar Graphs\n\n\nBar chart\n\nA bar chart shows one bar per category, with the height of the bar equal to the number (or percentage) of observations in that category."
   },
   {
-    "objectID": "files/lectures/1-4-categorical-data.html#bar-chart-counts-r",
-    "href": "files/lectures/1-4-categorical-data.html#bar-chart-counts-r",
+    "objectID": "files/lectures/1-4-categorical-data.html#bar-graphs-r",
+    "href": "files/lectures/1-4-categorical-data.html#bar-graphs-r",
     "title": "Describing and Visualizing Categorical Variables",
-    "section": "Bar Chart (Counts) (R)",
-    "text": "Bar Chart (Counts) (R)\n\n\nBar chart\n\nA bar chart shows one bar per category, with the height of the bar equal to the number (or percentage) of observations in that category.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = category_name)) +\n3  geom_bar()\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nggplot() is the function that creates a plot. The aes() function inside it tells R which variable to plot.\n\n3\n\ngeom_bar() counts the observations in each category and draws a bar for each — you don’t need to calculate the counts yourself."
+    "section": "Bar Graphs (R)",
+    "text": "Bar Graphs (R)\n\n\nBar chart\n\nA bar chart shows one bar per category, with the height of the bar equal to the number (or percentage) of observations in that category.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = category_name)) +\n3  geom_bar()\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nggplot() is the function that creates a plot. The aes() function inside it tells R which variable to plot.\n\n3\n\ngeom_bar() counts the observations in each category and draws a bar for each — you don’t need to calculate the counts yourself.\n\n\n\n\n\nSometimes we’d rather show the share of recruits in each category instead of the raw count.\n\n\n1dataset_name |&gt;\n  ggplot(aes(x = category_name, \n2             y = after_stat(count) / sum(after_stat(count)))) +\n3  geom_bar() +\n4  scale_y_continuous(labels = scales::percent)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nafter_stat(count) / sum(after_stat(count)) converts the raw counts into a proportion of the total.\n\n3\n\ngeom_bar() creates a bar graph.\n\n4\n\nscale_y_continuous(labels = scales::percent) relabels the y-axis as a percentage instead of a decimal."
   },
   {
-    "objectID": "files/lectures/1-4-categorical-data.html#bar-chart-proportions",
-    "href": "files/lectures/1-4-categorical-data.html#bar-chart-proportions",
+    "objectID": "files/lectures/1-4-categorical-data.html#contingency-tables",
+    "href": "files/lectures/1-4-categorical-data.html#contingency-tables",
     "title": "Describing and Visualizing Categorical Variables",
-    "section": "Bar Chart (Proportions)",
-    "text": "Bar Chart (Proportions)\n\nSometimes we’d rather show the share of recruits in each category instead of the raw count."
+    "section": "Contingency Tables",
+    "text": "Contingency Tables\n\n\nContingency Table\n\nA two-way table shows how two categorical variables relate to one another, by counting observations at every combination of categories.\n\n\nSo far we’ve described one categorical variable at a time.\nJust like a scatterplot let us compare two continuous variables, a contingency table lets us compare two categorical variables.\n\nIs department evenly split across every district, or do some districts lean more Patrol or more Desk?"
   },
   {
-    "objectID": "files/lectures/1-4-categorical-data.html#bar-chart-proportions-r",
-    "href": "files/lectures/1-4-categorical-data.html#bar-chart-proportions-r",
+    "objectID": "files/lectures/1-4-categorical-data.html#contingency-tables-r",
+    "href": "files/lectures/1-4-categorical-data.html#contingency-tables-r",
     "title": "Describing and Visualizing Categorical Variables",
-    "section": "Bar Chart (Proportions) (R)",
-    "text": "Bar Chart (Proportions) (R)\n\nSometimes we’d rather show the share of recruits in each category instead of the raw count.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = category_name, y = after_stat(count) / sum(after_stat(count)))) +\n3  geom_bar() +\n4  scale_y_continuous(labels = scales::percent)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nafter_stat(count) / sum(after_stat(count)) converts the raw counts geom_bar() calculates into a proportion of the total.\n\n3\n\ngeom_bar() still does the counting — we’re just changing what’s plotted on the y-axis.\n\n4\n\nscale_y_continuous(labels = scales::percent) relabels the y-axis as a percentage instead of a decimal."
-  },
-  {
-    "objectID": "files/lectures/1-4-categorical-data.html#a-word-on-pie-charts",
-    "href": "files/lectures/1-4-categorical-data.html#a-word-on-pie-charts",
-    "title": "Describing and Visualizing Categorical Variables",
-    "section": "A Word on Pie Charts",
-    "text": "A Word on Pie Charts\n\nYou’ve almost certainly seen categorical data shown as a pie chart. We are not going to use them in this course.\nThe human eye is bad at comparing angles and areas — it’s very good at comparing the height of bars lined up on the same baseline.\n\nTry to tell, at a glance, whether Sahara Square’s slice is bigger than Downtown’s. Now try it on the bar chart from a few slides ago.\n\nA bar chart shows the same information as a pie chart, but it’s easier to read accurately — and it scales to more categories without turning into a mess of slivers.\n\nAs a working analyst, if a pie chart crosses your desk, a bar chart is almost always the fix."
-  },
-  {
-    "objectID": "files/lectures/1-4-categorical-data.html#two-way-tables",
-    "href": "files/lectures/1-4-categorical-data.html#two-way-tables",
-    "title": "Describing and Visualizing Categorical Variables",
-    "section": "Two-Way Tables",
-    "text": "Two-Way Tables\n\n\nTwo-way table\n\nA two-way table shows how two categorical variables relate to one another, by counting observations at every combination of categories.\n\n\nSo far we’ve described one categorical variable at a time.\nJust like a scatterplot let us compare two continuous variables, a two-way table lets us compare two categorical variables.\n\nIs department evenly split across every district, or do some districts lean more Patrol or more Desk?"
-  },
-  {
-    "objectID": "files/lectures/1-4-categorical-data.html#two-way-tables-r",
-    "href": "files/lectures/1-4-categorical-data.html#two-way-tables-r",
-    "title": "Describing and Visualizing Categorical Variables",
-    "section": "Two-Way Tables (R)",
-    "text": "Two-Way Tables (R)\n\nWe build a two-way table the same way we built a grouped summary before — with group_by() and n_pct().\n\n\n1dataset_name |&gt;\n2  group_by(grouping_variable) |&gt;\n3  n_pct(second_variable)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\ngroup_by() splits the data into groups based on the first categorical variable.\n\n3\n\nn_pct() then counts and calculates percentages of the second variable, within each group."
-  },
-  {
-    "objectID": "files/lectures/1-4-categorical-data.html#grouped-bar-chart",
-    "href": "files/lectures/1-4-categorical-data.html#grouped-bar-chart",
-    "title": "Describing and Visualizing Categorical Variables",
-    "section": "Grouped Bar Chart",
-    "text": "Grouped Bar Chart\n\n\nGrouped bar chart\n\nA grouped bar chart places bars for a second category side by side within each level of the first category, so you can visually compare the split.\n\n\n1dataset_name |&gt;\n2  ggplot(aes(x = category_1, fill = category_2)) +\n3  geom_bar(position = \"dodge\")\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nfill = category_2 colors the bars by the second categorical variable.\n\n3\n\nposition = \"dodge\" places the bars for each category_2 level side by side, instead of stacking them."
+    "section": "Contingency Tables (R)",
+    "text": "Contingency Tables (R)\n\nWe can construct a contingency table using n_pct().\n\n\n1dataset_name |&gt;\n2  n_pct(row_variable, column_variable)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nn_pct() constructs an R x C contingency table.\n\n\n\n\n\nNote that n_pct() automatically returns the column percentage."
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#example-1",
     "href": "files/lectures/1-4-categorical-data.html#example-1",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Example 1",
-    "text": "Example 1\n\nDeputy Chief Okonkwo wants to know how recruits are distributed across ZPD’s four districts.\nOur first task is to summarize the data.\n\nSummary statistics.\nVisualizations — check for imbalance across districts.\n\nBar chart (counts)\nBar chart (proportions)"
+    "text": "Example 1\n\nLet’s describe the characteristics of the recruits in the zootopia dataset.\n\nDepartment\nDistrict\nAcademy status"
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#example-1-1",
     "href": "files/lectures/1-4-categorical-data.html#example-1-1",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Example 1",
-    "text": "Example 1\n\nAs always, our first step is to look at the data itself.\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\n\n\n\n\nSable Jones\nDesk\nRainforest District\n\n\nKevin Frostwhisker\nPatrol\nDowntown\n\n\nJasper Duskrunner\nPatrol\nSahara Square\n\n\nGreta Smith\nDesk\nTundratown\n\n\nOtto Meadowsly\nPatrol\nDowntown\n\n\nWilhelmina Underbrush\nDesk\nRainforest District"
+    "text": "Example 1\n\nConstructing the frequency distribution for department,\n\n\nzootopia %&gt;% n_pct(department)\n\n\n\n\n\ndepartment\nn (pct)\n\n\n\n\nDesk\n12 (40.0%)\n\n\nPatrol\n18 (60.0%)"
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#example-1-2",
     "href": "files/lectures/1-4-categorical-data.html#example-1-2",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Example 1",
-    "text": "Example 1\n\nNext, the bar chart of counts:"
-  },
-  {
-    "objectID": "files/lectures/1-4-categorical-data.html#example-1-code",
-    "href": "files/lectures/1-4-categorical-data.html#example-1-code",
-    "title": "Describing and Visualizing Categorical Variables",
-    "section": "Example 1 (Code)",
-    "text": "Example 1 (Code)\n\nNext, the bar chart of counts:\n\n\nzootopia |&gt;\n  ggplot(aes(x = district, fill = district)) +\n  geom_bar() +\n  labs(x = NULL, y = \"Count\") +\n  theme_minimal(base_size = 20) +\n  theme(legend.position = \"none\")"
+    "text": "Example 1\n\nConstructing the frequency distribution for district,\n\n\nzootopia %&gt;% n_pct(district)\n\n\n\n\n\ndistrict\nn (pct)\n\n\n\n\nDowntown\n8 (26.7%)\n\n\nRainforest District\n7 (23.3%)\n\n\nSahara Square\n9 (30.0%)\n\n\nTundratown\n6 (20.0%)"
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#example-1-3",
     "href": "files/lectures/1-4-categorical-data.html#example-1-3",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Example 1",
-    "text": "Example 1\n\nNow the bar chart of proportions:"
-  },
-  {
-    "objectID": "files/lectures/1-4-categorical-data.html#example-1-code-1",
-    "href": "files/lectures/1-4-categorical-data.html#example-1-code-1",
-    "title": "Describing and Visualizing Categorical Variables",
-    "section": "Example 1 (Code)",
-    "text": "Example 1 (Code)\n\nNow the bar chart of proportions:\n\n\nzootopia |&gt;\n  ggplot(aes(x = district, y = after_stat(count) / sum(after_stat(count)), fill = district)) +\n  geom_bar() +\n  scale_y_continuous(labels = scales::percent) +\n  labs(x = NULL, y = \"Percent of Recruits\") +\n  theme_minimal(base_size = 20) +\n  theme(legend.position = \"none\")"
+    "text": "Example 1\n\nConstructing the frequency distribution for academy status,\n\n\nzootopia %&gt;% n_pct(academy_status)\n\n\n\n\n\nacademy_status\nn (pct)\n\n\n\n\nFail\n5 (16.7%)\n\n\nPass\n25 (83.3%)"
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#example-1-4",
     "href": "files/lectures/1-4-categorical-data.html#example-1-4",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Example 1",
-    "text": "Example 1\n\nNow we find the exact numbers with n_pct(),\n\n\nzootopia |&gt;\n  n_pct(district)\n\n\n\n\n\ndistrict\nn (pct)\n\n\n\n\nDowntown\n8 (26.7%)\n\n\nRainforest District\n7 (23.3%)\n\n\nSahara Square\n9 (30.0%)\n\n\nTundratown\n6 (20.0%)\n\n\n\n\n\n\n\nSahara Square has the most recruits (9, or 30.0%), and Tundratown has the fewest (6, or 20.0%) — but no district is dramatically over- or under-staffed compared to the others."
+    "text": "Example 1\n\nConstructing contingency tables,\n\n\nzootopia %&gt;% n_pct(district, department)\n\n\n\n\n\ndistrict\nDesk\nPatrol\n\n\n\n\nDowntown\n2 (16.7%)\n6 (33.3%)\n\n\nRainforest District\n3 (25.0%)\n4 (22.2%)\n\n\nSahara Square\n3 (25.0%)\n6 (33.3%)\n\n\nTundratown\n4 (33.3%)\n2 (11.1%)"
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#example-1-5",
     "href": "files/lectures/1-4-categorical-data.html#example-1-5",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Example 1",
-    "text": "Example 1\n\nDeputy Chief Okonkwo has a follow-up: “Is Patrol/Desk assignment spread the same way across every district, or does that break down differently district by district?”\nThat requires a two-way table. We add group_by(district) before n_pct(department),\n\n\nzootopia |&gt;\n  group_by(district) |&gt;\n  n_pct(department)\n\n\n\n\n\ndepartment\nn (pct)\n\n\n\n\nDesk\n12 (40.0%)\n\n\nPatrol\n18 (60.0%)"
+    "text": "Example 1\n\nConstructing contingency tables,\n\n\nzootopia %&gt;% n_pct(district, academy_status)\n\n\n\n\n\ndistrict\nFail\nPass\n\n\n\n\nDowntown\n1 (20.0%)\n7 (28.0%)\n\n\nRainforest District\n3 (60.0%)\n4 (16.0%)\n\n\nSahara Square\n1 (20.0%)\n8 (32.0%)\n\n\nTundratown\n0 (0.0%)\n6 (24.0%)"
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#example-1-6",
     "href": "files/lectures/1-4-categorical-data.html#example-1-6",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Example 1",
-    "text": "Example 1\n\nLet’s visualize that same breakdown with a grouped bar chart,"
-  },
-  {
-    "objectID": "files/lectures/1-4-categorical-data.html#example-1-code-2",
-    "href": "files/lectures/1-4-categorical-data.html#example-1-code-2",
-    "title": "Describing and Visualizing Categorical Variables",
-    "section": "Example 1 (Code)",
-    "text": "Example 1 (Code)\n\nLet’s visualize that same breakdown with a grouped bar chart,\n\n\nzootopia |&gt;\n  ggplot(aes(x = district, fill = department)) +\n  geom_bar(position = \"dodge\") +\n  labs(x = NULL, y = \"Count\") +\n  theme_minimal(base_size = 20)"
+    "text": "Example 1\n\nConstructing contingency tables,\n\n\nzootopia %&gt;% n_pct(department, academy_status)\n\n\n\n\n\ndepartment\nFail\nPass\n\n\n\n\nDesk\n3 (60.0%)\n9 (36.0%)\n\n\nPatrol\n2 (40.0%)\n16 (64.0%)"
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#example-1-7",
     "href": "files/lectures/1-4-categorical-data.html#example-1-7",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Example 1",
-    "text": "Example 1\n\nA few things stand out from the two-way table and grouped bar chart:\n\nTundratown is the only district where Desk (4) outnumbers Patrol (2) — every other district leans Patrol.\nDowntown and Sahara Square both have a roughly 2-to-1 Patrol-to-Desk split.\n\nOn its own, the overall 60/40 Patrol/Desk split (from our first n_pct(department)) hides this — it’s only by breaking things down by district that the Tundratown pattern shows up.\n\nThis is the same lesson from last lecture’s hustle_earnings example: the overall summary and the by-group summary can each tell a different part of the story. Good analysts check both."
+    "text": "Example 1\n\nLooking at this graphically,"
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#wrap-up",
     "href": "files/lectures/1-4-categorical-data.html#wrap-up",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Wrap Up",
-    "text": "Wrap Up\n\nWe have covered basics for describing and visualizing categorical variables.\n\nOne categorical variable:\n\nFrequency (count)\nRelative frequency (proportion)\nBar chart (counts)\nBar chart (proportions)\n\nTwo categorical variables:\n\nTwo-way table\nGrouped bar chart\n\n\nNext up: turning these descriptions into a testable claim about a proportion."
+    "text": "Wrap Up\n\nWe have covered basics for describing and visualizing categorical variables.\n\nFrequencies and proportions\n\nContingency tables\n\nBar graphs"
   },
   {
     "objectID": "files/lectures/1-1-probability-basics.html#introduction-welcome-to-the-zpd",
@@ -1691,7 +1642,7 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#statistical-inference-on-one-proportion-r",
     "title": "One-Sample Proportions",
     "section": "Statistical Inference on One Proportion (R)",
-    "text": "Statistical Inference on One Proportion (R)\n\nWe will use the one_proportion() function from library(ssstats) to perform statistical inference.\n\n\ndataset_name %&gt;% one_proportion(outcome = variable_name,\n                                event = event_name_or_number,\n                                p = hypothesized_value,\n                                alternative = \"two\" | \"less\" | \"greater\",\n                                alpha = alpha_level)\n\n\nwhere\n\noutcome is the variable name of the outcome variable\nevent is the name or number of the event of interest\np is the hypothesized value of the population proportion (default = 0.05)\nalternative is the alternative hypothesis (default = “two”)\nalpha is the significance level (default = 0.05)"
+    "text": "Statistical Inference on One Proportion (R)\n\nWe will use the one_proportion() function from library(ssstats) to perform statistical inference.\n\n\ndataset_name |&gt; one_proportion(outcome = variable_name,\n                                event = event_name_or_number,\n                                p = hypothesized_value,\n                                alternative = \"two\" | \"less\" | \"greater\",\n                                alpha = alpha_level)\n\n\nwhere\n\noutcome is the variable name of the outcome variable\nevent is the name or number of the event of interest\np is the hypothesized value of the population proportion (default = 0.05)\nalternative is the alternative hypothesis (default = “two”)\nalpha is the significance level (default = 0.05)"
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1",
@@ -1705,14 +1656,14 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#example-1-1",
     "title": "One-Sample Proportions",
     "section": "Example 1",
-    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_proportion(outcome = department)\n\nError in `one_proportion()`:\n! argument \"event\" is missing, with no default\n\n\n\nOops! We need to make sure we specify the event of interest. Let’s see how it’s coded in the department variable.\n\n\nzootopia %&gt;% n_pct(department)\n\n\n\n\n\ndepartment\nn (pct)\n\n\n\n\nDesk\n12 (40.0%)\n\n\nPatrol\n18 (60.0%)"
+    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia |&gt; one_proportion(outcome = department)\n\nError in `one_proportion()`:\n! argument \"event\" is missing, with no default\n\n\n\nOops! We need to make sure we specify the event of interest. Let’s see how it’s coded in the department variable.\n\n\nzootopia |&gt; n_pct(department)\n\n\n\n\n\ndepartment\nn (pct)\n\n\n\n\nDesk\n12 (40.0%)\n\n\nPatrol\n18 (60.0%)"
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1-2",
     "href": "files/lectures/2-3-one-sample-proportion.html#example-1-2",
     "title": "One-Sample Proportions",
     "section": "Example 1",
-    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_proportion(outcome = department,\n                            event = \"Patrol\")\n\nOne-sample proportion\n\np̂ = 0.6 (18/30)\n\n95% CI for π: (0.4247, 0.7753)\n\nHypotheses:\nH₀: π = 0.5\nH₁: π ≠ 0.5\nTest statistic: z = 1.1\np-value: 0.273\nConclusion: Fail to reject the null hypothesis (p = 0.273 ≥ α = 0.050)\n\n\n\nThe estimated proportion of officers in Patrol is 60% (95% CI: 42.5%, 77.5%)."
+    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia |&gt; one_proportion(outcome = department,\n                            event = \"Patrol\")\n\nOne-sample proportion\n\np̂ = 0.6 (18/30)\n\n95% CI for π: (0.4247, 0.7753)\n\nHypotheses:\nH₀: π = 0.5\nH₁: π ≠ 0.5\nTest statistic: z = 1.1\np-value: 0.273\nConclusion: Fail to reject the null hypothesis (p = 0.273 ≥ α = 0.050)\n\n\n\nThe estimated proportion of officers in Patrol is 60% (95% CI: 42.5%, 77.5%)."
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1-3",
@@ -1726,7 +1677,7 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#example-1-4",
     "title": "One-Sample Proportions",
     "section": "Example 1",
-    "text": "Example 1\n\nHas the true proportion of officers in Patrol increased from 50%?\n\n\nzootopia %&gt;% one_proportion(outcome = department,\n                            event = \"Patrol\",\n                            p = 0.5,\n                            alternative = \"greater\",\n                            alpha = 0.05)\n\nOne-sample proportion\n\np̂ = 0.6 (18/30)\n\n95% CI for π: (0.4247, 0.7753)\n\nHypotheses:\nH₀: π ≤ 0.5\nH₁: π &gt; 0.5\nTest statistic: z = 1.1\np-value: 0.137\nConclusion: Fail to reject the null hypothesis (p = 0.137 ≥ α = 0.050)"
+    "text": "Example 1\n\nHas the true proportion of officers in Patrol increased from 50%?\n\n\nzootopia |&gt; one_proportion(outcome = department,\n                            event = \"Patrol\",\n                            p = 0.5,\n                            alternative = \"greater\",\n                            alpha = 0.05)\n\nOne-sample proportion\n\np̂ = 0.6 (18/30)\n\n95% CI for π: (0.4247, 0.7753)\n\nHypotheses:\nH₀: π ≤ 0.5\nH₁: π &gt; 0.5\nTest statistic: z = 1.1\np-value: 0.137\nConclusion: Fail to reject the null hypothesis (p = 0.137 ≥ α = 0.050)"
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1-5",
@@ -1747,14 +1698,14 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#example-2-1",
     "title": "One-Sample Proportions",
     "section": "Example 2",
-    "text": "Example 2\n\nLooking at what is in district,\n\n\nzootopia %&gt;% n_pct(district)\n\n\n\n\n\ndistrict\nn (pct)\n\n\n\n\nDowntown\n8 (26.7%)\n\n\nRainforest District\n7 (23.3%)\n\n\nSahara Square\n9 (30.0%)\n\n\nTundratown\n6 (20.0%)\n\n\n\n\n\n\n\nWe know that the event of interest is coded as Downtown."
+    "text": "Example 2\n\nLooking at what is in district,\n\n\nzootopia |&gt; n_pct(district)\n\n\n\n\n\ndistrict\nn (pct)\n\n\n\n\nDowntown\n8 (26.7%)\n\n\nRainforest District\n7 (23.3%)\n\n\nSahara Square\n9 (30.0%)\n\n\nTundratown\n6 (20.0%)\n\n\n\n\n\n\n\nWe know that the event of interest is coded as Downtown."
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#example-2-2",
     "href": "files/lectures/2-3-one-sample-proportion.html#example-2-2",
     "title": "One-Sample Proportions",
     "section": "Example 2",
-    "text": "Example 2\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_proportion(outcome = district,\n                            event = \"Downtown\")\n\nOne-sample proportion\n\np̂ = 0.2667 (8/30)\n\n95% CI for π: (0.1084, 0.4249)\n\nHypotheses:\nH₀: π = 0.5\nH₁: π ≠ 0.5\nTest statistic: z = -2.56\np-value: 0.011\nConclusion: Reject the null hypothesis (p = 0.011 &lt; α = 0.050)\n\n\n\nThe estimated proportion of officers living in Downtown is 26.7% (95% CI: 10.8%, 42.5%)."
+    "text": "Example 2\n\nPoint and interval estimates:\n\n\nzootopia |&gt; one_proportion(outcome = district,\n                            event = \"Downtown\")\n\nOne-sample proportion\n\np̂ = 0.2667 (8/30)\n\n95% CI for π: (0.1084, 0.4249)\n\nHypotheses:\nH₀: π = 0.5\nH₁: π ≠ 0.5\nTest statistic: z = -2.56\np-value: 0.011\nConclusion: Reject the null hypothesis (p = 0.011 &lt; α = 0.050)\n\n\n\nThe estimated proportion of officers living in Downtown is 26.7% (95% CI: 10.8%, 42.5%)."
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#example-2-3",
@@ -1768,7 +1719,7 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#example-2-4",
     "title": "One-Sample Proportions",
     "section": "Example 2",
-    "text": "Example 2\n\nIs the true proportion of officers living in Downtown actually less than 40%?\n\n\nzootopia %&gt;% one_proportion(outcome = district,\n                            event = \"Downtown\",\n                            p = 0.4,\n                            alternative = \"less\",\n                            alpha = 0.05)\n\nOne-sample proportion\n\np̂ = 0.2667 (8/30)\n\n95% CI for π: (0.1084, 0.4249)\n\nHypotheses:\nH₀: π ≥ 0.4\nH₁: π &lt; 0.4\nTest statistic: z = -1.49\np-value: 0.068\nConclusion: Fail to reject the null hypothesis (p = 0.068 ≥ α = 0.050)"
+    "text": "Example 2\n\nIs the true proportion of officers living in Downtown actually less than 40%?\n\n\nzootopia |&gt; one_proportion(outcome = district,\n                            event = \"Downtown\",\n                            p = 0.4,\n                            alternative = \"less\",\n                            alpha = 0.05)\n\nOne-sample proportion\n\np̂ = 0.2667 (8/30)\n\n95% CI for π: (0.1084, 0.4249)\n\nHypotheses:\nH₀: π ≥ 0.4\nH₁: π &lt; 0.4\nTest statistic: z = -1.49\np-value: 0.068\nConclusion: Fail to reject the null hypothesis (p = 0.068 ≥ α = 0.050)"
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#example-2-5",
