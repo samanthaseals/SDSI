@@ -34,13 +34,13 @@ uwf_marigold <- "#FFB81C"
 uwf_midnight <- "#003865"
 ```
 
-- We learned the ground rules: 
+- We covered the ground rules: 
 
     - probabilities are between 0 and 1, and 
     
     - all outcomes sum to 1.
 
-- We learned probability basics: 
+- We covered probability basics: 
 
     - complement
     
@@ -526,7 +526,7 @@ ggplot(std_normal_df, aes(x = x, y = density)) +
 
     - The $t$-distribution has heavier tails than the normal.
 
-## The t-Distribution
+## The $t$-Distribution
 
 - We use the $t$-distribution to describe a continuous variable estimated from a small sample with unknown population spread,
 
@@ -537,7 +537,7 @@ $t$-Distribution
 For a continuous variable estimated from a small sample with unknown population standard deviation, the distribution that describes the probability of a range of values is called the **t-distribution**.
 :::
 
-## The t-Distribution
+## The $t$-Distribution
 
 - The probability density of a t-distribution at a value $y$ is given by
 
@@ -546,7 +546,7 @@ f(y) = \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\,\Gamma\left(\fra
 $$
   - $\nu$ = degrees of freedom
 
-## The t-Distribution
+## The $t$-Distribution
 
 - Deputy Chief Okonkwo wants to know:
 
@@ -559,7 +559,7 @@ $$
     - $s$ (*sample* standard deviation of sleep hours)
     - $\nu$ (degrees of freedom = $n - 1 = 7$ in this case)
 
-## The t-Distribution
+## The $t$-Distribution
 
 - The shape of the $t$-distribution depends on its degrees of freedom ($\nu$). 
 

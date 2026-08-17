@@ -19,6 +19,7 @@ format:
     html-math-method: katex
     code-fold: false
     code-tools: false
+    code-annotations: hover
     incremental: false
 editor: source
 ---
@@ -119,11 +120,15 @@ $$t_0 = \frac{\bar{y} - \mu_0}{s/\sqrt{n}}$$
 
 ```{r}
 #| eval: false
-dataset_name %>% one_mean(outcome = variable_name,
-                          mu = hypothesized_value,
-                          alternative = "two" | "less" | "greater",
-                          alpha = alpha_level)
+dataset_name |> one_mean(outcome = variable_name, # <1>
+                         mu = hypothesized_value, # <2>
+                         alternative = "two" | "less" | "greater", # <3>
+                         alpha = alpha_level) # <4>
 ```
+1. Pipes `dataset_name` into `one_mean()`, and sets `outcome` to the variable being tested.
+2. Sets `mu`, the hypothesized population value the sample mean is being compared against.
+3. Sets `alternative`, the direction of the test: `"two"` for two-sided, `"less"` and `"greater"` for one-sided tests.
+4. Sets `alpha`, the significance level.
 
 - where
 
@@ -152,7 +157,7 @@ dataset_name %>% one_mean(outcome = variable_name,
 - Point and interval estimates:
 
 ```{r}
-zootopia %>% one_mean(outcome = academy_exam_score)
+zootopia |> one_mean(outcome = academy_exam_score)
 ```
 
 - The average exam score is 77.3  (95% CI: 74.3, 80.3).
@@ -178,7 +183,7 @@ zootopia %>% one_mean(outcome = academy_exam_score)
 - Is the true average exam score for this cohort actually 72, or has it shifted?
 
 ```{r}
-zootopia %>% one_mean(outcome = academy_exam_score,
+zootopia |> one_mean(outcome = academy_exam_score,
                       mu = 72,
                       alternative = "two")
 ```
@@ -218,7 +223,7 @@ zootopia %>% one_mean(outcome = academy_exam_score,
 - Point and interval estimates:
 
 ```{r}
-zootopia %>% one_mean(outcome = hustle_earnings)
+zootopia |> one_mean(outcome = hustle_earnings)
 ```
 
 - The average income is Z = 36.7 (95% CI: 28.2, 45.2). 
@@ -244,7 +249,7 @@ zootopia %>% one_mean(outcome = hustle_earnings)
 - Is the typical side hustle income actually Z 35, or are residents earning more?
 
 ```{r}
-zootopia %>% one_mean(outcome = hustle_earnings,
+zootopia |> one_mean(outcome = hustle_earnings,
                       mu = 35,
                       alternative = "greater")
 ```
@@ -435,8 +440,9 @@ ggarrange(qq_plot, hist_plot, ncol = 2)
 
 ```{r}
 #| eval: false
-dataset_name %>% one_qq(outcome = variable_name)
+dataset_name |> one_qq(outcome = variable_name) # <1>
 ```
+1. Pipes `dataset_name` into `one_qq()`, generating a QQ plot for the `outcome` variable.
 
 - where
 
@@ -448,7 +454,7 @@ dataset_name %>% one_qq(outcome = variable_name)
 
 ```{r}
 #| fig-align: 'center'
-zootopia %>% one_qq(outcome = academy_exam_score)
+zootopia |> one_qq(outcome = academy_exam_score)
 ```
 
 ## Example 2
@@ -457,7 +463,7 @@ zootopia %>% one_qq(outcome = academy_exam_score)
 
 ```{r}
 #| fig-align: 'center'
-zootopia %>% one_qq(outcome = hustle_earnings)
+zootopia |> one_qq(outcome = hustle_earnings)
 ```
 
 ## Nonparametric Alternatives
@@ -550,11 +556,15 @@ $$S = \sum_{i=1}^n I_{(y_i > M_0)}$$
 
 ```{r}
 #| eval: false
-dataset_name %>% one_median(outcome = variable_name,
-                            m = hypothesized_value,
-                            alternative = "two" | "less" | "greater",
-                            alpha = alpha_level)
+dataset_name |> one_median(outcome = variable_name, # <1>
+                            m = hypothesized_value, # <2>
+                            alternative = "two" | "less" | "greater", # <3>
+                            alpha = alpha_level) # <4>
 ```
+1. Pipes `dataset_name` into `one_median()`, and sets `outcome` to the column being examined.
+2. Sets `m`, the hypothesized population median the sample median is being compared against.
+3. Sets `alternative`, the direction of the test: `"two"` for two-sided and `"less"` or `"greater"` for a one-sided test.
+4. Sets `alpha`, the significance level.
 
 - where
 
@@ -587,7 +597,7 @@ dataset_name %>% one_median(outcome = variable_name,
 - Applying the `one_median()` function, 
 
 ```{r}
-zootopia %>% one_median(outcome = hustle_earnings,
+zootopia |> one_median(outcome = hustle_earnings,
                         m = 35,
                         alternative = "greater")
 ```
@@ -617,7 +627,7 @@ zootopia %>% one_median(outcome = hustle_earnings,
 - Looking at the confidence interval,
 
 ```{r}
-zootopia %>% one_median(outcome = hustle_earnings,
+zootopia |> one_median(outcome = hustle_earnings,
                         m = 35,
                         alternative = "greater")
 ```
@@ -642,7 +652,7 @@ zootopia %>% one_median(outcome = hustle_earnings,
 
 ```{r}
 #| fig-align: 'center'
-zootopia %>% one_qq(outcome = district_temp_f)
+zootopia |> one_qq(outcome = district_temp_f)
 ```    
 
 ## Example 3
@@ -650,7 +660,7 @@ zootopia %>% one_qq(outcome = district_temp_f)
 - Point and interval estimates:
 
 ```{r}
-zootopia %>% one_median(outcome = district_temp_f)
+zootopia |> one_median(outcome = district_temp_f)
 ```
 
 - The median temperature is 71.3°F  (95% CI: 65.1, 76.7).
@@ -676,7 +686,7 @@ zootopia %>% one_median(outcome = district_temp_f)
 - Is the true average daily temperature actually 75°F, or does the data suggest otherwise?
 
 ```{r}
-zootopia %>% one_median(outcome = district_temp_f,
+zootopia |> one_median(outcome = district_temp_f,
                         m = 75,
                         alternative = "two")
 ```

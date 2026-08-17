@@ -116,7 +116,7 @@ $$z_0 = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}$$
 
 ```{r}
 #| eval: false
-dataset_name %>% one_proportion(outcome = variable_name,
+dataset_name |> one_proportion(outcome = variable_name,
                                 event = event_name_or_number,
                                 p = hypothesized_value,
                                 alternative = "two" | "less" | "greater",
@@ -153,13 +153,13 @@ dataset_name %>% one_proportion(outcome = variable_name,
 - Point and interval estimates:
 
 ```{r}
-zootopia %>% one_proportion(outcome = department)
+zootopia |> one_proportion(outcome = department)
 ```
 
 - Oops! We need to make sure we specify the *event* of interest. Let's see how it's coded in the `department` variable.
 
 ```{r}
-zootopia %>% n_pct(department)
+zootopia |> n_pct(department)
 ```
 
 ## Example 1
@@ -167,7 +167,7 @@ zootopia %>% n_pct(department)
 - Point and interval estimates:
 
 ```{r}
-zootopia %>% one_proportion(outcome = department,
+zootopia |> one_proportion(outcome = department,
                             event = "Patrol")
 ```
 
@@ -195,7 +195,7 @@ zootopia %>% one_proportion(outcome = department,
 - Has the true proportion of officers in Patrol increased from 50%?
 
 ```{r}
-zootopia %>% one_proportion(outcome = department,
+zootopia |> one_proportion(outcome = department,
                             event = "Patrol",
                             p = 0.5,
                             alternative = "greater",
@@ -240,7 +240,7 @@ zootopia %>% one_proportion(outcome = department,
 - Looking at what is in `district`,
 
 ```{r}
-zootopia %>% n_pct(district)
+zootopia |> n_pct(district)
 ```
 
 - We know that the event of interest is coded as `Downtown`.
@@ -250,7 +250,7 @@ zootopia %>% n_pct(district)
 - Point and interval estimates:
 
 ```{r}
-zootopia %>% one_proportion(outcome = district,
+zootopia |> one_proportion(outcome = district,
                             event = "Downtown")
 ```
 
@@ -278,7 +278,7 @@ zootopia %>% one_proportion(outcome = district,
 - Is the true proportion of officers living in Downtown actually less than 40%?
 
 ```{r}
-zootopia %>% one_proportion(outcome = district,
+zootopia |> one_proportion(outcome = district,
                             event = "Downtown",
                             p = 0.4,
                             alternative = "less",

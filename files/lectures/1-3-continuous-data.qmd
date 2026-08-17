@@ -57,12 +57,8 @@ uwf_midnight <- "#003865"
     
         - Only recommended for those that cannot download and install programs to their computers.
         
-- There are other languages (or *tools*):
+- There are other languages (or *tools*): python, SAS, Stata, SPSS, ...
 
-    - SAS
-    - Stata
-    - SPSS
-    - python
         
 ## `R` Setup        
 
@@ -70,19 +66,25 @@ uwf_midnight <- "#003865"
 
 ```{r}
 #| eval: false
-install.packages("tidyverse")
-if (!requireNamespace("pak", quietly = TRUE)) {
-  install.packages("pak")
+install.packages("tidyverse") # <1>
+if (!requireNamespace("pak", quietly = TRUE)) { # <2>
+  install.packages("pak") # <3>
 }
-pak::pak("sealslab/ssstats")
+pak::pak("sealslab/ssstats") # <4>
 ```
+1. Installs the `tidyverse` collection of packages. This only needs to run once *per computer* and *never* in a .qmd file.
+2. Checks whether the `pak` package is already installed.
+3. Installs `pak`, a package manager that can install packages directly from GitHub repositories.
+4. Uses `pak` to install `ssstats` from the `sealslab` GitHub repository.
 
 - Then, we must call the packages to access their functions:
 
 ```{r}
-library(tidyverse)
-library(ssstats)
+library(tidyverse) # <1>
+library(ssstats) # <2>
 ```
+1. Loads the `tidyverse` collection of packages into the current R session.
+2. Loads the `ssstats` course package into the current R session.
 
 ## Data from Zootropolis
 
@@ -688,8 +690,6 @@ earnings_summary |>
   theme_minimal(base_size = 20) +
   theme(legend.position = "none")
 ```
-
-
 
 ## Visualizing the Mean
 
