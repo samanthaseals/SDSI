@@ -1635,7 +1635,6 @@ margin-right: 0; }
 <li>Frequency</li>
 <li>Relative frequency (proportion)</li>
 </ul></li>
-<li><p>There’s no “mean” or “standard deviation” for a category like Sahara Square — it wouldn’t mean anything to average two districts together.</p></li>
 </ul>
 </section>
 <section id="frequency" class="slide level2">
@@ -1652,16 +1651,16 @@ margin-right: 0; }
 <li>How many recruits are in Patrol?</li>
 <li>How many recruits work in Sahara Square?</li>
 </ul></li>
-<li><p>Frequencies are useful, but they depend on the size of your dataset — 18 Patrol recruits sounds different in a department of 30 than in a department of 3,000.</p></li>
+<li><p>Frequencies are useful, but interpreting them depends on the size of the dataset.</p></li>
 </ul>
 </section>
-<section id="relative-frequency-proportion" class="slide level2">
-<h2>Relative Frequency (Proportion)</h2>
+<section id="relative-frequency" class="slide level2">
+<h2>Relative Frequency</h2>
 <div class="notebook-entry">
 <div class="notebook-tab">
 <p>Relative Frequency</p>
 </div>
-<p>The <strong>relative frequency</strong>, or <strong>proportion</strong>, is the frequency divided by the total number of observations.</p>
+<p>The <strong>relative frequency</strong> (proportion), is the frequency divided by the total number of observations.</p>
 </div>
 <p><span class="math display">
 \text{proportion} = \frac{\text{count in category}}{\text{total number of observations}}
@@ -1672,32 +1671,7 @@ margin-right: 0; }
 <li>What share of recruits are in Patrol?</li>
 <li>What share of recruits work in Sahara Square?</li>
 </ul></li>
-<li><p>Because proportions are standardized, they let us compare groups of very different sizes — 60% Patrol means the same thing whether you have 30 recruits or 3,000.</p></li>
-</ul>
-</section>
-<section id="mode-revisited" class="slide level2">
-<h2>Mode, Revisited</h2>
-<ul>
-<li><p>Recall from last lecture: the <strong>mode</strong> is the most frequently occurring value.</p></li>
-<li><p>For categorical data, the mode is the <em>most natural</em> measure of centrality — it’s really the only one that makes sense.</p>
-<ul>
-<li>The modal district is whichever district has the most recruits.</li>
-<li>A department (Patrol/Desk) can only ever be unimodal or bimodal (tied), since there are only two categories.</li>
-</ul></li>
-</ul>
-</section>
-<section id="what-about-spread" class="slide level2">
-<h2>What About Spread?</h2>
-<ul>
-<li><p>For continuous data, we described spread with variance, standard deviation, and the IQR.</p></li>
-<li><p>Categories don’t have a distance between them — Sahara Square isn’t “two units” away from Downtown the way 80 is two units away from 78.</p>
-<ul>
-<li>So variance and standard deviation don’t apply to categorical data.</li>
-</ul></li>
-<li><p>Instead, when we talk about “spread” for categorical data, we’re really asking: <em>are the observations spread evenly across categories, or concentrated in just one or two?</em></p>
-<ul>
-<li>We’ll answer that visually, with bar charts, rather than with a single number.</li>
-</ul></li>
+<li><p>Because proportions are standardized, they allow us to compare groups of very different sizes.</p></li>
 </ul>
 </section>
 <section id="describing-the-data-r" class="slide level2">
@@ -1707,7 +1681,7 @@ margin-right: 0; }
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1"></a>dataset_name <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2"></a>  <span class="fu">n_pct</span>(variable1, variable2, ...)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2"></a>  <span class="fu">n_pct</span>(variable)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
@@ -1716,37 +1690,14 @@ margin-right: 0; }
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2"><code>n_pct()</code> returns the count (n) and percentage for each category of any variable(s) you list.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2"><code>n_pct()</code> returns the count (n) and percentage for each category of the variable you list.</span>
 </dd>
 </dl>
 </div>
 </div>
 <ul>
-<li>Just like <code>mean_median()</code>, we can use <code>group_by()</code> to get counts and percentages broken down by another categorical variable.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1"></a>dataset_name <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2"></a>  <span class="fu">group_by</span>() <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3"></a>  <span class="fu">n_pct</span>(variable1, variable2, ...)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1"><code>dataset_name</code> is the name of the dataset you are working with.</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2"><code>group_by()</code> allows us to group the data by a categorical variable before counting.</span>
-</dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="3"><code>n_pct()</code> returns the count and percentage for each category, within each group.</span>
-</dd>
-</dl>
-</div>
-</div>
-<ul>
-<li>Note: if you need help getting started in R, please see the R module on Canvas.</li>
+<li><p>Just like <code>mean_median()</code>, we can use <code>group_by()</code> to get counts and percentages broken down by another categorical variable.</p></li>
+<li><p>Note: if you need help getting started in R, please see the R module on Canvas.</p></li>
 </ul>
 </section>
 <section id="describing-the-data" class="slide level2">
@@ -1807,22 +1758,22 @@ margin-right: 0; }
 <p>A <strong>bar chart</strong> shows one bar per category, with the height of the bar equal to the number (or percentage) of observations in that category.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1"></a>dataset_name <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> category_name)) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3">3</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3"></a>  <span class="fu">geom_bar</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1"></a>dataset_name <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> category_name)) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3"></a>  <span class="fu">geom_bar</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="1" data-code-annotation="1"><code>dataset_name</code> is the name of the dataset you are working with.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="1" data-code-annotation="1"><code>dataset_name</code> is the name of the dataset you are working with.</span>
 </dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="2" data-code-annotation="2"><code>ggplot()</code> is the function that creates a plot. The <code>aes()</code> function inside it tells R which variable to plot.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="2"><code>ggplot()</code> is the function that creates a plot. The <code>aes()</code> function inside it tells R which variable to plot.</span>
 </dd>
-<dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="3"><code>geom_bar()</code> counts the observations in each category and draws a bar for each — you don’t need to calculate the counts yourself.</span>
+<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="3"><code>geom_bar()</code> counts the observations in each category and draws a bar for each — you don’t need to calculate the counts yourself.</span>
 </dd>
 </dl>
 </div>
@@ -1831,28 +1782,28 @@ margin-right: 0; }
 <li>Sometimes we’d rather show the <em>share</em> of recruits in each category instead of the raw count.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1"></a>dataset_name <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> category_name, </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3"></a>             <span class="at">y =</span> <span class="fu">after_stat</span>(count) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">after_stat</span>(count)))) <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-5" class="code-annotation-target"><a href="#annotated-cell-6-5"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1"></a>dataset_name <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> category_name, </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3"></a>             <span class="at">y =</span> <span class="fu">after_stat</span>(count) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">after_stat</span>(count)))) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3">3</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="4">4</button><span id="annotated-cell-5-5" class="code-annotation-target"><a href="#annotated-cell-5-5"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1"><code>dataset_name</code> is the name of the dataset you are working with.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="1" data-code-annotation="1"><code>dataset_name</code> is the name of the dataset you are working with.</span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="3" data-code-annotation="2"><code>after_stat(count) / sum(after_stat(count))</code> converts the raw counts into a proportion of the total.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="3" data-code-annotation="2"><code>after_stat(count) / sum(after_stat(count))</code> converts the raw counts into a proportion of the total.</span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="3"><code>geom_bar()</code> creates a bar graph.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="3"><code>geom_bar()</code> creates a bar graph.</span>
 </dd>
-<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-6" data-code-lines="5" data-code-annotation="4"><code>scale_y_continuous(labels = scales::percent)</code> relabels the y-axis as a percentage instead of a decimal.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="5" data-code-annotation="4"><code>scale_y_continuous(labels = scales::percent)</code> relabels the y-axis as a percentage instead of a decimal.</span>
 </dd>
 </dl>
 </div>
@@ -1880,17 +1831,17 @@ margin-right: 0; }
 <li>We can construct a contingency table using <code>n_pct()</code>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1"></a>dataset_name <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a>  <span class="fu">n_pct</span>(row_variable, column_variable)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-1" class="code-annotation-target"><a href="#annotated-cell-6-1"></a>dataset_name <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2"></a>  <span class="fu">n_pct</span>(row_variable, column_variable)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1"><code>dataset_name</code> is the name of the dataset you are working with.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="1" data-code-annotation="1"><code>dataset_name</code> is the name of the dataset you are working with.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="2"><code>n_pct()</code> constructs an R x C contingency table.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="2"><code>n_pct()</code> constructs an R x C contingency table.</span>
 </dd>
 </dl>
 </div>

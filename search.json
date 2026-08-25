@@ -11,21 +11,14 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#introduction",
     "title": "One-Sample Means and Medians",
     "section": "Introduction",
-    "text": "Introduction"
+    "text": "Introduction\n\nIn the last module, we discussed describing data.\nIn this module, we are discussing statistical inference on one sample.\n\nMeans / medians\nProportions\nVariances / standard deviations\n\nIn this lecture, we are focusing on one-sample means and medians."
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#r-setup",
     "href": "files/lectures/2-2-one-sample-mean-median.html#r-setup",
     "title": "One-Sample Means and Medians",
     "section": "R Setup",
-    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)"
-  },
-  {
-    "objectID": "files/lectures/2-2-one-sample-mean-median.html#data-setup",
-    "href": "files/lectures/2-2-one-sample-mean-median.html#data-setup",
-    "title": "One-Sample Means and Medians",
-    "section": "Data Setup",
-    "text": "Data Setup\n\nRecall our Zootopia data,\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8\n\n\nGreta Smith\nDesk\nTundratown\nPass\n81\n8.3\n36.10\n29.6\n\n\nOtto Meadowsly\nPatrol\nDowntown\nPass\n71\n7.5\n51.91\n65.2"
+    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)\n\n\nRecall our Zootopia data,\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#confidence-interval-for-mu",
@@ -200,7 +193,7 @@
     "href": "files/lectures/2-2-one-sample-mean-median.html#confidence-interval-for-m",
     "title": "One-Sample Means and Medians",
     "section": "Confidence Interval for M",
-    "text": "Confidence Interval for M\n\n(1–\\alpha)100% CI for a population median, M\n\n(M_L, M_U) = (y_{(L_{\\alpha/2})}, y_{(U_{\\alpha/2})})\n\nwhere\n\nL_{\\alpha/2} is the lower critical value of a binomial distribution with parameters n and p = 0.5\nU_{\\alpha/2} is the upper critical value of a binomial distribution with parameters n and p = 0.5\n\nIn R, linear interpolation is used to find the lower and upper bounds of the confidence interval.\n\nThis makes it a precise (1--\\alpha)100\\% confidence interval."
+    "text": "Confidence Interval for M\n\n(1–\\alpha)100% CI for a population median, M\n\n(M_L, M_U) = (y_{(L_{\\alpha/2})}, y_{(U_{\\alpha/2})})\n\nwhere\n\nL_{\\alpha/2} is the lower critical value of a binomial distribution with parameters n and p = 0.5\nU_{\\alpha/2} is the upper critical value of a binomial distribution with parameters n and p = 0.5\n\nIn R, linear interpolation is used to find the lower and upper bounds of the CI, making it a precise (1-\\alpha)100\\% CI"
   },
   {
     "objectID": "files/lectures/2-2-one-sample-mean-median.html#hypothesis-test-for-m",
@@ -1243,42 +1236,28 @@
     "href": "files/lectures/1-4-categorical-data.html#describing-categorical-data",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Describing Categorical Data",
-    "text": "Describing Categorical Data\n\n\nCategorical Data\n\nFor categorical variables, we describe data by counting how many observations fall into each category, not by averaging values.\n\n\nWe have two main tools for describing a categorical variable:\n\nFrequency\nRelative frequency (proportion)\n\nThere’s no “mean” or “standard deviation” for a category like Sahara Square — it wouldn’t mean anything to average two districts together."
+    "text": "Describing Categorical Data\n\n\nCategorical Data\n\nFor categorical variables, we describe data by counting how many observations fall into each category, not by averaging values.\n\n\nWe have two main tools for describing a categorical variable:\n\nFrequency\nRelative frequency (proportion)"
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#frequency",
     "href": "files/lectures/1-4-categorical-data.html#frequency",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Frequency",
-    "text": "Frequency\n\n\nFrequency\n\nThe frequency of a category is simply a count: how many observations fall into that group.\n\n\nFrequencies answer the question: how many?\n\nHow many recruits are in Patrol?\nHow many recruits work in Sahara Square?\n\nFrequencies are useful, but they depend on the size of your dataset — 18 Patrol recruits sounds different in a department of 30 than in a department of 3,000."
+    "text": "Frequency\n\n\nFrequency\n\nThe frequency of a category is simply a count: how many observations fall into that group.\n\n\nFrequencies answer the question: how many?\n\nHow many recruits are in Patrol?\nHow many recruits work in Sahara Square?\n\nFrequencies are useful, but interpreting them depends on the size of the dataset."
   },
   {
-    "objectID": "files/lectures/1-4-categorical-data.html#relative-frequency-proportion",
-    "href": "files/lectures/1-4-categorical-data.html#relative-frequency-proportion",
+    "objectID": "files/lectures/1-4-categorical-data.html#relative-frequency",
+    "href": "files/lectures/1-4-categorical-data.html#relative-frequency",
     "title": "Describing and Visualizing Categorical Variables",
-    "section": "Relative Frequency (Proportion)",
-    "text": "Relative Frequency (Proportion)\n\n\nRelative Frequency\n\nThe relative frequency, or proportion, is the frequency divided by the total number of observations.\n\n\n\\text{proportion} = \\frac{\\text{count in category}}{\\text{total number of observations}}\n\n\nProportions answer the question: what share?\n\nWhat share of recruits are in Patrol?\nWhat share of recruits work in Sahara Square?\n\nBecause proportions are standardized, they let us compare groups of very different sizes — 60% Patrol means the same thing whether you have 30 recruits or 3,000."
-  },
-  {
-    "objectID": "files/lectures/1-4-categorical-data.html#mode-revisited",
-    "href": "files/lectures/1-4-categorical-data.html#mode-revisited",
-    "title": "Describing and Visualizing Categorical Variables",
-    "section": "Mode, Revisited",
-    "text": "Mode, Revisited\n\nRecall from last lecture: the mode is the most frequently occurring value.\nFor categorical data, the mode is the most natural measure of centrality — it’s really the only one that makes sense.\n\nThe modal district is whichever district has the most recruits.\nA department (Patrol/Desk) can only ever be unimodal or bimodal (tied), since there are only two categories."
-  },
-  {
-    "objectID": "files/lectures/1-4-categorical-data.html#what-about-spread",
-    "href": "files/lectures/1-4-categorical-data.html#what-about-spread",
-    "title": "Describing and Visualizing Categorical Variables",
-    "section": "What About Spread?",
-    "text": "What About Spread?\n\nFor continuous data, we described spread with variance, standard deviation, and the IQR.\nCategories don’t have a distance between them — Sahara Square isn’t “two units” away from Downtown the way 80 is two units away from 78.\n\nSo variance and standard deviation don’t apply to categorical data.\n\nInstead, when we talk about “spread” for categorical data, we’re really asking: are the observations spread evenly across categories, or concentrated in just one or two?\n\nWe’ll answer that visually, with bar charts, rather than with a single number."
+    "section": "Relative Frequency",
+    "text": "Relative Frequency\n\n\nRelative Frequency\n\nThe relative frequency (proportion), is the frequency divided by the total number of observations.\n\n\n\\text{proportion} = \\frac{\\text{count in category}}{\\text{total number of observations}}\n\n\nProportions answer the question: what share?\n\nWhat share of recruits are in Patrol?\nWhat share of recruits work in Sahara Square?\n\nBecause proportions are standardized, they allow us to compare groups of very different sizes."
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#describing-the-data-r",
     "href": "files/lectures/1-4-categorical-data.html#describing-the-data-r",
     "title": "Describing and Visualizing Categorical Variables",
     "section": "Describing the Data (R)",
-    "text": "Describing the Data (R)\n\nWe will use the n_pct() function from the ssstats package to describe the frequency and proportion of our categorical data.\n\n\n1dataset_name |&gt;\n2  n_pct(variable1, variable2, ...)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nn_pct() returns the count (n) and percentage for each category of any variable(s) you list.\n\n\n\n\n\nJust like mean_median(), we can use group_by() to get counts and percentages broken down by another categorical variable.\n\n\n1dataset_name |&gt;\n2  group_by() |&gt;\n3  n_pct(variable1, variable2, ...)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\ngroup_by() allows us to group the data by a categorical variable before counting.\n\n3\n\nn_pct() returns the count and percentage for each category, within each group.\n\n\n\n\n\nNote: if you need help getting started in R, please see the R module on Canvas."
+    "text": "Describing the Data (R)\n\nWe will use the n_pct() function from the ssstats package to describe the frequency and proportion of our categorical data.\n\n\n1dataset_name |&gt;\n2  n_pct(variable)\n\n\n1\n\ndataset_name is the name of the dataset you are working with.\n\n2\n\nn_pct() returns the count (n) and percentage for each category of the variable you list.\n\n\n\n\n\nJust like mean_median(), we can use group_by() to get counts and percentages broken down by another categorical variable.\nNote: if you need help getting started in R, please see the R module on Canvas."
   },
   {
     "objectID": "files/lectures/1-4-categorical-data.html#describing-the-data",
@@ -1600,21 +1579,14 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#introduction",
     "title": "One-Sample Proportions",
     "section": "Introduction",
-    "text": "Introduction"
+    "text": "Introduction\n\nIn the last module, we discussed describing data.\nIn this module, we are discussing statistical inference on one sample.\n\nMean / median\nProportion\nVariance / standard deviation\n\nIn this lecture, we are focusing on one-sample proportions."
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#r-setup",
     "href": "files/lectures/2-3-one-sample-proportion.html#r-setup",
     "title": "One-Sample Proportions",
     "section": "R Setup",
-    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)"
-  },
-  {
-    "objectID": "files/lectures/2-3-one-sample-proportion.html#data-setup",
-    "href": "files/lectures/2-3-one-sample-proportion.html#data-setup",
-    "title": "One-Sample Proportions",
-    "section": "Data Setup",
-    "text": "Data Setup\n\nRecall our Zootopia data,\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8\n\n\nGreta Smith\nDesk\nTundratown\nPass\n81\n8.3\n36.10\n29.6\n\n\nOtto Meadowsly\nPatrol\nDowntown\nPass\n71\n7.5\n51.91\n65.2"
+    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)\n\n\nRecall our Zootopia data,\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8"
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#confidence-interval-for-pi",
@@ -1733,7 +1705,7 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#wrap-up",
     "title": "One-Sample Proportions",
     "section": "Wrap Up",
-    "text": "Wrap Up"
+    "text": "Wrap Up\n\nIn this lecture, we discussed statistical inference on one proportion.\nFun fact: proportions are just a mean!\nIn the next lecture, we will examine statistical inference on one variance or standard deviation."
   },
   {
     "objectID": "files/lectures/2-1-statistical-inference.html#introduction",
@@ -2055,14 +2027,42 @@
     "href": "files/lectures/2-4-one-sample-variance.html#example-2",
     "title": "One-Sample Variances",
     "section": "Example 2",
-    "text": "Example 2\n\nThe Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $1,200.\n\nAs city analyst, you’ve been asked to check whether ZPD recruits’ side-hustle earnings look consistent with that citywide benchmark, or whether recruits’ earnings are unusually spread out (or unusually tight) compared to the rest of Zootopia.\nYou pull side-hustle earnings from your sample of `30 recruits and want to answer one question:\nIs the standard deviation of recruit side-hustle earnings actually $1,200, or does it differ from the citywide benchmark?"
+    "text": "Example 2\n\nThe Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $1,200. We now want to check whether ZPD recruits’ side-hustle earnings look different from the citywide benchmark. We will use the zootopia dataset to answer:\n\nIs the standard deviation of recruit side-hustle earnings actually $1,200, or does it differ from the citywide benchmark?\n\nFirst, we need to describe the data.\n\nWe start with point and interval estimates.\n\nThen, we will perform a hypothesis test to answer the question."
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#example-2-1",
+    "href": "files/lectures/2-4-one-sample-variance.html#example-2-1",
+    "title": "One-Sample Variances",
+    "section": "Example 2",
+    "text": "Example 2\n\nPoint and interval estimates:\n\n\nzootopia %&gt;% one_variance(outcome = hustle_earnings)\n\nOne-sample variance\n\ns² = 518.8429 (s = 22.7781)\n\n95% CI for σ²: (329.0834, 937.6442)\n\nHypotheses:\nH₀: σ² = 1\nH₁: σ² ≠ 1\nTest statistic: χ²(29) = 15046.444\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)\n\n\n\nThe estimated variance is s^2 = 518.84 with standard deviation s = 22.780. The 95% CI for \\sigma^2 is (329.08, 937.64), and the 95% CI for the population standard deviation is (18.14, 30.62)."
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#example-2-2",
+    "href": "files/lectures/2-4-one-sample-variance.html#example-2-2",
+    "title": "One-Sample Variances",
+    "section": "Example 2",
+    "text": "Example 2\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the standard deviation of recruit side-hustle earnings different from $1,200?\n\nHow do we translate this into hypotheses?\n\nH_0: \\sigma^2 = 1,440,000 – note that they gave us \\sigma, not \\sigma^2\nH_1: \\sigma^2 \\ne 1,440,000\n\nFor the one_variance() function, we will set\n\nsigma2 = 1440000\nalternative = \"two\".\nalpha = 0.05"
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#example-2-3",
+    "href": "files/lectures/2-4-one-sample-variance.html#example-2-3",
+    "title": "One-Sample Variances",
+    "section": "Example 2",
+    "text": "Example 2\n\nIs the standard deviation of recruit side-hustle earnings different from $1,200?\n\n\nzootopia %&gt;% one_variance(outcome = hustle_earnings,\n                          sigma2 = 1440000,\n                          alternative = \"two\",\n                          alpha = 0.05)\n\nOne-sample variance\n\ns² = 518.8429 (s = 22.7781)\n\n95% CI for σ²: (329.0834, 937.6442)\n\nHypotheses:\nH₀: σ² = 1440000\nH₁: σ² ≠ 1440000\nTest statistic: χ²(29) = 0.01\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/2-4-one-sample-variance.html#example-2-4",
+    "href": "files/lectures/2-4-one-sample-variance.html#example-2-4",
+    "title": "One-Sample Variances",
+    "section": "Example 2",
+    "text": "Example 2\n\nHypotheses\n\nH_0: \\sigma^2 = 1,440,000\nH_1: \\sigma^2 \\ne 1,440,000\n\nTest Statistic and p-Value\n\n\\chi^2_0 = 0.01\np &lt; 0.001\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nReject H_0. There is sufficient evidence to suggest that the current standard deviation is different from $1200."
   },
   {
     "objectID": "files/lectures/2-4-one-sample-variance.html#wrap-up",
     "href": "files/lectures/2-4-one-sample-variance.html#wrap-up",
     "title": "One-Sample Variances",
     "section": "Wrap Up",
-    "text": "Wrap Up"
+    "text": "Wrap Up\n\nIn this lecture, we discussed statistical inference on one variance or standard deviation\nIn this module, we have covered one-sample tests.\nIn the next module, we will learn two-sample tests."
   },
   {
     "objectID": "files/lectures/5-1-two-way-anova.html#introduction",

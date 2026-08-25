@@ -1556,6 +1556,16 @@ margin-right: 0; }
 </section>
 <section id="introduction" class="slide level2">
 <h2>Introduction</h2>
+<ul>
+<li><p>In the last module, we discussed describing data.</p></li>
+<li><p>In this module, we are discussing statistical inference on one sample.</p>
+<ul>
+<li><p>Means / medians</p></li>
+<li><p>Proportions</p></li>
+<li><p>Variances / standard deviations</p></li>
+</ul></li>
+<li><p>In this lecture, we are focusing on one-sample means and medians.</p></li>
+</ul>
 </section>
 <section id="r-setup" class="slide level2">
 <h2><code>R</code> Setup</h2>
@@ -1563,9 +1573,6 @@ margin-right: 0; }
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(ssstats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="data-setup" class="slide level2">
-<h2>Data Setup</h2>
 <ul>
 <li>Recall our Zootopia data,</li>
 </ul>
@@ -1628,26 +1635,6 @@ margin-right: 0; }
 <td style="text-align: right;">8.7</td>
 <td style="text-align: right;">30.91</td>
 <td style="text-align: right;">89.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Greta Smith</td>
-<td style="text-align: left;">Desk</td>
-<td style="text-align: left;">Tundratown</td>
-<td style="text-align: left;">Pass</td>
-<td style="text-align: right;">81</td>
-<td style="text-align: right;">8.3</td>
-<td style="text-align: right;">36.10</td>
-<td style="text-align: right;">29.6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Otto Meadowsly</td>
-<td style="text-align: left;">Patrol</td>
-<td style="text-align: left;">Downtown</td>
-<td style="text-align: left;">Pass</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right;">7.5</td>
-<td style="text-align: right;">51.91</td>
-<td style="text-align: right;">65.2</td>
 </tr>
 </tbody>
 </table>
@@ -2108,10 +2095,7 @@ Conclusion: Fail to reject the null hypothesis (p = 0.342 ≥ α = 0.050)</code>
 <li><p><span class="math inline">L_{\alpha/2}</span> is the lower critical value of a binomial distribution with parameters <span class="math inline">n</span> and <span class="math inline">p = 0.5</span></p></li>
 <li><p><span class="math inline">U_{\alpha/2}</span> is the upper critical value of a binomial distribution with parameters <span class="math inline">n</span> and <span class="math inline">p = 0.5</span></p></li>
 </ul></li>
-<li><p>In R, linear interpolation is used to find the lower and upper bounds of the confidence interval.</p>
-<ul>
-<li>This makes it a precise <span class="math inline">(1--\alpha)100\%</span> confidence interval.</li>
-</ul></li>
+<li><p>In R, linear interpolation is used to find the lower and upper bounds of the CI, making it a precise <span class="math inline">(1-\alpha)100\%</span> CI</p></li>
 </ul>
 </section>
 <section id="hypothesis-test-for-m" class="slide level2">

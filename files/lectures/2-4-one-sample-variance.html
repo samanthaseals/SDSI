@@ -1856,14 +1856,119 @@ Conclusion: Reject the null hypothesis (p = 0.019 &lt; α = 0.050)</code></pre>
 <section id="example-2" class="slide level2">
 <h2>Example 2</h2>
 <ul>
-<li>The Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $1,200.</li>
+<li><p>The Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $1,200. We now want to check whether ZPD recruits’ side-hustle earnings look different from the citywide benchmark. We will use the <code>zootopia</code> dataset to answer:</p>
+<ul>
+<li>Is the standard deviation of recruit side-hustle earnings actually $1,200, or does it differ from the citywide benchmark?</li>
+</ul></li>
+<li><p>First, we need to describe the data.</p>
+<ul>
+<li>We start with point and interval estimates.</li>
+</ul></li>
+<li><p>Then, we will perform a hypothesis test to answer the question.</p></li>
 </ul>
-<p>As city analyst, you’ve been asked to check whether ZPD recruits’ side-hustle earnings look consistent with that citywide benchmark, or whether recruits’ earnings are unusually spread out (or unusually tight) compared to the rest of Zootopia.</p>
-<p>You pull side-hustle earnings from your sample of `30 recruits and want to answer one question:</p>
-<p>Is the standard deviation of recruit side-hustle earnings actually $1,200, or does it differ from the citywide benchmark?</p>
+</section>
+<section id="example-2-1" class="slide level2">
+<h2>Example 2</h2>
+<ul>
+<li>Point and interval estimates:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>zootopia <span class="sc">%&gt;%</span> <span class="fu">one_variance</span>(<span class="at">outcome =</span> hustle_earnings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>One-sample variance
+
+s² = 518.8429 (s = 22.7781)
+
+95% CI for σ²: (329.0834, 937.6442)
+
+Hypotheses:
+H₀: σ² = 1
+H₁: σ² ≠ 1
+Test statistic: χ²(29) = 15046.444
+p-value: &lt; 0.001
+Conclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)</code></pre>
+</div>
+</div>
+<ul>
+<li>The estimated variance is <span class="math inline">s^2 = 518.84</span> with standard deviation <span class="math inline">s = 22.780</span>. The 95% CI for <span class="math inline">\sigma^2</span> is <span class="math inline">(329.08, 937.64)</span>, and the 95% CI for the population standard deviation is <span class="math inline">(18.14, 30.62)</span>.</li>
+</ul>
+</section>
+<section id="example-2-2" class="slide level2">
+<h2>Example 2</h2>
+<ul>
+<li><p>Then, we will perform a hypothesis test to answer the question.</p>
+<ul>
+<li>Is the standard deviation of recruit side-hustle earnings different from $1,200?</li>
+</ul></li>
+<li><p>How do we translate this into hypotheses?</p>
+<ul>
+<li><span class="math inline">H_0: \sigma^2 = 1,440,000</span> – note that they gave us <span class="math inline">\sigma</span>, not <span class="math inline">\sigma^2</span></li>
+<li><span class="math inline">H_1: \sigma^2 \ne 1,440,000</span></li>
+</ul></li>
+<li><p>For the <code>one_variance()</code> function, we will set</p>
+<ul>
+<li><code>sigma2 = 1440000</code></li>
+<li><code>alternative = &quot;two&quot;</code>.</li>
+<li><code>alpha = 0.05</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="example-2-3" class="slide level2">
+<h2>Example 2</h2>
+<ul>
+<li>Is the standard deviation of recruit side-hustle earnings different from $1,200?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>zootopia <span class="sc">%&gt;%</span> <span class="fu">one_variance</span>(<span class="at">outcome =</span> hustle_earnings,</span>
+<span id="cb10-2"><a></a>                          <span class="at">sigma2 =</span> <span class="dv">1440000</span>,</span>
+<span id="cb10-3"><a></a>                          <span class="at">alternative =</span> <span class="st">&quot;two&quot;</span>,</span>
+<span id="cb10-4"><a></a>                          <span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>One-sample variance
+
+s² = 518.8429 (s = 22.7781)
+
+95% CI for σ²: (329.0834, 937.6442)
+
+Hypotheses:
+H₀: σ² = 1440000
+H₁: σ² ≠ 1440000
+Test statistic: χ²(29) = 0.01
+p-value: &lt; 0.001
+Conclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)</code></pre>
+</div>
+</div>
+</section>
+<section id="example-2-4" class="slide level2">
+<h2>Example 2</h2>
+<ul>
+<li><p><strong>Hypotheses</strong></p>
+<ul>
+<li><span class="math inline">H_0: \sigma^2 = 1,440,000</span></li>
+<li><span class="math inline">H_1: \sigma^2 \ne 1,440,000</span></li>
+</ul></li>
+<li><p><strong>Test Statistic and <em>p</em>-Value</strong></p>
+<ul>
+<li><span class="math inline">\chi^2_0 = 0.01</span></li>
+<li><span class="math inline">p &lt; 0.001</span></li>
+</ul></li>
+<li><p><strong>Rejection Region</strong></p>
+<ul>
+<li>Reject <span class="math inline">H_0</span> if <span class="math inline">p &lt; \alpha</span>; <span class="math inline">\alpha = 0.05</span></li>
+</ul></li>
+<li><p><strong>Conclusion and Interpretation</strong></p>
+<ul>
+<li>Reject <span class="math inline">H_0</span>. There is sufficient evidence to suggest that the current standard deviation is different from $1200.</li>
+</ul></li>
+</ul>
 </section>
 <section id="wrap-up" class="slide level2">
 <h2>Wrap Up</h2>
+<ul>
+<li><p>In this lecture, we discussed statistical inference on one variance or standard deviation</p></li>
+<li><p>In this module, we have covered one-sample tests.</p></li>
+<li><p>In the next module, we will learn two-sample tests.</p></li>
+</ul>
 
 
 </section>
