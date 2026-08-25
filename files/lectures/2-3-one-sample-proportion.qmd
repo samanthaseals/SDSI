@@ -25,14 +25,24 @@ editor: source
 
 ## Introduction
 
+- In the last module, we discussed describing data.
+
+- In this module, we are discussing statistical inference on one sample.
+
+    - Mean / median
+    
+    - Proportion
+    
+    - Variance / standard deviation
+    
+- In this lecture, we are focusing on one-sample proportions.
+
 ## `R` Setup 
 
 ```{r}
 library(tidyverse)
 library(ssstats)
 ```
-
-## Data Setup 
 
 - Recall our Zootopia data,
 
@@ -43,7 +53,7 @@ zootopia <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/
 ```{r}
 #| echo: false
 
-head(zootopia, n = 5)
+head(zootopia, n = 3)
 ```
 
 ## Confidence Interval for $\pi$
@@ -307,3 +317,8 @@ zootopia |> one_proportion(outcome = district,
 
 ## Wrap Up
 
+- In this lecture, we discussed statistical inference on one proportion.
+
+- Fun fact: proportions are just a mean!
+
+- In the next lecture, we will examine statistical inference on one variance or standard deviation.

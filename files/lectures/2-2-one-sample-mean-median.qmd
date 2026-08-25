@@ -26,14 +26,24 @@ editor: source
 
 ## Introduction
 
+- In the last module, we discussed describing data.
+
+- In this module, we are discussing statistical inference on one sample.
+
+    - Means / medians
+    
+    - Proportions
+    
+    - Variances / standard deviations
+    
+- In this lecture, we are focusing on one-sample means and medians.
+
 ## `R` Setup 
 
 ```{r}
 library(tidyverse)
 library(ssstats)
 ```
-
-## Data Setup 
 
 - Recall our Zootopia data,
 
@@ -44,7 +54,7 @@ zootopia <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/
 ```{r}
 #| echo: false
 
-head(zootopia, n = 5)
+head(zootopia, n = 3)
 ```
 
 ## Confidence Interval for $\mu$
@@ -494,9 +504,7 @@ $$(M_L, M_U) = (y_{(L_{\alpha/2})}, y_{(U_{\alpha/2})})$$
 
     - $U_{\alpha/2}$ is the upper critical value of a binomial distribution with parameters $n$ and $p = 0.5$
 
-- In R, linear interpolation is used to find the lower and upper bounds of the confidence interval.
-
-    - This makes it a precise $(1--\alpha)100\%$ confidence interval.
+- In R, linear interpolation is used to find the lower and upper bounds of the CI, making it a precise $(1-\alpha)100\%$ CI
 
 ## Hypothesis Test for $M$
 

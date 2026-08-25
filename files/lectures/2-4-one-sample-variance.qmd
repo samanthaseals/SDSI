@@ -216,13 +216,78 @@ zootopia %>% one_variance(outcome = academy_exam_score,
 
 ## Example 2
 
-- The Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $1,200.
+- The Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $1,200. We now want to check whether ZPD recruits' side-hustle earnings look different from the citywide benchmark. We will use the `zootopia` dataset to answer:
 
-As city analyst, you've been asked to check whether ZPD recruits' side-hustle earnings look consistent with that citywide benchmark, or whether recruits' earnings are unusually spread out (or unusually tight) compared to the rest of Zootopia.
+    - Is the standard deviation of recruit side-hustle earnings actually $1,200, or does it differ from the citywide benchmark?
+    
+- First, we need to describe the data.
 
-You pull side-hustle earnings from your sample of `30 recruits and want to answer one question:
+    - We start with point and interval estimates.
+    
+- Then, we will perform a hypothesis test to answer the question.    
 
-Is the standard deviation of recruit side-hustle earnings actually $1,200, or does it differ from the citywide benchmark?
+## Example 2
+
+- Point and interval estimates:
+
+```{r}
+zootopia %>% one_variance(outcome = hustle_earnings)
+```
+
+- The estimated variance is $s^2 = 518.84$ with standard deviation $s = 22.780$. The 95% CI for $\sigma^2$ is $(329.08, 937.64)$, and the 95% CI for the population standard deviation is $(18.14, 30.62)$.
+
+## Example 2
+
+- Then, we will perform a hypothesis test to answer the question.    
+
+    - Is the standard deviation of recruit side-hustle earnings different from $1,200?
+    
+- How do we translate this into hypotheses?  
+
+    - $H_0: \sigma^2 = 1,440,000$ -- note that they gave us $\sigma$, not $\sigma^2$ 
+    - $H_1: \sigma^2 \ne 1,440,000$
+    
+- For the `one_variance()` function, we will set 
+
+    - `sigma2 = 1440000`
+    - `alternative = "two"`.
+    - `alpha = 0.05`
+    
+## Example 2
+
+- Is the standard deviation of recruit side-hustle earnings different from $1,200?
+
+```{r}
+zootopia %>% one_variance(outcome = hustle_earnings,
+                          sigma2 = 1440000,
+                          alternative = "two",
+                          alpha = 0.05)
+```
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: \sigma^2 = 1,440,000$
+    - $H_1: \sigma^2 \ne 1,440,000$
+    
+- **Test Statistic and *p*-Value**
+
+    - $\chi^2_0 = 0.01$
+    - $p < 0.001$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that the current standard deviation is different from $1200.
 
 ## Wrap Up
 
+- In this lecture, we discussed statistical inference on one variance or standard deviation
+
+- In this module, we have covered one-sample tests.
+
+- In the next module, we will learn two-sample tests.
