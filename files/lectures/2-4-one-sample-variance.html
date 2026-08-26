@@ -1556,6 +1556,16 @@ margin-right: 0; }
 </section>
 <section id="introduction" class="slide level2">
 <h2>Introduction</h2>
+<ul>
+<li><p>In the last module, we discussed describing data.</p></li>
+<li><p>In this module, we are discussing statistical inference on one sample.</p>
+<ul>
+<li><p>Mean / median</p></li>
+<li><p>Proportion</p></li>
+<li><p>Variance / standard deviation</p></li>
+</ul></li>
+<li><p>In this lecture, we are focusing on one-sample variances and standard deviations.</p></li>
+</ul>
 </section>
 <section id="r-setup" class="slide level2">
 <h2><code>R</code> Setup</h2>
@@ -1563,9 +1573,6 @@ margin-right: 0; }
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(ssstats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="data-setup" class="slide level2">
-<h2>Data Setup</h2>
 <ul>
 <li>Recall our Zootopia data,</li>
 </ul>
@@ -1629,26 +1636,6 @@ margin-right: 0; }
 <td style="text-align: right;">30.91</td>
 <td style="text-align: right;">89.8</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Greta Smith</td>
-<td style="text-align: left;">Desk</td>
-<td style="text-align: left;">Tundratown</td>
-<td style="text-align: left;">Pass</td>
-<td style="text-align: right;">81</td>
-<td style="text-align: right;">8.3</td>
-<td style="text-align: right;">36.10</td>
-<td style="text-align: right;">29.6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Otto Meadowsly</td>
-<td style="text-align: left;">Patrol</td>
-<td style="text-align: left;">Downtown</td>
-<td style="text-align: left;">Pass</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right;">7.5</td>
-<td style="text-align: right;">51.91</td>
-<td style="text-align: right;">65.2</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -1678,7 +1665,7 @@ margin-right: 0; }
 </ul>
 <p><span class="math display">\left( \sqrt{\frac{(n-1)s^2}{\chi^2_{1-\alpha/2, n-1}}}, \ \sqrt{\frac{(n-1)s^2}{\chi^2_{\alpha/2, n-1}}} \ \right)</span></p>
 <ul>
-<li>This is just the <span class="math inline">\sqrt</span> of the interval for <span class="math inline">\sigma^2</span>.</li>
+<li>This is just the <span class="math inline">\sqrt{}</span> of the interval for <span class="math inline">\sigma^2</span>.</li>
 </ul>
 </section>
 <section id="hypothesis-test-for-sigma2" class="slide level2">
@@ -1793,8 +1780,8 @@ Conclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)</code></
 </ul></li>
 <li><p>How do we translate this into hypotheses?</p>
 <ul>
-<li><span class="math inline">H_0: \sigma^2 &gt; 121</span> – note that they gave us <span class="math inline">\sigma</span>, not <span class="math inline">\sigma^2</span></li>
-<li><span class="math inline">H_1: \sigma^2 \le 121</span></li>
+<li><span class="math inline">H_0: \sigma^2 \ge 121</span> – note that they gave us <span class="math inline">\sigma</span>, not <span class="math inline">\sigma^2</span></li>
+<li><span class="math inline">H_1: \sigma^2 &lt; 121</span></li>
 </ul></li>
 <li><p>For the <code>one_variance()</code> function, we will set</p>
 <ul>
@@ -1856,9 +1843,9 @@ Conclusion: Reject the null hypothesis (p = 0.019 &lt; α = 0.050)</code></pre>
 <section id="example-2" class="slide level2">
 <h2>Example 2</h2>
 <ul>
-<li><p>The Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $1,200. We now want to check whether ZPD recruits’ side-hustle earnings look different from the citywide benchmark. We will use the <code>zootopia</code> dataset to answer:</p>
+<li><p>The Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $25. We now want to check whether ZPD recruits’ side-hustle earnings look different from the citywide benchmark. We will use the <code>zootopia</code> dataset to answer:</p>
 <ul>
-<li>Is the standard deviation of recruit side-hustle earnings actually $1,200, or does it differ from the citywide benchmark?</li>
+<li>Is the standard deviation of recruit side-hustle earnings actually $25, or does it differ from the citywide benchmark?</li>
 </ul></li>
 <li><p>First, we need to describe the data.</p>
 <ul>
@@ -1898,16 +1885,16 @@ Conclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)</code></
 <ul>
 <li><p>Then, we will perform a hypothesis test to answer the question.</p>
 <ul>
-<li>Is the standard deviation of recruit side-hustle earnings different from $1,200?</li>
+<li>Is the standard deviation of recruit side-hustle earnings different from $25?</li>
 </ul></li>
 <li><p>How do we translate this into hypotheses?</p>
 <ul>
-<li><span class="math inline">H_0: \sigma^2 = 1,440,000</span> – note that they gave us <span class="math inline">\sigma</span>, not <span class="math inline">\sigma^2</span></li>
-<li><span class="math inline">H_1: \sigma^2 \ne 1,440,000</span></li>
+<li><span class="math inline">H_0: \sigma^2 = 625</span> – note that they gave us <span class="math inline">\sigma</span>, not <span class="math inline">\sigma^2</span></li>
+<li><span class="math inline">H_1: \sigma^2 \ne 625</span></li>
 </ul></li>
 <li><p>For the <code>one_variance()</code> function, we will set</p>
 <ul>
-<li><code>sigma2 = 1440000</code></li>
+<li><code>sigma2 = 225</code></li>
 <li><code>alternative = &quot;two&quot;</code>.</li>
 <li><code>alpha = 0.05</code></li>
 </ul></li>
@@ -1916,11 +1903,11 @@ Conclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)</code></
 <section id="example-2-3" class="slide level2">
 <h2>Example 2</h2>
 <ul>
-<li>Is the standard deviation of recruit side-hustle earnings different from $1,200?</li>
+<li>Is the standard deviation of recruit side-hustle earnings different from $25?</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>zootopia <span class="sc">%&gt;%</span> <span class="fu">one_variance</span>(<span class="at">outcome =</span> hustle_earnings,</span>
-<span id="cb10-2"><a></a>                          <span class="at">sigma2 =</span> <span class="dv">1440000</span>,</span>
+<span id="cb10-2"><a></a>                          <span class="at">sigma2 =</span> <span class="dv">625</span>,</span>
 <span id="cb10-3"><a></a>                          <span class="at">alternative =</span> <span class="st">&quot;two&quot;</span>,</span>
 <span id="cb10-4"><a></a>                          <span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1931,11 +1918,11 @@ s² = 518.8429 (s = 22.7781)
 95% CI for σ²: (329.0834, 937.6442)
 
 Hypotheses:
-H₀: σ² = 1440000
-H₁: σ² ≠ 1440000
-Test statistic: χ²(29) = 0.01
-p-value: &lt; 0.001
-Conclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)</code></pre>
+H₀: σ² = 625
+H₁: σ² ≠ 625
+Test statistic: χ²(29) = 24.074
+p-value: 0.549
+Conclusion: Fail to reject the null hypothesis (p = 0.549 ≥ α = 0.050)</code></pre>
 </div>
 </div>
 </section>
@@ -1944,13 +1931,13 @@ Conclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)</code></
 <ul>
 <li><p><strong>Hypotheses</strong></p>
 <ul>
-<li><span class="math inline">H_0: \sigma^2 = 1,440,000</span></li>
-<li><span class="math inline">H_1: \sigma^2 \ne 1,440,000</span></li>
+<li><span class="math inline">H_0: \sigma^2 = 625</span></li>
+<li><span class="math inline">H_1: \sigma^2 \ne 625</span></li>
 </ul></li>
 <li><p><strong>Test Statistic and <em>p</em>-Value</strong></p>
 <ul>
-<li><span class="math inline">\chi^2_0 = 0.01</span></li>
-<li><span class="math inline">p &lt; 0.001</span></li>
+<li><span class="math inline">\chi^2_0 = 24.074</span></li>
+<li><span class="math inline">p = 0.549</span></li>
 </ul></li>
 <li><p><strong>Rejection Region</strong></p>
 <ul>
@@ -1958,7 +1945,7 @@ Conclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)</code></
 </ul></li>
 <li><p><strong>Conclusion and Interpretation</strong></p>
 <ul>
-<li>Reject <span class="math inline">H_0</span>. There is sufficient evidence to suggest that the current standard deviation is different from $1200.</li>
+<li>Fail to reject <span class="math inline">H_0</span>. There is not sufficient evidence to suggest that the current standard deviation is different from $25.</li>
 </ul></li>
 </ul>
 </section>

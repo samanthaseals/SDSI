@@ -1621,7 +1621,7 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#example-1",
     "title": "One-Sample Proportions",
     "section": "Example 1",
-    "text": "Example 1\n\nZPD’s official staffing policy states that 50% of officers are assigned to Patrol, with the rest working Desk duty. As Zootopia’s data analyst, you believe thatatrol seems to make up a lot more than 50% of the department these days. We will use the zootopia dataset to answer:\n\nHas the true proportion of officers in Patrol increased from 50%?\n\nFirst, we need to describe the data.\n\nWe start with point and interval estimates.\n\nThen, we will perform a hypothesis test to answer the question."
+    "text": "Example 1\n\nZPD’s official staffing policy states that 50% of officers are assigned to Patrol, with the rest working Desk duty. As Zootopia’s data analyst, you believe that Patrol seems to make up a lot more than 50% of the department these days. We will use the zootopia dataset to answer:\n\nHas the true proportion of officers in Patrol increased from 50%?\n\nFirst, we need to describe the data.\n\nWe start with point and interval estimates.\n\nThen, we will perform a hypothesis test to answer the question."
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1-1",
@@ -1642,7 +1642,7 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#example-1-3",
     "title": "One-Sample Proportions",
     "section": "Example 1",
-    "text": "Example 1\n\nThen, we will perform a hypothesis test to answer the question.\n\nHas the true proportion of officers in Patrol increased from 50%?\n\nHow do we translate this into hypotheses?\n\nH_0: \\pi &lt; 0.5\nH_1: \\pi \\ge 0.5\n\nFor the one_proportion() function, we will set\n\np = 0.5\nalternative = \"greater\"."
+    "text": "Example 1\n\nThen, we will perform a hypothesis test to answer the question.\n\nHas the true proportion of officers in Patrol increased from 50%?\n\nHow do we translate this into hypotheses?\n\nH_0: \\pi \\le 0.5\nH_1: \\pi &gt; 0.5\n\nFor the one_proportion() function, we will set\n\np = 0.5\nalternative = \"greater\"."
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#example-1-4",
@@ -1656,7 +1656,7 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#example-1-5",
     "title": "One-Sample Proportions",
     "section": "Example 1",
-    "text": "Example 1\n\nHypotheses\n\nH_0: \\pi &lt; 0.5\nH_1: \\pi \\ge 0.5\n\nTest Statistic and p-Value\n\nz_0 = 1.1\np = 0.137\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the current proportion of officers in Patrol has increased from 50%."
+    "text": "Example 1\n\nHypotheses\n\nH_0: \\pi \\le 0.5\nH_1: \\pi &gt; 0.5\n\nTest Statistic and p-Value\n\nz_0 = 1.1\np = 0.137\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the current proportion of officers in Patrol has increased from 50%."
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#example-2",
@@ -1684,7 +1684,7 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#example-2-3",
     "title": "One-Sample Proportions",
     "section": "Example 2",
-    "text": "Example 2\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the true proportion of officers living in Downtown actually less than 40%?\n\nHow do we translate this into hypotheses?\n\nH_0: \\pi &gt; 0.4\nH_1: \\pi \\le 0.4\n\nFor the one_proportion() function, we will set\n\np = 0.4\nalternative = \"less\"."
+    "text": "Example 2\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the true proportion of officers living in Downtown actually less than 40%?\n\nHow do we translate this into hypotheses?\n\nH_0: \\pi \\ge 0.4\nH_1: \\pi &lt; 0.4\n\nFor the one_proportion() function, we will set\n\np = 0.4\nalternative = \"less\"."
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#example-2-4",
@@ -1698,7 +1698,7 @@
     "href": "files/lectures/2-3-one-sample-proportion.html#example-2-5",
     "title": "One-Sample Proportions",
     "section": "Example 2",
-    "text": "Example 2\n\nHypotheses\n\nH_0: \\pi &lt; 0.4\nH_1: \\pi \\ge 0.4\n\nTest Statistic and p-Value\n\nz_0 = - 1.49\np = 0.068\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the current proportion of officers living in Downtown is less than 40%."
+    "text": "Example 2\n\nHypotheses\n\nH_0: \\pi \\ge 0.4\nH_1: \\pi &lt; 0.4\n\nTest Statistic and p-Value\n\nz_0 = - 1.49\np = 0.068\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the current proportion of officers living in Downtown is less than 40%."
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#wrap-up",
@@ -1936,21 +1936,14 @@
     "href": "files/lectures/2-4-one-sample-variance.html#introduction",
     "title": "One-Sample Variances",
     "section": "Introduction",
-    "text": "Introduction"
+    "text": "Introduction\n\nIn the last module, we discussed describing data.\nIn this module, we are discussing statistical inference on one sample.\n\nMean / median\nProportion\nVariance / standard deviation\n\nIn this lecture, we are focusing on one-sample variances and standard deviations."
   },
   {
     "objectID": "files/lectures/2-4-one-sample-variance.html#r-setup",
     "href": "files/lectures/2-4-one-sample-variance.html#r-setup",
     "title": "One-Sample Variances",
     "section": "R Setup",
-    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)"
-  },
-  {
-    "objectID": "files/lectures/2-4-one-sample-variance.html#data-setup",
-    "href": "files/lectures/2-4-one-sample-variance.html#data-setup",
-    "title": "One-Sample Variances",
-    "section": "Data Setup",
-    "text": "Data Setup\n\nRecall our Zootopia data,\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8\n\n\nGreta Smith\nDesk\nTundratown\nPass\n81\n8.3\n36.10\n29.6\n\n\nOtto Meadowsly\nPatrol\nDowntown\nPass\n71\n7.5\n51.91\n65.2"
+    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)\n\n\nRecall our Zootopia data,\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8"
   },
   {
     "objectID": "files/lectures/2-4-one-sample-variance.html#confidence-interval-for-sigma2",
@@ -1964,7 +1957,7 @@
     "href": "files/lectures/2-4-one-sample-variance.html#confidence-interval-for-sigma",
     "title": "One-Sample Variances",
     "section": "Confidence Interval for \\sigma",
-    "text": "Confidence Interval for \\sigma\n\n(1–\\alpha)100% CI for a population standard deviation, \\sigma\n\n\\left( \\sqrt{\\frac{(n-1)s^2}{\\chi^2_{1-\\alpha/2, n-1}}}, \\ \\sqrt{\\frac{(n-1)s^2}{\\chi^2_{\\alpha/2, n-1}}} \\ \\right)\n\nThis is just the \\sqrt of the interval for \\sigma^2."
+    "text": "Confidence Interval for \\sigma\n\n(1–\\alpha)100% CI for a population standard deviation, \\sigma\n\n\\left( \\sqrt{\\frac{(n-1)s^2}{\\chi^2_{1-\\alpha/2, n-1}}}, \\ \\sqrt{\\frac{(n-1)s^2}{\\chi^2_{\\alpha/2, n-1}}} \\ \\right)\n\nThis is just the \\sqrt{} of the interval for \\sigma^2."
   },
   {
     "objectID": "files/lectures/2-4-one-sample-variance.html#hypothesis-test-for-sigma2",
@@ -2006,7 +1999,7 @@
     "href": "files/lectures/2-4-one-sample-variance.html#example-1-2",
     "title": "One-Sample Variances",
     "section": "Example 1",
-    "text": "Example 1\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the consistency in ZPD officer exam scores better than \\sigma = 11 points?\n\nHow do we translate this into hypotheses?\n\nH_0: \\sigma^2 &gt; 121 – note that they gave us \\sigma, not \\sigma^2\nH_1: \\sigma^2 \\le 121\n\nFor the one_variance() function, we will set\n\nsigma2 = 121\nalternative = \"less\".\nalpha = 0.05"
+    "text": "Example 1\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the consistency in ZPD officer exam scores better than \\sigma = 11 points?\n\nHow do we translate this into hypotheses?\n\nH_0: \\sigma^2 \\ge 121 – note that they gave us \\sigma, not \\sigma^2\nH_1: \\sigma^2 &lt; 121\n\nFor the one_variance() function, we will set\n\nsigma2 = 121\nalternative = \"less\".\nalpha = 0.05"
   },
   {
     "objectID": "files/lectures/2-4-one-sample-variance.html#example-1-3",
@@ -2027,7 +2020,7 @@
     "href": "files/lectures/2-4-one-sample-variance.html#example-2",
     "title": "One-Sample Variances",
     "section": "Example 2",
-    "text": "Example 2\n\nThe Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $1,200. We now want to check whether ZPD recruits’ side-hustle earnings look different from the citywide benchmark. We will use the zootopia dataset to answer:\n\nIs the standard deviation of recruit side-hustle earnings actually $1,200, or does it differ from the citywide benchmark?\n\nFirst, we need to describe the data.\n\nWe start with point and interval estimates.\n\nThen, we will perform a hypothesis test to answer the question."
+    "text": "Example 2\n\nThe Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $25. We now want to check whether ZPD recruits’ side-hustle earnings look different from the citywide benchmark. We will use the zootopia dataset to answer:\n\nIs the standard deviation of recruit side-hustle earnings actually $25, or does it differ from the citywide benchmark?\n\nFirst, we need to describe the data.\n\nWe start with point and interval estimates.\n\nThen, we will perform a hypothesis test to answer the question."
   },
   {
     "objectID": "files/lectures/2-4-one-sample-variance.html#example-2-1",
@@ -2041,21 +2034,21 @@
     "href": "files/lectures/2-4-one-sample-variance.html#example-2-2",
     "title": "One-Sample Variances",
     "section": "Example 2",
-    "text": "Example 2\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the standard deviation of recruit side-hustle earnings different from $1,200?\n\nHow do we translate this into hypotheses?\n\nH_0: \\sigma^2 = 1,440,000 – note that they gave us \\sigma, not \\sigma^2\nH_1: \\sigma^2 \\ne 1,440,000\n\nFor the one_variance() function, we will set\n\nsigma2 = 1440000\nalternative = \"two\".\nalpha = 0.05"
+    "text": "Example 2\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs the standard deviation of recruit side-hustle earnings different from $25?\n\nHow do we translate this into hypotheses?\n\nH_0: \\sigma^2 = 625 – note that they gave us \\sigma, not \\sigma^2\nH_1: \\sigma^2 \\ne 625\n\nFor the one_variance() function, we will set\n\nsigma2 = 225\nalternative = \"two\".\nalpha = 0.05"
   },
   {
     "objectID": "files/lectures/2-4-one-sample-variance.html#example-2-3",
     "href": "files/lectures/2-4-one-sample-variance.html#example-2-3",
     "title": "One-Sample Variances",
     "section": "Example 2",
-    "text": "Example 2\n\nIs the standard deviation of recruit side-hustle earnings different from $1,200?\n\n\nzootopia %&gt;% one_variance(outcome = hustle_earnings,\n                          sigma2 = 1440000,\n                          alternative = \"two\",\n                          alpha = 0.05)\n\nOne-sample variance\n\ns² = 518.8429 (s = 22.7781)\n\n95% CI for σ²: (329.0834, 937.6442)\n\nHypotheses:\nH₀: σ² = 1440000\nH₁: σ² ≠ 1440000\nTest statistic: χ²(29) = 0.01\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)"
+    "text": "Example 2\n\nIs the standard deviation of recruit side-hustle earnings different from $25?\n\n\nzootopia %&gt;% one_variance(outcome = hustle_earnings,\n                          sigma2 = 625,\n                          alternative = \"two\",\n                          alpha = 0.05)\n\nOne-sample variance\n\ns² = 518.8429 (s = 22.7781)\n\n95% CI for σ²: (329.0834, 937.6442)\n\nHypotheses:\nH₀: σ² = 625\nH₁: σ² ≠ 625\nTest statistic: χ²(29) = 24.074\np-value: 0.549\nConclusion: Fail to reject the null hypothesis (p = 0.549 ≥ α = 0.050)"
   },
   {
     "objectID": "files/lectures/2-4-one-sample-variance.html#example-2-4",
     "href": "files/lectures/2-4-one-sample-variance.html#example-2-4",
     "title": "One-Sample Variances",
     "section": "Example 2",
-    "text": "Example 2\n\nHypotheses\n\nH_0: \\sigma^2 = 1,440,000\nH_1: \\sigma^2 \\ne 1,440,000\n\nTest Statistic and p-Value\n\n\\chi^2_0 = 0.01\np &lt; 0.001\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nReject H_0. There is sufficient evidence to suggest that the current standard deviation is different from $1200."
+    "text": "Example 2\n\nHypotheses\n\nH_0: \\sigma^2 = 625\nH_1: \\sigma^2 \\ne 625\n\nTest Statistic and p-Value\n\n\\chi^2_0 = 24.074\np = 0.549\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the current standard deviation is different from $25."
   },
   {
     "objectID": "files/lectures/2-4-one-sample-variance.html#wrap-up",
