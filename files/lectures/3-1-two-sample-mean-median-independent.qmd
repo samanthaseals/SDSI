@@ -1,5 +1,5 @@
 ---
-title: "Two-Sample Means and Medians"
+title: "Independent<br>Means and Medians"
 execute:
   echo: true
   warning: false
@@ -20,12 +20,40 @@ format:
     code-fold: false
     code-tools: false
     incremental: false
+    code-annotations: hover
 editor: source
 ---
 
 ## Introduction
+    
+- In the last module, we reviewed statistical inference for one sample.
+    
+- In this module, we will focus on tests for two samples.
+    - Two-sample independent means ($\mu_1-\mu_2$)
+    - Two-sample dependent means ($\mu_d$)
+    - Two-sample proportions ($\pi_1-\pi_2$)
+    - Two-sample variances ($\sigma^2_1/\sigma^2_2$)
+    
+- In this lecture: two-sample independent means ($\mu_1-\mu_2$)  
 
 ## `R` Setup 
+
+```{r}
+library(tidyverse)
+library(ssstats)
+```
+
+- Recall our Zootopia data,
+
+```{r}
+zootopia <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv")
+```
+
+```{r}
+#| echo: false
+
+head(zootopia, n = 3)
+```
 
 ## Confidence Interval for $\mu_1-\mu_2$
 
@@ -38,31 +66,465 @@ $$\bar{y} \pm t_{\alpha/2, n-1} \frac{s}{\sqrt{n}}$$
 
 ## Hypothesis Test for $\mu_1-\mu_2$
 
-## Statistical Inference on One Mean (`R`)
+**Hypotheses**
+
+::: {.hyp-columns .columns}
+
+::: {.column width="30%"}
+**Two-Tailed**
+
+$H_0: \mu_1-\mu_2 = \mu_0$
+
+$H_1: \mu_1 - \mu_2 \ne \mu_0$
+:::
+
+::: {.column width="30%"}
+**Left-Tailed**
+
+$H_0: \mu_1-\mu_2 \ge \mu_0$
+
+$H_1: \mu_1-\mu_2 < \mu_0$
+:::
+
+::: {.column width="30%"}
+**Right-Tailed**
+
+$H_0: \mu_1-\mu_2 \le \mu_0$
+
+$H_1: \mu_1-\mu_2 > \mu_0$
+:::
+
+:::
+
+- $\mu_i$ is the population mean for group $i$,
+
+- $\mu_0$ is the hypothesized difference between the groups
+
+## Hypothesis Test for $\mu_1-\mu_2$
+
+**Test Statistic:**
+
+$$
+t_0 = \frac{(\bar{x}_1-\bar{x}_2)-\mu_0}{{\sqrt{\frac{s_1^2}{n_1} + \frac{s^2_2}{n_2}}}} \sim t_{\text{df}}
+$$
+
+- where
+    - $\bar{x}_i$ is the mean for group $i$
+    - $\mu_0$ is the hypothesized difference
+    - $s_i^2$ is the sample variance for group $i$
+    - $n_i$ is the sample size of group $i$    
+    - $\text{df} = \text{min}(n_1-1, n_2-1)$  
+
+## Statistical Inference on Two Means (`R`)
+
+- We will use the `independent_means` function from `library(ssstats)` to perform statistical inference.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+dataset_name |> independent_means( # <1>
+  outcome = outcome_variable, # <2>
+  grouping = grouping_variable, # <3>
+  alternative = "two" | "less" | "greater", # <4>
+  mu = hypothesized_difference, # <5>
+  alpha = alpha_level # <6>
+  ) 
+```
+1. Pipes your dataset into `independent_means()`.
+2. `outcome`: the continuous variable you want to compare between the two groups.
+3. `grouping`: the categorical variable that splits your data into the two groups being compared.
+4. `alternative`: the direction of the test; default is `two`.
+5. `mu`: the hypothesized difference between the two groups under $H_0$; default is 0.
+6. `alpha`: the significance level; default is 0.05.
 
 ## Example 1
 
+- Okonkwo pings you on your first morning back from vacation: "Patrol runs early shifts while Desk runs later ones and I keep hearing officers gripe about who's more rested. Tell me if there's actually a difference in how much sleep our two groups are getting."
+
+- We will use the `zootopia` dataset to answer the following question:
+
+    - Is there a difference in average nightly sleep between Patrol and Desk officers?
+
+- First, we need to describe the data.
+
+    - We start with point and interval estimates.
+    
+- Then, we will perform a hypothesis test to answer the question.
+
+## Example 1
+    
+- Point and interval estimates:
+
+```{r}
+zootopia |> independent_means(outcome = sleep_hours,
+                              grouping = department)
+```
+
+## Example 1
+
+- Then, we will perform a hypothesis test to answer the question.    
+
+    - Is there a difference in average nightly sleep between Patrol and Desk officers?
+    
+- How do we translate this into hypotheses?  
+
+    - $H_0: \mu_{\text{Patrol}} = \mu_{\text{Desk}}$
+    - $H_1: \mu_{\text{Patrol}} \ne \mu_{\text{Desk}}$
+    
+- For the `independent_means()` function, we will set 
+
+    - `mu = 0`
+    - `alternative = "two"`.  
+
+## Example 1
+
+- Is there a difference in average nightly sleep between Patrol and Desk officers?
+
+```{r}
+zootopia |> independent_means(outcome = sleep_hours,
+                              grouping = department,
+                              mu = 0,
+                              alternative = "two")
+```
+    
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0: \mu_{\text{Desk}} = \mu_{\text{Patrol}}$
+    - $H_1: \mu_{\text{Desk}} \ne \mu_{\text{Patrol}}$
+    
+- **Test Statistic and *p*-Value**
+
+    - $t_0 = -1.737$
+    - $p = 0.097$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that average sleep differs between Patrol and Desk officers.
+    
 ## Example 2
 
-## Assumptions on Two-Sample *t*
+- Okonkwo's back with another one: "Word around the precinct is that Patrol officers have more access to the public, so it's naturally easier to run their side hustles. Let's see what the data says -- do Patrol officers earn more than Desk officers?"
+
+- We will use the `zootopia` dataset to answer the following question:
+
+    - Do patrol officers earn more than desk officers?
+
+- First, we need to describe the data.
+
+    - We start with point and interval estimates.
+    
+- Then, we will perform a hypothesis test to answer the question.
+
+## Example 2
+    
+- Point and interval estimates:
+
+```{r}
+zootopia |> independent_means(outcome = hustle_earnings,
+                              grouping = department)
+```
+
+## Example 2
+
+- Then, we will perform a hypothesis test to answer the question.    
+
+    - Do patrol officers earn more than desk officers?
+    
+- How do we translate this into hypotheses?  
+
+    - $H_0: \mu_{\text{Desk}} \ge \mu_{\text{Patrol}}$
+    - $H_1: \mu_{\text{Desk}} < \mu_{\text{Patrol}}$
+    
+- For the `independent_means()` function, we will set 
+
+    - `mu = 0`
+    - `alternative = "greater"`.  
+
+## Example 2
+
+- Do patrol officers earn more than desk officers?
+
+```{r}
+zootopia |> independent_means(outcome = hustle_earnings,
+                              grouping = department,
+                              mu = 0,
+                              alternative = "less")
+```
+    
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: \mu_{\text{Desk}} \ge \mu_{\text{Patrol}}$
+    - $H_1: \mu_{\text{Desk}} < \mu_{\text{Patrol}}$
+    
+- **Test Statistic and *p*-Value**
+
+    - $t_0 = -0.917$
+    - $p = 0.186$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that patrol officers earn more in side hustles than desk officers.
+
+## Assumption on Two-Sample *t*
+
+- We assume that the data has an approximate mound-shaped and symmetric distribution.
+
+$$y_{11}, y_{12}, \ldots, y_{1n_1} \sim N(\mu_1, \sigma_1^2)$$
+$$y_{21}, y_{22}, \ldots, y_{2n_2} \sim N(\mu_2, \sigma_2^2)$$
+
+- We will use a quantile-quantile plot (Q-Q plot) to check the assumption of normality.
+
+    - We will also eyeball a histogram to further check the assumption of normality.
 
 ## Checking Normality (`R`)
 
+- We will use the `independent_qq()` function from `library(ssstats)` to assess normality.
+
+```{r}
+#| eval: false
+dataset_name |> independent_qq(continuous = continuous_variable,
+                               grouping = grouping_variable)
+```
+
+- This will provide the the Q-Q plots and the histograms for the two independent groups under consideration.
+
+
+## A Note About Homoskedasticity
+
+- Recall the assumptions,
+
+$$y_{11}, y_{12}, \ldots, y_{1n_1} \sim N(\mu_1, \sigma_1^2)$$
+$$y_{21}, y_{22}, \ldots, y_{2n_2} \sim N(\mu_2, \sigma_2^2)$$
+
+- Note that we are not assuming $\sigma_1^2 = \sigma_2^2$.
+
+    - The `independent_means()` function assumes $\sigma_1^2 \ne \sigma_2^2$.
+
 ## Example 1
+
+- Let's check the normality assumption for the sleep data.
+
+```{r}
+#| fig-align: 'center'
+zootopia |> independent_qq(outcome = sleep_hours,
+                           grouping = department)
+```
 
 ## Example 2
 
-## Nonparametric Alternatives
+- Let's check the normality assumption for the side hustle earnings data.
+
+```{r}
+#| fig-align: 'center'
+zootopia |> independent_qq(outcome = hustle_earnings,
+                           grouping = department)
+```
+
 
 ## Confidence Interval for $M_1-M_2$
 
+- The confidence interval is built on every possible pairwise difference between the two groups.
+
+    - We examine the $n_1 \times n_2$ differences between the observations.
+    
+        - i.e., We take each observation in Group 1 and subtract each observation in Group 2.
+      
+- The median of that pool of differences is the Hodges–Lehmann estimate.
+
+    - It estimates the typical *shift* between the two groups.
+    
+- The CI is then found by
+
+    - ranking that entire pool of $n_1 \times n_2$ differences from smallest to largest,
+    
+    - then we pick two values from that ranked list as the lower and upper bounds.
+
 ## Hypothesis Test for $M_1-M_2$
+
+**Hypotheses**
+
+::: {.hyp-columns .columns}
+
+::: {.column width="30%"}
+**Two-Tailed**
+
+$H_0: M_1 - M_2 = M_0$
+
+$H_1: M_1 - M_2 \ne M_0$
+:::
+
+::: {.column width="30%"}
+**Left-Tailed**
+
+$H_0: M_1 - M_2 \ge M_0$  
+
+$H_1: M_1 - M_2 < M_0$
+:::
+
+::: {.column width="30%"}
+**Right-Tailed**
+
+$H_0: M_1 - M_2 \le M_0$
+
+$H_1: M_1 - M_2 > M_0$
+:::
+
+:::
+
+- $M_i$ is the population median for group $i$, and
+
+- $M_0$ is the hypothesized difference between the groups
+
+## Hypothesis Test for $M_1-M_2$
+
+**Test Statistic**
+
+$$
+T_0 = \sum R_{\text{1}} - \frac{n_1(n_1+1)}{2}
+$$
+
+- where
+    - $\sum R_1$ is the sum of the ranks for the  first group
+    - $n_1$ is the sample size of the first group 
 
 ## Statistical Inference on Two Medians (`R`)
 
+- We will use the `independent_medians` function from `library(ssstats)` to perform statistical inference.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+dataset_name |> independent_medians( # <1>
+  outcome = outcome_variable, # <2>
+  grouping = grouping_variable, # <3>
+  alternative = "two" | "less" | "greater", # <4>
+  m = hypothesized_difference, # <5>
+  alpha = alpha_level # <6>
+  ) 
+```
+1. Pipes your dataset into `independent_medians()`.
+2. `outcome`: the continuous variable you want to compare between the two groups.
+3. `grouping`: the categorical variable that splits your data into the two groups being compared.
+4. `alternative`: the direction of the test; default is `two`.
+5. `m`: the hypothesized difference between the two groups under $H_0$; default is 0.
+6. `alpha`: the significance level; default is 0.05.
+
+## Example 1
+
+- Then, we will perform a hypothesis test to answer the question.    
+
+    - Is there a difference in average (median) nightly sleep between Patrol and Desk officers?
+    
+- How do we translate this into hypotheses?  
+
+    - $H_0: M_{\text{Patrol}} = M_{\text{Desk}}$
+    - $H_1: M_{\text{Patrol}} \ne M_{\text{Desk}}$
+    
+- For the `independent_medians()` function, we will set 
+
+    - `m = 0`
+    - `alternative = "two"`.  
+
+## Example 1
+
+```{r}
+zootopia |> independent_medians(outcome = sleep_hours,
+                                grouping = department)
+```
+
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0: M_{\text{Desk}} = M_{\text{Patrol}}$
+    - $H_1: M_{\text{Desk}} \ne M_{\text{Patrol}}$
+    
+- **Test Statistic and *p*-Value**
+
+    - $T_0 = 68$
+    - $p = 0.092$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that median sleep differs between Patrol and Desk officers.
+
 ## Example 2
 
-## Example 3
+- Then, we will perform a hypothesis test to answer the question.    
+
+    - Do patrol officers earn more than desk officers?
+    
+- How do we translate this into hypotheses?  
+
+    - $H_0: M_{\text{Desk}} \ge M_{\text{Patrol}}$
+    - $H_1: M_{\text{Desk}} < M_{\text{Patrol}}$
+    
+- For the `independent_means()` function, we will set 
+
+    - `mu = 0`
+    - `alternative = "greater"`.  
+
+## Example 2
+
+```{r}
+zootopia |> independent_medians(outcome = hustle_earnings,
+                              grouping = department, alternative = "less")
+```
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: M_{\text{Desk}} \ge M_{\text{Patrol}}$
+    - $H_1: M_{\text{Desk}} < M_{\text{Patrol}}$
+    
+- **Test Statistic and *p*-Value**
+
+    - $T_0 = 63$
+    - $p = 0.029$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that median side hustle earnings are greater among those on patrol.
+
 
 ## Wrap Up
+
+- Using a $t$-test to examine the difference between two independent means ($\mu_1-\mu_2$) requires normality.
+    
+    - We check normality with a quantile-quantile plot (`independent_qq()`).
+
+- The analysis you choose should match the needed method:
+
+    - If we meet normality (`independent_means()`):
+    
+        - Interval estimate: CI for $\mu_1-\mu_2$
+        - One-sample $t$-test for $\mu_1-\mu_2$
+        
+    - If we do not meet normality (`independent_medians()`):
+    
+        - Interval estimate: CI for $M_1-M_2$
+        - One-sample sign test for $M_1-M_2$
 
