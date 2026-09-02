@@ -1648,9 +1648,20 @@ margin-right: 0; }
 <ul>
 <li>(1–<span class="math inline">\alpha</span>)100% CI for a population mean, <span class="math inline">\mu_1-\mu_2</span></li>
 </ul>
-<p><span class="math display">\bar{y} \pm t_{\alpha/2, n-1} \frac{s}{\sqrt{n}}</span></p>
+<p><span class="math display">
+(\bar{y}_1 - \bar{y}_2) \pm t_{\alpha/2} \sqrt{\frac{s_1^2 }{n_1} + \frac{s_2^2}{n_2}}
+</span></p>
 <ul>
-<li><span class="math inline">t</span> has <span class="math inline">n-1</span> degrees of freedom (df).</li>
+<li>where
+<ul>
+<li><span class="math inline">(\bar{x}_1-\bar{x}_2)</span> is the point estimate for <span class="math inline">\mu_1-\mu_2</span>
+<ul>
+<li><span class="math inline">\bar{x}_i</span> is the sample mean for group <span class="math inline">i</span></li>
+</ul></li>
+<li><span class="math inline">t_{\alpha/2}</span> has <span class="math inline">\min(n_1-1, n_2-1)</span> degrees of freedom</li>
+<li><span class="math inline">s_i^2</span> is the sample variance for group <span class="math inline">i</span></li>
+<li><span class="math inline">n_i</span> is the sample size of group <span class="math inline">i</span></li>
+</ul></li>
 </ul>
 </section>
 <section id="hypothesis-test-for-mu_1-mu_2" class="slide level2">

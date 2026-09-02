@@ -1201,7 +1201,7 @@
     "href": "files/lectures/3-1-two-sample-mean-median-independent.html#confidence-interval-for-mu_1-mu_2",
     "title": "IndependentMeans and Medians",
     "section": "Confidence Interval for \\mu_1-\\mu_2",
-    "text": "Confidence Interval for \\mu_1-\\mu_2\n\n(1–\\alpha)100% CI for a population mean, \\mu_1-\\mu_2\n\n\\bar{y} \\pm t_{\\alpha/2, n-1} \\frac{s}{\\sqrt{n}}\n\nt has n-1 degrees of freedom (df)."
+    "text": "Confidence Interval for \\mu_1-\\mu_2\n\n(1–\\alpha)100% CI for a population mean, \\mu_1-\\mu_2\n\n\n(\\bar{y}_1 - \\bar{y}_2) \\pm t_{\\alpha/2} \\sqrt{\\frac{s_1^2 }{n_1} + \\frac{s_2^2}{n_2}}\n\n\nwhere\n\n(\\bar{x}_1-\\bar{x}_2) is the point estimate for \\mu_1-\\mu_2\n\n\\bar{x}_i is the sample mean for group i\n\nt_{\\alpha/2} has \\min(n_1-1, n_2-1) degrees of freedom\ns_i^2 is the sample variance for group i\nn_i is the sample size of group i"
   },
   {
     "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-mu_1-mu_2",
