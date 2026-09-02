@@ -148,7 +148,7 @@ dataset_name |> one_proportion(outcome = variable_name,
 
 ## Example 1
 
-- ZPD's official staffing policy states that 50% of officers are assigned to Patrol, with the rest working Desk duty. As Zootopia's data analyst, you believe thatatrol seems to make up a lot more than 50% of the department these days. We will use the `zootopia` dataset to answer:
+- ZPD's official staffing policy states that 50% of officers are assigned to Patrol, with the rest working Desk duty. As Zootopia's data analyst, you believe that Patrol seems to make up a lot more than 50% of the department these days. We will use the `zootopia` dataset to answer:
 
     - Has the true proportion of officers in Patrol increased from 50%?
     
@@ -191,8 +191,8 @@ zootopia |> one_proportion(outcome = department,
     
 - How do we translate this into hypotheses?  
 
-    - $H_0: \pi < 0.5$
-    - $H_1: \pi \ge 0.5$
+    - $H_0: \pi \le 0.5$
+    - $H_1: \pi > 0.5$
     
 - For the `one_proportion()` function, we will set 
 
@@ -216,8 +216,8 @@ zootopia |> one_proportion(outcome = department,
 
 - **Hypotheses**
 
-    - $H_0: \pi < 0.5$
-    - $H_1: \pi \ge 0.5$
+    - $H_0: \pi \le 0.5$
+    - $H_1: \pi > 0.5$
     
 - **Test Statistic and *p*-Value**
 
@@ -274,8 +274,8 @@ zootopia |> one_proportion(outcome = district,
     
 - How do we translate this into hypotheses?  
 
-    - $H_0: \pi > 0.4$
-    - $H_1: \pi \le 0.4$
+    - $H_0: \pi \ge 0.4$
+    - $H_1: \pi < 0.4$
     
 - For the `one_proportion()` function, we will set 
 
@@ -299,8 +299,8 @@ zootopia |> one_proportion(outcome = district,
 
 - **Hypotheses**
 
-    - $H_0: \pi < 0.4$
-    - $H_1: \pi \ge 0.4$
+    - $H_0: \pi \ge 0.4$
+    - $H_1: \pi < 0.4$
     
 - **Test Statistic and *p*-Value**
 

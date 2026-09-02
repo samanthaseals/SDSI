@@ -25,14 +25,24 @@ editor: source
 
 ## Introduction
 
+- In the last module, we discussed describing data.
+
+- In this module, we are discussing statistical inference on one sample.
+
+    - Mean / median
+    
+    - Proportion
+    
+    - Variance / standard deviation
+    
+- In this lecture, we are focusing on one-sample variances and standard deviations.
+
 ## `R` Setup 
 
 ```{r}
 library(tidyverse)
 library(ssstats)
 ```
-
-## Data Setup 
 
 - Recall our Zootopia data,
 
@@ -43,7 +53,7 @@ zootopia <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/
 ```{r}
 #| echo: false
 
-head(zootopia, n = 5)
+head(zootopia, n = 3)
 ```
 
 ## Confidence Interval for $\sigma^2$ 
@@ -68,7 +78,7 @@ $$\left( \frac{(n-1)s^2}{\chi^2_{1-\alpha/2, n-1}}, \ \frac{(n-1)s^2}{\chi^2_{\a
 
 $$\left( \sqrt{\frac{(n-1)s^2}{\chi^2_{1-\alpha/2, n-1}}}, \ \sqrt{\frac{(n-1)s^2}{\chi^2_{\alpha/2, n-1}}} \ \right)$$
 
-- This is just the $\sqrt$ of the interval for $\sigma^2$.
+- This is just the $\sqrt{}$ of the interval for $\sigma^2$.
 
 ## Hypothesis Test for $\sigma^2$
 
@@ -174,8 +184,8 @@ zootopia %>% one_variance(outcome = academy_exam_score)
     
 - How do we translate this into hypotheses?  
 
-    - $H_0: \sigma^2 > 121$ -- note that they gave us $\sigma$, not $\sigma^2$ 
-    - $H_1: \sigma^2 \le 121$
+    - $H_0: \sigma^2 \ge 121$ -- note that they gave us $\sigma$, not $\sigma^2$ 
+    - $H_1: \sigma^2 < 121$
     
 - For the `one_variance()` function, we will set 
 
@@ -216,9 +226,9 @@ zootopia %>% one_variance(outcome = academy_exam_score,
 
 ## Example 2
 
-- The Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $1,200. We now want to check whether ZPD recruits' side-hustle earnings look different from the citywide benchmark. We will use the `zootopia` dataset to answer:
+- The Zootopia Department of Commerce tracks side-hustle income across the city as part of its small-business reporting. In its most recent public report, the Department states that side-hustle earnings citywide typically show a standard deviation of about $25. We now want to check whether ZPD recruits' side-hustle earnings look different from the citywide benchmark. We will use the `zootopia` dataset to answer:
 
-    - Is the standard deviation of recruit side-hustle earnings actually $1,200, or does it differ from the citywide benchmark?
+    - Is the standard deviation of recruit side-hustle earnings actually $25, or does it differ from the citywide benchmark?
     
 - First, we need to describe the data.
 
@@ -240,26 +250,26 @@ zootopia %>% one_variance(outcome = hustle_earnings)
 
 - Then, we will perform a hypothesis test to answer the question.    
 
-    - Is the standard deviation of recruit side-hustle earnings different from $1,200?
+    - Is the standard deviation of recruit side-hustle earnings different from $25?
     
 - How do we translate this into hypotheses?  
 
-    - $H_0: \sigma^2 = 1,440,000$ -- note that they gave us $\sigma$, not $\sigma^2$ 
-    - $H_1: \sigma^2 \ne 1,440,000$
+    - $H_0: \sigma^2 = 625$ -- note that they gave us $\sigma$, not $\sigma^2$ 
+    - $H_1: \sigma^2 \ne 625$
     
 - For the `one_variance()` function, we will set 
 
-    - `sigma2 = 1440000`
+    - `sigma2 = 225`
     - `alternative = "two"`.
     - `alpha = 0.05`
     
 ## Example 2
 
-- Is the standard deviation of recruit side-hustle earnings different from $1,200?
+- Is the standard deviation of recruit side-hustle earnings different from $25?
 
 ```{r}
 zootopia %>% one_variance(outcome = hustle_earnings,
-                          sigma2 = 1440000,
+                          sigma2 = 625,
                           alternative = "two",
                           alpha = 0.05)
 ```
@@ -268,13 +278,13 @@ zootopia %>% one_variance(outcome = hustle_earnings,
 
 - **Hypotheses**
 
-    - $H_0: \sigma^2 = 1,440,000$
-    - $H_1: \sigma^2 \ne 1,440,000$
+    - $H_0: \sigma^2 = 625$
+    - $H_1: \sigma^2 \ne 625$
     
 - **Test Statistic and *p*-Value**
 
-    - $\chi^2_0 = 0.01$
-    - $p < 0.001$
+    - $\chi^2_0 = 24.074$
+    - $p = 0.549$
     
 - **Rejection Region**
 
@@ -282,7 +292,7 @@ zootopia %>% one_variance(outcome = hustle_earnings,
 
 - **Conclusion and Interpretation**
 
-    - Reject $H_0$. There is sufficient evidence to suggest that the current standard deviation is different from $1200.
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that the current standard deviation is different from $25.
 
 ## Wrap Up
 

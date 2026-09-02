@@ -1,5 +1,583 @@
 ---
-title: "3-2-two-sample-mean-median-dependent"
-format: html
+title: "Dependent<br>Means and Medians"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+    code-annotations: hover
+editor: source
 ---
+
+## Introduction
+    
+- In the last module, we reviewed statistical inference for one sample.
+    
+- In this module, we will focus on tests for two samples.
+    - Two-sample independent means ($\mu_1-\mu_2$)
+    - Two-sample dependent means ($\mu_d$)
+    - Two-sample proportions ($\pi_1-\pi_2$)
+    - Two-sample variances ($\sigma^2_1/\sigma^2_2$)
+    
+- In this lecture: two-sample dependent means ($\mu_d$) 
+
+## Introduction
+
+- So far in this module, we have focused on independent samples.
+    - Two-sample means, independent data ($\mu_1-\mu_2$).
+    - Two-sample medians, independent data ($M_1-M_2$).
+
+- In this lecture, we shift to dependent (paired) samples.
+    - Two-sample means, dependent data ($\mu_d$)
+    - Two-sample medians, dependent data ($M_d$)
+
+- The data is *paired* because we can link the observations.
+
+    - The two measurements come from the *same* subject.
+    
+## New Dataset!
+
+- You're still the ZPD's data analyst, but Deputy Chief Okonkwo has a different kind of question for you this time.
+
+    - Before now, every question asked involved comparing different groups of recruits
+
+    - Now, the questions are about the same recruits, measured twice.
+
+- Okonkwo wants to know whether things are *changing*:
+
+    - Did coaching help? 
+    - Is fitness improving? 
+    - Did new software actually speed things up? 
+
+## `R` Setup 
+
+```{r}
+library(tidyverse)
+library(ssstats)
+```
+
+- Our new Zootopia data,
+
+```{r}
+zootopia_paired <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/2-zootopia-paired.csv")
+```
+
+```{r}
+#| echo: false
+
+head(zootopia_paired, n = 3)
+```
+
+## Why Not Independent?
+
+- If we run `independent_means()` on either the "before" column or the "after" column, we are ignoring the pairing.
+
+- Because the same recruit is measured twice, their two scores are correlated.
+
+    - A recruit who scored high the first time will likely also score high the second time.
+
+- Pairing lets us focus on *within-subject change*.
+
+## Dependent Data
+
+- For each subject $i$, we calculate one difference score:
+
+$$d_i = y_{i1} - y_{i2}$$
+
+- All of our inference is now built on this *single column of differences*, not the original columns.
+
+    - i.e., This means dependent-samples inference is really just one-sample inference (mean or median), applied to $d$.
+
+## Confidence Interval for $\mu_d$
+
+- $(1-\alpha)100\%$ CI for a population mean difference, $\mu_d$
+
+$$\bar{d} \pm t_{\alpha/2, n-1} \frac{s_d}{\sqrt{n}}$$
+
+- $\bar{d}$ is the mean of the differences, $s_d$ is the standard deviation of the differences, and $n$ is the number of **pairs** (not the number of raw observations).
+
+- $t$ has $n-1$ degrees of freedom (df).
+
+## Hypothesis Test for $\mu_d$
+
+**Hypotheses**
+
+::: {.hyp-columns .columns}
+
+::: {.column width="30%"}
+**Two-Tailed**
+
+$H_0: \mu_d = \mu_0$
+
+$H_1: \mu_d \ne \mu_0$
+:::
+
+::: {.column width="30%"}
+**Left-Tailed**
+
+$H_0: \mu_d \ge \mu_0$
+
+$H_1: \mu_d < \mu_0$
+:::
+
+::: {.column width="30%"}
+**Right-Tailed**
+
+$H_0: \mu_d \le \mu_0$
+
+$H_1: \mu_d > \mu_0$
+:::
+
+:::
+
+- $\mu_d$ is the population mean of the differences,
+
+    - Note that you must specify what $\mu_d$ is. e.g., $\mu_1-\mu_2$
+
+- $\mu_0$ is the hypothesized value of that mean difference (often 0, for "no change").
+
+## Hypothesis Test for $\mu_d$
+
+**Test Statistic:**
+
+$$
+t_0 = \frac{\bar{d}-\mu_0}{{\dfrac{s_d}{\sqrt{n}}}} \sim t_{n-1}
+$$
+
+- where
+    - $\bar{d}$ is the mean of the differences
+    - $\mu_0$ is the hypothesized mean difference
+    - $s_d$ is the sample standard deviation of the differences
+    - $n$ is the number of pairs
+    - df $= n - 1$
+
+## Statistical Inference on Dependent Means (`R`)
+
+- We will use the `dependent_means()` function from `library(ssstats)` to perform statistical inference.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+dataset_name |> dependent_means( # <1>
+  col1 = first_measurement, # <2>
+  col2 = second_measurement, # <3>
+  alternative = "two" | "less" | "greater", # <4>
+  mu = hypothesized_difference, # <5>
+  alpha = alpha_level # <6>
+  )
+```
+1. Pipes your dataset into `dependent_means()`.
+2. `col1`: the first paired measurement.
+3. `col2`: the second paired measurement. 
+4. `alternative`: the direction of the test; default is `two`.
+5. `mu`: the hypothesized mean difference under $H_0$; default is 0.
+6. `alpha`: the significance level; default is 0.05.
+
+- Remember that `R` will subtract `col1 - col2`.
+
+## Example 1
+
+- Okonkwo calls you in: "We started pulling recruits with low written-exam scores into a short remedial coaching session before their retake. I want proof this is worth the department's time -- did coaching actually raise their scores?"
+
+- We will use the `zootopia_paired` dataset to answer the following question:
+
+    - Did recruits' exam scores improve after the coaching session?
+
+- We'll work with `exam_score_pre` and `exam_score_post` for the same recruits.
+
+## Example 1
+
+- Point and interval estimates:
+
+```{r}
+zootopia_paired |> dependent_means(col1 = exam_score_post,
+                                   col2 = exam_score_pre)
+```
+
+## Example 1
+
+- Did recruits' exam scores improve after coaching?
+
+- How do we translate this into hypotheses?
+
+    - We defined the difference as `exam_score_post - exam_score_pre`.
+    - If coaching helped, scores went up after coaching, so the difference should be *positive*.
+    
+- **Hypotheses:**    
+
+    - $H_0: \mu_d \le 0$, where $\mu_d = \mu_{\text{post}} - \mu_{\text{pre}}$
+    - $H_1: \mu_d > 0$
+
+- For the `dependent_means()` function, we will set
+
+    - `mu = 0`
+    - `alternative = "greater"`.
+
+## Example 1
+
+- Did recruits' exam scores improve after coaching?
+
+```{r}
+zootopia_paired |> dependent_means(col1 = exam_score_post,
+                                   col2 = exam_score_pre,
+                                   mu = 0,
+                                   alternative = "greater")
+```
+
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0: \mu_d \le 0$, where $\mu_d = \mu_{\text{post}} - \mu_{\text{pre}}$
+    - $H_1: \mu_d > 0$
+
+- **Test Statistic and *p*-Value**
+
+    - $t_0 = 13.461$ 
+    - $p < 0.001$ 
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that the exam scores improved after coaching.
+
+## Example 2
+
+- Okonkwo again: "Recruits go through a fitness assessment when they start, and we test them again at the 6-month mark. Command wants to know -- overall, is fitness actually changing over those six months, or are we just imagining a trend?"
+
+- We will use the `zootopia_paired` dataset to answer the following question:
+
+    - Does recruit fitness change between intake and the 6-month mark?
+
+- We'll work with `fitness_score_intake` and `fitness_score_6mo`.
+
+## Example 2
+
+- Point and interval estimates:
+
+```{r}
+zootopia_paired |> dependent_means(col1 = fitness_score_6mo,
+                                   col2 = fitness_score_intake)
+```
+
+## Example 2
+
+- Does recruit fitness change between intake and the 6-month mark?
+
+- How do we translate this into hypotheses?
+
+    - No direction or hypothesized value indicated.
+    
+- **Hypotheses:**    
+
+    - $H_0: \mu_d = 0$, where $\mu_d = \mu_{\text{6 mo}} - \mu_{\text{intake}}$
+    - $H_1: \mu_d \ne 0$
+
+- For the `dependent_means()` function, we will set
+
+    - `mu = 0`
+    - `alternative = "two"`.
+
+## Example 2
+
+- Does recruit fitness change between intake and the 6-month mark?
+
+```{r}
+zootopia_paired |> dependent_means(col1 = fitness_score_6mo,
+                                   col2 = fitness_score_intake,
+                                   mu = 0,
+                                   alternative = "two")
+```
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: \mu_d = 0$, where $\mu_d = \mu_{\text{6 mo}} - \mu_{\text{intake}}$
+    - $H_1: \mu_d \ne 0$
+
+- **Test Statistic and *p*-Value**
+
+    - $t_0 = 0.70$
+    - $p = 0.490$
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that there is a change in fitness score within the first 6 months.
+
+## Assumption on Paired *t*
+
+- Just like the one-sample case, we assume the *differences* have an approximate mound-shaped, symmetric distribution.
+
+$$d_1, d_2, \ldots, d_n \sim N(\mu_d, \sigma_d^2)$$
+
+- Notice this assumption is about $d$, the differences, not about `col1` and `col2` individually.
+
+    - The original two columns can each look however they look; it's the differences that need to be approximately normal.
+
+- We will use a quantile-quantile (Q-Q) plot to check this, plus a histogram of the differences.
+
+## Checking Normality (`R`)
+
+- We will use the `dependent_qq()` function from `library(ssstats)` to assess normality.
+
+```{r}
+#| eval: false
+dataset_name |> dependent_qq(col1 = first_measurement,
+                             col2 = second_measurement)
+```
+
+- This produces one Q-Q plot and one histogram for the difference ($d_i$).
+
+## Example 1
+
+- Let's check the normality assumption for the exam score differences.
+
+```{r}
+#| fig-align: 'center'
+zootopia_paired |> dependent_qq(col1 = exam_score_pre,
+                                col2 = exam_score_post)
+```
+
+## Example 2
+
+- Let's check the normality assumption for the fitness score differences.
+
+```{r}
+#| fig-align: 'center'
+zootopia_paired |> dependent_qq(col1 = fitness_score_intake,
+                                col2 = fitness_score_6mo)
+```
+
+## Confidence Interval for $M_d$
+
+- Just like the independent-samples case, the CI for a median difference is built from ranks.
+
+- Instead of pairwise differences *between* two groups, we now work with *averages of pairs of differences* within the same set of $d_i$'s.
+
+    - For every pair of differences $d_i$ and $d_j$, compute the Welsh average, 
+
+$$\dfrac{d_i + d_j}{2}$$
+
+- The *median* of these averages is the Hodges-Lehmann estimate of the median difference.
+
+- The CI is then found by ranking the Walsh averages and selecting upper and lower bounds.
+
+## Ranking Paired Data
+
+- The *differences* are ranked based on the <u>absolute value</u> of the difference.
+
+- Then, ranks can be identified as "positive" or "negative" based on the original direction of the difference.
+
+| *X* | *Y* | *D* | \|*D*\| | Rank |
+|-----|-----|-----|---------|------|
+| 5   | 8   | -3  | 3       | $-$ 1.5 |
+| 8   | 5   | 3   | 3       | $+$ 1.5  |
+| 4   | 4   | 0   | 0       | ---------   |
+
+## Hypothesis Test for $M_d$
+
+**Hypotheses**
+
+::: {.hyp-columns .columns}
+
+::: {.column width="30%"}
+**Two-Tailed**
+
+$H_0: M_d = M_0$
+
+$H_1: M_d \ne M_0$
+:::
+
+::: {.column width="30%"}
+**Left-Tailed**
+
+$H_0: M_d \ge M_0$
+
+$H_1: M_d < M_0$
+:::
+
+::: {.column width="30%"}
+**Right-Tailed**
+
+$H_0: M_d \le M_0$
+
+$H_1: M_d > M_0$
+:::
+
+:::
+
+- $M_d$ is the population median of the differences, 
+
+    - Note that you must specify what $M_d$ is. e.g., $M_1-M_2$
+
+- $M_0$ is the hypothesized median difference (often 0).
+
+## Hypothesis Test for $M_d$
+
+**Test Statistic**
+
+$$
+T_0 =
+\begin{cases}
+  R_+ = \text{sum of positive ranks} & \text{if left-tailed} \\
+  R_- = \text{sum of negative ranks} & \text{if right-tailed} \\
+  \min(R_+, R_-) & \text{if two-tailed}
+\end{cases}
+$$
+
+## Statistical Inference on Dependent Medians (`R`)
+
+- We will use the `dependent_medians()` function from `library(ssstats)` to perform statistical inference.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+dataset_name |> dependent_medians( # <1>
+  col1 = first_measurement, # <2>
+  col2 = second_measurement, # <3>
+  alternative = "two" | "less" | "greater", # <4>
+  m = hypothesized_difference, # <5>
+  alpha = alpha_level # <6>
+  )
+```
+1. Pipes your dataset into `dependent_medians()`.
+2. `col1`: the first paired measurement.
+3. `col2`: the second paired measurement. **The function calculates `col1 - col2`, so order matters.**
+4. `alternative`: the direction of the test; default is `two`.
+5. `m`: the hypothesized median difference under $H_0$; default is 0.
+6. `alpha`: the significance level; default is 0.05.
+
+## Example 1
+
+- Recall the research question: 
+
+    - Did recruits' exam scores improve after coaching?
+
+- **Hypotheses:**    
+
+    - $H_0: M_d \le 0$, where $M_d = M_{\text{post}} - M_{\text{pre}}$
+    - $H_1: M_d > 0$
+
+- For the `dependent_medians()` function, we will set
+
+    - `mu = 0`
+    - `alternative = "greater"`.
+
+## Example 1
+
+```{r}
+zootopia_paired |> dependent_medians(col1 = exam_score_post,
+                                     col2 = exam_score_pre,
+                                     alternative = "greater")
+```
+
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0: M_d \le 0$, where $M_d = M_{\text{post}} - M_{\text{pre}}$
+    - $H_1: M_d > 0$
+
+- **Test Statistic and *p*-Value**
+
+    - $T_0 = 465$ 
+    - $p < 0.001$ 
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that the exam scores improved after coaching.
+
+## Example 2
+
+- Recall: the fitness score differences looked questionable on the Q-Q plot -- some recruits improved, some plateaued, some backslid.
+
+    - This is exactly the situation where we don't want to lean on a mean-based test.
+
+- How do we translate the question into hypotheses this time?
+
+    - $H_0: M_d = 0$
+    - $H_1: M_d \ne 0$
+
+- For the `dependent_medians()` function, we will set
+
+    - `m = 0`
+    - `alternative = "two"`.
+
+## Example 2
+
+- Recall the research question:
+
+    - Does recruit fitness change between intake and the 6-month mark?
+
+```{r}
+zootopia_paired |> dependent_medians(col1 = fitness_score_6mo,
+                                     col2 = fitness_score_intake)
+```
+
+## Example 2 (Revisited)
+
+- **Hypotheses**
+
+    - $H_0: M_d = 0$
+    - $H_1: M_d \ne 0$
+
+- **Test Statistic and *p*-Value**
+
+    - $T_0 = 272$
+    - $p = 0.406$ 
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that fitness changes between intake and their 6 month check in.
+    
+## Wrap Up
+
+- Dependent (paired) data comes from the same subject measured twice.
+
+    - We always work with the differences, $d_i = \text{col1}_i - \text{col2}_i$.
+
+- The analysis you choose should match the shape of the differences:
+
+    - If the differences meet normality (`dependent_means()`):
+
+        - Interval estimate: CI for $\mu_d$
+        - Paired $t$-test for $\mu_d$
+
+    - If the differences do not meet normality (`dependent_medians()`):
+
+        - Interval estimate: CI for $M_d$ (built from Walsh averages)
+        - Wilcoxon signed-rank test for $M_d$
 
