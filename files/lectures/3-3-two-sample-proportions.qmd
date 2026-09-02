@@ -19,25 +19,272 @@ format:
     html-math-method: katex
     code-fold: false
     code-tools: false
+    code-annotations: hover
     incremental: false
 editor: source
 ---
 
 ## Introduction
+    
+- In the last module, we reviewed statistical inference for one sample.
+    
+- In this module, we will focus on tests for two samples.
+    - Two-sample independent means ($\mu_1-\mu_2$)
+    - Two-sample dependent means ($\mu_d$)
+    - Two-sample proportions ($\pi_1-\pi_2$)
+    - Two-sample variances ($\sigma^2_1/\sigma^2_2$)
+    
+- In this lecture: two-sample proportions ($\pi_1-\pi_2$) 
 
 ## `R` Setup 
 
+```{r}
+library(tidyverse)
+library(ssstats)
+```
+
+- Both examples today use a new dataset for two ZPD precincts, `Meadowbrook` and `Coldharbor`, each with 60 officers who just went through recertification.
+
+```{r}
+zootopia <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/3-zootopia-props.csv")
+```
+
+```{r}
+#| echo: false
+
+head(zootopia, n = 3)
+```
+
 ## Confidence Interval for $\pi_1-\pi_2$
 
-- (1--$\alpha$)100% CI for a population proportion, $\pi_1-\pi_2$
+- (1--$\alpha$)100% CI for a difference between population proportions, $\pi_1-\pi_2$
+
+$$
+(\hat{p}_1 - \hat{p}_2) \pm z_{\alpha/2} \sqrt{\dfrac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \dfrac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
+$$
 
 ## Hypothesis Test for $\pi_1-\pi_2$
 
+- **Hypotheses:**
+
+::: {.hyp-columns .columns}
+
+::: {.column width="30%"}
+**Two-Tailed**
+
+$H_0: \ \pi_1-\pi_2=\pi_0$
+
+$H_1: \ \pi_1-\pi_2 \ne \pi_0$
+:::
+
+::: {.column width="30%"}
+**Left-Tailed**
+
+$H_0: \ \pi_1-\pi_2 \ge \pi_0$
+
+$H_1: \ \pi_1-\pi_2 < \pi_0$
+:::
+
+::: {.column width="30%"}
+**Right-Tailed**
+
+$H_0: \ \pi_1-\pi_2 \le \pi_0$
+
+$H_1: \ \pi_1-\pi_2 > \pi_0$
+:::
+
+:::
+
+- $\pi_i$ is the population proportion for group $i$
+
+- $\pi_0$ is the hypothesized value of the difference in proportions (often 0, for "no change").
+    
+## Hypothesis Test for $\pi_1-\pi_2$
+
+- **Test Statistic**
+
+$$z_0 = \frac{\left( \hat{p}_1 - \hat{p}_2 \right)- d_0}{\sqrt{\hat{p}\left(1-\hat{p}\right)\left( \frac{1}{n_1}+\frac{1}{n_2} \right)}}$$
+
+- where 
+    - $\hat{p}_i$ is the sample proportion for group $i$,
+    - $n_i$ is the sample size for group $i$, and
+    
+## Hypothesis Test for $\pi_1-\pi_2$
+
+- **Test Statistic**
+
+$$z_0 = \frac{\left( \hat{p}_1 - \hat{p}_2 \right)- d_0}{\sqrt{\hat{p}\left(1-\hat{p}\right)\left( \frac{1}{n_1}+\frac{1}{n_2} \right)}}$$
+
+- where     
+    - $\hat{p}$ is the pooled proportion, given by
+    
+$$\hat{p} = \frac{x_1+x_2}{n_1+n_2}$$
+
 ## Statistical Inference on Two Proportions (`R`)
+
+- We will use the `independent_proportions()` function from `library(ssstats)` to perform statistical inference.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+dataset_name |> independent_proportions(outcome = binary_variable, # <1>
+                                        grouping = grouping_variable, # <2>
+                                        event = "Name of Event", # <3>
+                                        p = hypothesized_value, # <4>
+                                        alternative = "two" | "less" | "greater", # <5>
+                                        alpha = specified_alpha)  # <6>
+```
+1. The binary outcome column — the variable that gets sorted into "success"/"not success."
+2. The grouping column that splits your data into the two independent samples being compared. Must have exactly two levels.
+3. The value of `binary_variable` that counts as a "success" — this defines what your proportions are proportions *of*.
+4. The hypothesized difference between the two groups' true proportions under $H_0$; default is `0`.
+5. The direction of $H_1$; default is `"two"`
+6. The significance level $\alpha$, which also sets the CI's confidence level at $(1-\alpha)100\%$; default is `0.05`.
 
 ## Example 1
 
+- Meadowbrook and Coldharbor just finished the same taser recertification course, same instructors, same exam. Deputy Chief Okonkwo wants to verify that Meadowbrook and Coldharbor recertification rates look the same.
+
+- We will use the `zootopia` dataset to answer the following question:
+
+    - Does the taser recertification pass rate differ between Meadowbrook and Coldharbor?
+
+- We'll work with `taser_recert` and `precinct`.
+
+## Example 1
+
+- Point and interval estimates:
+
+```{r}
+zootopia |> independent_proportions(outcome = taser_recert,
+                                    grouping = precinct,
+                                    event = "Pass")
+```
+
+## Example 1
+
+- Does the taser recertification pass rate differ between Meadowbrook and Coldharbor?
+
+- How do we translate this into hypotheses?
+
+    - No direction or hypothesized value given.
+    
+- **Hypotheses:**    
+
+    - $H_0: \pi_{\text{MB}} = \pi_{\text{CH}}$
+    - $H_1: \pi_{\text{MB}} \ne \pi_{\text{CH}}$
+
+- For the `independent_proportion()` function, we will set
+
+    - `p = 0`
+    - `alternative = "two"`.
+
+## Example 1
+
+- Does the taser recertification pass rate differ between Meadowbrook and Coldharbor?
+
+```{r}
+zootopia |> independent_proportions(outcome = taser_recert,
+                                    grouping = precinct,
+                                    event = "Pass")
+```
+
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0: \pi_{\text{MB}} = \pi_{\text{CH}}$
+    - $H_1: \pi_{\text{MB}} \ne \pi_{\text{CH}}$
+
+- **Test Statistic and *p*-Value**
+
+    - $t_0 = -0.58$ 
+    - $p = 0.559$ 
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that the recertification rate is different between the two precincts.
+
 ## Example 2
+
+- Coldharbor got a new firearms range last year... the one Meadowbrook's been asking for forever. If it's actually helping, Coldharbor's requalification numbers should be better. Let's see if the budget was worth it.
+
+- We will use the `zootopia` dataset to answer the following question:
+
+    - Does Coldharbor have a higher firearms requalification pass rate than Meadowbrook?
+    
+- We'll work with `firearms_requal` and `precinct`.    
+
+
+## Example 2
+
+- Point and interval estimates:
+
+```{r}
+zootopia |> independent_proportions(outcome = firearms_requal,
+                                    grouping = precinct,
+                                    event = "Pass")
+```
+
+## Example 2
+
+- Does Coldharbor have a higher firearms requalification pass rate than Meadowbrook?
+
+- How do we translate this into hypotheses?
+
+    - Direction given: "higher"
+    
+- **Hypotheses:**    
+
+    - $H_0: \pi_{\text{CH}} \le \pi_{\text{MB}}$
+    - $H_1: \pi_{\text{CH}} > \pi_{\text{MB}}$
+
+- For the `independent_proportion()` function, we will set
+
+    - `p = 0`
+    - `alternative = "greater"`.
+
+## Example 2
+
+- Does Coldharbor have a higher firearms requalification pass rate than Meadowbrook?
+
+```{r}
+zootopia |> independent_proportions(outcome = firearms_requal,
+                                    grouping = precinct,
+                                    event = "Pass",
+                                    alternative = "greater")
+```
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: \pi_{\text{CH}} \le \pi_{\text{MB}}$
+    - $H_1: \pi_{\text{CH}} > \pi_{\text{MB}}$
+
+- **Test Statistic and *p*-Value**
+
+    - $z_0 = 2.11$ 
+    - $p = 0.018$ 
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that the requalification rate is higher in Coldharbor as compared to Meadowbrook.
+
 
 ## Wrap Up
 
+- Independent (two-sample) proportion data comes from two separate, unrelated groups.
+
+    - We work with the difference in sample proportions, $\hat{p}_1 - \hat{p}_2$.
+    
+- Next: comparing two variances.

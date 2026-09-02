@@ -20,28 +20,254 @@ format:
     code-fold: false
     code-tools: false
     incremental: false
+    code-annotations: hover
 editor: source
 ---
 
 ## Introduction
 
+- In the last module, we reviewed statistical inference for one sample.
+    
+- In this module, we will focus on tests for two samples.
+    - Two-sample independent means ($\mu_1-\mu_2$)
+    - Two-sample dependent means ($\mu_d$)
+    - Two-sample proportions ($\pi_1-\pi_2$)
+    - Two-sample variances ($\sigma^2_1/\sigma^2_2$)
+    
+- In this lecture: two-sample variances ($\sigma^2_1/\sigma^2_2$)
+
 ## `R` Setup 
+
+```{r}
+library(tidyverse)
+library(ssstats)
+```
+
+- Recall our Zootopia data,
+
+```{r}
+zootopia <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv")
+```
+
+```{r}
+#| echo: false
+
+head(zootopia, n = 3)
+```
 
 ## Confidence Interval for $\sigma^2_1/\sigma^2_2$
 
-- (1--$\alpha$)100% CI for two population variances, $\sigma^2_1/\sigma_2^2$
+- $(1-\alpha)100\%$ CI for two population variances, $\sigma^2_1/\sigma_2^2$
+
+$$
+\left(\dfrac{s_1^2}{s_2^2}\cdot\dfrac{1}{F_{\alpha/2,\,n_1-1,\,n_2-1}}, \ \ \dfrac{s_1^2}{s_2^2}\cdot F_{\alpha/2,\,n_2-1,\,n_1-1}\right)
+$$
 
 ## Confidence Interval for $\sigma_1/\sigma_2$
 
-- (1--$\alpha$)100% CI for two population variances, $\sigma_1/\sigma_2$
+- $(1-\alpha)100\%$ CI for two population variances, $\sigma_1/\sigma_2$
+
+$$
+\left(\sqrt{\dfrac{s_1^2}{s_2^2}\cdot\dfrac{1}{F_{\alpha/2,\,n_1-1,\,n_2-1}}}, \ \ \sqrt{\dfrac{s_1^2}{s_2^2}\cdot F_{\alpha/2,\,n_2-1,\,n_1-1}}\right)
+$$
 
 ## Hypothesis Test for $\sigma_1^2/\sigma_2^2$
 
+- **Hypotheses:**
+
+::: {.hyp-columns .columns}
+
+::: {.column width="30%"}
+**Two-Tailed**
+
+$H_0: \ \sigma_1^2 = \sigma_2^2$
+
+$H_1: \ \sigma_1^2 \ne \sigma_2^2$
+:::
+
+::: {.column width="30%"}
+**Left-Tailed**
+
+$H_0: \ \sigma_1^2 \ge \sigma_2^2$
+
+$H_1: \ \sigma_1^2 < \sigma_2^2$
+:::
+
+::: {.column width="30%"}
+**Right-Tailed**
+
+$H_0: \ \sigma_1^2 \le \sigma_2^2$
+
+$H_1: \ \sigma_1^2 > \sigma_2^2$
+:::
+
+:::
+
+- $\sigma_i^2$ is the population variance for group $i$
+
 ## Statistical Inference on Two Variances (`R`)
+
+- We will use the `two_variances()` function from `library(ssstats)` to perform statistical inference.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+dataset_name |> two_variances(outcome = continuous_variable, # <1>
+                              grouping = grouping_variable, # <2>
+                              first = "first_group_in_ratio", # <3>
+                              alternative = "two" | "less" | "greater", # <4>
+                              alpha = specified_alpha)  # <5>
+```
+1. The continuous outcome column.
+2. The grouping column that splits your data into the two independent samples being compared. Must have exactly two levels.
+3. The group that goes in the numerator of the ratio ($\sigma^2_{first}/\sigma^2_{other}$). 
+4. The direction of $H_1$; default is `"two"`. 
+5. The significance level $\alpha$, which also sets the CI's confidence level at $(1-\alpha)100\%$; default is `0.05`.
+
 
 ## Example 1
 
+- Deputy Chief is concerned that patrol officers experience less variability in their side hustle incomes. 
+
+- We will use the `zootopia` dataset to answer the following question:
+
+    - Is there evidence that side-hustle income variability is smaller for patrol officers?
+
+- We'll work with `hustle_earnings` and `department`.
+
+## Example 1
+
+- Point and interval estimates:
+
+```{r}
+zootopia |> two_variances(outcome = hustle_earnings, 
+                          grouping = department, 
+                          first = "Patrol")
+```
+
+## Example 1
+
+- Is there evidence that side-hustle income variability is smaller for patrol officers?
+
+- How do we translate this into hypotheses?
+
+    - "variability is smaller for patrol" $\to$ directional!
+    
+- **Hypotheses:**    
+
+    - $H_0: \sigma^2_{\text{Patrol}} \ge \sigma^2_{\text{Desk}}$
+    - $H_1: \sigma^2_{\text{Patrol}} < \sigma^2_{\text{Desk}}$
+
+- For the `two_variances()` function, we will set
+
+    - `first = "Patrol"`
+    - `alternative = "less"`.
+
+## Example 1
+
+- Is there evidence that side-hustle income variability is smaller for patrol officers?
+
+```{r}
+zootopia |> two_variances(outcome = hustle_earnings, 
+                          grouping = department, 
+                          first = "Patrol",
+                          alternative = "less")
+```
+
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0: \sigma^2_{\text{Patrol}} \ge \sigma^2_{\text{Desk}}$
+    - $H_1: \sigma^2_{\text{Patrol}} < \sigma^2_{\text{Desk}}$
+
+- **Test Statistic and *p*-Value**
+
+    - $F_0 = 0.441$ 
+    - $p = 0.063$ 
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that the variability in side ustle earnings differs between those on patrol or desk duty.
+
 ## Example 2
+
+- Today, Deputy Chief wants to look into the amount of sleep between the two departments. In particular, Deputy chief believes that patrol's sleep habits are less predictable than those on desk duty.
+
+- We will use the `zootopia` dataset to answer the following question:
+
+    - Is there evidence that Patrol officers' sleep hours are more variable than Desk officers'?
+
+- We'll work with `sleep_hours` and `department`.
+
+## Example 2
+
+- Point and interval estimates:
+
+```{r}
+zootopia |> two_variances(outcome = sleep_hours, 
+                          grouping = department, 
+                          first = "Patrol")
+```
+
+## Example 2
+
+- Is there evidence that Patrol officers' sleep hours are more variable than Desk officers'?
+
+- How do we translate this into hypotheses?
+
+    - "variability is higher for patrol" $\to$ directional!
+    
+- **Hypotheses:**    
+
+    - $H_0: \sigma^2_{\text{Patrol}} \le \sigma^2_{\text{Desk}}$
+    - $H_1: \sigma^2_{\text{Patrol}} > \sigma^2_{\text{Desk}}$
+
+- For the `two_variances()` function, we will set
+
+    - `first = "Patrol"`
+    - `alternative = "greater"`.
+
+## Example 2
+
+- Is there evidence that Patrol officers' sleep hours are more variable than Desk officers'?
+
+```{r}
+zootopia |> two_variances(outcome = sleep_hours, 
+                          grouping = department, 
+                          first = "Patrol",
+                          alternative = "less")
+```
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: \sigma^2_{\text{Patrol}} \ge \sigma^2_{\text{Desk}}$
+    - $H_1: \sigma^2_{\text{Patrol}} < \sigma^2_{\text{Desk}}$
+
+- **Test Statistic and *p*-Value**
+
+    - $F_0 = 0.77$ 
+    - $p = 0.304$ 
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that the variability in side ustle earnings differs between those on patrol or desk duty.
 
 ## Wrap Up
 
+- In this lecture, we discussed statistical inference on two variances or standard deviations
+
+- In this module, we have covered two-sample tests.
+
+- In the next module, we will learn one-way ANOVA.
