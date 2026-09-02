@@ -298,63 +298,119 @@
     "href": "files/lectures/3-4-two-sample-variances.html#introduction",
     "title": "Two-Sample Variances",
     "section": "Introduction",
-    "text": "Introduction"
+    "text": "Introduction\n\nIn the last module, we reviewed statistical inference for one sample.\nIn this module, we will focus on tests for two samples.\n\nTwo-sample independent means (\\mu_1-\\mu_2)\nTwo-sample dependent means (\\mu_d)\nTwo-sample proportions (\\pi_1-\\pi_2)\nTwo-sample variances (\\sigma^2_1/\\sigma^2_2)\n\nIn this lecture: two-sample variances (\\sigma^2_1/\\sigma^2_2)"
   },
   {
     "objectID": "files/lectures/3-4-two-sample-variances.html#r-setup",
     "href": "files/lectures/3-4-two-sample-variances.html#r-setup",
     "title": "Two-Sample Variances",
     "section": "R Setup",
-    "text": "R Setup"
+    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)\n\n\nRecall our Zootopia data,\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8"
   },
   {
     "objectID": "files/lectures/3-4-two-sample-variances.html#confidence-interval-for-sigma2_1sigma2_2",
     "href": "files/lectures/3-4-two-sample-variances.html#confidence-interval-for-sigma2_1sigma2_2",
     "title": "Two-Sample Variances",
     "section": "Confidence Interval for \\sigma^2_1/\\sigma^2_2",
-    "text": "Confidence Interval for \\sigma^2_1/\\sigma^2_2\n\n(1–\\alpha)100% CI for two population variances, \\sigma^2_1/\\sigma_2^2"
+    "text": "Confidence Interval for \\sigma^2_1/\\sigma^2_2\n\n(1-\\alpha)100\\% CI for two population variances, \\sigma^2_1/\\sigma_2^2\n\n\n\\left(\\dfrac{s_1^2}{s_2^2}\\cdot\\dfrac{1}{F_{\\alpha/2,\\,n_1-1,\\,n_2-1}}, \\ \\ \\dfrac{s_1^2}{s_2^2}\\cdot F_{\\alpha/2,\\,n_2-1,\\,n_1-1}\\right)"
   },
   {
     "objectID": "files/lectures/3-4-two-sample-variances.html#confidence-interval-for-sigma_1sigma_2",
     "href": "files/lectures/3-4-two-sample-variances.html#confidence-interval-for-sigma_1sigma_2",
     "title": "Two-Sample Variances",
     "section": "Confidence Interval for \\sigma_1/\\sigma_2",
-    "text": "Confidence Interval for \\sigma_1/\\sigma_2\n\n(1–\\alpha)100% CI for two population variances, \\sigma_1/\\sigma_2"
+    "text": "Confidence Interval for \\sigma_1/\\sigma_2\n\n(1-\\alpha)100\\% CI for two population variances, \\sigma_1/\\sigma_2\n\n\n\\left(\\sqrt{\\dfrac{s_1^2}{s_2^2}\\cdot\\dfrac{1}{F_{\\alpha/2,\\,n_1-1,\\,n_2-1}}}, \\ \\ \\sqrt{\\dfrac{s_1^2}{s_2^2}\\cdot F_{\\alpha/2,\\,n_2-1,\\,n_1-1}}\\right)"
   },
   {
     "objectID": "files/lectures/3-4-two-sample-variances.html#hypothesis-test-for-sigma_12sigma_22",
     "href": "files/lectures/3-4-two-sample-variances.html#hypothesis-test-for-sigma_12sigma_22",
     "title": "Two-Sample Variances",
     "section": "Hypothesis Test for \\sigma_1^2/\\sigma_2^2",
-    "text": "Hypothesis Test for \\sigma_1^2/\\sigma_2^2"
+    "text": "Hypothesis Test for \\sigma_1^2/\\sigma_2^2\n\nHypotheses:\n\n\n\nTwo-Tailed\nH_0: \\ \\sigma_1^2 = \\sigma_2^2\nH_1: \\ \\sigma_1^2 \\ne \\sigma_2^2\n\nLeft-Tailed\nH_0: \\ \\sigma_1^2 \\ge \\sigma_2^2\nH_1: \\ \\sigma_1^2 &lt; \\sigma_2^2\n\nRight-Tailed\nH_0: \\ \\sigma_1^2 \\le \\sigma_2^2\nH_1: \\ \\sigma_1^2 &gt; \\sigma_2^2\n\n\n\\sigma_i^2 is the population variance for group i"
   },
   {
     "objectID": "files/lectures/3-4-two-sample-variances.html#statistical-inference-on-two-variances-r",
     "href": "files/lectures/3-4-two-sample-variances.html#statistical-inference-on-two-variances-r",
     "title": "Two-Sample Variances",
     "section": "Statistical Inference on Two Variances (R)",
-    "text": "Statistical Inference on Two Variances (R)"
+    "text": "Statistical Inference on Two Variances (R)\n\nWe will use the two_variances() function from library(ssstats) to perform statistical inference.\nGeneric syntax:\n\n\n1dataset_name |&gt; two_variances(outcome = continuous_variable,\n2                              grouping = grouping_variable,\n3                              first = \"first_group_in_ratio\",\n4                              alternative = \"two\" | \"less\" | \"greater\",\n5                              alpha = specified_alpha)\n\n\n1\n\nThe continuous outcome column.\n\n2\n\nThe grouping column that splits your data into the two independent samples being compared. Must have exactly two levels.\n\n3\n\nThe group that goes in the numerator of the ratio (\\sigma^2_{first}/\\sigma^2_{other}).\n\n4\n\nThe direction of H_1; default is \"two\".\n\n5\n\nThe significance level \\alpha, which also sets the CI’s confidence level at (1-\\alpha)100\\%; default is 0.05."
   },
   {
     "objectID": "files/lectures/3-4-two-sample-variances.html#example-1",
     "href": "files/lectures/3-4-two-sample-variances.html#example-1",
     "title": "Two-Sample Variances",
     "section": "Example 1",
-    "text": "Example 1"
+    "text": "Example 1\n\nDeputy Chief is concerned that patrol officers experience less variability in their side hustle incomes.\nWe will use the zootopia dataset to answer the following question:\n\nIs there evidence that side-hustle income variability is smaller for patrol officers?\n\nWe’ll work with hustle_earnings and department."
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#example-1-1",
+    "href": "files/lectures/3-4-two-sample-variances.html#example-1-1",
+    "title": "Two-Sample Variances",
+    "section": "Example 1",
+    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia |&gt; two_variances(outcome = hustle_earnings, \n                          grouping = department, \n                          first = \"Patrol\")\n\nTwo-sample variances\n\ns²[Patrol] = 346.664 (s = 18.6189)\ns²[Desk] = 785.4795 (s = 28.0264)\nRatio: s²[Patrol] / s²[Desk] = 0.4413\n\n95% CI for σ²[Patrol] / σ²[Desk]: (0.1345, 1.2665)\n\nHypotheses:\nH₀: σ²[Patrol] / σ²[Desk] = 1\nH₁: σ²[Patrol] / σ²[Desk] ≠ 1\nTest statistic: F(17, 11) = 0.441\np-value: 0.126\nConclusion: Fail to reject the null hypothesis (p = 0.126 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#example-1-2",
+    "href": "files/lectures/3-4-two-sample-variances.html#example-1-2",
+    "title": "Two-Sample Variances",
+    "section": "Example 1",
+    "text": "Example 1\n\nIs there evidence that side-hustle income variability is smaller for patrol officers?\nHow do we translate this into hypotheses?\n\n“variability is smaller for patrol” \\to directional!\n\nHypotheses:\n\nH_0: \\sigma^2_{\\text{Patrol}} \\ge \\sigma^2_{\\text{Desk}}\nH_1: \\sigma^2_{\\text{Patrol}} &lt; \\sigma^2_{\\text{Desk}}\n\nFor the two_variances() function, we will set\n\nfirst = \"Patrol\"\nalternative = \"less\"."
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#example-1-3",
+    "href": "files/lectures/3-4-two-sample-variances.html#example-1-3",
+    "title": "Two-Sample Variances",
+    "section": "Example 1",
+    "text": "Example 1\n\nIs there evidence that side-hustle income variability is smaller for patrol officers?\n\n\nzootopia |&gt; two_variances(outcome = hustle_earnings, \n                          grouping = department, \n                          first = \"Patrol\",\n                          alternative = \"less\")\n\nTwo-sample variances\n\ns²[Patrol] = 346.664 (s = 18.6189)\ns²[Desk] = 785.4795 (s = 28.0264)\nRatio: s²[Patrol] / s²[Desk] = 0.4413\n\n95% CI for σ²[Patrol] / σ²[Desk]: (0.1345, 1.2665)\n\nHypotheses:\nH₀: σ²[Patrol] / σ²[Desk] ≥ 1\nH₁: σ²[Patrol] / σ²[Desk] &lt; 1\nTest statistic: F(17, 11) = 0.441\np-value: 0.063\nConclusion: Fail to reject the null hypothesis (p = 0.063 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#example-1-4",
+    "href": "files/lectures/3-4-two-sample-variances.html#example-1-4",
+    "title": "Two-Sample Variances",
+    "section": "Example 1",
+    "text": "Example 1\n\nHypotheses\n\nH_0: \\sigma^2_{\\text{Patrol}} \\ge \\sigma^2_{\\text{Desk}}\nH_1: \\sigma^2_{\\text{Patrol}} &lt; \\sigma^2_{\\text{Desk}}\n\nTest Statistic and p-Value\n\nF_0 = 0.441\np = 0.063\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the variability in side ustle earnings differs between those on patrol or desk duty."
   },
   {
     "objectID": "files/lectures/3-4-two-sample-variances.html#example-2",
     "href": "files/lectures/3-4-two-sample-variances.html#example-2",
     "title": "Two-Sample Variances",
     "section": "Example 2",
-    "text": "Example 2"
+    "text": "Example 2\n\nToday, Deputy Chief wants to look into the amount of sleep between the two departments. In particular, Deputy chief believes that patrol’s sleep habits are less predictable than those on desk duty.\nWe will use the zootopia dataset to answer the following question:\n\nIs there evidence that Patrol officers’ sleep hours are more variable than Desk officers’?\n\nWe’ll work with sleep_hours and department."
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#example-2-1",
+    "href": "files/lectures/3-4-two-sample-variances.html#example-2-1",
+    "title": "Two-Sample Variances",
+    "section": "Example 2",
+    "text": "Example 2\n\nPoint and interval estimates:\n\n\nzootopia |&gt; two_variances(outcome = sleep_hours, \n                          grouping = department, \n                          first = \"Patrol\")\n\nTwo-sample variances\n\ns²[Patrol] = 1.5579 (s = 1.2482)\ns²[Desk] = 2.0242 (s = 1.4228)\nRatio: s²[Patrol] / s²[Desk] = 0.7696\n\n95% CI for σ²[Patrol] / σ²[Desk]: (0.2345, 2.2085)\n\nHypotheses:\nH₀: σ²[Patrol] / σ²[Desk] = 1\nH₁: σ²[Patrol] / σ²[Desk] ≠ 1\nTest statistic: F(17, 11) = 0.77\np-value: 0.608\nConclusion: Fail to reject the null hypothesis (p = 0.608 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#example-2-2",
+    "href": "files/lectures/3-4-two-sample-variances.html#example-2-2",
+    "title": "Two-Sample Variances",
+    "section": "Example 2",
+    "text": "Example 2\n\nIs there evidence that Patrol officers’ sleep hours are more variable than Desk officers’?\nHow do we translate this into hypotheses?\n\n“variability is higher for patrol” \\to directional!\n\nHypotheses:\n\nH_0: \\sigma^2_{\\text{Patrol}} \\le \\sigma^2_{\\text{Desk}}\nH_1: \\sigma^2_{\\text{Patrol}} &gt; \\sigma^2_{\\text{Desk}}\n\nFor the two_variances() function, we will set\n\nfirst = \"Patrol\"\nalternative = \"greater\"."
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#example-2-3",
+    "href": "files/lectures/3-4-two-sample-variances.html#example-2-3",
+    "title": "Two-Sample Variances",
+    "section": "Example 2",
+    "text": "Example 2\n\nIs there evidence that Patrol officers’ sleep hours are more variable than Desk officers’?\n\n\nzootopia |&gt; two_variances(outcome = sleep_hours, \n                          grouping = department, \n                          first = \"Patrol\",\n                          alternative = \"less\")\n\nTwo-sample variances\n\ns²[Patrol] = 1.5579 (s = 1.2482)\ns²[Desk] = 2.0242 (s = 1.4228)\nRatio: s²[Patrol] / s²[Desk] = 0.7696\n\n95% CI for σ²[Patrol] / σ²[Desk]: (0.2345, 2.2085)\n\nHypotheses:\nH₀: σ²[Patrol] / σ²[Desk] ≥ 1\nH₁: σ²[Patrol] / σ²[Desk] &lt; 1\nTest statistic: F(17, 11) = 0.77\np-value: 0.304\nConclusion: Fail to reject the null hypothesis (p = 0.304 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-4-two-sample-variances.html#example-2-4",
+    "href": "files/lectures/3-4-two-sample-variances.html#example-2-4",
+    "title": "Two-Sample Variances",
+    "section": "Example 2",
+    "text": "Example 2\n\nHypotheses\n\nH_0: \\sigma^2_{\\text{Patrol}} \\ge \\sigma^2_{\\text{Desk}}\nH_1: \\sigma^2_{\\text{Patrol}} &lt; \\sigma^2_{\\text{Desk}}\n\nTest Statistic and p-Value\n\nF_0 = 0.77\np = 0.304\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the variability in side ustle earnings differs between those on patrol or desk duty."
   },
   {
     "objectID": "files/lectures/3-4-two-sample-variances.html#wrap-up",
     "href": "files/lectures/3-4-two-sample-variances.html#wrap-up",
     "title": "Two-Sample Variances",
     "section": "Wrap Up",
-    "text": "Wrap Up"
+    "text": "Wrap Up\n\nIn this lecture, we discussed statistical inference on two variances or standard deviations\nIn this module, we have covered two-sample tests.\nIn the next module, we will learn one-way ANOVA."
   },
   {
     "objectID": "files/lectures/1-2-probability-distributions.html#introduction",
@@ -739,56 +795,378 @@
     "href": "files/lectures/3-3-two-sample-proportions.html#introduction",
     "title": "Two-Sample Proportions",
     "section": "Introduction",
-    "text": "Introduction"
+    "text": "Introduction\n\nIn the last module, we reviewed statistical inference for one sample.\nIn this module, we will focus on tests for two samples.\n\nTwo-sample independent means (\\mu_1-\\mu_2)\nTwo-sample dependent means (\\mu_d)\nTwo-sample proportions (\\pi_1-\\pi_2)\nTwo-sample variances (\\sigma^2_1/\\sigma^2_2)\n\nIn this lecture: two-sample proportions (\\pi_1-\\pi_2)"
   },
   {
     "objectID": "files/lectures/3-3-two-sample-proportions.html#r-setup",
     "href": "files/lectures/3-3-two-sample-proportions.html#r-setup",
     "title": "Two-Sample Proportions",
     "section": "R Setup",
-    "text": "R Setup"
+    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)\n\n\nBoth examples today use a new dataset for two ZPD precincts, Meadowbrook and Coldharbor, each with 60 officers who just went through recertification.\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/3-zootopia-props.csv\")\n\n\n\n\n\n\n\nprecinct\ntaser_recert\nfirearms_requal\n\n\n\n\nMeadowbrook\nFail\nFail\n\n\nMeadowbrook\nFail\nFail\n\n\nMeadowbrook\nPass\nFail"
   },
   {
     "objectID": "files/lectures/3-3-two-sample-proportions.html#confidence-interval-for-pi_1-pi_2",
     "href": "files/lectures/3-3-two-sample-proportions.html#confidence-interval-for-pi_1-pi_2",
     "title": "Two-Sample Proportions",
     "section": "Confidence Interval for \\pi_1-\\pi_2",
-    "text": "Confidence Interval for \\pi_1-\\pi_2\n\n(1–\\alpha)100% CI for a population proportion, \\pi_1-\\pi_2"
+    "text": "Confidence Interval for \\pi_1-\\pi_2\n\n(1–\\alpha)100% CI for a difference between population proportions, \\pi_1-\\pi_2\n\n\n(\\hat{p}_1 - \\hat{p}_2) \\pm z_{\\alpha/2} \\sqrt{\\dfrac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\dfrac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}"
   },
   {
     "objectID": "files/lectures/3-3-two-sample-proportions.html#hypothesis-test-for-pi_1-pi_2",
     "href": "files/lectures/3-3-two-sample-proportions.html#hypothesis-test-for-pi_1-pi_2",
     "title": "Two-Sample Proportions",
     "section": "Hypothesis Test for \\pi_1-\\pi_2",
-    "text": "Hypothesis Test for \\pi_1-\\pi_2"
+    "text": "Hypothesis Test for \\pi_1-\\pi_2\n\nHypotheses:\n\n\n\nTwo-Tailed\nH_0: \\ \\pi_1-\\pi_2=\\pi_0\nH_1: \\ \\pi_1-\\pi_2 \\ne \\pi_0\n\nLeft-Tailed\nH_0: \\ \\pi_1-\\pi_2 \\ge \\pi_0\nH_1: \\ \\pi_1-\\pi_2 &lt; \\pi_0\n\nRight-Tailed\nH_0: \\ \\pi_1-\\pi_2 \\le \\pi_0\nH_1: \\ \\pi_1-\\pi_2 &gt; \\pi_0\n\n\n\\pi_i is the population proportion for group i\n\\pi_0 is the hypothesized value of the difference in proportions (often 0, for “no change”)."
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#hypothesis-test-for-pi_1-pi_2-1",
+    "href": "files/lectures/3-3-two-sample-proportions.html#hypothesis-test-for-pi_1-pi_2-1",
+    "title": "Two-Sample Proportions",
+    "section": "Hypothesis Test for \\pi_1-\\pi_2",
+    "text": "Hypothesis Test for \\pi_1-\\pi_2\n\nTest Statistic\n\nz_0 = \\frac{\\left( \\hat{p}_1 - \\hat{p}_2 \\right)- d_0}{\\sqrt{\\hat{p}\\left(1-\\hat{p}\\right)\\left( \\frac{1}{n_1}+\\frac{1}{n_2} \\right)}}\n\nwhere\n\n\\hat{p}_i is the sample proportion for group i,\nn_i is the sample size for group i, and"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#hypothesis-test-for-pi_1-pi_2-2",
+    "href": "files/lectures/3-3-two-sample-proportions.html#hypothesis-test-for-pi_1-pi_2-2",
+    "title": "Two-Sample Proportions",
+    "section": "Hypothesis Test for \\pi_1-\\pi_2",
+    "text": "Hypothesis Test for \\pi_1-\\pi_2\n\nTest Statistic\n\nz_0 = \\frac{\\left( \\hat{p}_1 - \\hat{p}_2 \\right)- d_0}{\\sqrt{\\hat{p}\\left(1-\\hat{p}\\right)\\left( \\frac{1}{n_1}+\\frac{1}{n_2} \\right)}}\n\nwhere\n\n\\hat{p} is the pooled proportion, given by\n\n\n\\hat{p} = \\frac{x_1+x_2}{n_1+n_2}"
   },
   {
     "objectID": "files/lectures/3-3-two-sample-proportions.html#statistical-inference-on-two-proportions-r",
     "href": "files/lectures/3-3-two-sample-proportions.html#statistical-inference-on-two-proportions-r",
     "title": "Two-Sample Proportions",
     "section": "Statistical Inference on Two Proportions (R)",
-    "text": "Statistical Inference on Two Proportions (R)"
+    "text": "Statistical Inference on Two Proportions (R)\n\nWe will use the independent_proportions() function from library(ssstats) to perform statistical inference.\nGeneric syntax:\n\n\n1dataset_name |&gt; independent_proportions(outcome = binary_variable,\n2                                        grouping = grouping_variable,\n3                                        event = \"Name of Event\",\n4                                        p = hypothesized_value,\n5                                        alternative = \"two\" | \"less\" | \"greater\",\n6                                        alpha = specified_alpha)\n\n\n1\n\nThe binary outcome column — the variable that gets sorted into “success”/“not success.”\n\n2\n\nThe grouping column that splits your data into the two independent samples being compared. Must have exactly two levels.\n\n3\n\nThe value of binary_variable that counts as a “success” — this defines what your proportions are proportions of.\n\n4\n\nThe hypothesized difference between the two groups’ true proportions under H_0; default is 0.\n\n5\n\nThe direction of H_1; default is \"two\"\n\n6\n\nThe significance level \\alpha, which also sets the CI’s confidence level at (1-\\alpha)100\\%; default is 0.05."
   },
   {
     "objectID": "files/lectures/3-3-two-sample-proportions.html#example-1",
     "href": "files/lectures/3-3-two-sample-proportions.html#example-1",
     "title": "Two-Sample Proportions",
     "section": "Example 1",
-    "text": "Example 1"
+    "text": "Example 1\n\nMeadowbrook and Coldharbor just finished the same taser recertification course, same instructors, same exam. Deputy Chief Okonkwo wants to verify that Meadowbrook and Coldharbor recertification rates look the same.\nWe will use the zootopia dataset to answer the following question:\n\nDoes the taser recertification pass rate differ between Meadowbrook and Coldharbor?\n\nWe’ll work with taser_recert and precinct."
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#example-1-1",
+    "href": "files/lectures/3-3-two-sample-proportions.html#example-1-1",
+    "title": "Two-Sample Proportions",
+    "section": "Example 1",
+    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia |&gt; independent_proportions(outcome = taser_recert,\n                                    grouping = precinct,\n                                    event = \"Pass\")\n\nIndependent proportions\n\np̂[Coldharbor] = 0.65\np̂[Meadowbrook] = 0.7\nPoint estimate: p̂[Coldharbor] − p̂[Meadowbrook] = -0.05\n\n95% CI for π[Coldharbor] − π[Meadowbrook]: (-0.2174, 0.1174)\n\nHypotheses:\nH₀: π[Coldharbor] − π[Meadowbrook] = 0\nH₁: π[Coldharbor] − π[Meadowbrook] ≠ 0\nTest statistic: z = -0.58\np-value: 0.559\nConclusion: Fail to reject the null hypothesis (p = 0.559 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#example-1-2",
+    "href": "files/lectures/3-3-two-sample-proportions.html#example-1-2",
+    "title": "Two-Sample Proportions",
+    "section": "Example 1",
+    "text": "Example 1\n\nDoes the taser recertification pass rate differ between Meadowbrook and Coldharbor?\nHow do we translate this into hypotheses?\n\nNo direction or hypothesized value given.\n\nHypotheses:\n\nH_0: \\pi_{\\text{MB}} = \\pi_{\\text{CH}}\nH_1: \\pi_{\\text{MB}} \\ne \\pi_{\\text{CH}}\n\nFor the independent_proportion() function, we will set\n\np = 0\nalternative = \"two\"."
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#example-1-3",
+    "href": "files/lectures/3-3-two-sample-proportions.html#example-1-3",
+    "title": "Two-Sample Proportions",
+    "section": "Example 1",
+    "text": "Example 1\n\nDoes the taser recertification pass rate differ between Meadowbrook and Coldharbor?\n\n\nzootopia |&gt; independent_proportions(outcome = taser_recert,\n                                    grouping = precinct,\n                                    event = \"Pass\")\n\nIndependent proportions\n\np̂[Coldharbor] = 0.65\np̂[Meadowbrook] = 0.7\nPoint estimate: p̂[Coldharbor] − p̂[Meadowbrook] = -0.05\n\n95% CI for π[Coldharbor] − π[Meadowbrook]: (-0.2174, 0.1174)\n\nHypotheses:\nH₀: π[Coldharbor] − π[Meadowbrook] = 0\nH₁: π[Coldharbor] − π[Meadowbrook] ≠ 0\nTest statistic: z = -0.58\np-value: 0.559\nConclusion: Fail to reject the null hypothesis (p = 0.559 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#example-1-4",
+    "href": "files/lectures/3-3-two-sample-proportions.html#example-1-4",
+    "title": "Two-Sample Proportions",
+    "section": "Example 1",
+    "text": "Example 1\n\nHypotheses\n\nH_0: \\pi_{\\text{MB}} = \\pi_{\\text{CH}}\nH_1: \\pi_{\\text{MB}} \\ne \\pi_{\\text{CH}}\n\nTest Statistic and p-Value\n\nt_0 = -0.58\np = 0.559\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that the recertification rate is different between the two precincts."
   },
   {
     "objectID": "files/lectures/3-3-two-sample-proportions.html#example-2",
     "href": "files/lectures/3-3-two-sample-proportions.html#example-2",
     "title": "Two-Sample Proportions",
     "section": "Example 2",
-    "text": "Example 2"
+    "text": "Example 2\n\nColdharbor got a new firearms range last year… the one Meadowbrook’s been asking for forever. If it’s actually helping, Coldharbor’s requalification numbers should be better. Let’s see if the budget was worth it.\nWe will use the zootopia dataset to answer the following question:\n\nDoes Coldharbor have a higher firearms requalification pass rate than Meadowbrook?\n\nWe’ll work with firearms_requal and precinct."
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#example-2-1",
+    "href": "files/lectures/3-3-two-sample-proportions.html#example-2-1",
+    "title": "Two-Sample Proportions",
+    "section": "Example 2",
+    "text": "Example 2\n\nPoint and interval estimates:\n\n\nzootopia |&gt; independent_proportions(outcome = firearms_requal,\n                                    grouping = precinct,\n                                    event = \"Pass\")\n\nIndependent proportions\n\np̂[Coldharbor] = 0.8333\np̂[Meadowbrook] = 0.6667\nPoint estimate: p̂[Coldharbor] − p̂[Meadowbrook] = 0.1667\n\n95% CI for π[Coldharbor] − π[Meadowbrook]: (0.0146, 0.3187)\n\nHypotheses:\nH₀: π[Coldharbor] − π[Meadowbrook] = 0\nH₁: π[Coldharbor] − π[Meadowbrook] ≠ 0\nTest statistic: z = 2.11\np-value: 0.035\nConclusion: Reject the null hypothesis (p = 0.035 &lt; α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#example-2-2",
+    "href": "files/lectures/3-3-two-sample-proportions.html#example-2-2",
+    "title": "Two-Sample Proportions",
+    "section": "Example 2",
+    "text": "Example 2\n\nDoes Coldharbor have a higher firearms requalification pass rate than Meadowbrook?\nHow do we translate this into hypotheses?\n\nDirection given: “higher”\n\nHypotheses:\n\nH_0: \\pi_{\\text{CH}} \\le \\pi_{\\text{MB}}\nH_1: \\pi_{\\text{CH}} &gt; \\pi_{\\text{MB}}\n\nFor the independent_proportion() function, we will set\n\np = 0\nalternative = \"greater\"."
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#example-2-3",
+    "href": "files/lectures/3-3-two-sample-proportions.html#example-2-3",
+    "title": "Two-Sample Proportions",
+    "section": "Example 2",
+    "text": "Example 2\n\nDoes Coldharbor have a higher firearms requalification pass rate than Meadowbrook?\n\n\nzootopia |&gt; independent_proportions(outcome = firearms_requal,\n                                    grouping = precinct,\n                                    event = \"Pass\",\n                                    alternative = \"greater\")\n\nIndependent proportions\n\np̂[Coldharbor] = 0.8333\np̂[Meadowbrook] = 0.6667\nPoint estimate: p̂[Coldharbor] − p̂[Meadowbrook] = 0.1667\n\n95% CI for π[Coldharbor] − π[Meadowbrook]: (0.0146, 0.3187)\n\nHypotheses:\nH₀: π[Coldharbor] − π[Meadowbrook] ≤ 0\nH₁: π[Coldharbor] − π[Meadowbrook] &gt; 0\nTest statistic: z = 2.11\np-value: 0.018\nConclusion: Reject the null hypothesis (p = 0.018 &lt; α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-3-two-sample-proportions.html#example-2-4",
+    "href": "files/lectures/3-3-two-sample-proportions.html#example-2-4",
+    "title": "Two-Sample Proportions",
+    "section": "Example 2",
+    "text": "Example 2\n\nHypotheses\n\nH_0: \\pi_{\\text{CH}} \\le \\pi_{\\text{MB}}\nH_1: \\pi_{\\text{CH}} &gt; \\pi_{\\text{MB}}\n\nTest Statistic and p-Value\n\nz_0 = 2.11\np = 0.018\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nReject H_0. There is sufficient evidence to suggest that the requalification rate is higher in Coldharbor as compared to Meadowbrook."
   },
   {
     "objectID": "files/lectures/3-3-two-sample-proportions.html#wrap-up",
     "href": "files/lectures/3-3-two-sample-proportions.html#wrap-up",
     "title": "Two-Sample Proportions",
     "section": "Wrap Up",
-    "text": "Wrap Up"
+    "text": "Wrap Up\n\nIndependent (two-sample) proportion data comes from two separate, unrelated groups.\n\nWe work with the difference in sample proportions, \\hat{p}_1 - \\hat{p}_2.\n\nNext: comparing two variances."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#introduction",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#introduction",
+    "title": "DependentMeans and Medians",
+    "section": "Introduction",
+    "text": "Introduction\n\nIn the last module, we reviewed statistical inference for one sample.\nIn this module, we will focus on tests for two samples.\n\nTwo-sample independent means (\\mu_1-\\mu_2)\nTwo-sample dependent means (\\mu_d)\nTwo-sample proportions (\\pi_1-\\pi_2)\nTwo-sample variances (\\sigma^2_1/\\sigma^2_2)\n\nIn this lecture: two-sample dependent means (\\mu_d)"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#introduction-1",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#introduction-1",
+    "title": "DependentMeans and Medians",
+    "section": "Introduction",
+    "text": "Introduction\n\nSo far in this module, we have focused on independent samples.\n\nTwo-sample means, independent data (\\mu_1-\\mu_2).\nTwo-sample medians, independent data (M_1-M_2).\n\nIn this lecture, we shift to dependent (paired) samples.\n\nTwo-sample means, dependent data (\\mu_d)\nTwo-sample medians, dependent data (M_d)\n\nThe data is paired because we can link the observations.\n\nThe two measurements come from the same subject."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#new-dataset",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#new-dataset",
+    "title": "DependentMeans and Medians",
+    "section": "New Dataset!",
+    "text": "New Dataset!\n\nYou’re still the ZPD’s data analyst, but Deputy Chief Okonkwo has a different kind of question for you this time.\n\nBefore now, every question asked involved comparing different groups of recruits\nNow, the questions are about the same recruits, measured twice.\n\nOkonkwo wants to know whether things are changing:\n\nDid coaching help?\nIs fitness improving?\nDid new software actually speed things up?"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#r-setup",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#r-setup",
+    "title": "DependentMeans and Medians",
+    "section": "R Setup",
+    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)\n\n\nOur new Zootopia data,\n\n\nzootopia_paired &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/2-zootopia-paired.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\nexam_score_pre\nexam_score_post\nfitness_score_intake\nfitness_score_6mo\nresponse_time_before\nresponse_time_after\n\n\n\n\nPiper Ravensmoor\n73\n80\n54\n51\n9.2\n8.0\n\n\nRufus Copperfield\n61\n70\n85\n87\n12.1\n11.7\n\n\nWilla Grimsby\n72\n74\n67\n70\n6.0\n5.3"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#why-not-independent",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#why-not-independent",
+    "title": "DependentMeans and Medians",
+    "section": "Why Not Independent?",
+    "text": "Why Not Independent?\n\nIf we run independent_means() on either the “before” column or the “after” column, we are ignoring the pairing.\nBecause the same recruit is measured twice, their two scores are correlated.\n\nA recruit who scored high the first time will likely also score high the second time.\n\nPairing lets us focus on within-subject change."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#dependent-data",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#dependent-data",
+    "title": "DependentMeans and Medians",
+    "section": "Dependent Data",
+    "text": "Dependent Data\n\nFor each subject i, we calculate one difference score:\n\nd_i = y_{i1} - y_{i2}\n\nAll of our inference is now built on this single column of differences, not the original columns.\n\ni.e., This means dependent-samples inference is really just one-sample inference (mean or median), applied to d."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#confidence-interval-for-mu_d",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#confidence-interval-for-mu_d",
+    "title": "DependentMeans and Medians",
+    "section": "Confidence Interval for \\mu_d",
+    "text": "Confidence Interval for \\mu_d\n\n(1-\\alpha)100\\% CI for a population mean difference, \\mu_d\n\n\\bar{d} \\pm t_{\\alpha/2, n-1} \\frac{s_d}{\\sqrt{n}}\n\n\\bar{d} is the mean of the differences, s_d is the standard deviation of the differences, and n is the number of pairs (not the number of raw observations).\nt has n-1 degrees of freedom (df)."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#hypothesis-test-for-mu_d",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#hypothesis-test-for-mu_d",
+    "title": "DependentMeans and Medians",
+    "section": "Hypothesis Test for \\mu_d",
+    "text": "Hypothesis Test for \\mu_d\nHypotheses\n\n\nTwo-Tailed\nH_0: \\mu_d = \\mu_0\nH_1: \\mu_d \\ne \\mu_0\n\nLeft-Tailed\nH_0: \\mu_d \\ge \\mu_0\nH_1: \\mu_d &lt; \\mu_0\n\nRight-Tailed\nH_0: \\mu_d \\le \\mu_0\nH_1: \\mu_d &gt; \\mu_0\n\n\n\\mu_d is the population mean of the differences,\n\nNote that you must specify what \\mu_d is. e.g., \\mu_1-\\mu_2\n\n\\mu_0 is the hypothesized value of that mean difference (often 0, for “no change”)."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#hypothesis-test-for-mu_d-1",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#hypothesis-test-for-mu_d-1",
+    "title": "DependentMeans and Medians",
+    "section": "Hypothesis Test for \\mu_d",
+    "text": "Hypothesis Test for \\mu_d\nTest Statistic:\n\nt_0 = \\frac{\\bar{d}-\\mu_0}{{\\dfrac{s_d}{\\sqrt{n}}}} \\sim t_{n-1}\n\n\nwhere\n\n\\bar{d} is the mean of the differences\n\\mu_0 is the hypothesized mean difference\ns_d is the sample standard deviation of the differences\nn is the number of pairs\ndf = n - 1"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#statistical-inference-on-dependent-means-r",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#statistical-inference-on-dependent-means-r",
+    "title": "DependentMeans and Medians",
+    "section": "Statistical Inference on Dependent Means (R)",
+    "text": "Statistical Inference on Dependent Means (R)\n\nWe will use the dependent_means() function from library(ssstats) to perform statistical inference.\nGeneric syntax:\n\n\n1dataset_name |&gt; dependent_means(\n2  col1 = first_measurement,\n3  col2 = second_measurement,\n4  alternative = \"two\" | \"less\" | \"greater\",\n5  mu = hypothesized_difference,\n6  alpha = alpha_level\n  )\n\n\n1\n\nPipes your dataset into dependent_means().\n\n2\n\ncol1: the first paired measurement.\n\n3\n\ncol2: the second paired measurement.\n\n4\n\nalternative: the direction of the test; default is two.\n\n5\n\nmu: the hypothesized mean difference under H_0; default is 0.\n\n6\n\nalpha: the significance level; default is 0.05.\n\n\n\n\n\nRemember that R will subtract col1 - col2."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1",
+    "title": "DependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nOkonkwo calls you in: “We started pulling recruits with low written-exam scores into a short remedial coaching session before their retake. I want proof this is worth the department’s time – did coaching actually raise their scores?”\nWe will use the zootopia_paired dataset to answer the following question:\n\nDid recruits’ exam scores improve after the coaching session?\n\nWe’ll work with exam_score_pre and exam_score_post for the same recruits."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-1",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-1",
+    "title": "DependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia_paired |&gt; dependent_means(col1 = exam_score_post,\n                                   col2 = exam_score_pre)\n\nPaired (dependent) means\n\nComplete pairs: 30\nPoint estimate: x̅[exam_score_post] − x̅[exam_score_pre] = 4.8333\nSD of differences: 1.9667\n\n95% CI for μ[exam_score_post] − μ[exam_score_pre]: (4.099, 5.5677)\n\nHypotheses:\nH₀: μ[exam_score_post] − μ[exam_score_pre] = 0\nH₁: μ[exam_score_post] − μ[exam_score_pre] ≠ 0\nTest statistic: t(29) = 13.461\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-2",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-2",
+    "title": "DependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nDid recruits’ exam scores improve after coaching?\nHow do we translate this into hypotheses?\n\nWe defined the difference as exam_score_post - exam_score_pre.\nIf coaching helped, scores went up after coaching, so the difference should be positive.\n\nHypotheses:\n\nH_0: \\mu_d \\le 0, where \\mu_d = \\mu_{\\text{post}} - \\mu_{\\text{pre}}\nH_1: \\mu_d &gt; 0\n\nFor the dependent_means() function, we will set\n\nmu = 0\nalternative = \"greater\"."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-3",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-3",
+    "title": "DependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nDid recruits’ exam scores improve after coaching?\n\n\nzootopia_paired |&gt; dependent_means(col1 = exam_score_post,\n                                   col2 = exam_score_pre,\n                                   mu = 0,\n                                   alternative = \"greater\")\n\nPaired (dependent) means\n\nComplete pairs: 30\nPoint estimate: x̅[exam_score_post] − x̅[exam_score_pre] = 4.8333\nSD of differences: 1.9667\n\n95% CI for μ[exam_score_post] − μ[exam_score_pre]: (4.099, 5.5677)\n\nHypotheses:\nH₀: μ[exam_score_post] − μ[exam_score_pre] ≤ 0\nH₁: μ[exam_score_post] − μ[exam_score_pre] &gt; 0\nTest statistic: t(29) = 13.461\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-4",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-4",
+    "title": "DependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nHypotheses\n\nH_0: \\mu_d \\le 0, where \\mu_d = \\mu_{\\text{post}} - \\mu_{\\text{pre}}\nH_1: \\mu_d &gt; 0\n\nTest Statistic and p-Value\n\nt_0 = 13.461\np &lt; 0.001\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nReject H_0. There is sufficient evidence to suggest that the exam scores improved after coaching."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2",
+    "title": "DependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nOkonkwo again: “Recruits go through a fitness assessment when they start, and we test them again at the 6-month mark. Command wants to know – overall, is fitness actually changing over those six months, or are we just imagining a trend?”\nWe will use the zootopia_paired dataset to answer the following question:\n\nDoes recruit fitness change between intake and the 6-month mark?\n\nWe’ll work with fitness_score_intake and fitness_score_6mo."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-1",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-1",
+    "title": "DependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nPoint and interval estimates:\n\n\nzootopia_paired |&gt; dependent_means(col1 = fitness_score_6mo,\n                                   col2 = fitness_score_intake)\n\nPaired (dependent) means\n\nComplete pairs: 30\nPoint estimate: x̅[fitness_score_6mo] − x̅[fitness_score_intake] = 0.5333\nSD of differences: 4.1749\n\n95% CI for μ[fitness_score_6mo] − μ[fitness_score_intake]: (-1.0256, 2.0923)\n\nHypotheses:\nH₀: μ[fitness_score_6mo] − μ[fitness_score_intake] = 0\nH₁: μ[fitness_score_6mo] − μ[fitness_score_intake] ≠ 0\nTest statistic: t(29) = 0.7\np-value: 0.490\nConclusion: Fail to reject the null hypothesis (p = 0.490 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-2",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-2",
+    "title": "DependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nDoes recruit fitness change between intake and the 6-month mark?\nHow do we translate this into hypotheses?\n\nNo direction or hypothesized value indicated.\n\nHypotheses:\n\nH_0: \\mu_d = 0, where \\mu_d = \\mu_{\\text{6 mo}} - \\mu_{\\text{intake}}\nH_1: \\mu_d \\ne 0\n\nFor the dependent_means() function, we will set\n\nmu = 0\nalternative = \"two\"."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-3",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-3",
+    "title": "DependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nDoes recruit fitness change between intake and the 6-month mark?\n\n\nzootopia_paired |&gt; dependent_means(col1 = fitness_score_6mo,\n                                   col2 = fitness_score_intake,\n                                   mu = 0,\n                                   alternative = \"two\")\n\nPaired (dependent) means\n\nComplete pairs: 30\nPoint estimate: x̅[fitness_score_6mo] − x̅[fitness_score_intake] = 0.5333\nSD of differences: 4.1749\n\n95% CI for μ[fitness_score_6mo] − μ[fitness_score_intake]: (-1.0256, 2.0923)\n\nHypotheses:\nH₀: μ[fitness_score_6mo] − μ[fitness_score_intake] = 0\nH₁: μ[fitness_score_6mo] − μ[fitness_score_intake] ≠ 0\nTest statistic: t(29) = 0.7\np-value: 0.490\nConclusion: Fail to reject the null hypothesis (p = 0.490 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-4",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-4",
+    "title": "DependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nHypotheses\n\nH_0: \\mu_d = 0, where \\mu_d = \\mu_{\\text{6 mo}} - \\mu_{\\text{intake}}\nH_1: \\mu_d \\ne 0\n\nTest Statistic and p-Value\n\nt_0 = 0.70\np = 0.490\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that there is a change in fitness score within the first 6 months."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#assumption-on-paired-t",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#assumption-on-paired-t",
+    "title": "DependentMeans and Medians",
+    "section": "Assumption on Paired t",
+    "text": "Assumption on Paired t\n\nJust like the one-sample case, we assume the differences have an approximate mound-shaped, symmetric distribution.\n\nd_1, d_2, \\ldots, d_n \\sim N(\\mu_d, \\sigma_d^2)\n\nNotice this assumption is about d, the differences, not about col1 and col2 individually.\n\nThe original two columns can each look however they look; it’s the differences that need to be approximately normal.\n\nWe will use a quantile-quantile (Q-Q) plot to check this, plus a histogram of the differences."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#checking-normality-r",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#checking-normality-r",
+    "title": "DependentMeans and Medians",
+    "section": "Checking Normality (R)",
+    "text": "Checking Normality (R)\n\nWe will use the dependent_qq() function from library(ssstats) to assess normality.\n\n\ndataset_name |&gt; dependent_qq(col1 = first_measurement,\n                             col2 = second_measurement)\n\n\nThis produces one Q-Q plot and one histogram for the difference (d_i)."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-5",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-5",
+    "title": "DependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nLet’s check the normality assumption for the exam score differences.\n\n\nzootopia_paired |&gt; dependent_qq(col1 = exam_score_pre,\n                                col2 = exam_score_post)"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-5",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-5",
+    "title": "DependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nLet’s check the normality assumption for the fitness score differences.\n\n\nzootopia_paired |&gt; dependent_qq(col1 = fitness_score_intake,\n                                col2 = fitness_score_6mo)"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#confidence-interval-for-m_d",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#confidence-interval-for-m_d",
+    "title": "DependentMeans and Medians",
+    "section": "Confidence Interval for M_d",
+    "text": "Confidence Interval for M_d\n\nJust like the independent-samples case, the CI for a median difference is built from ranks.\nInstead of pairwise differences between two groups, we now work with averages of pairs of differences within the same set of d_i’s.\n\nFor every pair of differences d_i and d_j, compute the Welsh average,\n\n\n\\dfrac{d_i + d_j}{2}\n\nThe median of these averages is the Hodges-Lehmann estimate of the median difference.\nThe CI is then found by ranking the Walsh averages and selecting upper and lower bounds."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#ranking-paired-data",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#ranking-paired-data",
+    "title": "DependentMeans and Medians",
+    "section": "Ranking Paired Data",
+    "text": "Ranking Paired Data\n\nThe differences are ranked based on the absolute value of the difference.\nThen, ranks can be identified as “positive” or “negative” based on the original direction of the difference.\n\n\n\n\nX\nY\nD\n|D|\nRank\n\n\n\n\n5\n8\n-3\n3\n- 1.5\n\n\n8\n5\n3\n3\n+ 1.5\n\n\n4\n4\n0\n0\n———"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#hypothesis-test-for-m_d",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#hypothesis-test-for-m_d",
+    "title": "DependentMeans and Medians",
+    "section": "Hypothesis Test for M_d",
+    "text": "Hypothesis Test for M_d\nHypotheses\n\n\nTwo-Tailed\nH_0: M_d = M_0\nH_1: M_d \\ne M_0\n\nLeft-Tailed\nH_0: M_d \\ge M_0\nH_1: M_d &lt; M_0\n\nRight-Tailed\nH_0: M_d \\le M_0\nH_1: M_d &gt; M_0\n\n\nM_d is the population median of the differences,\n\nNote that you must specify what M_d is. e.g., M_1-M_2\n\nM_0 is the hypothesized median difference (often 0)."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#hypothesis-test-for-m_d-1",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#hypothesis-test-for-m_d-1",
+    "title": "DependentMeans and Medians",
+    "section": "Hypothesis Test for M_d",
+    "text": "Hypothesis Test for M_d\nTest Statistic\n\nT_0 =\n\\begin{cases}\n  R_+ = \\text{sum of positive ranks} & \\text{if left-tailed} \\\\\n  R_- = \\text{sum of negative ranks} & \\text{if right-tailed} \\\\\n  \\min(R_+, R_-) & \\text{if two-tailed}\n\\end{cases}"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#statistical-inference-on-dependent-medians-r",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#statistical-inference-on-dependent-medians-r",
+    "title": "DependentMeans and Medians",
+    "section": "Statistical Inference on Dependent Medians (R)",
+    "text": "Statistical Inference on Dependent Medians (R)\n\nWe will use the dependent_medians() function from library(ssstats) to perform statistical inference.\nGeneric syntax:\n\n\n1dataset_name |&gt; dependent_medians(\n2  col1 = first_measurement,\n3  col2 = second_measurement,\n4  alternative = \"two\" | \"less\" | \"greater\",\n5  m = hypothesized_difference,\n6  alpha = alpha_level\n  )\n\n\n1\n\nPipes your dataset into dependent_medians().\n\n2\n\ncol1: the first paired measurement.\n\n3\n\ncol2: the second paired measurement. The function calculates col1 - col2, so order matters.\n\n4\n\nalternative: the direction of the test; default is two.\n\n5\n\nm: the hypothesized median difference under H_0; default is 0.\n\n6\n\nalpha: the significance level; default is 0.05."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-6",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-6",
+    "title": "DependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nRecall the research question:\n\nDid recruits’ exam scores improve after coaching?\n\nHypotheses:\n\nH_0: M_d \\le 0, where M_d = M_{\\text{post}} - M_{\\text{pre}}\nH_1: M_d &gt; 0\n\nFor the dependent_medians() function, we will set\n\nmu = 0\nalternative = \"greater\"."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-7",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-7",
+    "title": "DependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nzootopia_paired |&gt; dependent_medians(col1 = exam_score_post,\n                                     col2 = exam_score_pre,\n                                     alternative = \"greater\")\n\nPaired (dependent) medians\n\nComplete pairs: 30\nEffective pairs (non-zero differences): 30\n\nM[exam_score_post] = 74\nM[exam_score_pre] = 69.5\nHodges-Lehmann estimate of median difference: 5\n\n95% CI for M[exam_score_post] − M[exam_score_pre]: (4, 5.5)\n\nHypotheses:\nH₀: M[exam_score_post] − M[exam_score_pre] ≤ 0\nH₁: M[exam_score_post] − M[exam_score_pre] &gt; 0\nTest statistic: T = 465\np-value: &lt; 0.001\nConclusion: Reject the null hypothesis (p = &lt; 0.001 &lt; α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-8",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-1-8",
+    "title": "DependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nHypotheses\n\nH_0: M_d \\le 0, where M_d = M_{\\text{post}} - M_{\\text{pre}}\nH_1: M_d &gt; 0\n\nTest Statistic and p-Value\n\nT_0 = 465\np &lt; 0.001\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nReject H_0. There is sufficient evidence to suggest that the exam scores improved after coaching."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-6",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-6",
+    "title": "DependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nRecall: the fitness score differences looked questionable on the Q-Q plot – some recruits improved, some plateaued, some backslid.\n\nThis is exactly the situation where we don’t want to lean on a mean-based test.\n\nHow do we translate the question into hypotheses this time?\n\nH_0: M_d = 0\nH_1: M_d \\ne 0\n\nFor the dependent_medians() function, we will set\n\nm = 0\nalternative = \"two\"."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-7",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-7",
+    "title": "DependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nRecall the research question:\n\nDoes recruit fitness change between intake and the 6-month mark?\n\n\n\nzootopia_paired |&gt; dependent_medians(col1 = fitness_score_6mo,\n                                     col2 = fitness_score_intake)\n\nPaired (dependent) medians\n\nComplete pairs: 30\nEffective pairs (non-zero differences): 28\n\nM[fitness_score_6mo] = 70\nM[fitness_score_intake] = 71\nHodges-Lehmann estimate of median difference: 1\n\n95% CI for M[fitness_score_6mo] − M[fitness_score_intake]: (-1, 2.5)\n\nHypotheses:\nH₀: M[fitness_score_6mo] − M[fitness_score_intake] = 0\nH₁: M[fitness_score_6mo] − M[fitness_score_intake] ≠ 0\nTest statistic: T = 272\np-value: 0.406\nConclusion: Fail to reject the null hypothesis (p = 0.406 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-revisited",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#example-2-revisited",
+    "title": "DependentMeans and Medians",
+    "section": "Example 2 (Revisited)",
+    "text": "Example 2 (Revisited)\n\nHypotheses\n\nH_0: M_d = 0\nH_1: M_d \\ne 0\n\nTest Statistic and p-Value\n\nT_0 = 272\np = 0.406\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that fitness changes between intake and their 6 month check in."
+  },
+  {
+    "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#wrap-up",
+    "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#wrap-up",
+    "title": "DependentMeans and Medians",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\nDependent (paired) data comes from the same subject measured twice.\n\nWe always work with the differences, d_i = \\text{col1}_i - \\text{col2}_i.\n\nThe analysis you choose should match the shape of the differences:\n\nIf the differences meet normality (dependent_means()):\n\nInterval estimate: CI for \\mu_d\nPaired t-test for \\mu_d\n\nIf the differences do not meet normality (dependent_medians()):\n\nInterval estimate: CI for M_d (built from Walsh averages)\nWilcoxon signed-rank test for M_d"
   },
   {
     "objectID": "files/syllabus.html",
@@ -807,128 +1185,226 @@
   {
     "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#introduction",
     "href": "files/lectures/3-1-two-sample-mean-median-independent.html#introduction",
-    "title": "Two-Sample Means and Medians",
+    "title": "IndependentMeans and Medians",
     "section": "Introduction",
-    "text": "Introduction"
+    "text": "Introduction\n\nIn the last module, we reviewed statistical inference for one sample.\nIn this module, we will focus on tests for two samples.\n\nTwo-sample independent means (\\mu_1-\\mu_2)\nTwo-sample dependent means (\\mu_d)\nTwo-sample proportions (\\pi_1-\\pi_2)\nTwo-sample variances (\\sigma^2_1/\\sigma^2_2)\n\nIn this lecture: two-sample independent means (\\mu_1-\\mu_2)"
   },
   {
     "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#r-setup",
     "href": "files/lectures/3-1-two-sample-mean-median-independent.html#r-setup",
-    "title": "Two-Sample Means and Medians",
+    "title": "IndependentMeans and Medians",
     "section": "R Setup",
-    "text": "R Setup"
+    "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)\n\n\nRecall our Zootopia data,\n\n\nzootopia &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/1-zootopia.csv\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nresident_name\ndepartment\ndistrict\nacademy_status\nacademy_exam_score\nsleep_hours\nhustle_earnings\ndistrict_temp_f\n\n\n\n\nSable Jones\nDesk\nRainforest District\nFail\n65\n5.5\n14.72\n72.2\n\n\nKevin Frostwhisker\nPatrol\nDowntown\nFail\n69\n7.4\n45.66\n66.2\n\n\nJasper Duskrunner\nPatrol\nSahara Square\nPass\n79\n8.7\n30.91\n89.8"
   },
   {
     "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#confidence-interval-for-mu_1-mu_2",
     "href": "files/lectures/3-1-two-sample-mean-median-independent.html#confidence-interval-for-mu_1-mu_2",
-    "title": "Two-Sample Means and Medians",
+    "title": "IndependentMeans and Medians",
     "section": "Confidence Interval for \\mu_1-\\mu_2",
     "text": "Confidence Interval for \\mu_1-\\mu_2\n\n(1–\\alpha)100% CI for a population mean, \\mu_1-\\mu_2\n\n\\bar{y} \\pm t_{\\alpha/2, n-1} \\frac{s}{\\sqrt{n}}\n\nt has n-1 degrees of freedom (df)."
   },
   {
     "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-mu_1-mu_2",
     "href": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-mu_1-mu_2",
-    "title": "Two-Sample Means and Medians",
+    "title": "IndependentMeans and Medians",
     "section": "Hypothesis Test for \\mu_1-\\mu_2",
-    "text": "Hypothesis Test for \\mu_1-\\mu_2"
+    "text": "Hypothesis Test for \\mu_1-\\mu_2\nHypotheses\n\n\nTwo-Tailed\nH_0: \\mu_1-\\mu_2 = \\mu_0\nH_1: \\mu_1 - \\mu_2 \\ne \\mu_0\n\nLeft-Tailed\nH_0: \\mu_1-\\mu_2 \\ge \\mu_0\nH_1: \\mu_1-\\mu_2 &lt; \\mu_0\n\nRight-Tailed\nH_0: \\mu_1-\\mu_2 \\le \\mu_0\nH_1: \\mu_1-\\mu_2 &gt; \\mu_0\n\n\n\\mu_i is the population mean for group i,\n\\mu_0 is the hypothesized difference between the groups"
   },
   {
-    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-one-mean-r",
-    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-one-mean-r",
-    "title": "Two-Sample Means and Medians",
-    "section": "Statistical Inference on One Mean (R)",
-    "text": "Statistical Inference on One Mean (R)"
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-mu_1-mu_2-1",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-mu_1-mu_2-1",
+    "title": "IndependentMeans and Medians",
+    "section": "Hypothesis Test for \\mu_1-\\mu_2",
+    "text": "Hypothesis Test for \\mu_1-\\mu_2\nTest Statistic:\n\nt_0 = \\frac{(\\bar{x}_1-\\bar{x}_2)-\\mu_0}{{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s^2_2}{n_2}}}} \\sim t_{\\text{df}}\n\n\nwhere\n\n\\bar{x}_i is the mean for group i\n\\mu_0 is the hypothesized difference\ns_i^2 is the sample variance for group i\nn_i is the sample size of group i\n\n\\text{df} = \\text{min}(n_1-1, n_2-1)"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-two-means-r",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-two-means-r",
+    "title": "IndependentMeans and Medians",
+    "section": "Statistical Inference on Two Means (R)",
+    "text": "Statistical Inference on Two Means (R)\n\nWe will use the independent_means function from library(ssstats) to perform statistical inference.\nGeneric syntax:\n\n\n1dataset_name |&gt; independent_means(\n2  outcome = outcome_variable,\n3  grouping = grouping_variable,\n4  alternative = \"two\" | \"less\" | \"greater\",\n5  mu = hypothesized_difference,\n6  alpha = alpha_level\n  ) \n\n\n1\n\nPipes your dataset into independent_means().\n\n2\n\noutcome: the continuous variable you want to compare between the two groups.\n\n3\n\ngrouping: the categorical variable that splits your data into the two groups being compared.\n\n4\n\nalternative: the direction of the test; default is two.\n\n5\n\nmu: the hypothesized difference between the two groups under H_0; default is 0.\n\n6\n\nalpha: the significance level; default is 0.05."
   },
   {
     "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1",
     "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1",
-    "title": "Two-Sample Means and Medians",
+    "title": "IndependentMeans and Medians",
     "section": "Example 1",
-    "text": "Example 1"
-  },
-  {
-    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2",
-    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2",
-    "title": "Two-Sample Means and Medians",
-    "section": "Example 2",
-    "text": "Example 2"
-  },
-  {
-    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#assumptions-on-two-sample-t",
-    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#assumptions-on-two-sample-t",
-    "title": "Two-Sample Means and Medians",
-    "section": "Assumptions on Two-Sample t",
-    "text": "Assumptions on Two-Sample t"
-  },
-  {
-    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#checking-normality-r",
-    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#checking-normality-r",
-    "title": "Two-Sample Means and Medians",
-    "section": "Checking Normality (R)",
-    "text": "Checking Normality (R)"
+    "text": "Example 1\n\nOkonkwo pings you on your first morning back from vacation: “Patrol runs early shifts while Desk runs later ones and I keep hearing officers gripe about who’s more rested. Tell me if there’s actually a difference in how much sleep our two groups are getting.”\nWe will use the zootopia dataset to answer the following question:\n\nIs there a difference in average nightly sleep between Patrol and Desk officers?\n\nFirst, we need to describe the data.\n\nWe start with point and interval estimates.\n\nThen, we will perform a hypothesis test to answer the question."
   },
   {
     "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-1",
     "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-1",
-    "title": "Two-Sample Means and Medians",
+    "title": "IndependentMeans and Medians",
     "section": "Example 1",
-    "text": "Example 1"
+    "text": "Example 1\n\nPoint and interval estimates:\n\n\nzootopia |&gt; independent_means(outcome = sleep_hours,\n                              grouping = department)\n\nIndependent means (Welch's t-test)\n\nx̅[Desk] = 6.2667\nx̅[Patrol] = 7.1444\nPoint estimate: x̅[Desk] − x̅[Patrol] = -0.8777\n\n95% CI for μ[Desk] − μ[Patrol]: (-1.9269, 0.1713)\n\nHypotheses:\nH₀: μ[Desk] − μ[Patrol] = 0\nH₁: μ[Desk] − μ[Patrol] ≠ 0\nTest statistic: t(21.52) = -1.737\np-value: 0.097\nConclusion: Fail to reject the null hypothesis (p = 0.097 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-2",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-2",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs there a difference in average nightly sleep between Patrol and Desk officers?\n\nHow do we translate this into hypotheses?\n\nH_0: \\mu_{\\text{Patrol}} = \\mu_{\\text{Desk}}\nH_1: \\mu_{\\text{Patrol}} \\ne \\mu_{\\text{Desk}}\n\nFor the independent_means() function, we will set\n\nmu = 0\nalternative = \"two\"."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-3",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-3",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nIs there a difference in average nightly sleep between Patrol and Desk officers?\n\n\nzootopia |&gt; independent_means(outcome = sleep_hours,\n                              grouping = department,\n                              mu = 0,\n                              alternative = \"two\")\n\nIndependent means (Welch's t-test)\n\nx̅[Desk] = 6.2667\nx̅[Patrol] = 7.1444\nPoint estimate: x̅[Desk] − x̅[Patrol] = -0.8777\n\n95% CI for μ[Desk] − μ[Patrol]: (-1.9269, 0.1713)\n\nHypotheses:\nH₀: μ[Desk] − μ[Patrol] = 0\nH₁: μ[Desk] − μ[Patrol] ≠ 0\nTest statistic: t(21.52) = -1.737\np-value: 0.097\nConclusion: Fail to reject the null hypothesis (p = 0.097 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-4",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-4",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nHypotheses\n\nH_0: \\mu_{\\text{Desk}} = \\mu_{\\text{Patrol}}\nH_1: \\mu_{\\text{Desk}} \\ne \\mu_{\\text{Patrol}}\n\nTest Statistic and p-Value\n\nt_0 = -1.737\np = 0.097\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that average sleep differs between Patrol and Desk officers."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nOkonkwo’s back with another one: “Word around the precinct is that Patrol officers have more access to the public, so it’s naturally easier to run their side hustles. Let’s see what the data says – do Patrol officers earn more than Desk officers?”\nWe will use the zootopia dataset to answer the following question:\n\nDo patrol officers earn more than desk officers?\n\nFirst, we need to describe the data.\n\nWe start with point and interval estimates.\n\nThen, we will perform a hypothesis test to answer the question."
   },
   {
     "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-1",
     "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-1",
-    "title": "Two-Sample Means and Medians",
+    "title": "IndependentMeans and Medians",
     "section": "Example 2",
-    "text": "Example 2"
-  },
-  {
-    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#nonparametric-alternatives",
-    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#nonparametric-alternatives",
-    "title": "Two-Sample Means and Medians",
-    "section": "Nonparametric Alternatives",
-    "text": "Nonparametric Alternatives"
-  },
-  {
-    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#confidence-interval-for-m_1-m_2",
-    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#confidence-interval-for-m_1-m_2",
-    "title": "Two-Sample Means and Medians",
-    "section": "Confidence Interval for M_1-M_2",
-    "text": "Confidence Interval for M_1-M_2"
-  },
-  {
-    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-m_1-m_2",
-    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-m_1-m_2",
-    "title": "Two-Sample Means and Medians",
-    "section": "Hypothesis Test for M_1-M_2",
-    "text": "Hypothesis Test for M_1-M_2"
-  },
-  {
-    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-two-medians-r",
-    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-two-medians-r",
-    "title": "Two-Sample Means and Medians",
-    "section": "Statistical Inference on Two Medians (R)",
-    "text": "Statistical Inference on Two Medians (R)"
+    "text": "Example 2\n\nPoint and interval estimates:\n\n\nzootopia |&gt; independent_means(outcome = hustle_earnings,\n                              grouping = department)\n\nIndependent means (Welch's t-test)\n\nx̅[Desk] = 31.6483\nx̅[Patrol] = 40.0883\nPoint estimate: x̅[Desk] − x̅[Patrol] = -8.44\n\n95% CI for μ[Desk] − μ[Patrol]: (-27.8211, 10.9411)\n\nHypotheses:\nH₀: μ[Desk] − μ[Patrol] = 0\nH₁: μ[Desk] − μ[Patrol] ≠ 0\nTest statistic: t(17.45) = -0.917\np-value: 0.372\nConclusion: Fail to reject the null hypothesis (p = 0.372 ≥ α = 0.050)"
   },
   {
     "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-2",
     "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-2",
-    "title": "Two-Sample Means and Medians",
+    "title": "IndependentMeans and Medians",
     "section": "Example 2",
-    "text": "Example 2"
+    "text": "Example 2\n\nThen, we will perform a hypothesis test to answer the question.\n\nDo patrol officers earn more than desk officers?\n\nHow do we translate this into hypotheses?\n\nH_0: \\mu_{\\text{Desk}} \\ge \\mu_{\\text{Patrol}}\nH_1: \\mu_{\\text{Desk}} &lt; \\mu_{\\text{Patrol}}\n\nFor the independent_means() function, we will set\n\nmu = 0\nalternative = \"greater\"."
   },
   {
-    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-3",
-    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-3",
-    "title": "Two-Sample Means and Medians",
-    "section": "Example 3",
-    "text": "Example 3"
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-3",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-3",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nDo patrol officers earn more than desk officers?\n\n\nzootopia |&gt; independent_means(outcome = hustle_earnings,\n                              grouping = department,\n                              mu = 0,\n                              alternative = \"less\")\n\nIndependent means (Welch's t-test)\n\nx̅[Desk] = 31.6483\nx̅[Patrol] = 40.0883\nPoint estimate: x̅[Desk] − x̅[Patrol] = -8.44\n\n95% CI for μ[Desk] − μ[Patrol]: (-27.8211, 10.9411)\n\nHypotheses:\nH₀: μ[Desk] − μ[Patrol] ≥ 0\nH₁: μ[Desk] − μ[Patrol] &lt; 0\nTest statistic: t(17.45) = -0.917\np-value: 0.186\nConclusion: Fail to reject the null hypothesis (p = 0.186 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-4",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-4",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nHypotheses\n\nH_0: \\mu_{\\text{Desk}} \\ge \\mu_{\\text{Patrol}}\nH_1: \\mu_{\\text{Desk}} &lt; \\mu_{\\text{Patrol}}\n\nTest Statistic and p-Value\n\nt_0 = -0.917\np = 0.186\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that patrol officers earn more in side hustles than desk officers."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#assumption-on-two-sample-t",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#assumption-on-two-sample-t",
+    "title": "IndependentMeans and Medians",
+    "section": "Assumption on Two-Sample t",
+    "text": "Assumption on Two-Sample t\n\nWe assume that the data has an approximate mound-shaped and symmetric distribution.\n\ny_{11}, y_{12}, \\ldots, y_{1n_1} \\sim N(\\mu_1, \\sigma_1^2) y_{21}, y_{22}, \\ldots, y_{2n_2} \\sim N(\\mu_2, \\sigma_2^2)\n\nWe will use a quantile-quantile plot (Q-Q plot) to check the assumption of normality.\n\nWe will also eyeball a histogram to further check the assumption of normality."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#checking-normality-r",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#checking-normality-r",
+    "title": "IndependentMeans and Medians",
+    "section": "Checking Normality (R)",
+    "text": "Checking Normality (R)\n\nWe will use the independent_qq() function from library(ssstats) to assess normality.\n\n\ndataset_name |&gt; independent_qq(continuous = continuous_variable,\n                               grouping = grouping_variable)\n\n\nThis will provide the the Q-Q plots and the histograms for the two independent groups under consideration."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#a-note-about-homoskedasticity",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#a-note-about-homoskedasticity",
+    "title": "IndependentMeans and Medians",
+    "section": "A Note About Homoskedasticity",
+    "text": "A Note About Homoskedasticity\n\nRecall the assumptions,\n\ny_{11}, y_{12}, \\ldots, y_{1n_1} \\sim N(\\mu_1, \\sigma_1^2) y_{21}, y_{22}, \\ldots, y_{2n_2} \\sim N(\\mu_2, \\sigma_2^2)\n\nNote that we are not assuming \\sigma_1^2 = \\sigma_2^2.\n\nThe independent_means() function assumes \\sigma_1^2 \\ne \\sigma_2^2."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-5",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-5",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nLet’s check the normality assumption for the sleep data.\n\n\nzootopia |&gt; independent_qq(outcome = sleep_hours,\n                           grouping = department)"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-5",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-5",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nLet’s check the normality assumption for the side hustle earnings data.\n\n\nzootopia |&gt; independent_qq(outcome = hustle_earnings,\n                           grouping = department)"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#confidence-interval-for-m_1-m_2",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#confidence-interval-for-m_1-m_2",
+    "title": "IndependentMeans and Medians",
+    "section": "Confidence Interval for M_1-M_2",
+    "text": "Confidence Interval for M_1-M_2\n\nThe confidence interval is built on every possible pairwise difference between the two groups.\n\nWe examine the n_1 \\times n_2 differences between the observations.\n\ni.e., We take each observation in Group 1 and subtract each observation in Group 2.\n\n\nThe median of that pool of differences is the Hodges–Lehmann estimate.\n\nIt estimates the typical shift between the two groups.\n\nThe CI is then found by\n\nranking that entire pool of n_1 \\times n_2 differences from smallest to largest,\nthen we pick two values from that ranked list as the lower and upper bounds."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-m_1-m_2",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-m_1-m_2",
+    "title": "IndependentMeans and Medians",
+    "section": "Hypothesis Test for M_1-M_2",
+    "text": "Hypothesis Test for M_1-M_2\nHypotheses\n\n\nTwo-Tailed\nH_0: M_1 - M_2 = M_0\nH_1: M_1 - M_2 \\ne M_0\n\nLeft-Tailed\nH_0: M_1 - M_2 \\ge M_0\nH_1: M_1 - M_2 &lt; M_0\n\nRight-Tailed\nH_0: M_1 - M_2 \\le M_0\nH_1: M_1 - M_2 &gt; M_0\n\n\nM_i is the population median for group i, and\nM_0 is the hypothesized difference between the groups"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-m_1-m_2-1",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#hypothesis-test-for-m_1-m_2-1",
+    "title": "IndependentMeans and Medians",
+    "section": "Hypothesis Test for M_1-M_2",
+    "text": "Hypothesis Test for M_1-M_2\nTest Statistic\n\nT_0 = \\sum R_{\\text{1}} - \\frac{n_1(n_1+1)}{2}\n\n\nwhere\n\n\\sum R_1 is the sum of the ranks for the first group\nn_1 is the sample size of the first group"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-two-medians-r",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#statistical-inference-on-two-medians-r",
+    "title": "IndependentMeans and Medians",
+    "section": "Statistical Inference on Two Medians (R)",
+    "text": "Statistical Inference on Two Medians (R)\n\nWe will use the independent_medians function from library(ssstats) to perform statistical inference.\nGeneric syntax:\n\n\n1dataset_name |&gt; independent_medians(\n2  outcome = outcome_variable,\n3  grouping = grouping_variable,\n4  alternative = \"two\" | \"less\" | \"greater\",\n5  m = hypothesized_difference,\n6  alpha = alpha_level\n  ) \n\n\n1\n\nPipes your dataset into independent_medians().\n\n2\n\noutcome: the continuous variable you want to compare between the two groups.\n\n3\n\ngrouping: the categorical variable that splits your data into the two groups being compared.\n\n4\n\nalternative: the direction of the test; default is two.\n\n5\n\nm: the hypothesized difference between the two groups under H_0; default is 0.\n\n6\n\nalpha: the significance level; default is 0.05."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-6",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-6",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nThen, we will perform a hypothesis test to answer the question.\n\nIs there a difference in average (median) nightly sleep between Patrol and Desk officers?\n\nHow do we translate this into hypotheses?\n\nH_0: M_{\\text{Patrol}} = M_{\\text{Desk}}\nH_1: M_{\\text{Patrol}} \\ne M_{\\text{Desk}}\n\nFor the independent_medians() function, we will set\n\nm = 0\nalternative = \"two\"."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-7",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-7",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nzootopia |&gt; independent_medians(outcome = sleep_hours,\n                                grouping = department)\n\nIndependent medians\n\nM[Desk] = 6.45\nM[Patrol] = 7.35\nHodges-Lehmann estimate of median difference: -0.7\n\n95% CI for M[Desk] − M[Patrol]: (-1.7, 0.1)\n\nHypotheses:\nH₀: M[Desk] − M[Patrol] = 0\nH₁: M[Desk] − M[Patrol] ≠ 0\nTest statistic: W = 68\np-value: 0.092\nConclusion: Fail to reject the null hypothesis (p = 0.092 ≥ α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-8",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-1-8",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 1",
+    "text": "Example 1\n\nHypotheses\n\nH_0: M_{\\text{Desk}} = M_{\\text{Patrol}}\nH_1: M_{\\text{Desk}} \\ne M_{\\text{Patrol}}\n\nTest Statistic and p-Value\n\nT_0 = 68\np = 0.092\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that median sleep differs between Patrol and Desk officers."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-6",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-6",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nThen, we will perform a hypothesis test to answer the question.\n\nDo patrol officers earn more than desk officers?\n\nHow do we translate this into hypotheses?\n\nH_0: M_{\\text{Desk}} \\ge M_{\\text{Patrol}}\nH_1: M_{\\text{Desk}} &lt; M_{\\text{Patrol}}\n\nFor the independent_means() function, we will set\n\nmu = 0\nalternative = \"greater\"."
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-7",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-7",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nzootopia |&gt; independent_medians(outcome = hustle_earnings,\n                              grouping = department, alternative = \"less\")\n\nIndependent medians\n\nM[Desk] = 22.265\nM[Patrol] = 34.17\nHodges-Lehmann estimate of median difference: -11.695\n\n95% CI for M[Desk] − M[Patrol]: (-23.54, 0.7)\n\nHypotheses:\nH₀: M[Desk] − M[Patrol] ≥ 0\nH₁: M[Desk] − M[Patrol] &lt; 0\nTest statistic: W = 63\np-value: 0.029\nConclusion: Reject the null hypothesis (p = 0.029 &lt; α = 0.050)"
+  },
+  {
+    "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-8",
+    "href": "files/lectures/3-1-two-sample-mean-median-independent.html#example-2-8",
+    "title": "IndependentMeans and Medians",
+    "section": "Example 2",
+    "text": "Example 2\n\nHypotheses\n\nH_0: M_{\\text{Desk}} \\ge M_{\\text{Patrol}}\nH_1: M_{\\text{Desk}} &lt; M_{\\text{Patrol}}\n\nTest Statistic and p-Value\n\nT_0 = 63\np = 0.029\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nReject H_0. There is sufficient evidence to suggest that median side hustle earnings are greater among those on patrol."
   },
   {
     "objectID": "files/lectures/3-1-two-sample-mean-median-independent.html#wrap-up",
     "href": "files/lectures/3-1-two-sample-mean-median-independent.html#wrap-up",
-    "title": "Two-Sample Means and Medians",
+    "title": "IndependentMeans and Medians",
     "section": "Wrap Up",
-    "text": "Wrap Up"
+    "text": "Wrap Up\n\nUsing a t-test to examine the difference between two independent means (\\mu_1-\\mu_2) requires normality.\n\nWe check normality with a quantile-quantile plot (independent_qq()).\n\nThe analysis you choose should match the needed method:\n\nIf we meet normality (independent_means()):\n\nInterval estimate: CI for \\mu_1-\\mu_2\nOne-sample t-test for \\mu_1-\\mu_2\n\nIf we do not meet normality (independent_medians()):\n\nInterval estimate: CI for M_1-M_2\nOne-sample sign test for M_1-M_2"
   },
   {
     "objectID": "files/lectures/1-3-continuous-data.html#introduction",
