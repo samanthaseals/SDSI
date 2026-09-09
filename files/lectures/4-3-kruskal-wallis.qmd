@@ -1,0 +1,199 @@
+---
+title: "Kruskal-Wallis"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+    code-annotations: hover
+editor: source
+---
+
+## Introduction
+
+- Previous: one sample, two samples
+
+- Now: more than two groups, continuous outcome
+
+    - One-way ANOVA
+
+    - Kruskal-Wallis
+
+    - posthoc testing
+    
+- This lecture: Kruskal-Wallis (nonparametric alternative)    
+
+## `R` Setup 
+
+```{r}
+library(tidyverse)
+library(ssstats)
+commute_times <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-2-commute_times.csv")
+citations <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-4-citations.csv")
+academy_scores <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-1-academy_scores.csv")
+```
+
+## Example 2
+
+- Do assessment scores differ across the three training academies (Meadowbrook, Coldharbor, and Northgate)?
+
+```{r}
+academy_scores |> anovas(outcome = score,
+                         grouping = academy)
+```
+
+## Example 2
+
+- Do assessment scores differ across the three training academies (Meadowbrook, Coldharbor, and Northgate)?
+
+```{r}
+#| fig-align: 'center'
+#| echo: false
+academy_scores |> anova_check(outcome = score, grouping = academy)
+```
+
+
+## Kruskal-Wallis
+
+- If we break *either* ANOVA assumption, we should implement the nonparametric version, the Kruskal-Wallis.
+
+    - The Kruskal-Wallis is an extension of the Wilcoxon rank sum (as ANOVA is an extension of the two-sample *t*-test).
+
+- The Kruskal-Wallis test determines if $k$ independent samples come from populations with the same distribution. 
+
+- Note: we can transform the data to make the variance "behave"
+
+    - Box-Cox, or power, transformation
+
+
+## Hypothesis Test for $M_1 = M_2 = ... = M_k$
+
+- **Hypotheses**
+
+    - $H_0: M_1 = ... = M_k$
+    - $H_1:$ at least one $M_i$ is different
+
+## Hypothesis Testing: Kruskal-Wallis
+
+- **Test Statistic**
+
+$$\chi^2_0 = \frac{12}{n(n+1)} \sum_{i=1}^k \frac{R_i^2}{n_i} - 3(n+1)  \sim \chi^2_{\text{df}}$$ 
+
+- where
+    
+    - $R_i$ is the sum of the ranks for group $i$,
+    - $n_i$ is the sample size for group $i$,
+    - $n = \sum_{i=1}^k n_i$ = total sample size,
+    - $k$ is the number of groups, and
+    - $\text{df} = k-1$
+
+## Statistical Inference on $k$ Medians (`R`)
+
+- We will use the `kruskal_wallis()` function from `library(ssstats)` to perform the Kruskal-Wallis test.
+
+```{r}
+#| eval: false
+dataset_name |> kruskal_wallis(outcome = continuous_variable,
+                               grouping = grouping_variable,
+                               alpha = specified_alpha)
+```
+
+## Example 2
+
+```{r}
+academy_scores |> kruskal_wallis(outcome = score,
+                                 grouping = academy)
+```
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: M_{\text{M}} = M_{\text{C}} = M_{\text{N}}$
+    - $H_1:$ at least one district's academy is different
+
+- **Test Statistic and *p*-Value**
+
+    - $\chi^2_0 = 9.801$
+    - $p = 0.007$
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that there is a difference in assessment scores between the three academies.
+
+## Example 3
+
+- Does the number of citations issued per officer differ across the four districts?
+
+```{r}
+#| fig-align: 'center'
+citations |> anova_check(outcome = citations, grouping = district)
+```
+
+## Example 3
+
+- Does the number of citations issued per officer differ across the four districts?
+
+```{r}
+#| fig-align: 'center'
+citations |> filter(district == "Meadowbrook") |> one_qq(citations)
+```
+
+## Example 3
+
+```{r}
+citations |> kruskal_wallis(outcome = citations,
+                            grouping = district)
+```
+
+## Example 3
+
+- **Hypotheses**
+
+    - $H_0: M_{\text{M}} = M_{\text{C}} = M_{\text{N}} = M_{\text{F}}$
+    - $H_1:$ at least one district is different
+
+- **Test Statistic and *p*-Value**
+
+    - $\chi^2_0 = 43.119$
+    - $p < 0.001$
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that there is a difference in citations between the four districts.
+
+## Wrap Up
+
+- This lecture introduced the nonparametric alternative to one-way ANOVA.
+
+    - Like ANOVA, the Kruskal-Wallis examines the effect of a single factor.
+  
+- The Kruskal-Wallis only allows us to determine if there is an overall, or omnibus, effect.
+
+    - It does *not* tell us about pairwise differences.
+    
+- In the future:
+
+    - Posthoc testing

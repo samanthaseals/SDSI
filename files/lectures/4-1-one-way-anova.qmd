@@ -18,6 +18,7 @@ format:
     df-print: kable
     html-math-method: katex
     code-fold: false
+    code-annotations: hover
     code-tools: false
     incremental: false
 editor: source
@@ -25,16 +26,489 @@ editor: source
 
 ## Introduction
 
+- Previous: one sample, two samples
+
+- Now: more than two groups, continuous outcome
+
+    - One-way ANOVA
+
+    - Kruskal-Wallis
+
+    - posthoc testing
+    
+- This lecture: one-way ANOVA    
+
 ## `R` Setup 
+
+```{r}
+library(tidyverse)
+library(ssstats)
+commute_times <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-2-commute_times.csv")
+citations <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-4-citations.csv")
+academy_scores <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-1-academy_scores.csv")
+```
+    
+## Introduction: Analysis of Variance
+
+- We have previously discussed testing the difference between two groups.
+
+    - What about when there are three or more groups? 
+
+- We will use a method called **an**alysis **o**f **va**riance (ANOVA).
+
+    - This method partitions the variance of the outcome into variance due to the groups and variance due to "other" factors.
+
+- Fun fact: the two-sample *t*-test is a special case of ANOVA.
+
+    - If you perform ANOVA when comparing two means, you will obtain the same results as the two-sample *t*-test.    
 
 ## Analysis of Variance
 
+- Consider comparing $k$ groups. 
+
+<style>
+  .anova-table {
+    width: 100%;
+    max-width: 1100px;
+    margin: 30px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: "Aptos", "Avenir Next", Arial, sans-serif;
+    font-size: 26px;
+    color: #263238;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
+  }
+
+  .anova-table th {
+    background: #263f5c;
+    color: white;
+    font-weight: 600;
+    padding: 18px 20px;
+    text-align: center;
+    border-bottom: 4px solid #8fb3cc;
+  }
+
+  .anova-table th:first-child {
+    width: 18%;
+  }
+
+  .anova-table th:nth-child(2) {
+    width: 48%;
+  }
+
+  .anova-table th:nth-child(3),
+  .anova-table th:nth-child(4) {
+    width: 17%;
+  }
+
+  .anova-table td {
+    padding: 14px 20px;
+    text-align: center;
+    border-bottom: 1px solid #d9e1e8;
+  }
+
+  .anova-table tbody tr:nth-child(even) {
+    background: #f4f7fa;
+  }
+
+  .anova-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .anova-table .treatment {
+    font-weight: 600;
+    color: #263f5c;
+  }
+
+  .anova-table .observations {
+    font-family: "Cambria Math", "STIX Two Math", serif;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+
+  .anova-table .summary {
+    background: #edf3f7;
+    font-family: "Cambria Math", "STIX Two Math", serif;
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  .anova-table .dots {
+    color: #78909c;
+    font-style: normal;
+  }
+
+  .anova-table .symbol {
+    font-family: "Cambria Math", "STIX Two Math", serif;
+    font-style: italic;
+  }
+
+  .anova-table sub {
+    font-size: 0.65em;
+  }
+</style>
+
+<table class="anova-table">
+  <thead>
+    <tr>
+      <th>Treatment<br>(Level)</th>
+      <th>Observations</th>
+      <th>Total</th>
+      <th>Average</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td class="treatment">1</td>
+      <td class="observations">
+        y<sub>11</sub>&nbsp;&nbsp;
+        y<sub>12</sub>&nbsp;&nbsp;
+        <span class="dots">⋯</span>&nbsp;&nbsp;
+        y<sub>1n</sub>
+      </td>
+      <td class="summary">
+        y<sub>1·</sub>
+      </td>
+      <td class="summary">
+        ȳ<sub>1·</sub>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="treatment">2</td>
+      <td class="observations">
+        y<sub>21</sub>&nbsp;&nbsp;
+        y<sub>22</sub>&nbsp;&nbsp;
+        <span class="dots">⋯</span>&nbsp;&nbsp;
+        y<sub>2n</sub>
+      </td>
+      <td class="summary">
+        y<sub>2·</sub>
+      </td>
+      <td class="summary">
+        ȳ<sub>2·</sub>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="treatment dots">⋮</td>
+      <td class="observations dots">⋮</td>
+      <td class="summary dots">⋮</td>
+      <td class="summary dots">⋮</td>
+    </tr>
+
+    <tr>
+      <td class="treatment">k</td>
+      <td class="observations">
+        y<sub>k1</sub>&nbsp;&nbsp;
+        y<sub>k2</sub>&nbsp;&nbsp;
+        <span class="dots">⋯</span>&nbsp;&nbsp;
+        y<sub>kn</sub>
+      </td>
+      <td class="summary">
+        y<sub>k·</sub>
+      </td>
+      <td class="summary">
+        ȳ<sub>k·</sub>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## ANOVA Tables
+
+- We will see our ANOVA results displayed in a table.
+
+- Here is what we are working towards:
+
+<table class="anova-table">
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>df</th>
+      <th>SS</th>
+      <th>MS</th>
+      <th>F</th>
+      <th>p-value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="treatment">Treatment</td>
+      <td class="summary">df<sub>Trt</sub></td>
+      <td class="summary">SS<sub>Trt</sub></td>
+      <td class="summary">MS<sub>Trt</sub></td>
+      <td class="summary">F<sub>Trt</sub></td>
+      <td class="summary"><em>p</em><sub>Trt</sub></td>
+    </tr>
+    <tr>
+      <td class="treatment">Residuals</td>
+      <td class="summary">df<sub>E</sub></td>
+      <td class="summary">SS<sub>E</sub></td>
+      <td class="summary">MS<sub>E</sub></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="treatment">Total</td>
+      <td class="summary">df<sub>Tot</sub></td>
+      <td class="summary">SS<sub>Tot</sub></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+## ANOVA: Sums of Squares
+
+- We are *partitioning the total variability* into different components. 
+
+- The total sum of squares measures the overall variability in the data:
+
+$$ \text{SS}_{\text{Tot}} = \sum_{i=1}^k \sum_{j=1}^n (y_{ij} - \bar{y}_{..})^2 $$
+
+- and is partitioned into SS<sub>Trt</sub> and SS<sub>E</sub>:
+
+$$\text{SS}_\text{Trt}=n \sum_{i=1}^k \left( \bar{y}_{i.}-\bar{y}_{..} \right)^2  \ \ \ \ \ \ \ \ \ \   \text{SS}_\text{E} = \sum_{i=1}^k \sum_{j=1}^n (y_{ij} - \bar{y}_{i.})^2$$
+
+## ANOVA: Degrees of Freedom
+
+- Next, we have the degrees of freedom. Each sum of square will have its own degrees of freedom.
+
+- The total df:
+
+$$\text{df}_{\text{Tot}} = n-1$$
+
+- and is partitioned into df<sub>Trt</sub> and df<sub>E</sub>:
+
+$$\text{df}_\text{Trt}=k - 1  \ \ \ \ \ \ \ \ \ \   \text{df}_\text{E} = n - k$$
+
+## ANOVA: Mean Squares and Test Statistic
+
+- To find the mean squares, we simply divide the sum of squares by the appropriate degrees of freedom,
+
+$$\text{MS}_\text{Trt}=\frac{\text{SS}_{\text{Trt}}}{\text{df}_{\text{Trt}}} \ \ \ \ \ \ \ \ \ \   \text{MS}_\text{E}=\frac{\text{SS}_{\text{E}}}{\text{df}_{\text{E}}}$$
+
+- Then, we can find our test statistic,
+
+$$F_{\text{Trt}} = \frac{\text{MS}_{\text{Trt}}}{\text{MS}_{\text{E}}}$$
+
+## ANOVA: Mean Squares and Test Statistic
+
+- Note for the future: the MS and *F* can be generalized --
+
+$$\text{MS}_\text{X}=\frac{\text{SS}_{\text{X}}}{\text{df}_{\text{X}}} \ \ \ \ \ \ \ \ \ \  F_{\text{X}} = \frac{\text{MS}_{\text{X}}}{\text{MS}_{\text{E}}}$$
+
+- When constructing a test statistic in ANOVA, we always divide by MS<sub>E</sub>.
+
+## ANOVA Tables
+
+- Revisiting the ANOVA table,
+
+<table class="anova-table">
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>df</th>
+      <th>SS</th>
+      <th>MS</th>
+      <th>F</th>
+      <th>p-value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="treatment">Treatment</td>
+      <td class="summary">df<sub>Trt</sub></td>
+      <td class="summary">SS<sub>Trt</sub></td>
+      <td class="summary">MS<sub>Trt</sub></td>
+      <td class="summary">F<sub>Trt</sub></td>
+      <td class="summary"><em>p</em><sub>Trt</sub></td>
+    </tr>
+    <tr>
+      <td class="treatment">Residuals</td>
+      <td class="summary">df<sub>E</sub></td>
+      <td class="summary">SS<sub>E</sub></td>
+      <td class="summary">MS<sub>E</sub></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="treatment">Total</td>
+      <td class="summary">df<sub>Tot</sub></td>
+      <td class="summary">SS<sub>Tot</sub></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+- Note the relationships:
+
+    - SS<sub>Trt</sub> + SS<sub>E</sub> = SS<sub>Tot</sub>
+    - df<sub>Trt</sub> + df<sub>E</sub> = df<sub>Tot</sub>
+
 ## Hypothesis Test for $\mu_1 = \mu_2 = ... = \mu_k$
+
+- **Hypotheses**
+
+    - $H_0: \mu_1 = \mu_2 = ... = \mu_k$
+    - $H_1:$ at least one mean is different.
+    
+- **Test Statistic:**
+
+    - $F_0 = \text{MS}_{\text{Trt}} / \text{MS}_{\text{E}}$
 
 ## Statistical Inference on $k$ Means (`R`)
 
+- We will use the `anovas()` function from `library(ssstats)` to construct the ANOVA table.
+
+```{r}
+#| eval: false
+dataset_name |> anovas(outcome = continuous_variable, # <1>
+                       grouping = grouping_variable, # <2>
+                       alpha = alpha_level) # <3>
+```
+1. `outcome`: the continuous variable being compared across groups.
+2. `grouping`: the categorical variable defining the groups (must have at least 2 levels).
+3. `alpha`: the significance level; default is `0.05`.
+
+
+
 ## Example 1
+
+- Okonkwo catches you between meetings: "Officers in Northgate keep grumbling that their commute is worse than everyone else's. Before I approve any relocation stipends, I want to know if commute time actually differs across our four districts."
+
+```{r}
+#| echo: false
+commute_times |> head(n = 3)
+```
+
+- We will use the `commute_times` dataset to answer the following question:
+
+    - Does commute time differ across the four districts?
+    
+## Example 1
+
+- Does commute time differ across the four districts?
+
+- How do we translate this into hypotheses?
+
+    - No direction or hypothesized value.
+    
+    - We need to enumerate the number of means expressed in $H_0$.
+    
+- **Hypotheses:**    
+
+    - $H_0: \mu_{\text{M}} = \mu_{\text{C}} = \mu_{\text{N}} = \mu_{\text{F}}$
+    - $H_1:$ at least one district is different
+
+## Example 1
+
+- Does commute time differ across the four districts?
+
+```{r}
+commute_times |> anovas(outcome = commute_minutes,
+                         grouping = district)
+```
+
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0: \mu_{\text{M}} = \mu_{\text{C}} = \mu_{\text{N}} = \mu_{\text{F}}$
+    - $H_1:$ at least one district is different
+
+- **Test Statistic and *p*-Value**
+
+    - $F_0 = 0.780$
+    - $p = 0.507$
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that there is a difference in commute times between the districts.    
+    
+## Example 2
+
+- Okonkwo swings by your desk: "We just finished processing assessment scores for the incoming class. This cycle, recruits went through training at three different academies: Meadowbrook, Coldharbor, and Northgate. Command wants to know if it matters which academy a recruit trains at. Are scores different across the three?"
+
+```{r}
+#| echo: false
+academy_scores |> head(n = 3)
+```
+
+- We will use the `academy_scores` dataset to answer the following question:
+
+    - Do assessment scores differ across the three training academies?
 
 ## Example 2
 
+- Do assessment scores differ across the three training academies (Meadowbrook, Coldharbor, and Northgate)?
+
+- How do we translate this into hypotheses?
+
+    - No direction or hypothesized value.
+    
+    - We need to enumerate the number of means expressed in $H_0$.
+    
+- **Hypotheses:**    
+
+    - $H_0: \mu_{\text{M}} = \mu_{\text{C}} = \mu_{\text{N}}$
+    - $H_1:$ at least one training academy is different
+
+## Example 2
+
+- Do assessment scores differ across the three training academies (Meadowbrook, Coldharbor, and Northgate)?
+
+```{r}
+academy_scores |> anovas(outcome = score,
+                         grouping = academy)
+```
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: \mu_{\text{M}} = \mu_{\text{C}} = \mu_{\text{N}}$
+    - $H_1:$ at least one training academy is different
+
+- **Test Statistic and *p*-Value**
+
+    - $F_0 = 5.898$
+    - $p = 0.004$
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that there is a difference in assessment scores between academies.    
+
 ## Wrap Up
+
+- This lecture introduced one-way ANOVA.
+
+    - One-way ANOVA examines the effect of a single factor.
+    
+    - (The next module introduces multiple factors!)
+    
+- One-way ANOVA only allows us to determine if there is an overall, or omnibus, effect.
+
+    - It does *not* tell us about pairwise differences.
+    
+- In the future:
+
+    - Assessing ANOVA assumptions
+    - Nonparametric alternative
+    - Posthoc testing

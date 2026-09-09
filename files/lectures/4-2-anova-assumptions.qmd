@@ -1,0 +1,358 @@
+---
+title: "ANOVA Assumptions"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+    code-annotations: hover
+editor: source
+---
+
+## Introduction
+
+- Previous: one sample, two samples
+
+- Now: more than two groups, continuous outcome
+
+    - One-way ANOVA
+
+    - Kruskal-Wallis
+
+    - posthoc testing
+    
+- This lecture: ANOVA assumptions    
+
+## `R` Setup 
+
+```{r}
+library(tidyverse)
+library(ssstats)
+commute_times <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-2-commute_times.csv")
+citations <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-4-citations.csv")
+academy_scores <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-1-academy_scores.csv")
+```
+
+## ANOVA Assumptions
+
+- We can represent ANOVA with the following model:
+
+$$y_{ij} = \mu + \tau_i + \varepsilon_{ij}$$
+
+- where:
+
+    - $y_{ij}$ is the $j^{\text{th}}$ observation in the $i^{\text{th}}$ group,
+    - $\mu$ is the overall (grand) mean,
+    - $\tau_i$ is the treatment effect for group $i$, and
+    - $\varepsilon_{ij}$ is the error term for the $j^{\text{th}}$ observation in the $i^{\text{th}}$ group.
+    
+## ANOVA Assumptions
+
+- We assume that the error term follows a normal distribution with mean 0 and a constant variance, $\sigma^2$. i.e.,
+
+$$\varepsilon_{ij} \overset{\text{iid}}{\sim} N(0, \sigma^2)$$
+
+- Very important note: **the assumption is on the error term** ($\varepsilon_{ij}$) and NOT on the outcome ($y_{ij}$)!
+
+## ANOVA Assumptions
+
+- We will use the residual (the difference between the observed value and the predicted value) to assess assumptions:
+
+$$e_{ij} = y_{ij} - \hat{y}_{ij}$$
+
+- Note that in the case of one-way ANOVA, the predicted value of $y$ is the *group mean*.
+
+## ANOVA Assumptions: Graphical Assessment
+    
+- **Normality**: quantile-quantile plot
+
+    - Should have points close to the 45$^\circ$ line
+    - We will focus on the "center" portion of the plot
+    
+- **Variance**: scatterplot of the residuals against the predicted values
+
+    - Should be "equal spread" between the groups
+    - No "pattern"
+
+## Graphical Assessment of Assumptions (`R`)
+
+- We will use the `anova_check()` function from `library(ssstats)` to assess normality.
+
+```{r}
+#| eval: false
+dataset_name |> anova_check(outcome = continuous_variable, # <1>
+                       grouping = grouping_variable) # <2>
+```
+1. `outcome`: the continuous variable being compared across groups.
+2. `grouping`: the categorical variable defining the groups (must have at least 2 levels).
+
+- This will provide the the Q-Q plots and variance scatterplot necessary to assess the ANOVA assumptions.
+
+## Example 1
+
+- Recall our first question: does commute time differ across the four districts?
+
+```{r}
+commute_times |> anovas(outcome = commute_minutes,
+                        grouping = district)
+```
+
+## Example 1
+
+- Checking the assumptions,
+
+```{r}
+#| fig-align: 'center'
+commute_times |> anova_check(outcome = commute_minutes,
+                             grouping = district)
+```
+
+## Example 1
+
+- If it's hard to "see" the qq plots, we can "zoom in" using `one_qq()`,
+
+```{r}
+#| fig-align: 'center'
+commute_times |> filter(district == "Coldharbor") |> one_qq(commute_minutes)
+```
+
+## Example 1
+
+- If it's hard to "see" the qq plots, we can "zoom in" using `one_qq()`,
+
+```{r}
+#| fig-align: 'center'
+commute_times |> filter(district == "Fairview") |> one_qq(commute_minutes)
+```
+
+## Example 1
+
+- If it's hard to "see" the qq plots, we can "zoom in" using `one_qq()`,
+
+```{r}
+#| fig-align: 'center'
+commute_times |> filter(district == "Meadowbrook") |> one_qq(commute_minutes)
+```
+
+## Example 1
+
+- If it's hard to "see" the qq plots, we can "zoom in" using `one_qq()`,
+
+```{r}
+#| fig-align: 'center'
+commute_times |> filter(district == "Northgate") |> one_qq(commute_minutes)
+```
+
+## Example 1
+
+- Final assessment:
+
+    - Normality: fine
+    
+    - Variance: ehhhh...?
+
+## Brown-Forsythe-Levine Test
+
+- When we are not confident making a call graphically, we can formally check the variance.
+
+    - The analytic approach:
+    
+        - Transform $y_{ij}$ by subtracting off its group median.
+        - Run ANOVA on these transformed values.
+
+- **Hypotheses:**
+
+    - $H_0$: $\sigma_1^2=\sigma_2^2=\hdots=\sigma_k^2$
+    - $H_1$: population variances are not all equal
+    
+- **Test Statistic:**
+
+    - $F_0$ on transformed data
+
+## Checking Variance (`R`)
+
+- We will use the `multiple_variances()` function from `library(ssstats)` to formally test the equality of variances.
+
+```{r}
+#| eval: false
+dataset_name |> multiple_variances(outcome = continuous_variable, # <1>
+                                   grouping = grouping_variable, # <2>
+                                   alpha = alpha_level) # <3>
+```
+1. `outcome`: the continuous variable being compared across groups.
+2. `grouping`: the categorical variable defining the groups (must have at least 2 levels).
+3. `alpha`: the significance level; default is `0.05`.
+
+## Example 1
+
+- Checking the variance,
+
+```{r}
+commute_times |> multiple_variances(outcome = commute_minutes,
+                                    grouping = district)
+```
+
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0: \sigma^2_{\text{M}} = \sigma^2_{\text{C}} = \sigma^2_{\text{N}} = \sigma^2_{\text{F}}$
+    - $H_1:$ at least one district is different
+
+- **Test Statistic and *p*-Value**
+
+    - $F_0 = 0.129$
+    - $p = 0.943$
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that there is a difference in the variance of commute times between the districts.    
+
+## Example 2
+
+- Do assessment scores differ across the three training academies (Meadowbrook, Coldharbor, and Northgate)?
+
+```{r}
+academy_scores |> anovas(outcome = score,
+                         grouping = academy)
+```
+
+## Example 2
+
+- Looking at the assumptions graphically,
+
+```{r}
+#| fig-align: 'center'
+academy_scores |> anova_check(outcome = score,
+                              grouping = academy)
+```
+
+## Example 2
+
+- Verifying the variance assumption,
+
+```{r}
+academy_scores |> multiple_variances(outcome = score,
+                                     grouping = academy)
+```
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0: \sigma^2_{\text{M}} = \sigma^2_{\text{C}} = \sigma^2_{\text{N}}$
+    - $H_1:$ at least one district's academy is different
+
+- **Test Statistic and *p*-Value**
+
+    - $F_0 = 0.914$
+    - $p = 0.404$
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that there is a difference in the variance of assessment scores between the academies    
+
+## Example 3
+
+- Okonkwo's last one for the day: "Traffic enforcement wants budget for more radar units. Their pitch is that citation activity is way higher in some districts than others. Before I sign off, let's check the citation counts across the four districts."
+
+- We will use the `citations` dataset to answer the following question:
+
+    - Does the number of citations issued per officer differ across the four districts?
+
+## Example 3
+
+- Does the number of citations issued per officer differ across the four districts?
+
+```{r}
+#| fig-align: 'center'
+citations |> anova_check(outcome = citations,
+                         grouping = district)
+```
+
+## Example 3
+
+- Does the number of citations issued per officer differ across the four districts?
+
+```{r}
+#| fig-align: 'center'
+#| echo: false
+citations |> filter(district == "Coldharbor") |> one_qq(citations)
+```
+
+## Example 3
+
+- Does the number of citations issued per officer differ across the four districts?
+
+```{r}
+#| fig-align: 'center'
+#| echo: false
+citations |> filter(district == "Fairview") |> one_qq(citations)
+```
+
+## Example 3
+
+- Verifying the variance assumption,
+
+```{r}
+citations |> multiple_variances(outcome = citations,
+                                grouping = district)
+```
+
+## Example 3
+
+- **Hypotheses**
+
+    - $H_0: \sigma^2_{\text{M}} = \sigma^2_{\text{C}} = \sigma^2_{\text{N}} = \sigma^2_{\text{F}}$
+    - $H_1:$ at least one district is different
+
+- **Test Statistic and *p*-Value**
+
+    - $F_0 = 4.237$
+    - $p = 0.007$
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that there is a difference in the variance of citations between the districts.   
+    
+## Wrap Up
+
+- This lecture introduced assessing assumptions for one-way ANOVA.
+
+    - Normality: graph only
+    
+    - Variance: graph and test available
+    
+- However, we have not yet discussed what to do about a broken assumption...    
+    
+- In the future:
+
+    - Nonparametric alternative
+    - Posthoc testing
