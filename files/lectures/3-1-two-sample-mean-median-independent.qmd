@@ -64,8 +64,8 @@ $$
 $$
 
 - where 
-    - $(\bar{x}_1-\bar{x}_2)$ is the point estimate for $\mu_1-\mu_2$
-        - $\bar{x}_i$ is the sample mean for group $i$
+    - $(\bar{y}_1-\bar{y}_2)$ is the point estimate for $\mu_1-\mu_2$
+        - $\bar{y}_i$ is the sample mean for group $i$
     - $t_{\alpha/2}$ has $\min(n_1-1, n_2-1)$ degrees of freedom
     - $s_i^2$ is the sample variance for group $i$
     - $n_i$ is the sample size of group $i$
