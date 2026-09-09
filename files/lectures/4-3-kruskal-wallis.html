@@ -1658,9 +1658,9 @@ Conclusion: Reject the null hypothesis (p = 0.004 &lt; α = 0.050)</code></pre>
 <li>We will use the <code>kruskal_wallis()</code> function from <code>library(ssstats)</code> to perform the Kruskal-Wallis test.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>dataset_name <span class="sc">%&gt;%</span> <span class="fu">kruskal_wallis</span>(<span class="at">continuous =</span> continuous_variable,</span>
-<span id="cb4-2"><a></a>                                <span class="at">grouping =</span> grouping_variable,</span>
-<span id="cb4-3"><a></a>                                <span class="at">alpha =</span> specified_alpha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>dataset_name <span class="sc">|&gt;</span> <span class="fu">kruskal_wallis</span>(<span class="at">outcome =</span> continuous_variable,</span>
+<span id="cb4-2"><a></a>                               <span class="at">grouping =</span> grouping_variable,</span>
+<span id="cb4-3"><a></a>                               <span class="at">alpha =</span> specified_alpha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-2-2" class="slide level2">

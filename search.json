@@ -9,203 +9,203 @@
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#introduction",
     "href": "files/lectures/4-2-anova-assumptions.html#introduction",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Introduction",
     "text": "Introduction\n\nPrevious: one sample, two samples\nNow: more than two groups, continuous outcome\n\nOne-way ANOVA\nKruskal-Wallis\nposthoc testing\n\nThis lecture: ANOVA assumptions"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#r-setup",
     "href": "files/lectures/4-2-anova-assumptions.html#r-setup",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "R Setup",
     "text": "R Setup\n\nlibrary(tidyverse)\nlibrary(ssstats)\ncommute_times &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-2-commute_times.csv\")\ncitations &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-4-citations.csv\")\nacademy_scores &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/4-1-academy_scores.csv\")"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#anova-assumptions",
     "href": "files/lectures/4-2-anova-assumptions.html#anova-assumptions",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "ANOVA Assumptions",
     "text": "ANOVA Assumptions\n\nWe can represent ANOVA with the following model:\n\ny_{ij} = \\mu + \\tau_i + \\varepsilon_{ij}\n\nwhere:\n\ny_{ij} is the j^{\\text{th}} observation in the i^{\\text{th}} group,\n\\mu is the overall (grand) mean,\n\\tau_i is the treatment effect for group i, and\n\\varepsilon_{ij} is the error term for the j^{\\text{th}} observation in the i^{\\text{th}} group."
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#anova-assumptions-1",
     "href": "files/lectures/4-2-anova-assumptions.html#anova-assumptions-1",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "ANOVA Assumptions",
-    "text": "ANOVA Assumptions\n\nWe assume that the error term follows a normal distribution with mean 0 and a constant variance, \\sigma^2. i.e.,\n\n\\varepsilon_{ij} \\overset{\\text{iid}}{\\sim} N(0, \\sigma^2)\n\nVery important note: the assumption is on the error term (\\varepsilon_{ij}) and NOT on the outcome (y_{ij}!"
+    "text": "ANOVA Assumptions\n\nWe assume that the error term follows a normal distribution with mean 0 and a constant variance, \\sigma^2. i.e.,\n\n\\varepsilon_{ij} \\overset{\\text{iid}}{\\sim} N(0, \\sigma^2)\n\nVery important note: the assumption is on the error term (\\varepsilon_{ij}) and NOT on the outcome (y_{ij})!"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#anova-assumptions-2",
     "href": "files/lectures/4-2-anova-assumptions.html#anova-assumptions-2",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "ANOVA Assumptions",
     "text": "ANOVA Assumptions\n\nWe will use the residual (the difference between the observed value and the predicted value) to assess assumptions:\n\ne_{ij} = y_{ij} - \\hat{y}_{ij}\n\nNote that in the case of one-way ANOVA, the predicted value of y is the group mean."
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#anova-assumptions-graphical-assessment",
     "href": "files/lectures/4-2-anova-assumptions.html#anova-assumptions-graphical-assessment",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "ANOVA Assumptions: Graphical Assessment",
     "text": "ANOVA Assumptions: Graphical Assessment\n\nNormality: quantile-quantile plot\n\nShould have points close to the 45^\\circ line\nWe will focus on the “center” portion of the plot\n\nVariance: scatterplot of the residuals against the predicted values\n\nShould be “equal spread” between the groups\nNo “pattern”"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#graphical-assessment-of-assumptions-r",
     "href": "files/lectures/4-2-anova-assumptions.html#graphical-assessment-of-assumptions-r",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Graphical Assessment of Assumptions (R)",
     "text": "Graphical Assessment of Assumptions (R)\n\nWe will use the anova_check() function from library(ssstats) to assess normality.\n\n\n1dataset_name |&gt; anova_check(outcome = continuous_variable,\n2                       grouping = grouping_variable)\n\n\n1\n\noutcome: the continuous variable being compared across groups.\n\n2\n\ngrouping: the categorical variable defining the groups (must have at least 2 levels).\n\n\n\n\n\nThis will provide the the Q-Q plots and variance scatterplot necessary to assess the ANOVA assumptions."
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-1",
     "href": "files/lectures/4-2-anova-assumptions.html#example-1",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 1",
     "text": "Example 1\n\nRecall our first question: does commute time differ across the four districts?\n\n\ncommute_times |&gt; anovas(outcome = commute_minutes,\n                        grouping = district)\n\nOne-way ANOVA\n\nSource      df         SS       MS      F  p-value \n───────────────────────────────────────────── \ndistrict     3   120.0100  40.0033  0.780    0.507 \nResiduals  116  5945.7900  51.2568                 \n───────────────────────────────────────────── \n\n\nHypotheses (district):\nH₀: All group means are equal (no effect of district)\nH₁: At least one group mean differs (effect of district exists)\nTest statistic: F(3, 116) = 0.78\np-value: 0.507\nConclusion: Fail to reject the null hypothesis (p = 0.507 ≥ α = 0.050)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-1-1",
     "href": "files/lectures/4-2-anova-assumptions.html#example-1-1",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 1",
     "text": "Example 1\n\nChecking the assumptions,\n\n\ncommute_times |&gt; anova_check(outcome = commute_minutes,\n                             grouping = district)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-1-2",
     "href": "files/lectures/4-2-anova-assumptions.html#example-1-2",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 1",
     "text": "Example 1\n\nIf it’s hard to “see” the qq plots, we can “zoom in” using one_qq(),\n\n\ncommute_times |&gt; filter(district == \"Coldharbor\") |&gt; one_qq(commute_minutes)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-1-3",
     "href": "files/lectures/4-2-anova-assumptions.html#example-1-3",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 1",
     "text": "Example 1\n\nIf it’s hard to “see” the qq plots, we can “zoom in” using one_qq(),\n\n\ncommute_times |&gt; filter(district == \"Fairview\") |&gt; one_qq(commute_minutes)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-1-4",
     "href": "files/lectures/4-2-anova-assumptions.html#example-1-4",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 1",
     "text": "Example 1\n\nIf it’s hard to “see” the qq plots, we can “zoom in” using one_qq(),\n\n\ncommute_times |&gt; filter(district == \"Meadowbrook\") |&gt; one_qq(commute_minutes)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-1-5",
     "href": "files/lectures/4-2-anova-assumptions.html#example-1-5",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 1",
     "text": "Example 1\n\nIf it’s hard to “see” the qq plots, we can “zoom in” using one_qq(),\n\n\ncommute_times |&gt; filter(district == \"Northgate\") |&gt; one_qq(commute_minutes)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-1-6",
     "href": "files/lectures/4-2-anova-assumptions.html#example-1-6",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 1",
     "text": "Example 1\n\nFinal assessment:\n\nNormality: fine\nVariance: ehhhh…?"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#brown-forsythe-levine-test",
     "href": "files/lectures/4-2-anova-assumptions.html#brown-forsythe-levine-test",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Brown-Forsythe-Levine Test",
-    "text": "Brown-Forsythe-Levine Test\n\nWhen we are not confident making a call graphically, we can formally check the variance.\n\nThe analytic approach:\n\nTransform y_{ij} by subtracting off its group median.\nRun ANOVA on these transformed values.\n\n\nHypotheses:\n\nH_0: \\sigma_1^2=\\sigma_2^2=\\hdots=\\sigma_k^2\nH_1: population variances are not all equal\n\nTest Statistic:\n\n$F_0"
+    "text": "Brown-Forsythe-Levine Test\n\nWhen we are not confident making a call graphically, we can formally check the variance.\n\nThe analytic approach:\n\nTransform y_{ij} by subtracting off its group median.\nRun ANOVA on these transformed values.\n\n\nHypotheses:\n\nH_0: \\sigma_1^2=\\sigma_2^2=\\hdots=\\sigma_k^2\nH_1: population variances are not all equal\n\nTest Statistic:\n\nF_0 on transformed data"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#checking-variance-r",
     "href": "files/lectures/4-2-anova-assumptions.html#checking-variance-r",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Checking Variance (R)",
     "text": "Checking Variance (R)\n\nWe will use the multiple_variances() function from library(ssstats) to formally test the equality of variances.\n\n\n1dataset_name |&gt; multiple_variances(outcome = continuous_variable,\n2                                   grouping = grouping_variable,\n3                                   alpha = alpha_level)\n\n\n1\n\noutcome: the continuous variable being compared across groups.\n\n2\n\ngrouping: the categorical variable defining the groups (must have at least 2 levels).\n\n3\n\nalpha: the significance level; default is 0.05."
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-1-7",
     "href": "files/lectures/4-2-anova-assumptions.html#example-1-7",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 1",
     "text": "Example 1\n\nChecking the variance,\n\n\ncommute_times |&gt; multiple_variances(outcome = commute_minutes,\n                                    grouping = district)\n\nBrown-Forsythe-Levene test for equality of variances\n\ns²[Coldharbor] = 50.8543 (s = 7.1312)\ns²[Fairview] = 62.2279 (s = 7.8885)\ns²[Meadowbrook] = 44.1666 (s = 6.6458)\ns²[Northgate] = 47.7784 (s = 6.9122)\n\nHypotheses:\nH₀: All group variances are equal (no effect of district on variance)\nH₁: At least one group variance differs (effect of district on variance exists)\nTest statistic: F(3, 116) = 0.129\np-value: 0.943\nConclusion: Fail to reject the null hypothesis (p = 0.943 ≥ α = 0.050)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-1-8",
     "href": "files/lectures/4-2-anova-assumptions.html#example-1-8",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 1",
     "text": "Example 1\n\nHypotheses\n\nH_0: \\sigma^2_{\\text{M}} = \\sigma^2_{\\text{C}} = \\sigma^2_{\\text{N}} = \\sigma^2_{\\text{F}}\nH_1: at least one district is different\n\nTest Statistic and p-Value\n\nF_0 = 0.129\np = 0.943\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that there is a difference in the variance of commute times between the districts."
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-2",
     "href": "files/lectures/4-2-anova-assumptions.html#example-2",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 2",
     "text": "Example 2\n\nDo assessment scores differ across the three training academies (Meadowbrook, Coldharbor, and Northgate)?\n\n\nacademy_scores |&gt; anovas(outcome = score,\n                         grouping = academy)\n\nOne-way ANOVA\n\nSource     df         SS        MS      F  p-value \n───────────────────────────────────────────── \nacademy     2   786.9215  393.4607  5.898    0.004 \nResiduals  93  6204.2681   66.7126                 \n───────────────────────────────────────────── \n\n\nHypotheses (academy):\nH₀: All group means are equal (no effect of academy)\nH₁: At least one group mean differs (effect of academy exists)\nTest statistic: F(2, 93) = 5.898\np-value: 0.004\nConclusion: Reject the null hypothesis (p = 0.004 &lt; α = 0.050)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-2-1",
     "href": "files/lectures/4-2-anova-assumptions.html#example-2-1",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 2",
     "text": "Example 2\n\nLooking at the assumptions graphically,\n\n\nacademy_scores |&gt; anova_check(outcome = score,\n                              grouping = academy)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-2-2",
     "href": "files/lectures/4-2-anova-assumptions.html#example-2-2",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 2",
     "text": "Example 2\n\nVerifying the variance assumption,\n\n\nacademy_scores |&gt; multiple_variances(outcome = score,\n                                     grouping = academy)\n\nBrown-Forsythe-Levene test for equality of variances\n\ns²[Coldharbor] = 78.2889 (s = 8.8481)\ns²[Meadowbrook] = 69.3266 (s = 8.3263)\ns²[Northgate] = 52.5222 (s = 7.2472)\n\nHypotheses:\nH₀: All group variances are equal (no effect of academy on variance)\nH₁: At least one group variance differs (effect of academy on variance exists)\nTest statistic: F(2, 93) = 0.914\np-value: 0.404\nConclusion: Fail to reject the null hypothesis (p = 0.404 ≥ α = 0.050)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-2-3",
     "href": "files/lectures/4-2-anova-assumptions.html#example-2-3",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 2",
-    "text": "Example 2\n\nHypotheses\n\nH_0: \\sigma^2_{\\text{M}} = \\sigma^2_{\\text{C}} = \\sigma^2_{\\text{N}}\nH_1: at least one district’s academy is different\n\nTest Statistic and p-Value\n\nF_0 = 0.914\np = 0.404\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that there is a difference in the variance of assessment scores between the districts."
+    "text": "Example 2\n\nHypotheses\n\nH_0: \\sigma^2_{\\text{M}} = \\sigma^2_{\\text{C}} = \\sigma^2_{\\text{N}}\nH_1: at least one district’s academy is different\n\nTest Statistic and p-Value\n\nF_0 = 0.914\np = 0.404\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nFail to reject H_0. There is not sufficient evidence to suggest that there is a difference in the variance of assessment scores between the academies"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-3",
     "href": "files/lectures/4-2-anova-assumptions.html#example-3",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 3",
     "text": "Example 3\n\nOkonkwo’s last one for the day: “Traffic enforcement wants budget for more radar units. Their pitch is that citation activity is way higher in some districts than others. Before I sign off, let’s check the citation counts across the four districts.”\nWe will use the citations dataset to answer the following question:\n\nDoes the number of citations issued per officer differ across the four districts?"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-3-1",
     "href": "files/lectures/4-2-anova-assumptions.html#example-3-1",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 3",
     "text": "Example 3\n\nDoes the number of citations issued per officer differ across the four districts?\n\n\ncitations |&gt; anova_check(outcome = citations,\n                         grouping = district)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-3-2",
     "href": "files/lectures/4-2-anova-assumptions.html#example-3-2",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 3",
     "text": "Example 3\n\nDoes the number of citations issued per officer differ across the four districts?"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-3-3",
     "href": "files/lectures/4-2-anova-assumptions.html#example-3-3",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 3",
     "text": "Example 3\n\nDoes the number of citations issued per officer differ across the four districts?"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-3-4",
     "href": "files/lectures/4-2-anova-assumptions.html#example-3-4",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 3",
     "text": "Example 3\n\nVerifying the variance assumption,\n\n\ncitations |&gt; multiple_variances(outcome = citations,\n                                grouping = district)\n\nBrown-Forsythe-Levene test for equality of variances\n\ns²[Coldharbor] = 4.5766 (s = 2.1393)\ns²[Fairview] = 8.7167 (s = 2.9524)\ns²[Meadowbrook] = 3.3619 (s = 1.8335)\ns²[Northgate] = 8.9677 (s = 2.9946)\n\nHypotheses:\nH₀: All group variances are equal (no effect of district on variance)\nH₁: At least one group variance differs (effect of district on variance exists)\nTest statistic: F(3, 124) = 4.237\np-value: 0.007\nConclusion: Reject the null hypothesis (p = 0.007 &lt; α = 0.050)"
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#example-3-5",
     "href": "files/lectures/4-2-anova-assumptions.html#example-3-5",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Example 3",
     "text": "Example 3\n\nHypotheses\n\nH_0: \\sigma^2_{\\text{M}} = \\sigma^2_{\\text{C}} = \\sigma^2_{\\text{N}} = \\sigma^2_{\\text{F}}\nH_1: at least one district is different\n\nTest Statistic and p-Value\n\nF_0 = 4.237\np = 0.007\n\nRejection Region\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation\n\nReject H_0. There is sufficient evidence to suggest that there is a difference in the variance of citations between the districts."
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#wrap-up",
     "href": "files/lectures/4-2-anova-assumptions.html#wrap-up",
-    "title": "Kruskal-Wallis",
+    "title": "ANOVA Assumptions",
     "section": "Wrap Up",
     "text": "Wrap Up\n\nThis lecture introduced assessing assumptions for one-way ANOVA.\n\nNormality: graph only\nVariance: graph and test available\n\nHowever, we have not yet discussed what to do about a broken assumption…\nIn the future:\n\nNonparametric alternative\nPosthoc testing"
   },
@@ -466,7 +466,7 @@
     "href": "files/lectures/4-3-kruskal-wallis.html#statistical-inference-on-k-medians-r",
     "title": "Kruskal-Wallis",
     "section": "Statistical Inference on k Medians (R)",
-    "text": "Statistical Inference on k Medians (R)\n\nWe will use the kruskal_wallis() function from library(ssstats) to perform the Kruskal-Wallis test.\n\n\ndataset_name %&gt;% kruskal_wallis(continuous = continuous_variable,\n                                grouping = grouping_variable,\n                                alpha = specified_alpha)"
+    "text": "Statistical Inference on k Medians (R)\n\nWe will use the kruskal_wallis() function from library(ssstats) to perform the Kruskal-Wallis test.\n\n\ndataset_name |&gt; kruskal_wallis(outcome = continuous_variable,\n                               grouping = grouping_variable,\n                               alpha = specified_alpha)"
   },
   {
     "objectID": "files/lectures/4-3-kruskal-wallis.html#example-2-2",
@@ -1992,7 +1992,7 @@
     "href": "files/lectures/4-1-one-way-anova.html#anova-degrees-of-freedom",
     "title": "One-Way ANOVA",
     "section": "ANOVA: Degrees of Freedom",
-    "text": "ANOVA: Degrees of Freedom\n\nNext, we have the degrees of freedom. Each sum of square will have its own degrees of freedom.\nThe total df:\n\n\\text{df}_{\\text{Tot}} = n-1\n\nand is partitioned into dfTrt and dfE:\n\n\\text{df}_\\text{Trt}=k - 1  \\ \\ \\ \\ \\ \\ \\ \\ \\ \\   \\text{SS}_\\text{E} = n - k"
+    "text": "ANOVA: Degrees of Freedom\n\nNext, we have the degrees of freedom. Each sum of square will have its own degrees of freedom.\nThe total df:\n\n\\text{df}_{\\text{Tot}} = n-1\n\nand is partitioned into dfTrt and dfE:\n\n\\text{df}_\\text{Trt}=k - 1  \\ \\ \\ \\ \\ \\ \\ \\ \\ \\   \\text{df}_\\text{E} = n - k"
   },
   {
     "objectID": "files/lectures/4-1-one-way-anova.html#anova-mean-squares-and-test-statistic",
