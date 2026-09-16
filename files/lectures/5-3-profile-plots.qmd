@@ -1,5 +1,5 @@
 ---
-title: "Posthoc Testing in Two-Way ANOVA"
+title: "Profile Plots in Two-Way ANOVA"
 execute:
   echo: true
   warning: false
@@ -24,9 +24,28 @@ format:
 editor: source
 ---
 
+## Introduction
+
+- Recall that ANOVA allows us to compare the means of three or more groups.
+
+- In one-way ANOVA, we are only considering one factor (grouping variable). 
+
+- In this module, we discuss two-way ANOVA, which allows us to consider a second factor (grouping variable). 
+
+- In this lecture, we discuss profile plots, a way to visualize treatment group means.
+
+## `R` Setup 
+
+```{r}
+library(tidyverse)
+library(ssstats)
+exam_scores <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/5-1-exam_scores.csv")
+fatigue_scores <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/5-2-fatigue_scores.csv")
+```
+
 ## Two-Way ANOVA: Profile Plots
 
-- We can construct profile plots to display treatment group means.
+- We can construct profile plots  to display treatment group means.
 
     - *y*-axis: always the average outcome
     

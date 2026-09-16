@@ -126,11 +126,11 @@ exam_scores |> anovas(outcome = exam_score,
 - Treating it as confirmatory,
 
 ```{r}
-fatigue_scores |> posthoc(outcome = fatigue_score,
-                       A = shift,
-                       B = unit,
-                       interaction = TRUE,
-                       adjust = TRUE)
+exam_scores |> posthoc(outcome = exam_score,
+                      A = training_method,
+                      B = experience_level,
+                      interaction = FALSE,
+                      adjust = TRUE)
 ```
 
 ## Wrap Up
