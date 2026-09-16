@@ -1,0 +1,151 @@
+---
+title: "Posthoc Testing in Two-Way ANOVA"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+    code-annotations: hover
+editor: source
+---
+
+## Two-Way ANOVA: Profile Plots
+
+- We can construct profile plots to display treatment group means.
+
+    - *y*-axis: always the average outcome
+    
+    - *x*-axis: either factor A or B
+    
+    - "lines" on the plot: the factor that was not selected for the *x*-axis
+
+- Note that this is just a graph of the means! 
+
+    - It's valid to construct a profile plot regardless of significance.
+    
+## Two-Way ANOVA: Profile Plots (R)
+
+- We will use the `profile_plot()` function from `library(ssstats)` to construct basic profile plots.
+
+```{r}
+#| eval: false
+dataset_name |> profile_plot(continuous = continuous_variable,
+                              xaxis = variable_on_x,
+                              lines = variable_for_lines)
+```    
+
+## Example 1
+
+- Recall the two-way ANOVA results for the `fatigue_scores` data,
+
+- Does the effect of shift on fatigue depend on which unit an officer works in?
+
+```{r}
+fatigue_scores |> anovas(outcome = fatigue_score,
+                         A = shift,
+                         B = unit)
+```
+
+## Example 1
+
+- Let's remind ourselves what's "in" the variables:
+
+```{r}
+fatigue_scores |> n_pct(shift, unit)
+```
+
+- Neither of the factors has a natural "order"
+
+- Let's have `unit` on the *x*-axis and define the lines by `shift`.
+
+## Example 1
+
+- Constructing the profile plot,
+
+```{r}
+#| fig-align: 'center'
+fatigue_scores |> profile_plot(outcome = fatigue_score,
+                              xaxis = unit,
+                              lines = shift)
+```  
+
+
+
+
+
+
+
+
+
+
+## Example 2
+
+- Recall the two-way ANOVA results for the `exam_scores` data,
+
+- Does the effect of training method depend on experience level?
+
+```{r}
+exam_scores |> anovas(outcome = exam_score,
+                      A = training_method,
+                      B = experience_level,
+                      interaction = TRUE)
+```
+
+## Example 2
+
+- Recall the two-way ANOVA results for the `exam_scores` data,
+
+- Are there main effects of training method or experience level?
+
+```{r}
+exam_scores |> anovas(outcome = exam_score,
+                      A = training_method,
+                      B = experience_level,
+                      interaction = FALSE)
+```
+
+## Example 2
+
+- Let's remind ourselves what's "in" the variables:
+
+```{r}
+exam_scores |> n_pct(training_method, experience_level)
+```
+
+- Neither of the factors has a natural "order"
+
+- Let's have `training_method` on the *x*-axis and define the lines by `experience_level`.
+
+## Example 2
+
+- Constructing the profile plot,
+
+```{r}
+#| fig-align: 'center'
+exam_scores |> profile_plot(outcome = exam_score,
+                            xaxis = training_method,
+                            lines = experience_level)
+```  
+
+## Wrap Up
+
+- In this lecture, we have covered profile plots in two-way ANOVA.
+
+- This lecture concludes the two-way ANOVA module.
+
+- Next module: categorical analysis.

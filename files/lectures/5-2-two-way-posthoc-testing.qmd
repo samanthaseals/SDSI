@@ -1,0 +1,147 @@
+---
+title: "Posthoc Testing in Two-Way ANOVA"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+    code-annotations: hover
+editor: source
+---
+
+## Introduction
+
+- Recall that ANOVA allows us to compare the means of three or more groups.
+
+- In one-way ANOVA, we are only considering one factor (grouping variable). 
+
+- In this module, we discuss two-way ANOVA, which allows us to consider a second factor (grouping variable). 
+
+- We now will discuss performing posthoc tests in the two-way ANOVA setting.
+
+## `R` Setup 
+
+```{r}
+library(tidyverse)
+library(ssstats)
+exam_scores <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/5-1-exam_scores.csv")
+fatigue_scores <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/5-2-fatigue_scores.csv")
+```
+
+## Posthoc Testing
+
+- We can follow up two-way ANOVA tests with posthoc tests.
+
+- Recall our hypotheses for main effects,
+
+    - $H_0: \mu_1 = \mu_2 = ... = \mu_a$
+    - $H_1:$ at least one $\mu_i$ is different
+    
+- We will again turn to posthoc tests to determine pairwise differences.
+
+## Posthoc Testing (`R`)
+
+- We will again use the `posthoc()` function,
+
+```{r}
+#| eval: false
+dataset_name |> posthoc(outcome = response_variable,
+                        A = factor_A,
+                        B = factor_B,
+                        interaction = TRUE or FALSE,
+                        adjust = TRUE or FALSE)
+```
+
+## Example 1
+
+- Recall the two-way ANOVA results for the `fatigue_scores` data,
+
+- Does the effect of shift on fatigue depend on which unit an officer works in?
+
+```{r}
+fatigue_scores |> anovas(outcome = fatigue_score,
+                         A = shift,
+                         B = unit)
+```
+
+## Example 1
+
+- We can look at the posthoc test of the interaction term.
+
+- Treating it as exploratory,
+
+```{r}
+fatigue_scores |> posthoc(outcome = fatigue_score,
+                       A = shift,
+                       B = unit,
+                       interaction = TRUE,
+                       adjust = FALSE)
+```
+
+## Example 2
+
+- Recall the two-way ANOVA results for the `exam_scores` data,
+
+- Does the effect of training method depend on experience level?
+
+```{r}
+exam_scores |> anovas(outcome = exam_score,
+                      A = training_method,
+                      B = experience_level,
+                      interaction = TRUE)
+```
+
+## Example 2
+
+- Recall the two-way ANOVA results for the `exam_scores` data,
+
+- Are there main effects of training method or experience level?
+
+```{r}
+exam_scores |> anovas(outcome = exam_score,
+                      A = training_method,
+                      B = experience_level,
+                      interaction = FALSE)
+```
+
+## Example 2
+
+- We can look at the posthoc tests of the main effects.
+
+- Treating it as confirmatory,
+
+```{r}
+fatigue_scores |> posthoc(outcome = fatigue_score,
+                       A = shift,
+                       B = unit,
+                       interaction = TRUE,
+                       adjust = TRUE)
+```
+
+## Wrap Up
+
+- In this lecture, we have covered posthoc testing in two-way ANOVA.
+
+    - Interactions.
+    
+    - Main effects.
+    
+- In our following lectures, we will discuss next steps.    
+    
+    - profile plots
+

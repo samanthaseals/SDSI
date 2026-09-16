@@ -1,5 +1,0 @@
----
-title: "5-2-nonparametric-two-way"
-format: html
----
-
