@@ -1,5 +1,275 @@
 ---
-title: "6-1-goodness-of-fit"
-format: html
+title: "Goodness-of-Fit"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+    code-annotations: hover
+editor: source
 ---
 
+## Introduction
+
+- Previous: continuous outcomes
+
+- This module: categorical outcomes
+
+    - One-sample proportions
+    - Two-sample proportions
+    - Goodness-of-fit
+    - Independence
+    
+- This lecture: goodness-of-fit
+
+## `R` Setup 
+
+```{r}
+library(tidyverse)
+library(ssstats)
+
+precinct_data <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/6-4-precinct_data.csv")
+shift_assignment <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/6-7-shift_assignment.csv")
+rank_data <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/6-5-rank_data.csv")
+```
+
+## Hypothesis Testing: Goodness-of-Fit
+
+- The goodness-of-fit test allows us to determine if a frequency distribution follows a specific distribution.
+
+    - This could be a named distribution (e.g., normal)
+
+    - It could also be a distribution without a name (e.g., the probabilities are specified)
+
+- Before we can perform the goodness-of-fit test, we must compute expected counts.$$E_i = n p_i$$
+
+    - e.g., suppose that we expect 25% of officers to work the Morning shift; if we have 96 officers, we then expect 24 of them on Morning shift.
+
+## Hypothesis Testing: Goodness-of-Fit
+
+- **Hypotheses**
+
+    - $H_0:$ The random variable follows the specified distribution.
+    - $H_1:$ The random variable does not follow the specified distribution.
+
+- **Test Statistic**
+
+$$\chi^2_0 = \sum_{i=1}^k \frac{(O_i-E_i)^2}{E_i}$$
+
+- where $k$ = number of categories, $O_i$ = observed count and $E_i$ = expected count
+
+## Hypothesis Testing: Goodness-of-Fit (R)
+
+- We will use the `goodness_of_fit()` function from `library(ssstats)` to perform the test.
+
+- Generic syntax (assuming uniform distribution):
+
+```{r}
+#| eval: false
+dataset_name |> goodness_of_fit(outcome = categorical_variable,
+                                alpha = specified_alpha)
+```
+
+## Example 1
+
+- The Zootopia Police Department has four shifts: Morning, Afternoon, Evening, and Night. Captain Bogo claims that officers are evenly distributed across the four shifts to ensure consistent staffing.
+
+- However, after reviewing staff assignments, you suspect the distribution might not be uniform. The number of officers assigned to each shift is recorded.
+
+- We will use the `shift_assignment` dataset to determine if they are equally distributed.
+
+## Example 1
+
+- Let's first look at the frequency table.
+
+```{r}
+shift_assignment |> n_pct(shift)
+```
+
+## Example 1
+
+- Are shifts equally staffed?
+
+```{r}
+shift_assignment |> goodness_of_fit(outcome = shift)
+```
+
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0$: Shifts are staffed equally ($\pi_{\text{M}} = \pi_{\text{A}} = \pi_{\text{E}} = \pi_{\text{N}} = 0.25$).
+    
+    - $H_1$: Shifts are not staffed equally (at least one $\pi_i \ne 0.25$).
+
+- **Test Statistic and *p*-Value**
+
+    - $\chi^2_0 = 8.25$
+    
+    - $p = 0.041$
+    
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+    
+- **Conclusion and Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that at least one of the shifts is staffed differently.
+
+## Example 2
+
+- The Zootopia Police Department tracks officer ranks: Officer, Sergeant, Captain, and Chief. Historically, the department has maintained these proportions:
+
+| Rank | Proportion |
+|:---|--:|
+| Officer | 0.60 |
+| Sergeant | 0.25 |
+| Captain | 0.10 |
+| Chief | 0.05 |
+
+- This year, the department reviews 147 officers and wants to determine if the rank distribution has changed from the historical pattern.
+
+- We will use the `rank_data` dataset to determine if the current distribution has changed from the historical distribution.
+
+## Example 2
+
+- Let's first look at a frequency table.
+
+```{r}
+rank_data |> n_pct(rank)
+```
+
+## Example 2
+
+- The department wants to test if the rank distribution has changed from historical proportions (Officer: 60%, Sergeant: 25%, Captain: 10%, Chief: 5%).
+
+- Let's consider the hypothesis test. Except... this is not a uniform distribution.
+
+    - i.e., we do not expect equal proportions between all of the groups.
+
+## Hypothesis Testing: Goodness-of-Fit (R)
+
+- We will again use the `goodness_of_fit()` function from `library(ssstats)` for non-uniform distributions.
+
+- Generic syntax (non-uniform distribution):
+
+```{r}
+#| eval: false
+dataset_name |> goodness_of_fit(outcome = categorical_variable,
+                                expected = c("Category 1" = proportion_1,
+                                             "Category 2" = proportion_2,
+                                             ... etc ...),
+                                alpha = specified_alpha)
+```
+
+
+
+## Example 2
+
+- Has the rank distribution has changed from historical proportions?
+
+```{r}
+rank_data %>% goodness_of_fit(outcome = rank,
+                              expected = c("Officer" = 0.60,
+                                           "Sergeant" = 0.25,
+                                           "Captain" = 0.10,
+                                           "Chief" = 0.05),
+                              alpha = 0.05)
+```
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0:$ The current rank distribution matches the historical pattern.
+    - $H_1:$ The current rank distribution does not match the historical pattern.
+
+- **Test Statistic and *p*-Value**
+
+    - $\chi^2_0 = 2.39$ 
+    - $p = 0.496$
+
+- **Rejection Region**
+  
+  - Reject $H_0$ if $p < \alpha$; $\alpha=0.05$
+
+- **Conclusion/Interpretation**
+    
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that the rank distribution has changed from its historical pattern. 
+
+## Example 3
+
+- Captain Bogo oversees three precincts in Zootopia: Meadowbrook, Coldharbor, and Downtown. He believes that a fair staffing model should distribute officers equally across all three precincts so that each precinct has comparable resources and response times.
+
+- However, after reviewing current assignments, he's noticed that the numbers don't look equal. One precinct seems to have more officers than the others. He has gathered data on 201 officers currently assigned to the three precincts and records which precinct each officer works in. 
+
+- We will use the `precinct_data` dataset to answer the following question: 
+
+    - Are officers equally distributed across the three precincts?
+    
+## Example 3
+
+- Let's first look at the frequency table.
+
+```{r}
+precinct_data |> n_pct(precinct)
+```
+
+## Example 3
+
+- Are officers equally distributed across the three precincts?
+
+```{r}
+precinct_data |> goodness_of_fit(outcome = precinct)
+```    
+
+## Example 3
+
+- **Hypotheses**
+
+    - $H_0:$ Officers are equally distributed across the three precincts.
+    - $H_1:$ Officers are not equally distributed across the three precincts.
+
+- **Test Statistic and *p*-Value**
+
+    - $\chi^2_0 = 1.82$ 
+    - $p = 0.402$
+
+- **Rejection Region**
+  
+  - Reject $H_0$ if $p < \alpha$; $\alpha=0.05$
+
+- **Conclusion/Interpretation**
+    
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that officers are not equally distributed across the three precincts.
+    
+## Wrap Up
+
+- In this lecture, we have reviewed the $\chi^2$ goodness-of-fit test.
+
+    - We use them when we have a single categorical variable and want to test the pattern of responses.
+    
+- Two situations:
+
+    - Uniform distribution (equal proportions across categories)
+
+    - Non-uniform distribution (unequal proportions based on historical data or policy)
+    
+        - Can also be a named distribution (e.g., normal)
+        
+- Next: exploring the relationship between two categorical varaibles.

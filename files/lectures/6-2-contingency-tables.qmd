@@ -1,5 +1,352 @@
 ---
-title: "6-2-contingency-tables"
-format: html
+title: "Tests for Independence"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+    code-annotations: hover
+editor: source
 ---
+
+## Introduction
+
+- Previous: continuous outcomes
+
+- This module: categorical outcomes
+
+    - One-sample proportions
+    - Two-sample proportions
+    - Goodness-of-fit
+    - Independence
+    
+- This lecture: tests for independence
+
+## `R` Setup 
+
+```{r}
+library(tidyverse)
+library(ssstats)
+
+fitness_data <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/6-1-fitness_data.csv")
+hopps_farm <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/6-2-hopps_farm.csv")
+hustle_data <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/6-3-hustle_data.csv")
+recert_data <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/6-6-recert_data.csv")
+```
+
+## Introduction: Contingency Tables
+
+- A contingency table displays the relationship between two categorical variables.
+
+- It shows the count (frequency) of observations in each combination of categories.
+
+| | Category $B_1$ | Category $B_2$ | Total |
+|---|---|---|---|
+| **Category $A_1$** | $n_{11}$ | $n_{12}$ | $R_1$ |
+| **Category $A_2$** | $n_{21}$ | $n_{22}$ | $R_2$ |
+| **Total** | $C_1$ | $C_2$ | $n$ |
+
+- Each cell shows how many observations fall into *both* a row category and a column category.
+
+- Row totals: $R_i$ (total for row $i$)
+
+- Column totals: $C_j$ (total for column $j$)
+
+- Grand total: $n$ (all observations)
+
+## Introduction: Testing for Independence
+
+- Recall from basic probability: independence means knowing an observation's value on Variable A tells you *nothing* about their value on Variable B.
+
+- If A and B are truly independent:
+
+    - The proportion in each column should be the same for every row.
+    
+    - The proportion in each row should be the same for every column.
+
+- In the contingency table:
+
+    - If independent, cell counts would follow the pattern we'd expect by chance alone.
+    
+    - If related, cell counts deviate from what chance would produce.
+
+## Introduction: Testing for Independence
+
+- Recall from goodness-of-fit: if two variables are truly independent, we can predict what counts we'd *expect* in each cell.
+
+- For a contingency table, the *expected count* in cell $(i,j)$ is:
+
+$$E_{ij} = \frac{R_i \times C_j}{n}$$
+
+- where
+    - $R_i$ = row $i$ total
+    - $C_j$ = column $j$ total
+    - $n$ = grand total (all observations)
+
+## Hypothesis Testing: Test for Independence
+
+- **Hypotheses**
+    - $H_0$: There is not a relationship between [var 1] and [var 2].
+    - $H_1$: There is a relationship between [var 1] and [var 2].
+
+- **Test Statistic**
+
+$$\chi_0^2 = \sum_{i=1}^k \frac{(O_i-E_i)^2}{E_i}$$
+
+
+## Hypothesis Testing: Test for Independence (R)
+
+- We will use the `independence()` function from `library(ssstats)` to perform the test.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+dataset_name |> independence(col1 = first_variable,
+                             col2 = second_variable,
+                             alpha = specified_alpha)
+```
+
+
+## Example 1
+
+- The Zootopia Police Department wants to investigate whether recertification outcomes differ between patrol and desk officers. They suspect that officers working different roles may have different pass rates due to time constraints or training access.
+
+- They review 182 officers and record their department assignment (Patrol or Desk) and their most recent recertification outcome (Pass, Fail, or Resubmit).
+
+- We will use the `recert_data` datasert to determine if recertification outcome is independent of department.
+
+## Example 1
+
+- Let's first construct a contingency table,
+
+```{r}
+recert_data %>% n_pct(department, outcome)
+```
+
+## Example 1
+
+- Let's first construct a contingency table,
+
+```{r}
+recert_data %>% n_pct(outcome, department)
+```
+
+## Example 1
+
+- Examining recertification outcome and department,
+
+```{r}
+recert_data %>% independence(department, outcome)
+```
+
+## Example 1
+
+- **Hypotheses**
+
+    - $H_0:$ Recertification outcome and department assignment are independent.
+    
+    - $H_1:$ Recertification outcome and department assignment depend on one another.
+
+- **Test Statistic and *p*-Value**
+    - $\chi^2_0 = 7.81$
+    
+    - $p = 0.020$
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha=0.05$
+
+- **Conclusion/Interpretation**
+
+    - Reject $H_0$. There is sufficient evidence to suggest that recertification outcome depends on department assignment.
+
+## Example 2
+
+- The Zootopia Police Department is curious about whether physical fitness relates to rank advancement. They wonder if officers at higher ranks tend to be in better physical condition, or if fitness is independent of rank.
+
+- They review 139 officers across three ranks (Officer, Sergeant, Captain) and record their current rank and their fitness category (Low, Medium, or High) based on recent evaluations.
+
+- We will use the `fitness_data` dataset to determine if fitness level is independent of rank.
+
+## Example 2
+
+- Let's first construct a contingency table,
+
+```{r}
+fitness_data %>% n_pct(rank, fitness_cat)
+```
+
+## Example 2
+
+- Examining fitness by rank,
+
+```{r}
+fitness_data %>% independence(rank, fitness_cat)
+```
+
+## Example 2
+
+- **Hypotheses**
+
+    - $H_0:$ Fitness category and rank are independent.
+    
+    - $H_1:$ Fitness category and rank depend on one another.
+
+- **Test Statistic and *p*-Value**
+
+    - $\chi^2_0 = 2.42$
+    
+    - $p = 0.658$
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha=0.05$
+
+- **Conclusion/Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that fitness category and rank depend on one another.
+
+## Example 3
+
+- Many Zootopia officers supplement their police income with side work. The department is investigating whether the income officers earn from side-hustles varies by the shift they work. They wonder if certain shifts—with different hours or flexibility—lead to different earning potential.
+
+- They survey 118 officers and record their assigned work shift (Morning, Afternoon, or Evening) and the income category from their side work (Low, Medium, or High).
+
+- We will use the `hustle_data` dataset to determine if side-hustle income level is independent of work shift.
+
+## Example 3
+
+- Let's first construct a contingency table,
+
+```{r}
+hustle_data %>% n_pct(income_level, shift)
+```
+
+## Example 3
+
+- Examining income by shift,
+
+```{r}
+hustle_data %>% independence(income_level, shift)
+```
+
+## Example 3
+
+- **Hypotheses**
+
+    - $H_0:$ Income level and shift are independent.
+    
+    - $H_1:$ Income level and shift depend on one another.
+
+- **Test Statistic and *p*-Value**
+
+    - $\chi^2_0 = 0.07$
+    
+    - $p = 0.999$
+
+- **Rejection Region**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha=0.05$
+
+- **Conclusion/Interpretation**
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that income level and shift depend on one another.
+
+## Assumptions on $\chi^2$ Test for Independence
+
+- The $\chi^2$ test assumes that *all* <u>expected</u> cell counts are $\ge$ 5.
+
+- When this assumption is violated, we use Fisher's exact test instead.
+
+    - Fisher's exact test calculates exact p-values.
+    
+- Fisher's is valid in all square contingency tables, however, this becomes increasingly computationally expensive as $n \to \infty$.
+
+## Hypothesis Testing: Fisher's Exact Test (R)
+
+- We will use the `fishers_exact()` function from `library(ssstats)` for 2×2 tables with sparse cells.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+dataset_name %>% fishers_exact(col1 = first_variable,
+                               col2 = second_variable,
+                               alpha = specified_alpha)
+```
+
+## Example 4
+
+- Judy Hopps helps manage her family's carrot farm and is investigating farming practices. She wants to know whether using crop rotation is associated with soil quality issues.
+
+- She reviews 36 plots on the farm and records whether each plot used crop rotation (Yes or No) and whether soil quality issues were detected (Yes or No).
+
+- This is a small 2×2 table, so Fisher's exact test is appropriate.
+
+## Example 4
+
+- Let's first look at the contingency table,
+
+```{r}
+hopps_farm |> n_pct(rotation, soil_issue)
+```
+
+
+
+## Example 4
+
+- Judy wants to test whether soil quality issues are independent of crop rotation practice. 
+
+
+```{r}
+hopps_farm %>% fishers_exact(rotation, soil_issue)
+```
+
+## Example 4
+
+- **Hypotheses**
+    - $H_0:$ Crop rotation and soil quality issues are independent.
+    - $H_1:$ Crop rotation and soil quality issues are associated.
+
+- **Test Statistic and *p*-Value**
+    - No test statistic (we are calculating the $p$ directly)
+    - $p = 0.036$ 
+
+- **Rejection Region**
+    - Reject $H_0$ if $p < \alpha$; $\alpha=0.05$
+
+- **Conclusion/Interpretation**
+    - Reject $H_0$. There is sufficient evidence that soil quality issues are associated with crop rotation practice. 
+
+## Wrap Up
+
+- A chi-square test for independence tests whether two categorical variables are related or independent.
+
+- The test compares *observed* cell counts in a contingency table to *expected* cell counts.
+
+- Key assumption of $\chi^2$: All expected cell counts must be $\ge$ 5.
+
+    - If this is violated, use Fisher's exact test instead.
+    
+- The analysis you choose depends on your data:
+
+    - Chi-square test (`independence()`): Use for larger contingency tables with adequate cell counts.
+    
+    - Fisher's exact test (`fishers_exact()`): Use for 2×2 tables when expected counts are small (< 5).
 
