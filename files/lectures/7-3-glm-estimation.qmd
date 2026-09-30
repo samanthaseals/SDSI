@@ -1,5 +1,248 @@
 ---
-title: "7-3-glm-estimation"
-format: html
+title: "General Linear Models:<br>Estimation and Interpretation"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+    code-annotations: hover
+editor: source
 ---
 
+## Introduction
+
+- We have discussed quantifying the relationship between two continuous variables.
+
+- Recall that the correlation describes the strength and the direction of the relationship.
+
+    - Pearson's correlation: describes the linear relationship; assumes normality of both variables.
+    
+    - Spearman's correlation: describes the monotone relationship; assumes both variables are at least ordinal.
+
+- We now focus on linear regression, an alternative way to quantify the relationship.
+
+## `R` Set Up
+
+```{r}
+library(tidyverse)
+library(ssstats)
+library(broom)
+training <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-1-training.csv")
+wellness <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-2-wellness.csv")
+reports <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-3-reports.csv")
+break_room <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-4-break_room.csv")
+bakery_sales <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-5-bakery_sales.csv")
+cafe_sales <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-6-cafe_sales.csv")
+```
+
+## Introduction to Regression
+
+- We are often interested in how two variables are related.
+
+- We use regression analysis to examine this relationship.
+    
+    - One variable predicts the other.
+
+- We will create what is called:
+
+    - regression "line"
+    - regression model
+    - line of best fit
+    - trend line
+
+## Introduction to Regression
+
+- Consider the general form of regression:
+
+$$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_k x_k + \varepsilon$$
+
+
+- **Outcome** or response variable ($y$): the variable we are interested in predicting or modeling.
+
+- **Predictor** or explanatory variable ($x_i$): a variable explaining or predicting the outcome.
+    
+    
+## Introduction to Regression
+
+- The regression equivalent to correlation is *simple* linear regression,
+
+$$y = \beta_0 + \beta_1 x + \varepsilon,$$
+
+- where
+    
+    - $\beta_0$ is the $y$-intercept,
+    
+    - $\beta_1$ is the *slope* describing the relationship between $x$ and $y$,
+    
+    - $\varepsilon$ is the *error*, or *residual*.
+    
+## Regression: Estimation
+
+- When we only have one predictor in the model, we can easily estimate $\beta_0$ and $\beta_1$:
+
+$$
+\begin{align*}
+\hat{\beta}_1 &= \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2} \\
+    & \\
+    \hat{\beta}_0 &= \bar{y} - \hat{\beta}_1 \bar{x}
+\end{align*}
+$$
+
+## Regression: Estimation (`R`)
+
+- We will use `glm()` to construct our linear models.
+
+- For simple linear regression, we will first construct the model,
+
+```{r}
+#| eval: false
+m <- glm(y ~ x,
+         data = dataset_name)
+```
+
+- then we can look at the results using `coefficients()`.
+
+```{r}
+#| eval: false
+m |> coefficients()
+```
+
+## Example 1
+
+- Recall the `training` dataset,
+
+    - Is there a relationship between weekly practice hours ($x$) and exam score ($y$)?
+    
+```{r}
+#| echo: false
+head(training, n = 3)
+```
+
+## Example 1
+
+- Is there a relationship between weekly practice hours ($x$) and exam score ($y$)?
+    
+```{r}
+m1 <- glm(exam_score ~ practice_hours,
+          data = training)
+```
+
+- Note the lack of output from the above code -- we have *saved* the output to the object `m1`.
+
+```{r}
+m1 |> coefficients()
+```
+
+$$\hat{\text{exam}} = 57.25 + 3.11 \text{ practice}$$
+
+## Interpreting Coefficients
+
+- Interpretation of the slope, $\hat{\beta}$
+
+    - For a [$k$] [units of $x$] increase in [$x$], we expect [$y$] to [increase or decrease] by [$k \times |\hat{\beta}_1|$] [units of $y$].
+
+- Interpretation of the $y$-intercept, $\hat{\beta}_0$
+
+    - When [$x$] is 0, we expect the mean of [$y$] to be [$\hat{\beta}_0$].
+
+- Caveat:
+
+    - It does not always make sense for $x=0$. In this situation, we do not interpret the $y$-intercept.
+    
+    - Some applications (e.g., psychology) will center the $x$ variable around its mean. Then, when $x=0$, we are interpreting in terms of the "average value of $x$."
+
+## Example 1
+
+- Recall our estimates,
+
+```{r}
+m1 |> coefficients()
+```
+
+- For a [$k$] [units of $x$] increase in [$x$], we expect [$y$] to [increase or decrease] by [$k \times |\hat{\beta}_1|$] [units of $y$].
+
+    - For a 1 hour increase in practice time, we expect the exam score to increase by 3.11 points.
+    
+    - For a 3 hour increase in practice time, we expect the exam score to increase by 9.33
+    
+## Example 1
+
+- Recall our estimates,
+
+```{r}
+m1 |> coefficients()
+```    
+
+- When [$x$] is 0, we expect the mean of [$y$] to be [$\hat{\beta}_0$].
+
+    - When there is no practice, we expect the average exam score to be 57.25.
+    
+## Example 3
+
+- A bakery owner in Savanna Central wants your help: "Some days, pastries practically fly off the shelves. Other days, we have trays left over. What actually helps explain our sales?"
+
+- We have data from 40 days to answer the following question:
+
+    - How are advertising spending ($x_1$), foot traffic ($x_2$), temperature ($x_3$), and discounts ($x_4$) related to daily bakery sales ($y$)?
+    
+```{r}
+#| echo: false
+bakery_sales |> head(n=3)
+```
+
+## Example 3   
+
+- How are advertising spending ($x_1$), foot traffic ($x_2$), temperature ($x_3$), and discounts ($x_4$) related to daily bakery sales ($y$)?
+
+```{r}
+m3 <- glm(sales_dollars ~ advertising_dollars	+ foot_traffic + temperature_c + discount_percent,
+          data = bakery_sales)
+m3 |> coefficients()
+```
+
+$$\hat{\text{sales}} = 142.69 + 1.73 \text{ adv.} + 1.38 \text{ traff.} + 8.61 \text{ temp.} + 11.92 \text{ disc.}$$
+
+## Example 3 
+
+$$\hat{\text{sales}} = 142.69 + 1.73 \text{ adv.} + 1.38 \text{ traff.} + 8.61 \text{ temp.} + 11.92 \text{ disc.}$$
+
+- Interpreting coefficients:
+
+    - Before accounting for advertising expenditures, foot traffic, temperature, and discount offered, we expect bakery sales to be, on average, $142.69.
+
+    - For a $1 increase in advertising, we expect bakery sales to increase by $1.73.
+    
+    - For a 1 citizen increase in foot traffic, we expect bakery sales to increase by $1.38.
+    
+    - For a 1^o^C increase in temperature, we expect bakery sales to increase by $8.61.
+    
+    - For a 1 percentage point increase in discount offered, we expect bakery sales to increase by $11.92.
+    
+## Wrap Up
+
+- We have now seen the basics about correlation and regression analysis.
+
+    - Correlation is unitless and bounded to [-1, 1].
+    
+        - This tells us the *strength* of the relationship.
+    
+    - Slopes have units and can take on any value on the real line.
+    
+        - This allows us to concretely quantify the increase or decrease.
+
+- In the next lecture, we will look at making statistical inference on our regression models.

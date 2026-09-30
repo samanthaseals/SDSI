@@ -1,5 +1,449 @@
 ---
-title: "7-4-glm-inference"
-format: html
+title: "General Linear Models:<br>Statistical Inference"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+    code-annotations: hover
+editor: source
 ---
 
+## Introduction
+
+- In our previous lectures, we discussed correlation and estimation of regression coefficients.
+
+    - Correlation is unitless.
+    
+    - Regression coefficients retain the units of $x$ and $y$ for interpretations.
+
+- In this lecture, we introduce statistical inference for regression:
+
+    - Confidence intervals for $\beta_i$
+    
+    - Overall test for a significant regression line
+    
+    - Test for individual predictors
+
+## `R` Set Up
+
+```{r}
+library(tidyverse)
+library(ssstats)
+library(broom)
+training <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-1-training.csv")
+wellness <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-2-wellness.csv")
+reports <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-3-reports.csv")
+break_room <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-4-break_room.csv")
+bakery_sales <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-5-bakery_sales.csv")
+cafe_sales <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-6-cafe_sales.csv")
+```
+
+## Regression Assumptions
+
+- Recall the general linear model,
+
+$$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_k x_k + \varepsilon$$
+
+- Like in ANOVA, we assume
+
+$$\varepsilon \sim N(0, \sigma^2)$$
+
+## Regression Assumptions (`R`)
+
+- We will use the `reg_check()` function from `library(ssstats)`.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+model_name |> reg_check() 
+```
+
+## Example 1
+
+- Recall the `training` dataset,
+
+    - Is there a relationship between weekly practice hours ($x$) and exam score ($y$)?
+    
+```{r}
+#| echo: false
+head(training, n = 3)
+```
+
+## Example 1
+
+- Is there a relationship between weekly practice hours ($x$) and exam score ($y$)?
+
+```{r}
+m1 <- glm(exam_score ~ practice_hours,
+          data = training)
+m1 |> coefficients()
+```
+
+## Example 1
+
+- Checking assumptions,
+
+```{r}
+#| fig-align: 'center'
+m1 |> reg_check()
+```
+
+## Example 2
+
+- Recall the `reports` dataset,
+
+    - Is there a relationship between officer height ($x$) and report accuracy ($y$)?
+
+```{r}
+#| echo: false
+head(reports, n = 3)
+```
+
+## Example 2
+
+- Is there a relationship between officer height ($x$) and report accuracy ($y$)?
+
+- Constructing the model,
+
+```{r}
+m2 <- glm(report_accuracy ~ height_cm, 
+          data = reports)
+m2 |> coefficients()
+```
+
+## Example 2
+
+- Checking assumptions,
+
+```{r}
+#| fig-align: 'center'
+m2 |> reg_check()
+```
+
+## Statistical Inference in Linear Regression
+
+- Once we confirm that our residuals follow a normal distribution, we begin to make inference.
+
+    - Omnibus test for the model.
+    
+    - Individual predictor tests.
+    
+        - Confidence intervals for $\beta_i$.
+        
+- If the residuals do *not* follow a normal distribution with mean 0 and some common variance, $\sigma^2$, we do *not* follow our modeling up with formal hypothesis tests.        
+
+## Confidence Intervals for $\beta_i$
+
+- Like all statistics, we can put a confidence interval on $\beta_i$.
+
+    - When reporting regression results, I *always* include the corresponding CI.
+    
+$$\hat{\beta}_i \pm t_{\alpha/2, n-k-1} \text{ SE}_{\hat{\beta}_i}$$
+
+
+
+## Confidence Intervals for $\beta_i$ (`R`)
+
+- We can use the `tidy()` function to get regression results with confidence intervals,
+
+```{r}
+#| eval: false
+model_name |> tidy(conf.int = TRUE) 
+```
+
+## Example 1
+
+- Returning to our first example,
+
+    - Is there a relationship between weekly practice hours ($x$) and exam score ($y$)?
+    
+```{r}
+#| eval: false
+m1 |> tidy(conf.int = TRUE) 
+```
+
+```{r}
+#| echo: false
+m1 |> tidy(conf.int = TRUE) |> select(term, estimate, conf.low, conf.high)
+```
+
+## Example 3
+
+- Recall the `bakery_sales` dataset,
+
+    - How are advertising spending ($x_1$), foot traffic ($x_2$), temperature ($x_3$), and discounts ($x_4$) related to daily bakery sales ($y$)?
+    
+```{r}
+#| echo: false
+bakery_sales |> head(n=3)
+```
+
+## Example 3
+
+- Recall the `bakery_sales` dataset,
+
+    - How are advertising spending ($x_1$), foot traffic ($x_2$), temperature ($x_3$), and discounts ($x_4$) related to daily bakery sales ($y$)?
+    
+```{r}
+#| eval: false
+m3 |> tidy(conf.int = TRUE) 
+```
+
+```{r}
+#| echo: false
+m3 <- glm(sales_dollars ~ advertising_dollars   + foot_traffic + temperature_c + discount_percent,
+          data = bakery_sales)
+m3 |> tidy(conf.int = TRUE) |> select(term, estimate, conf.low, conf.high)
+```
+
+##  Hypothesis Testing: Significant Regression Line
+
+- We can use the likelihood ratio test to test for a "significant regression" line. 
+
+    - A significant regression line means that there is a non-zero slope among all slopes. 
+
+- **Hypotheses**
+
+    - $H_0: \ \beta_1 = ... = \beta_k = 0$ 
+    - $H_1:$ at least one is different
+
+- **Test Statistic and *p*-Value**
+
+    - $\chi^2_0$ (from R)
+    - $p = \text{P}[\chi^2_{k} \ge \chi^2_0]$
+    
+##  Hypothesis Testing: Significant Regression Line (R)
+
+- We will use the `anova()` function to test for a significant model.
+
+```{r}
+#| eval: false
+full <- glm(y ~ x_1 + x_2 + ... + x_k, data = dataset_name)
+reduced <- glm(y ~ 1, data = dataset_name)
+anova(reduced, full, test = "Chisq")
+```
+
+## Example 1
+
+- Revisiting our model from Example 1, 
+
+$$\hat{\text{exam}} = 57.25 + 3.11 \text{ practice}$$
+
+```{r}
+full <- glm(exam_score ~ practice_hours, data = training)
+reduced <- glm(exam_score ~ 1, data = training)
+anova(reduced, full, test = "Chisq")
+```
+
+## Example 1
+
+- **Hypotheses:**
+
+    - $H_0: \beta_1 = 0$ 
+    - $H_1: \beta_1 \ne 0$
+    
+- **Test Statistic and $p$-Value:**
+
+    - $\chi^2_0 = 2773.9$
+    - $p < 0.001$
+    
+- **Rejection Region:**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+    
+- **Conclusion and Interpretation:**    
+
+    - Reject $H_0$. There is sufficient evidence to suggest that the slope is non-zero.
+    
+## Example 3
+
+- Revisiting our model from Example 3, 
+
+$$\hat{\text{exam}} = 57.25 + 3.11 \text{ practice}$$
+
+```{r}
+full <- glm(sales_dollars ~ advertising_dollars	+ foot_traffic + temperature_c + discount_percent, data = bakery_sales)
+reduced <- glm(sales_dollars ~ 1, data = bakery_sales)
+anova(reduced, full, test = "Chisq")
+```
+
+## Example 3
+
+- **Hypotheses:**
+
+    - $H_0: \beta_1 = \beta_2 = \beta_3 = \beta_4 = 0$ 
+    - $H_1:$ at least one $\beta_i \ne 0$
+    
+- **Test Statistic and $p$-Value:**
+
+    - $\chi^2_0 = 712318$
+    - $p < 0.001$
+    
+- **Rejection Region:**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+    
+- **Conclusion and Interpretation:**    
+
+    - Reject $H_0$. There is sufficient evidence to suggest that at least one of the slopes is non-zero.
+
+
+##  Hypothesis Testing: Individual Predictors
+
+- We can use the $t$-test to test for "significant predictors"
+
+    - A significant predictor means that there is a non-zero slope between the outcome and this specific $x_i$.
+    
+- **Hypotheses**
+
+    - $H_0: \ \beta_i = 0$ 
+    - $H_1: \ \beta_i \ne 0$
+
+- **Test Statistic**
+
+$$t_0 = \frac{\hat{\beta}_i}{\text{SE}_{\beta_i}} \sim t_1$$
+
+##  Hypothesis Testing: Individual Predictors (`R`)
+
+- We again turn to `tidy()` for output,
+
+```{r}
+#| eval: false
+model_name |> tidy(conf.int = TRUE)
+```
+
+## Example 1
+
+- Returning to our first example,
+
+```{r}
+m1 |> tidy(conf.int = TRUE)
+```
+
+- Practice time is a significant predictor of exam score ($p < 0.001$).
+
+
+## Example 3
+
+- Returning to our third example,
+
+```{r}
+m3 |> tidy(conf.int = TRUE)
+```
+
+- All predictors are significant (all $p < 0.001$).
+
+## Example 4
+
+- A cafe owner in Savanna Central brings you a spreadsheet: "We’ve been tracking everything! Can you help us figure out which of these are related to sales?"
+
+- We have collected data from 40 days to answer the following question:
+
+    - Which of the five explanatory variables are associated with daily cafe sales after accounting for the other variables?
+
+```{r}
+#| echo: false
+cafe_sales |> head(n=3)
+```
+
+## Example 4
+
+- Constructing the model,
+
+    - Which of the five explanatory variables are associated with daily cafe sales after accounting for the other variables?
+
+```{r}
+m4 <- glm(sales_dollars ~ window_display_hours + music_volume_db + temperature_c + foot_traffic + advertising_dollars,
+          data = cafe_sales)
+m4 |> tidy(conf.int = TRUE)
+```
+
+## Example 4
+
+- Is this a significant regression model?
+
+```{r}
+full <- glm(sales_dollars ~ window_display_hours + music_volume_db + temperature_c + foot_traffic + advertising_dollars, data = cafe_sales)
+reduced <- glm(sales_dollars ~ 1, data = cafe_sales)
+anova(reduced, full, test = "Chisq")
+```
+
+
+## Example 4
+
+- **Hypotheses:**
+
+    - $H_0: \beta_1 = \beta_2 = \beta_3 = \beta_4 = \beta_5 =0$ 
+    - $H_1:$ at least one $\beta_i \ne 0$
+    
+- **Test Statistic and $p$-Value:**
+
+    - $\chi^2_0 = 1245567$
+    - $p < 0.001$
+    
+- **Rejection Region:**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+    
+- **Conclusion and Interpretation:**    
+
+    - Reject $H_0$. There is sufficient evidence to suggest that at least one of the slopes is non-zero.
+
+## Example 4
+
+- Looking at individual predictors,
+
+```{r}
+m4 <- glm(sales_dollars ~ window_display_hours + music_volume_db + temperature_c + foot_traffic + advertising_dollars,
+          data = cafe_sales)
+m4 |> tidy(conf.int = TRUE)
+```
+
+## Example 4
+
+- Looking at the individual predictors,
+
+    - Window display is not a significant predictor ($p = 0.828$)
+    
+    - Music volume is not a significant predictor ($p = 0.925$)
+    
+    - Temperature is not a significant predictor ($p = 0.128$)
+    
+    - Foot traffic is a significant predictor ($p < 0.001$)
+    
+    - Advertising dollars is a significant predictor ($p < 0.001$)
+
+## Wrap Up
+
+- We have covered the basics of linear regression.
+
+- In Statistics for Data Science II, you will learn more about statistical modeling.
+
+    - A deeper dive into ordinary least squares.
+    
+        - Additional predictor types.
+        
+        - Model fit and diagnostics.
+        
+        - Data visualization.
+
+    - Logistic regression.
+    
+    - Poisson and negative binomial regressions.

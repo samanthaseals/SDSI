@@ -1,5 +1,473 @@
 ---
-title: "7-2-correlation"
-format: html
+title: "Scatterplots and Correlation"
+execute:
+  echo: true
+  warning: false
+  message: false
+  error: true
+format:
+  revealjs:
+    theme: simple
+    css: style_lecture.css
+    include-after-body: headers.html
+    self-contained: true
+    slide-number: true
+    center: false
+    width: 1600
+    height: 900
+    df-print: kable
+    html-math-method: katex
+    code-fold: false
+    code-tools: false
+    incremental: false
+    code-annotations: hover
+editor: source
 ---
+
+## Introduction
+
+- In this module, we begin discussing regression analysis.
+
+- Regression is a very, very wide area. 
+
+    - We are barely scratching the surface.
+    
+- SDS II will deepen your understanding on statistical modeling techniques. 
+
+## `R` Set Up
+
+```{r}
+library(tidyverse)
+library(ssstats)
+training <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-1-training.csv")
+wellness <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-2-wellness.csv")
+reports <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-3-reports.csv")
+break_room <- read_csv("https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-4-break_room.csv")
+```
+
+## Scatterplots
+
+- A **scatterplot** is a graph that shows the relationship between two quantitative variables measured on the same individual.
+
+- Every individual in the dataset is represented by a point on the scatterplot.
+
+- Note! The explanatory variable is on the $x$-axis and the response variable is on the $y$-axis.
+
+- Like we have seen before, plotting the data is a first step in identifying issues.
+
+
+## Scatterplots
+
+- **Positive relationship:** As $x$ increases, $y$ also increases.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+library(tidyverse)
+set.seed(123)
+dat <- tibble(x = 1:20, y = 2*x + rnorm(20, 0, 4))
+
+ggplot(dat, aes(x, y)) +
+  geom_point() +
+  theme_minimal(base_size = 16) +
+  labs(x = "Explanatory variable (x)",
+       y = "Response variable (y)")
+```
+
+## Scatterplots
+
+- **Negative relationship:** As $x$ increases, $y$ decreases.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+set.seed(123)
+dat <- tibble(x = 1:20, y = 40 - 2*x + rnorm(20, 0, 4))
+
+ggplot(dat, aes(x, y)) +
+  geom_point() +
+  theme_minimal(base_size = 16) +
+  labs(x = "Explanatory variable (x)",
+       y = "Response variable (y)")
+```
+
+
+## Scatterplots
+
+- **No relationship:** As $x$ increases, we cannot predict what happens to $y$.
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+set.seed(123)
+
+dat <- tibble(
+  x = runif(20, 0, 20),
+  y = runif(20, 0, 40)
+)
+
+ggplot(dat, aes(x, y)) +
+  geom_point() +
+  theme_minimal(base_size = 16) +
+  labs(x = "Explanatory variable (x)",
+       y = "Response variable (y)")
+```
+
+## Scatterplots
+
+- Hmmmm...
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+set.seed(123)
+
+dat <- tibble(
+  x = seq(-5, 5, length.out = 20),
+  y = x^2 + rnorm(20, 0, 2)
+)
+
+ggplot(dat, aes(x, y)) +
+  geom_point() +
+  theme_minimal(base_size = 16) +
+  labs(x = "Explanatory variable (x)",
+       y = "Response variable (y)")
+```
+
+## Scatterplots
+
+- Hmmmm...
+
+```{r}
+#| echo: false
+#| fig-align: 'center'
+set.seed(123)
+
+dat <- tibble(
+  x = 1:20,
+  y = 2*x + rnorm(20, 0, 4)
+) |>
+  add_row(
+    x = c(5, 17),
+    y = c(45, 5)
+  )
+
+ggplot(dat, aes(x, y)) +
+  geom_point() +
+  theme_minimal(base_size = 16) +
+  labs(x = "Explanatory variable (x)",
+       y = "Response variable (y)")
+```
+
+## Scatterplot (`R`)
+
+- To construct a scatterplot in `R`, the base code uses `ggplot()` from the `ggplot2` package (called in with `tidyverse`).
+
+```{r}
+#| eval: false
+dataset_name |> ggplot(aes(x = x_variable, y = y_variable)) +
+  geom_point() +
+  theme_minimal() +
+  labs(x = "Explanatory variable (x)",
+       y = "Response variable (y)")
+```
+
+## Example 1
+
+- Okonkwo stops by your desk: "Training division keeps encouraging recruits to spend more time on practice exercises. Before we build extra practice time into the schedule, I want to know if recruits who practice more tend to score higher?"
+
+- We will examine the following question using the `training` dataset:
+
+    - Is there a relationship between weekly practice hours ($x$) and exam score ($y$)?
+    
+```{r}
+#| echo: false
+head(training, n = 3)
+```
+
+## Example 1
+
+- Constructing the scatterplot,
+
+```{r}
+#| fig-align: 'center'
+#| echo: false
+training |> ggplot(aes(x = practice_hours, y = exam_score)) +
+  geom_point() +
+  theme_minimal(base_size = 16) +
+  labs(x = "Practice Time (hrs)",
+       y = "Exam Score")
+```
+
+
+## Example 2
+
+- Okonkwo raises an eyebrow: "Someone in records claims our taller officers write more accurate incident reports. ... That can't be true. Is there actually a relationship?"
+
+- We will examine the following question using the `reports` dataset:
+
+    - Is there a relationship between officer height ($x$) and report accuracy ($y$)?
+
+
+```{r}
+#| echo: false
+head(reports, n = 3)
+```
+
+## Example 2
+
+- Constructing the scatterplot,
+
+```{r}
+#| fig-align: 'center'
+#| echo: false
+reports |> ggplot(aes(x = height_cm, y = report_accuracy)) +
+  geom_point() +
+  theme_minimal(base_size = 16) +
+  labs(x = "Height (cm)",
+       y = "Accuracy (%)")
+```
+
+## Correlation
+
+- **Correlation:** A measure of the strength and direction of the linear relationship between two quantitative variables.
+
+    - $\rho$ represents the population correlation coefficient.
+    
+    - $r$ represents the sample correlation coefficient.
+
+- Note!! Correlation is bounded to [-1, 1].
+
+    - $r=-1$ represents perfect negative correlation.
+    - $r=1$ represents perfect positive correlation.
+    - $r=0$ represents no correlation.
+    
+- The closer |$r$| is to 1, the *stronger* the relationship between $x$ and $y$.    
+
+## Pearson's Correlation Coefficient
+
+- **Pearson's correlation coefficient**:
+
+$$r = \frac{\sum_{i=1}^n \left( \frac{x_i - \bar{x}}{s_x} \right)\left( \frac{y_i - \bar{y}}{s_y} \right)}{n-1},$$
+
+- where
+
+    - $x_i$ and $y_i$ make up the the $i$^th^ observation 
+    - $\bar{x}$ and $\bar{y}$ are the sample means
+    - $s_x$ and $s_y$ are the sample standard deviations
+    - $n$ is the total sample size
+    
+## Pearson's Correlation Coefficient
+
+- We can also determine if a **linear** relationship exists.
+
+- **Hypotheses:**
+
+    - $H_0: \rho = 0$ 
+    - $H_1: \rho \ne 0$
+    
+- **Test Statistic:**
+
+$$t_0 = \frac{r \sqrt{n-2}}{\sqrt{1-r^2}} \sim t_{n-2}$$
+    
+## Pearson's Correlation (`R`)
+
+- We will use the `correlation()` function from `library(ssstats)`.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+dataset_name |> correlation(x = 1st_continuous_variable, # <1>
+                            y = 2nd_continuous_variable) # <2>
+```
+1. the first continuous variable in the correlation.
+2. the second continuous variable in the correlation.
+
+## Example 1
+
+- Finding the correlation for the `training` dataset,
+
+    - Is there a relationship between weekly practice hours ($x$) and exam score ($y$)?
+
+```{r}
+training |> correlation(x = practice_hours, y = exam_score)
+```
+
+- Note that the choice (order) of $x$ and $y$ are arbitrary.
+
+```{r}
+training |> correlation(y = practice_hours, x = exam_score)
+```
+
+## Example 1
+
+- **Hypotheses:**
+
+    - $H_0: \rho = 0$ 
+    - $H_1: \rho \ne 0$
+    
+- **Test Statistic and $p$-Value:**
+
+    - $t_0 = 8.837$
+    - $p < 0.001$
+    
+- **Rejection Region:**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+    
+- **Conclusion and Interpretation:**    
+
+    - Reject $H_0$. There is sufficient evidence to suggest that there is a linear relationship between the practice time and exam score.
+
+## Example 2
+
+- Finding the correlation for the `reports` dataset,
+
+    - Is there a relationship between officer height ($x$) and report accuracy ($y$)?
+
+```{r}
+reports |> correlation(height_cm, report_accuracy)
+```
+
+## Example 2
+
+- **Hypotheses:**
+
+    - $H_0: \rho = 0$ 
+    - $H_1: \rho \ne 0$
+    
+- **Test Statistic and $p$-Value:**
+
+    - $t_0 = 0.285$
+    - $p = 0.777$
+    
+- **Rejection Region:**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+    
+- **Conclusion and Interpretation:**    
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that there is a linear relationship between height and report accuracy.
+
+## Assumptions on Pearson's Correlation (`R`)
+
+- An assumption for Pearson's correlation is that both $x$ and $y$ are normally distributed. 
+
+- We will check this using a q-q plot as we have in the past.
+
+- We will use the `correlation()` function from `library(ssstats)`.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+dataset_name |> correlation_qq(x = 1st_continuous_variable, # <1>
+                               y = 2nd_continuous_variable) # <2>
+```
+1. the first continuous variable in the correlation.
+2. the second continuous variable in the correlation.
+
+## Example 1
+
+- Checking the assumption,
+
+```{r}
+#| fig-align: 'center'
+training |> correlation_qq(practice_hours, exam_score)
+```
+
+## Example 2
+
+- Checking the assumption,
+
+```{r}
+#| fig-align: 'center'
+reports |> correlation_qq(height_cm, report_accuracy)
+```
+
+## Spearman's Correlation Coefficient
+
+- Spearman's correlation coefficient is a nonparametric alternative to Pearson's correlation.
+    
+    - Spearman's correlation only assumes that the data is ordinal. 
+    
+    - It *does not* work for nominal data.
+
+- To compute Spearman's, the following algorithm is used:
+
+    1. Rank the $x$ and, separately, the $y$ values. 
+    
+        - ($x$, $y$) $\to$ ($R_x$, $R_y$)
+    
+    2. Find Pearson's correlation for the ranked data. 
+    
+- Spearman's correlation is interpreted the same as Pearson's correlation.   
+
+## Pearson's Correlation Coefficient
+
+- We can also determine if a **monotonic** relationship exists.
+
+- **Hypotheses:**
+
+    - $H_0: \rho_S = 0$ 
+    - $H_1: \rho_S \ne 0$
+    
+- **Test Statistic:**
+
+$$S = \frac{n(n^2 - 1)}{6}(1 - r_s)$$
+
+## Spearman's Correlation (`R`)
+
+- We will again use the `correlation()` function from `library(ssstats)`.
+
+- Generic syntax:
+
+```{r}
+#| eval: false
+dataset_name |> correlation(x = 1st_continuous_variable, # <1>
+                            y = 2nd_continuous_variable, # <2>
+                            method = "spearman") # <3> 
+```
+1. the first continuous variable in the correlation.
+2. the second continuous variable in the correlation.
+3. request Spearman's correlation instead of Pearson's.
+
+## Example 2
+
+- Finding the Spearman's correlation for the `reports` dataset,
+
+    - Is there a relationship between officer height ($x$) and report accuracy ($y$)?
+
+```{r}
+reports |> correlation(height_cm, report_accuracy,
+                       method = "spearman")
+```
+
+## Example 2
+
+- **Hypotheses:**
+
+    - $H_0: \rho_S = 0$ 
+    - $H_1: \rho_S \ne 0$
+    
+- **Test Statistic and $p$-Value:**
+
+    - $S_0 = 10396.93$
+    - $p = 0.880$
+    
+- **Rejection Region:**
+
+    - Reject $H_0$ if $p < \alpha$; $\alpha = 0.05$
+    
+- **Conclusion and Interpretation:**    
+
+    - Fail to reject $H_0$. There is not sufficient evidence to suggest that there is a linear relationship between height and report accuracy.
+
+
+## Wrap Up
+
+- guessthecorrelation.com!
+
+- In the next lectures, we will learn how to quantify the relationship between $x$ and $y$ using regression analysis.
 
