@@ -4,7 +4,7 @@
     "href": "files/schedule.html",
     "title": "Course Schedule",
     "section": "",
-    "text": "All .qmd files for lectures can be found on GitHub: lecture folder\nAll data used in lecture can also be found on GitHub: data folder\n\n\n\n\n\n\nWeek 1: Summarizing Data\n\n\n\n\n\nLecture Schedule:\n\nBasics of Probability (.qmd file)\nProbability Distributions (.qmd file)\nDescribing and Visualizing Continuous Data (.qmd file)\nDescribing and Visualizing Categorical Data (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 2: Introduction to Statistical Inference\n\n\n\n\n\nLecture Schedule:\n\nIntroduction to Statistical Inference (.qmd file)\nOne-Sample Means and Medians (.qmd file)\nOne-Sample Variances (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 3: Statistical Inference with Two Samples\n\n\n\n\n\nLecture Schedule:\n\nTwo-Sample Means and Medians (Independent) (.qmd file)\nTwo-Sample Means and Medians (Dependent) (.qmd file)\nTwo-Sample Variances (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 4: One-Way ANOVA\n\n\n\n\n\nLecture Schedule:\n\nOne-Way ANOVA (.qmd file)\nANOVA Assumptions (.qmd file)\nKruskal-Wallis (.qmd file)\nPosthoc Testing (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 5: Two-Way ANOVA\n\n\n\n\n\nLecture Schedule:\n\nTwo-Way ANOVA (.qmd file)\nTwo-Way Post-Hoc Testing (.qmd file)\nProfile Plots (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 6: Categorical Analysis\n\n\n\n\n\nLecture Schedule:\n\nOne-Sample Proportions (.qmd file)\nTwo-Sample Proportions (.qmd file)\nGoodness of Fit (.qmd file)\nContingency Tables (.qmd file)\n\n\n\n\n\n\n\n\n\n\n\nWeek 7: Correlation and Linear Regression\n\n\n\n\n\nLecture Schedule:\n\nSwitching Gears in R… (.qmd file)\n\nCorrelation (.qmd file)\nGeneral Linear Models: Estimation and Intepretation (.qmd file)\n\nGeneral Linear Models: Inference and Prediction (.qmd file)\nGeneral Linear Models: Visualization (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 8: Final Exam\n\n\n\n\n\nFinal exam opens on Friday morning at 12 am and is due by Friday evening at 11:59 pm, Central.\n\nThis is a timed exam; once you open the exam on Canvas, you will have 3 hours for completion.\nThe exam is cumulative and will cover all material from the course.\nThe exam is conceptual and applied; none of the questions will require/ask for coding.\nNo make up exams will be given."
+    "text": "All .qmd files for lectures can be found on GitHub: lecture folder\nAll data used in lecture can also be found on GitHub: data folder\n\n\n\n\n\n\nWeek 1: Summarizing Data\n\n\n\n\n\nLecture Schedule:\n\nBasics of Probability (.qmd file)\nProbability Distributions (.qmd file)\nDescribing and Visualizing Continuous Data (.qmd file)\nDescribing and Visualizing Categorical Data (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 2: Introduction to Statistical Inference\n\n\n\n\n\nLecture Schedule:\n\nIntroduction to Statistical Inference (.qmd file)\nOne-Sample Means and Medians (.qmd file)\nOne-Sample Variances (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 3: Statistical Inference with Two Samples\n\n\n\n\n\nLecture Schedule:\n\nTwo-Sample Means and Medians (Independent) (.qmd file)\nTwo-Sample Means and Medians (Dependent) (.qmd file)\nTwo-Sample Variances (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 4: One-Way ANOVA\n\n\n\n\n\nLecture Schedule:\n\nOne-Way ANOVA (.qmd file)\nANOVA Assumptions (.qmd file)\nKruskal-Wallis (.qmd file)\nPosthoc Testing (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 5: Two-Way ANOVA\n\n\n\n\n\nLecture Schedule:\n\nTwo-Way ANOVA (.qmd file)\nTwo-Way Post-Hoc Testing (.qmd file)\nProfile Plots (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 6: Categorical Analysis\n\n\n\n\n\nLecture Schedule:\n\nOne-Sample Proportions (.qmd file)\nTwo-Sample Proportions (.qmd file)\nGoodness of Fit (.qmd file)\nContingency Tables (.qmd file)\n\n\n\n\n\n\n\n\n\n\n\nWeek 7: Correlation and Linear Regression\n\n\n\n\n\nLecture Schedule:\n\nCorrelation (.qmd file)\nGeneral Linear Models: Estimation and Intepretation (.qmd file)\n\nGeneral Linear Models: Inference and Prediction (.qmd file)\n\n\n\n\n\n\n\n\n\n\nWeek 8: Final Exam\n\n\n\n\n\n\nThe computational final exam opens Tuesday morning and is due on Thursday evening at 11:59, Central.\n\nThe timed final exam opens on Friday morning at 12 am and is due by Friday evening at 11:59 pm, Central.\n\nOnce you open the exam on Canvas, you will have 3 hours for completion.\nThe exam is cumulative and will cover all material from the course.\nThe exam is conceptual and applied; none of the questions will require/ask for coding.\nNo make up exams will be given."
   },
   {
     "objectID": "files/lectures/4-2-anova-assumptions.html#introduction",
@@ -208,6 +208,237 @@
     "title": "ANOVA Assumptions",
     "section": "Wrap Up",
     "text": "Wrap Up\n\nThis lecture introduced assessing assumptions for one-way ANOVA.\n\nNormality: graph only\nVariance: graph and test available\n\nHowever, we have not yet discussed what to do about a broken assumption…\nIn the future:\n\nNonparametric alternative\nPosthoc testing"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#introduction",
+    "href": "files/lectures/7-4-glm-inference.html#introduction",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Introduction",
+    "text": "Introduction\n\nIn our previous lectures, we discussed correlation and estimation of regression coefficients.\n\nCorrelation is unitless.\nRegression coefficients retain the units of x and y for interpretations.\n\nIn this lecture, we introduce statistical inference for regression:\n\nConfidence intervals for \\beta_i\nOverall test for a significant regression line\nTest for individual predictors"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#r-set-up",
+    "href": "files/lectures/7-4-glm-inference.html#r-set-up",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "R Set Up",
+    "text": "R Set Up\n\nlibrary(tidyverse)\nlibrary(ssstats)\nlibrary(broom)\ntraining &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-1-training.csv\")\nwellness &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-2-wellness.csv\")\nreports &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-3-reports.csv\")\nbreak_room &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-4-break_room.csv\")\nbakery_sales &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-5-bakery_sales.csv\")\ncafe_sales &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-6-cafe_sales.csv\")"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#regression-assumptions",
+    "href": "files/lectures/7-4-glm-inference.html#regression-assumptions",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Regression Assumptions",
+    "text": "Regression Assumptions\n\nRecall the general linear model,\n\ny = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + ... + \\beta_k x_k + \\varepsilon\n\nLike in ANOVA, we assume\n\n\\varepsilon \\sim N(0, \\sigma^2)"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#regression-assumptions-r",
+    "href": "files/lectures/7-4-glm-inference.html#regression-assumptions-r",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Regression Assumptions (R)",
+    "text": "Regression Assumptions (R)\n\nWe will use the reg_check() function from library(ssstats).\nGeneric syntax:\n\n\nmodel_name |&gt; reg_check()"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-1",
+    "href": "files/lectures/7-4-glm-inference.html#example-1",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 1",
+    "text": "Example 1\n\nRecall the training dataset,\n\nIs there a relationship between weekly practice hours (x) and exam score (y)?\n\n\n\n\n\n\n\n\npractice_hours\nexam_score\n\n\n\n\n6.7\n68.7\n\n\n1.4\n56.6\n\n\n1.4\n63.0"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-1-1",
+    "href": "files/lectures/7-4-glm-inference.html#example-1-1",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 1",
+    "text": "Example 1\n\nIs there a relationship between weekly practice hours (x) and exam score (y)?\n\n\nm1 &lt;- glm(exam_score ~ practice_hours,\n          data = training)\nm1 |&gt; coefficients()\n\n   (Intercept) practice_hours \n     57.253240       3.108387"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-1-2",
+    "href": "files/lectures/7-4-glm-inference.html#example-1-2",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 1",
+    "text": "Example 1\n\nChecking assumptions,\n\n\nm1 |&gt; reg_check()"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-2",
+    "href": "files/lectures/7-4-glm-inference.html#example-2",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 2",
+    "text": "Example 2\n\nRecall the reports dataset,\n\nIs there a relationship between officer height (x) and report accuracy (y)?\n\n\n\n\n\n\n\n\nheight_cm\nreport_accuracy\n\n\n\n\n198\n75.5\n\n\n129\n82.7\n\n\n89\n78.0"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-2-1",
+    "href": "files/lectures/7-4-glm-inference.html#example-2-1",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 2",
+    "text": "Example 2\n\nIs there a relationship between officer height (x) and report accuracy (y)?\nConstructing the model,\n\n\nm2 &lt;- glm(report_accuracy ~ height_cm, \n          data = reports)\nm2 |&gt; coefficients()\n\n (Intercept)    height_cm \n80.430106777  0.009226122"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-2-2",
+    "href": "files/lectures/7-4-glm-inference.html#example-2-2",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 2",
+    "text": "Example 2\n\nChecking assumptions,\n\n\nm2 |&gt; reg_check()"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#statistical-inference-in-linear-regression",
+    "href": "files/lectures/7-4-glm-inference.html#statistical-inference-in-linear-regression",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Statistical Inference in Linear Regression",
+    "text": "Statistical Inference in Linear Regression\n\nOnce we confirm that our residuals follow a normal distribution, we begin to make inference.\n\nOmnibus test for the model.\nIndividual predictor tests.\n\nConfidence intervals for \\beta_i.\n\n\nIf the residuals do not follow a normal distribution with mean 0 and some common variance, \\sigma^2, we do not follow our modeling up with formal hypothesis tests."
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#confidence-intervals-for-beta_i",
+    "href": "files/lectures/7-4-glm-inference.html#confidence-intervals-for-beta_i",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Confidence Intervals for \\beta_i",
+    "text": "Confidence Intervals for \\beta_i\n\nLike all statistics, we can put a confidence interval on \\beta_i.\n\nWhen reporting regression results, I always include the corresponding CI.\n\n\n\\hat{\\beta}_i \\pm t_{\\alpha/2, n-k-1} \\text{ SE}_{\\hat{\\beta}_i}"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#confidence-intervals-for-beta_i-r",
+    "href": "files/lectures/7-4-glm-inference.html#confidence-intervals-for-beta_i-r",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Confidence Intervals for \\beta_i (R)",
+    "text": "Confidence Intervals for \\beta_i (R)\n\nWe can use the tidy() function to get regression results with confidence intervals,\n\n\nmodel_name |&gt; tidy(conf.int = TRUE)"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-1-3",
+    "href": "files/lectures/7-4-glm-inference.html#example-1-3",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 1",
+    "text": "Example 1\n\nReturning to our first example,\n\nIs there a relationship between weekly practice hours (x) and exam score (y)?\n\n\n\nm1 |&gt; tidy(conf.int = TRUE) \n\n\n\n\n\n\n\nterm\nestimate\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n57.253240\n52.988825\n61.51765\n\n\npractice_hours\n3.108388\n2.418945\n3.79783"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-3",
+    "href": "files/lectures/7-4-glm-inference.html#example-3",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 3",
+    "text": "Example 3\n\nRecall the bakery_sales dataset,\n\nHow are advertising spending (x_1), foot traffic (x_2), temperature (x_3), and discounts (x_4) related to daily bakery sales (y)?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nadvertising_dollars\nfoot_traffic\ntemperature_c\ndiscount_percent\nsales_dollars\n\n\n\n\n12.72\n136\n21.7\n6.5\n553.84\n\n\n70.45\n145\n28.1\n13.9\n838.67\n\n\n82.13\n144\n18.8\n13.7\n842.29"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-3-1",
+    "href": "files/lectures/7-4-glm-inference.html#example-3-1",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 3",
+    "text": "Example 3\n\nRecall the bakery_sales dataset,\n\nHow are advertising spending (x_1), foot traffic (x_2), temperature (x_3), and discounts (x_4) related to daily bakery sales (y)?\n\n\n\nm3 |&gt; tidy(conf.int = TRUE) \n\n\n\n\n\n\n\nterm\nestimate\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n142.694320\n27.014973\n258.373666\n\n\nadvertising_dollars\n1.734312\n1.159990\n2.308634\n\n\nfoot_traffic\n1.383370\n1.206676\n1.560065\n\n\ntemperature_c\n8.607033\n4.743606\n12.470459\n\n\ndiscount_percent\n11.922056\n8.979698\n14.864413"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#hypothesis-testing-significant-regression-line",
+    "href": "files/lectures/7-4-glm-inference.html#hypothesis-testing-significant-regression-line",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Hypothesis Testing: Significant Regression Line",
+    "text": "Hypothesis Testing: Significant Regression Line\n\nWe can use the likelihood ratio test to test for a “significant regression” line.\n\nA significant regression line means that there is a non-zero slope among all slopes.\n\nHypotheses\n\nH_0: \\ \\beta_1 = ... = \\beta_k = 0\nH_1: at least one is different\n\nTest Statistic and p-Value\n\n\\chi^2_0 (from R)\np = \\text{P}[\\chi^2_{k} \\ge \\chi^2_0]"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#hypothesis-testing-significant-regression-line-r",
+    "href": "files/lectures/7-4-glm-inference.html#hypothesis-testing-significant-regression-line-r",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Hypothesis Testing: Significant Regression Line (R)",
+    "text": "Hypothesis Testing: Significant Regression Line (R)\n\nWe will use the anova() function to test for a significant model.\n\n\nfull &lt;- glm(y ~ x_1 + x_2 + ... + x_k, data = dataset_name)\nreduced &lt;- glm(y ~ 1, data = dataset_name)\nanova(reduced, full, test = \"Chisq\")"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-1-4",
+    "href": "files/lectures/7-4-glm-inference.html#example-1-4",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 1",
+    "text": "Example 1\n\nRevisiting our model from Example 1,\n\n\\hat{\\text{exam}} = 57.25 + 3.11 \\text{ practice}\n\nfull &lt;- glm(exam_score ~ practice_hours, data = training)\nreduced &lt;- glm(exam_score ~ 1, data = training)\nanova(reduced, full, test = \"Chisq\")\n\n\n\n\n\nResid. Df\nResid. Dev\nDf\nDeviance\nPr(&gt;Chi)\n\n\n\n\n39\n4123.858\nNA\nNA\nNA\n\n\n38\n1349.925\n1\n2773.933\n0"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-1-5",
+    "href": "files/lectures/7-4-glm-inference.html#example-1-5",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 1",
+    "text": "Example 1\n\nHypotheses:\n\nH_0: \\beta_1 = 0\nH_1: \\beta_1 \\ne 0\n\nTest Statistic and p-Value:\n\n\\chi^2_0 = 2773.9\np &lt; 0.001\n\nRejection Region:\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation:\n\nReject H_0. There is sufficient evidence to suggest that the slope is non-zero."
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-3-2",
+    "href": "files/lectures/7-4-glm-inference.html#example-3-2",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 3",
+    "text": "Example 3\n\nRevisiting our model from Example 3,\n\n\\hat{\\text{exam}} = 57.25 + 3.11 \\text{ practice}\n\nfull &lt;- glm(sales_dollars ~ advertising_dollars + foot_traffic + temperature_c + discount_percent, data = bakery_sales)\nreduced &lt;- glm(sales_dollars ~ 1, data = bakery_sales)\nanova(reduced, full, test = \"Chisq\")\n\n\n\n\n\nResid. Df\nResid. Dev\nDf\nDeviance\nPr(&gt;Chi)\n\n\n\n\n39\n796611.34\nNA\nNA\nNA\n\n\n35\n84293.17\n4\n712318.2\n0"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-3-3",
+    "href": "files/lectures/7-4-glm-inference.html#example-3-3",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 3",
+    "text": "Example 3\n\nHypotheses:\n\nH_0: \\beta_1 = \\beta_2 = \\beta_3 = \\beta_4 = 0\nH_1: at least one \\beta_i \\ne 0\n\nTest Statistic and p-Value:\n\n\\chi^2_0 = 712318\np &lt; 0.001\n\nRejection Region:\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation:\n\nReject H_0. There is sufficient evidence to suggest that at least one of the slopes is non-zero."
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#hypothesis-testing-individual-predictors",
+    "href": "files/lectures/7-4-glm-inference.html#hypothesis-testing-individual-predictors",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Hypothesis Testing: Individual Predictors",
+    "text": "Hypothesis Testing: Individual Predictors\n\nWe can use the t-test to test for “significant predictors”\n\nA significant predictor means that there is a non-zero slope between the outcome and this specific x_i.\n\nHypotheses\n\nH_0: \\ \\beta_i = 0\nH_1: \\ \\beta_i \\ne 0\n\nTest Statistic\n\nt_0 = \\frac{\\hat{\\beta}_i}{\\text{SE}_{\\beta_i}} \\sim t_1"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#hypothesis-testing-individual-predictors-r",
+    "href": "files/lectures/7-4-glm-inference.html#hypothesis-testing-individual-predictors-r",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Hypothesis Testing: Individual Predictors (R)",
+    "text": "Hypothesis Testing: Individual Predictors (R)\n\nWe again turn to tidy() for output,\n\n\nmodel_name |&gt; tidy(conf.int = TRUE)"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-1-6",
+    "href": "files/lectures/7-4-glm-inference.html#example-1-6",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 1",
+    "text": "Example 1\n\nReturning to our first example,\n\n\nm1 |&gt; tidy(conf.int = TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n57.253240\n2.175762\n26.314113\n0\n52.988825\n61.51765\n\n\npractice_hours\n3.108388\n0.351763\n8.836595\n0\n2.418945\n3.79783\n\n\n\n\n\n\n\nPractice time is a significant predictor of exam score (p &lt; 0.001)."
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-3-4",
+    "href": "files/lectures/7-4-glm-inference.html#example-3-4",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 3",
+    "text": "Example 3\n\nReturning to our third example,\n\n\nm3 |&gt; tidy(conf.int = TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n142.694320\n59.0211593\n2.417681\n0.0209643\n27.014973\n258.373666\n\n\nadvertising_dollars\n1.734312\n0.2930268\n5.918610\n0.0000010\n1.159990\n2.308634\n\n\nfoot_traffic\n1.383370\n0.0901519\n15.344879\n0.0000000\n1.206676\n1.560065\n\n\ntemperature_c\n8.607033\n1.9711721\n4.366454\n0.0001068\n4.743606\n12.470459\n\n\ndiscount_percent\n11.922056\n1.5012304\n7.941523\n0.0000000\n8.979698\n14.864413\n\n\n\n\n\n\n\nAll predictors are significant (all p &lt; 0.001)."
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-4",
+    "href": "files/lectures/7-4-glm-inference.html#example-4",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 4",
+    "text": "Example 4\n\nA cafe owner in Savanna Central brings you a spreadsheet: “We’ve been tracking everything! Can you help us figure out which of these are related to sales?”\nWe have collected data from 40 days to answer the following question:\n\nWhich of the five explanatory variables are associated with daily cafe sales after accounting for the other variables?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nadvertising_dollars\nfoot_traffic\ntemperature_c\nmusic_volume_db\nwindow_display_hours\nsales_dollars\n\n\n\n\n16.46\n239\n25.3\n66.7\n3.5\n639.90\n\n\n16.97\n398\n17.5\n52.7\n2.0\n1018.52\n\n\n28.16\n123\n18.6\n53.9\n10.1\n438.26"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-4-1",
+    "href": "files/lectures/7-4-glm-inference.html#example-4-1",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 4",
+    "text": "Example 4\n\nConstructing the model,\n\nWhich of the five explanatory variables are associated with daily cafe sales after accounting for the other variables?\n\n\n\nm4 &lt;- glm(sales_dollars ~ window_display_hours + music_volume_db + temperature_c + foot_traffic + advertising_dollars,\n          data = cafe_sales)\nm4 |&gt; tidy(conf.int = TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n214.8508016\n92.5198490\n2.3222131\n0.0263440\n33.515230\n396.186373\n\n\nwindow_display_hours\n0.6401574\n2.9259721\n0.2187845\n0.8281259\n-5.094642\n6.374957\n\n\nmusic_volume_db\n0.1185153\n1.2434609\n0.0953108\n0.9246275\n-2.318623\n2.555654\n\n\ntemperature_c\n-3.9037541\n2.5040629\n-1.5589681\n0.1282647\n-8.811627\n1.004119\n\n\nfoot_traffic\n1.8625319\n0.1215631\n15.3215187\n0.0000000\n1.624273\n2.100791\n\n\nadvertising_dollars\n2.9437998\n0.3958345\n7.4369464\n0.0000000\n2.167978\n3.719621"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-4-2",
+    "href": "files/lectures/7-4-glm-inference.html#example-4-2",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 4",
+    "text": "Example 4\n\nIs this a significant regression model?\n\n\nfull &lt;- glm(sales_dollars ~ window_display_hours + music_volume_db + temperature_c + foot_traffic + advertising_dollars, data = cafe_sales)\nreduced &lt;- glm(sales_dollars ~ 1, data = cafe_sales)\nanova(reduced, full, test = \"Chisq\")\n\n\n\n\n\nResid. Df\nResid. Dev\nDf\nDeviance\nPr(&gt;Chi)\n\n\n\n\n39\n1378745.9\nNA\nNA\nNA\n\n\n34\n133178.7\n5\n1245567\n0"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-4-3",
+    "href": "files/lectures/7-4-glm-inference.html#example-4-3",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 4",
+    "text": "Example 4\n\nHypotheses:\n\nH_0: \\beta_1 = \\beta_2 = \\beta_3 = \\beta_4 = \\beta_5 =0\nH_1: at least one \\beta_i \\ne 0\n\nTest Statistic and p-Value:\n\n\\chi^2_0 = 1245567\np &lt; 0.001\n\nRejection Region:\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation:\n\nReject H_0. There is sufficient evidence to suggest that at least one of the slopes is non-zero."
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-4-4",
+    "href": "files/lectures/7-4-glm-inference.html#example-4-4",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 4",
+    "text": "Example 4\n\nLooking at individual predictors,\n\n\nm4 &lt;- glm(sales_dollars ~ window_display_hours + music_volume_db + temperature_c + foot_traffic + advertising_dollars,\n          data = cafe_sales)\nm4 |&gt; tidy(conf.int = TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n214.8508016\n92.5198490\n2.3222131\n0.0263440\n33.515230\n396.186373\n\n\nwindow_display_hours\n0.6401574\n2.9259721\n0.2187845\n0.8281259\n-5.094642\n6.374957\n\n\nmusic_volume_db\n0.1185153\n1.2434609\n0.0953108\n0.9246275\n-2.318623\n2.555654\n\n\ntemperature_c\n-3.9037541\n2.5040629\n-1.5589681\n0.1282647\n-8.811627\n1.004119\n\n\nfoot_traffic\n1.8625319\n0.1215631\n15.3215187\n0.0000000\n1.624273\n2.100791\n\n\nadvertising_dollars\n2.9437998\n0.3958345\n7.4369464\n0.0000000\n2.167978\n3.719621"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#example-4-5",
+    "href": "files/lectures/7-4-glm-inference.html#example-4-5",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Example 4",
+    "text": "Example 4\n\nLooking at the individual predictors,\n\nWindow display is not a significant predictor (p = 0.828)\nMusic volume is not a significant predictor (p = 0.925)\nTemperature is not a significant predictor (p = 0.128)\nFoot traffic is a significant predictor (p &lt; 0.001)\nAdvertising dollars is a significant predictor (p &lt; 0.001)"
+  },
+  {
+    "objectID": "files/lectures/7-4-glm-inference.html#wrap-up",
+    "href": "files/lectures/7-4-glm-inference.html#wrap-up",
+    "title": "General Linear Models:Statistical Inference",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\nWe have covered the basics of linear regression.\nIn Statistics for Data Science II, you will learn more about statistical modeling.\n\nA deeper dive into ordinary least squares.\n\nAdditional predictor types.\nModel fit and diagnostics.\nData visualization.\n\nLogistic regression.\nPoisson and negative binomial regressions."
   },
   {
     "objectID": "files/lectures/5-3-profile-plots.html#introduction",
@@ -614,6 +845,118 @@
     "title": "One-Sample Variances",
     "section": "Wrap Up",
     "text": "Wrap Up\n\nIn this lecture, we discussed statistical inference on one variance or standard deviation\nIn this module, we have covered one-sample tests.\nIn the next module, we will learn two-sample tests."
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#introduction",
+    "href": "files/lectures/7-3-glm-estimation.html#introduction",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Introduction",
+    "text": "Introduction\n\nWe have discussed quantifying the relationship between two continuous variables.\nRecall that the correlation describes the strength and the direction of the relationship.\n\nPearson’s correlation: describes the linear relationship; assumes normality of both variables.\nSpearman’s correlation: describes the monotone relationship; assumes both variables are at least ordinal.\n\nWe now focus on linear regression, an alternative way to quantify the relationship."
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#r-set-up",
+    "href": "files/lectures/7-3-glm-estimation.html#r-set-up",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "R Set Up",
+    "text": "R Set Up\n\nlibrary(tidyverse)\nlibrary(ssstats)\nlibrary(broom)\ntraining &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-1-training.csv\")\nwellness &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-2-wellness.csv\")\nreports &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-3-reports.csv\")\nbreak_room &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-4-break_room.csv\")\nbakery_sales &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-5-bakery_sales.csv\")\ncafe_sales &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-6-cafe_sales.csv\")"
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#introduction-to-regression",
+    "href": "files/lectures/7-3-glm-estimation.html#introduction-to-regression",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Introduction to Regression",
+    "text": "Introduction to Regression\n\nWe are often interested in how two variables are related.\nWe use regression analysis to examine this relationship.\n\nOne variable predicts the other.\n\nWe will create what is called:\n\nregression “line”\nregression model\nline of best fit\ntrend line"
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#introduction-to-regression-1",
+    "href": "files/lectures/7-3-glm-estimation.html#introduction-to-regression-1",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Introduction to Regression",
+    "text": "Introduction to Regression\n\nConsider the general form of regression:\n\ny = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + ... + \\beta_k x_k + \\varepsilon\n\nOutcome or response variable (y): the variable we are interested in predicting or modeling.\nPredictor or explanatory variable (x_i): a variable explaining or predicting the outcome."
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#introduction-to-regression-2",
+    "href": "files/lectures/7-3-glm-estimation.html#introduction-to-regression-2",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Introduction to Regression",
+    "text": "Introduction to Regression\n\nThe regression equivalent to correlation is simple linear regression,\n\ny = \\beta_0 + \\beta_1 x + \\varepsilon,\n\nwhere\n\n\\beta_0 is the y-intercept,\n\\beta_1 is the slope describing the relationship between x and y,\n\\varepsilon is the error, or residual."
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#regression-estimation",
+    "href": "files/lectures/7-3-glm-estimation.html#regression-estimation",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Regression: Estimation",
+    "text": "Regression: Estimation\n\nWhen we only have one predictor in the model, we can easily estimate \\beta_0 and \\beta_1:\n\n\n\\begin{align*}\n\\hat{\\beta}_1 &= \\frac{\\sum_{i=1}^n (x_i - \\bar{x})(y_i - \\bar{y})}{\\sum_{i=1}^n (x_i - \\bar{x})^2} \\\\\n    & \\\\\n    \\hat{\\beta}_0 &= \\bar{y} - \\hat{\\beta}_1 \\bar{x}\n\\end{align*}"
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#regression-estimation-r",
+    "href": "files/lectures/7-3-glm-estimation.html#regression-estimation-r",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Regression: Estimation (R)",
+    "text": "Regression: Estimation (R)\n\nWe will use glm() to construct our linear models.\nFor simple linear regression, we will first construct the model,\n\n\nm &lt;- glm(y ~ x,\n         data = dataset_name)\n\n\nthen we can look at the results using coefficients().\n\n\nm |&gt; coefficients()"
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#example-1",
+    "href": "files/lectures/7-3-glm-estimation.html#example-1",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Example 1",
+    "text": "Example 1\n\nRecall the training dataset,\n\nIs there a relationship between weekly practice hours (x) and exam score (y)?\n\n\n\n\n\n\n\n\npractice_hours\nexam_score\n\n\n\n\n6.7\n68.7\n\n\n1.4\n56.6\n\n\n1.4\n63.0"
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#example-1-1",
+    "href": "files/lectures/7-3-glm-estimation.html#example-1-1",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Example 1",
+    "text": "Example 1\n\nIs there a relationship between weekly practice hours (x) and exam score (y)?\n\n\nm1 &lt;- glm(exam_score ~ practice_hours,\n          data = training)\n\n\nNote the lack of output from the above code – we have saved the output to the object m1.\n\n\nm1 |&gt; coefficients()\n\n   (Intercept) practice_hours \n     57.253240       3.108387 \n\n\n\\hat{\\text{exam}} = 57.25 + 3.11 \\text{ practice}"
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#interpreting-coefficients",
+    "href": "files/lectures/7-3-glm-estimation.html#interpreting-coefficients",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Interpreting Coefficients",
+    "text": "Interpreting Coefficients\n\nInterpretation of the slope, \\hat{\\beta}\n\nFor a [k] [units of x] increase in [x], we expect [y] to [increase or decrease] by [k \\times |\\hat{\\beta}_1|] [units of y].\n\nInterpretation of the y-intercept, \\hat{\\beta}_0\n\nWhen [x] is 0, we expect the mean of [y] to be [\\hat{\\beta}_0].\n\nCaveat:\n\nIt does not always make sense for x=0. In this situation, we do not interpret the y-intercept.\nSome applications (e.g., psychology) will center the x variable around its mean. Then, when x=0, we are interpreting in terms of the “average value of x.”"
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#example-1-2",
+    "href": "files/lectures/7-3-glm-estimation.html#example-1-2",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Example 1",
+    "text": "Example 1\n\nRecall our estimates,\n\n\nm1 |&gt; coefficients()\n\n   (Intercept) practice_hours \n     57.253240       3.108387 \n\n\n\nFor a [k] [units of x] increase in [x], we expect [y] to [increase or decrease] by [k \\times |\\hat{\\beta}_1|] [units of y].\n\nFor a 1 hour increase in practice time, we expect the exam score to increase by 3.11 points.\nFor a 3 hour increase in practice time, we expect the exam score to increase by 9.33"
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#example-1-3",
+    "href": "files/lectures/7-3-glm-estimation.html#example-1-3",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Example 1",
+    "text": "Example 1\n\nRecall our estimates,\n\n\nm1 |&gt; coefficients()\n\n   (Intercept) practice_hours \n     57.253240       3.108387 \n\n\n\nWhen [x] is 0, we expect the mean of [y] to be [\\hat{\\beta}_0].\n\nWhen there is no practice, we expect the average exam score to be 57.25."
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#example-3",
+    "href": "files/lectures/7-3-glm-estimation.html#example-3",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Example 3",
+    "text": "Example 3\n\nA bakery owner in Savanna Central wants your help: “Some days, pastries practically fly off the shelves. Other days, we have trays left over. What actually helps explain our sales?”\nWe have data from 40 days to answer the following question:\n\nHow are advertising spending (x_1), foot traffic (x_2), temperature (x_3), and discounts (x_4) related to daily bakery sales (y)?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nadvertising_dollars\nfoot_traffic\ntemperature_c\ndiscount_percent\nsales_dollars\n\n\n\n\n12.72\n136\n21.7\n6.5\n553.84\n\n\n70.45\n145\n28.1\n13.9\n838.67\n\n\n82.13\n144\n18.8\n13.7\n842.29"
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#example-3-1",
+    "href": "files/lectures/7-3-glm-estimation.html#example-3-1",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Example 3",
+    "text": "Example 3\n\nHow are advertising spending (x_1), foot traffic (x_2), temperature (x_3), and discounts (x_4) related to daily bakery sales (y)?\n\n\nm3 &lt;- glm(sales_dollars ~ advertising_dollars   + foot_traffic + temperature_c + discount_percent,\n          data = bakery_sales)\nm3 |&gt; coefficients()\n\n        (Intercept) advertising_dollars        foot_traffic       temperature_c \n         142.694320            1.734312            1.383370            8.607033 \n   discount_percent \n          11.922056 \n\n\n\\hat{\\text{sales}} = 142.69 + 1.73 \\text{ adv.} + 1.38 \\text{ traff.} + 8.61 \\text{ temp.} + 11.92 \\text{ disc.}"
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#example-3-2",
+    "href": "files/lectures/7-3-glm-estimation.html#example-3-2",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Example 3",
+    "text": "Example 3\n\\hat{\\text{sales}} = 142.69 + 1.73 \\text{ adv.} + 1.38 \\text{ traff.} + 8.61 \\text{ temp.} + 11.92 \\text{ disc.}\n\nInterpreting coefficients:\n\nBefore accounting for advertising expenditures, foot traffic, temperature, and discount offered, we expect bakery sales to be, on average, $142.69.\nFor a $1 increase in advertising, we expect bakery sales to increase by $1.73.\nFor a 1 citizen increase in foot traffic, we expect bakery sales to increase by $1.38.\nFor a 1oC increase in temperature, we expect bakery sales to increase by $8.61.\nFor a 1 percentage point increase in discount offered, we expect bakery sales to increase by $11.92."
+  },
+  {
+    "objectID": "files/lectures/7-3-glm-estimation.html#wrap-up",
+    "href": "files/lectures/7-3-glm-estimation.html#wrap-up",
+    "title": "General Linear Models:Estimation and Interpretation",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\nWe have now seen the basics about correlation and regression analysis.\n\nCorrelation is unitless and bounded to [-1, 1].\n\nThis tells us the strength of the relationship.\n\nSlopes have units and can take on any value on the real line.\n\nThis allows us to concretely quantify the increase or decrease.\n\n\nIn the next lecture, we will look at making statistical inference on our regression models."
   },
   {
     "objectID": "files/lectures/4-3-kruskal-wallis.html#introduction",
@@ -1988,6 +2331,216 @@
     "text": "Wrap Up\n\nUsing a t-test to examine the difference between two independent means (\\mu_1-\\mu_2) requires normality.\n\nWe check normality with a quantile-quantile plot (independent_qq()).\n\nThe analysis you choose should match the needed method:\n\nIf we meet normality (independent_means()):\n\nInterval estimate: CI for \\mu_1-\\mu_2\nOne-sample t-test for \\mu_1-\\mu_2\n\nIf we do not meet normality (independent_medians()):\n\nInterval estimate: CI for M_1-M_2\nOne-sample sign test for M_1-M_2"
   },
   {
+    "objectID": "files/lectures/7-2-correlation.html#introduction",
+    "href": "files/lectures/7-2-correlation.html#introduction",
+    "title": "Scatterplots and Correlation",
+    "section": "Introduction",
+    "text": "Introduction\n\nIn this module, we begin discussing regression analysis.\nRegression is a very, very wide area.\n\nWe are barely scratching the surface.\n\nSDS II will deepen your understanding on statistical modeling techniques."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#r-set-up",
+    "href": "files/lectures/7-2-correlation.html#r-set-up",
+    "title": "Scatterplots and Correlation",
+    "section": "R Set Up",
+    "text": "R Set Up\n\nlibrary(tidyverse)\nlibrary(ssstats)\ntraining &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-1-training.csv\")\nwellness &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-2-wellness.csv\")\nreports &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-3-reports.csv\")\nbreak_room &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-4-break_room.csv\")"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#scatterplots",
+    "href": "files/lectures/7-2-correlation.html#scatterplots",
+    "title": "Scatterplots and Correlation",
+    "section": "Scatterplots",
+    "text": "Scatterplots\n\nA scatterplot is a graph that shows the relationship between two quantitative variables measured on the same individual.\nEvery individual in the dataset is represented by a point on the scatterplot.\nNote! The explanatory variable is on the x-axis and the response variable is on the y-axis.\nLike we have seen before, plotting the data is a first step in identifying issues."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#scatterplots-1",
+    "href": "files/lectures/7-2-correlation.html#scatterplots-1",
+    "title": "Scatterplots and Correlation",
+    "section": "Scatterplots",
+    "text": "Scatterplots\n\nPositive relationship: As x increases, y also increases."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#scatterplots-2",
+    "href": "files/lectures/7-2-correlation.html#scatterplots-2",
+    "title": "Scatterplots and Correlation",
+    "section": "Scatterplots",
+    "text": "Scatterplots\n\nNegative relationship: As x increases, y decreases."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#scatterplots-3",
+    "href": "files/lectures/7-2-correlation.html#scatterplots-3",
+    "title": "Scatterplots and Correlation",
+    "section": "Scatterplots",
+    "text": "Scatterplots\n\nNo relationship: As x increases, we cannot predict what happens to y."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#scatterplots-4",
+    "href": "files/lectures/7-2-correlation.html#scatterplots-4",
+    "title": "Scatterplots and Correlation",
+    "section": "Scatterplots",
+    "text": "Scatterplots\n\nHmmmm…"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#scatterplots-5",
+    "href": "files/lectures/7-2-correlation.html#scatterplots-5",
+    "title": "Scatterplots and Correlation",
+    "section": "Scatterplots",
+    "text": "Scatterplots\n\nHmmmm…"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#scatterplot-r",
+    "href": "files/lectures/7-2-correlation.html#scatterplot-r",
+    "title": "Scatterplots and Correlation",
+    "section": "Scatterplot (R)",
+    "text": "Scatterplot (R)\n\nTo construct a scatterplot in R, the base code uses ggplot() from the ggplot2 package (called in with tidyverse).\n\n\ndataset_name |&gt; ggplot(aes(x = x_variable, y = y_variable)) +\n  geom_point() +\n  theme_minimal() +\n  labs(x = \"Explanatory variable (x)\",\n       y = \"Response variable (y)\")"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-1",
+    "href": "files/lectures/7-2-correlation.html#example-1",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 1",
+    "text": "Example 1\n\nOkonkwo stops by your desk: “Training division keeps encouraging recruits to spend more time on practice exercises. Before we build extra practice time into the schedule, I want to know if recruits who practice more tend to score higher?”\nWe will examine the following question using the training dataset:\n\nIs there a relationship between weekly practice hours (x) and exam score (y)?\n\n\n\n\n\n\n\n\npractice_hours\nexam_score\n\n\n\n\n6.7\n68.7\n\n\n1.4\n56.6\n\n\n1.4\n63.0"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-1-1",
+    "href": "files/lectures/7-2-correlation.html#example-1-1",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 1",
+    "text": "Example 1\n\nConstructing the scatterplot,"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-2",
+    "href": "files/lectures/7-2-correlation.html#example-2",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 2",
+    "text": "Example 2\n\nOkonkwo raises an eyebrow: “Someone in records claims our taller officers write more accurate incident reports. … That can’t be true. Is there actually a relationship?”\nWe will examine the following question using the reports dataset:\n\nIs there a relationship between officer height (x) and report accuracy (y)?\n\n\n\n\n\n\n\n\nheight_cm\nreport_accuracy\n\n\n\n\n198\n75.5\n\n\n129\n82.7\n\n\n89\n78.0"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-2-1",
+    "href": "files/lectures/7-2-correlation.html#example-2-1",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 2",
+    "text": "Example 2\n\nConstructing the scatterplot,"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#correlation",
+    "href": "files/lectures/7-2-correlation.html#correlation",
+    "title": "Scatterplots and Correlation",
+    "section": "Correlation",
+    "text": "Correlation\n\nCorrelation: A measure of the strength and direction of the linear relationship between two quantitative variables.\n\n\\rho represents the population correlation coefficient.\nr represents the sample correlation coefficient.\n\nNote!! Correlation is bounded to [-1, 1].\n\nr=-1 represents perfect negative correlation.\nr=1 represents perfect positive correlation.\nr=0 represents no correlation.\n\nThe closer |r| is to 1, the stronger the relationship between x and y."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#pearsons-correlation-coefficient",
+    "href": "files/lectures/7-2-correlation.html#pearsons-correlation-coefficient",
+    "title": "Scatterplots and Correlation",
+    "section": "Pearson’s Correlation Coefficient",
+    "text": "Pearson’s Correlation Coefficient\n\nPearson’s correlation coefficient:\n\nr = \\frac{\\sum_{i=1}^n \\left( \\frac{x_i - \\bar{x}}{s_x} \\right)\\left( \\frac{y_i - \\bar{y}}{s_y} \\right)}{n-1},\n\nwhere\n\nx_i and y_i make up the the ith observation\n\\bar{x} and \\bar{y} are the sample means\ns_x and s_y are the sample standard deviations\nn is the total sample size"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#pearsons-correlation-coefficient-1",
+    "href": "files/lectures/7-2-correlation.html#pearsons-correlation-coefficient-1",
+    "title": "Scatterplots and Correlation",
+    "section": "Pearson’s Correlation Coefficient",
+    "text": "Pearson’s Correlation Coefficient\n\nWe can also determine if a linear relationship exists.\nHypotheses:\n\nH_0: \\rho = 0\nH_1: \\rho \\ne 0\n\nTest Statistic:\n\nt_0 = \\frac{r \\sqrt{n-2}}{\\sqrt{1-r^2}} \\sim t_{n-2}"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#pearsons-correlation-r",
+    "href": "files/lectures/7-2-correlation.html#pearsons-correlation-r",
+    "title": "Scatterplots and Correlation",
+    "section": "Pearson’s Correlation (R)",
+    "text": "Pearson’s Correlation (R)\n\nWe will use the correlation() function from library(ssstats).\nGeneric syntax:\n\n\n1dataset_name |&gt; correlation(x = 1st_continuous_variable,\n2                            y = 2nd_continuous_variable)\n\n\n1\n\nthe first continuous variable in the correlation.\n\n2\n\nthe second continuous variable in the correlation."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-1-2",
+    "href": "files/lectures/7-2-correlation.html#example-1-2",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 1",
+    "text": "Example 1\n\nFinding the correlation for the training dataset,\n\nIs there a relationship between weekly practice hours (x) and exam score (y)?\n\n\n\ntraining |&gt; correlation(x = practice_hours, y = exam_score)\n\n\n\n\n\nvar1\nvar2\ncorrelation\ntest_statistic\np_value\n\n\n\n\npractice_hours\nexam_score\n0.82\n8.837\n&lt; 0.001\n\n\n\n\n\n\n\nNote that the choice (order) of x and y are arbitrary.\n\n\ntraining |&gt; correlation(y = practice_hours, x = exam_score)\n\n\n\n\n\nvar1\nvar2\ncorrelation\ntest_statistic\np_value\n\n\n\n\nexam_score\npractice_hours\n0.82\n8.837\n&lt; 0.001"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-1-3",
+    "href": "files/lectures/7-2-correlation.html#example-1-3",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 1",
+    "text": "Example 1\n\nHypotheses:\n\nH_0: \\rho = 0\nH_1: \\rho \\ne 0\n\nTest Statistic and p-Value:\n\nt_0 = 8.837\np &lt; 0.001\n\nRejection Region:\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation:\n\nReject H_0. There is sufficient evidence to suggest that there is a linear relationship between the practice time and exam score."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-2-2",
+    "href": "files/lectures/7-2-correlation.html#example-2-2",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 2",
+    "text": "Example 2\n\nFinding the correlation for the reports dataset,\n\nIs there a relationship between officer height (x) and report accuracy (y)?\n\n\n\nreports |&gt; correlation(height_cm, report_accuracy)\n\n\n\n\n\nvar1\nvar2\ncorrelation\ntest_statistic\np_value\n\n\n\n\nheight_cm\nreport_accuracy\n0.046\n0.285\n0.777"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-2-3",
+    "href": "files/lectures/7-2-correlation.html#example-2-3",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 2",
+    "text": "Example 2\n\nHypotheses:\n\nH_0: \\rho = 0\nH_1: \\rho \\ne 0\n\nTest Statistic and p-Value:\n\nt_0 = 0.285\np = 0.777\n\nRejection Region:\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation:\n\nFail to reject H_0. There is not sufficient evidence to suggest that there is a linear relationship between height and report accuracy."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#assumptions-on-pearsons-correlation-r",
+    "href": "files/lectures/7-2-correlation.html#assumptions-on-pearsons-correlation-r",
+    "title": "Scatterplots and Correlation",
+    "section": "Assumptions on Pearson’s Correlation (R)",
+    "text": "Assumptions on Pearson’s Correlation (R)\n\nAn assumption for Pearson’s correlation is that both x and y are normally distributed.\nWe will check this using a q-q plot as we have in the past.\nWe will use the correlation() function from library(ssstats).\nGeneric syntax:\n\n\n1dataset_name |&gt; correlation_qq(x = 1st_continuous_variable,\n2                               y = 2nd_continuous_variable)\n\n\n1\n\nthe first continuous variable in the correlation.\n\n2\n\nthe second continuous variable in the correlation."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-1-4",
+    "href": "files/lectures/7-2-correlation.html#example-1-4",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 1",
+    "text": "Example 1\n\nChecking the assumption,\n\n\ntraining |&gt; correlation_qq(practice_hours, exam_score)"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-2-4",
+    "href": "files/lectures/7-2-correlation.html#example-2-4",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 2",
+    "text": "Example 2\n\nChecking the assumption,\n\n\nreports |&gt; correlation_qq(height_cm, report_accuracy)"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#spearmans-correlation-coefficient",
+    "href": "files/lectures/7-2-correlation.html#spearmans-correlation-coefficient",
+    "title": "Scatterplots and Correlation",
+    "section": "Spearman’s Correlation Coefficient",
+    "text": "Spearman’s Correlation Coefficient\n\nSpearman’s correlation coefficient is a nonparametric alternative to Pearson’s correlation.\n\nSpearman’s correlation only assumes that the data is ordinal.\nIt does not work for nominal data.\n\nTo compute Spearman’s, the following algorithm is used:\n\nRank the x and, separately, the y values.\n\n(x, y) \\to (R_x, R_y)\n\nFind Pearson’s correlation for the ranked data.\n\nSpearman’s correlation is interpreted the same as Pearson’s correlation."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#pearsons-correlation-coefficient-2",
+    "href": "files/lectures/7-2-correlation.html#pearsons-correlation-coefficient-2",
+    "title": "Scatterplots and Correlation",
+    "section": "Pearson’s Correlation Coefficient",
+    "text": "Pearson’s Correlation Coefficient\n\nWe can also determine if a monotonic relationship exists.\nHypotheses:\n\nH_0: \\rho_S = 0\nH_1: \\rho_S \\ne 0\n\nTest Statistic:\n\nS = \\frac{n(n^2 - 1)}{6}(1 - r_s)"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#spearmans-correlation-r",
+    "href": "files/lectures/7-2-correlation.html#spearmans-correlation-r",
+    "title": "Scatterplots and Correlation",
+    "section": "Spearman’s Correlation (R)",
+    "text": "Spearman’s Correlation (R)\n\nWe will again use the correlation() function from library(ssstats).\nGeneric syntax:\n\n\n1dataset_name |&gt; correlation(x = 1st_continuous_variable,\n2                            y = 2nd_continuous_variable,\n3                            method = \"spearman\")\n\n\n1\n\nthe first continuous variable in the correlation.\n\n2\n\nthe second continuous variable in the correlation.\n\n3\n\nrequest Spearman’s correlation instead of Pearson’s."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-2-5",
+    "href": "files/lectures/7-2-correlation.html#example-2-5",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 2",
+    "text": "Example 2\n\nFinding the Spearman’s correlation for the reports dataset,\n\nIs there a relationship between officer height (x) and report accuracy (y)?\n\n\n\nreports |&gt; correlation(height_cm, report_accuracy,\n                       method = \"spearman\")\n\n\n\n\n\nvar1\nvar2\ncorrelation\ntest_statistic\np_value\n\n\n\n\nheight_cm\nreport_accuracy\n0.025\n10396.93\n0.880"
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#example-2-6",
+    "href": "files/lectures/7-2-correlation.html#example-2-6",
+    "title": "Scatterplots and Correlation",
+    "section": "Example 2",
+    "text": "Example 2\n\nHypotheses:\n\nH_0: \\rho_S = 0\nH_1: \\rho_S \\ne 0\n\nTest Statistic and p-Value:\n\nS_0 = 10396.93\np = 0.880\n\nRejection Region:\n\nReject H_0 if p &lt; \\alpha; \\alpha = 0.05\n\nConclusion and Interpretation:\n\nFail to reject H_0. There is not sufficient evidence to suggest that there is a linear relationship between height and report accuracy."
+  },
+  {
+    "objectID": "files/lectures/7-2-correlation.html#wrap-up",
+    "href": "files/lectures/7-2-correlation.html#wrap-up",
+    "title": "Scatterplots and Correlation",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\nguessthecorrelation.com!\nIn the next lectures, we will learn how to quantify the relationship between x and y using regression analysis."
+  },
+  {
     "objectID": "files/lectures/3-2-two-sample-mean-median-dependent.html#introduction",
     "href": "files/lectures/3-2-two-sample-mean-median-dependent.html#introduction",
     "title": "DependentMeans and Medians",
@@ -2364,6 +2917,13 @@
     "title": "Two-Sample Proportions",
     "section": "Wrap Up",
     "text": "Wrap Up\n\nIndependent (two-sample) proportion data comes from two separate, unrelated groups.\n\nWe work with the difference in sample proportions, \\hat{p}_1 - \\hat{p}_2.\n\nNext: comparing two variances."
+  },
+  {
+    "objectID": "files/lectures/7-1-switching-gears-in-R.html#leaving-the-ssstats-package",
+    "href": "files/lectures/7-1-switching-gears-in-R.html#leaving-the-ssstats-package",
+    "title": "Switching Gears in R",
+    "section": "Leaving the ssstats package",
+    "text": "Leaving the ssstats package\n\nIn this module, we will leave the “safety” of the ssstats package.\nWe are learning"
   },
   {
     "objectID": "files/lectures/2-3-one-sample-proportion.html#introduction",
@@ -3185,6 +3745,300 @@
     "text": "Wrap Up\n\nA chi-square test for independence tests whether two categorical variables are related or independent.\nThe test compares observed cell counts in a contingency table to expected cell counts.\nKey assumption of \\chi^2: All expected cell counts must be \\ge 5.\n\nIf this is violated, use Fisher’s exact test instead.\n\nThe analysis you choose depends on your data:\n\nChi-square test (independence()): Use for larger contingency tables with adequate cell counts.\nFisher’s exact test (fishers_exact()): Use for 2×2 tables when expected counts are small (&lt; 5)."
   },
   {
+    "objectID": "files/lectures/7-5-glm-visualization.html#introduction",
+    "href": "files/lectures/7-5-glm-visualization.html#introduction",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Introduction",
+    "text": "Introduction\n\nWe are back in Savanna Central, helping a bakery and a café understand daily sales.\nLast lecture: fitting and interpreting regression models.\nThis lecture: checking whether those models tell a reasonable story."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#r-set-up",
+    "href": "files/lectures/7-5-glm-visualization.html#r-set-up",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "R Set Up",
+    "text": "R Set Up"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#r-set-up-1",
+    "href": "files/lectures/7-5-glm-visualization.html#r-set-up-1",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "R Set Up",
+    "text": "R Set Up\n\nlibrary(tidyverse)\nlibrary(ssstats)\nlibrary(broom)\nbakery_sales &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-5-bakery_sales.csv\")\ncafe_sales &lt;- read_csv(\"https://raw.githubusercontent.com/samanthaseals/SDSI/refs/heads/main/files/data/lectures/7-6-cafe_sales.csv\")"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#general-linear-model",
+    "href": "files/lectures/7-5-glm-visualization.html#general-linear-model",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "General Linear Model",
+    "text": "General Linear Model\ny_i = \\beta_0 + \\beta_1 x_{i1} + \\cdots + \\beta_k x_{ik} + \\varepsilon_i\n\n\\varepsilon_i is the unobserved error around the population response surface.\nThe fitted residual is\n\ne_i = y_i - \\hat{y}_i."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#examples-3-and-4",
+    "href": "files/lectures/7-5-glm-visualization.html#examples-3-and-4",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Examples 3 and 4",
+    "text": "Examples 3 and 4\n\nRecall our models examining bakery and cafe sales,\n\n\nm3 &lt;- glm(sales_dollars ~ advertising_dollars + foot_traffic + temperature_c + discount_percent,\n          data = bakery_sales)\n\nm4 &lt;- glm(sales_dollars ~ window_display_hours + music_volume_db + temperature_c + foot_traffic + advertising_dollars,\n          data = cafe_sales)"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#model-fit-and-diagnostics",
+    "href": "files/lectures/7-5-glm-visualization.html#model-fit-and-diagnostics",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Model Fit and Diagnostics",
+    "text": "Model Fit and Diagnostics\n\nWe will assess:\n\nOverall model fit.\nObservations with unusually large residuals.\nObservations that strongly affect the fitted model.\nOverlapping information among explanatory variables."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#model-fit-r2",
+    "href": "files/lectures/7-5-glm-visualization.html#model-fit-r2",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Model Fit: R^2",
+    "text": "Model Fit: R^2\n\nR^2 is the proportion of observed variation in sales explained by the model.\n\nR^2 = \\frac{\\text{SSReg}}{\\text{SSTot}} = 1 - \\frac{\\text{SSE}}{\\text{SSTot}}\n\nFor ordinary least squares with an intercept, R^2 \\in [0,1].\n\nA larger value means more of the observed variation is explained.\nIt does not establish causation or guarantee good predictions."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#model-fit-adjusted-r2",
+    "href": "files/lectures/7-5-glm-visualization.html#model-fit-adjusted-r2",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Model Fit: Adjusted R^2",
+    "text": "Model Fit: Adjusted R^2\n\nAdding predictors cannot decrease ordinary R^2 when the models use the same observations.\nEven an unhelpful variable can increase R^2 a little!\n\nR^2_{\\text{adj}} = 1 - \\frac{n-1}{n-k-1}(1-R^2)\n\nwhere\n\nn: number of observations,\nk: number of predictor terms (excludes the intercept)."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#model-fit-r2-r",
+    "href": "files/lectures/7-5-glm-visualization.html#model-fit-r2-r",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Model Fit: R^2 (R)",
+    "text": "Model Fit: R^2 (R)\n\nWe use r_squared() from library(ssstats) to assess explained variation.\n\n\nmodel_name |&gt; r_squared()\n\nError:\n! object 'model_name' not found\n\n\n\nInterpret the values in terms of variation in daily bakery sales."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#example-3",
+    "href": "files/lectures/7-5-glm-visualization.html#example-3",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Example 3",
+    "text": "Example 3\n\nLet’s check the R^2 for the bakery sales,\n\n\nm3 |&gt; r_squared()\n\n[1] 0.8821\n\n\n\nThe R^2_{\\text{adj}} is 0.882 – approximately 88.2% of the variability in bakery sales is explained by this specific model\n\ni.e., this set of predictors"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#model-fit-adjusted-r2-1",
+    "href": "files/lectures/7-5-glm-visualization.html#model-fit-adjusted-r2-1",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Model Fit: Adjusted R^2",
+    "text": "Model Fit: Adjusted R^2\n\nWhat happens if we have a low R^2?\nQuestions to ask:\n\nDo the residual plots reveal curvature or changing spread?\nAre unusual days affecting the fit?\nIs sales variation simply difficult to explain?\nAre important variables missing, such as festivals or large catering orders?\n\nLow R^2 does not, by itself, imply that the model is useless."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#model-fit-aic-and-bic",
+    "href": "files/lectures/7-5-glm-visualization.html#model-fit-aic-and-bic",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Model Fit: AIC and BIC",
+    "text": "Model Fit: AIC and BIC\n\nAIC and BIC balance model fit against model complexity.\nWe will not derive the likelihood formulas here.\nTheir penalties are:\n\nAIC: 2p.\nBIC: p\\log(n).\n\np counts estimated likelihood parameters.\n\nFor a normal linear model, this includes regression coefficients and the error variance."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#comparing-models-fairly",
+    "href": "files/lectures/7-5-glm-visualization.html#comparing-models-fairly",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Comparing Models Fairly",
+    "text": "Comparing Models Fairly\n\nLower AIC or BIC is preferred among the candidate models.\nCompare models fitted to the same response and the same observations.\nCompare bakery models with bakery models, and café models with café models.\nDo not compare a bakery AIC with a café AIC to decide which business has a “better model.”\nAIC and BIC can favor different models."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#example-the-café-owners-question",
+    "href": "files/lectures/7-5-glm-visualization.html#example-the-café-owners-question",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Example: The Café Owner’s Question",
+    "text": "Example: The Café Owner’s Question\n\n“We track five things every day. Do we really need all five to explain sales?”\nWe will compare:\n\ncafe_full: all five explanatory variables.\ncafe_core: advertising and foot traffic.\ncafe_traffic: foot traffic only.\n\n\n\ncafe_full |&gt; tidy()\n\nError:\n! object 'cafe_full' not found"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#model-fit-aic-and-bic-r",
+    "href": "files/lectures/7-5-glm-visualization.html#model-fit-aic-and-bic-r",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Model Fit: AIC and BIC (R)",
+    "text": "Model Fit: AIC and BIC (R)\n\nAIC(cafe_full, cafe_core, cafe_traffic)\n\nError:\n! object 'cafe_full' not found\n\nBIC(cafe_full, cafe_core, cafe_traffic)\n\nError:\n! object 'cafe_full' not found\n\n\n\nWhich model is favored by each criterion?\nDoes the additional complexity buy enough improvement in fit?"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#model-fit-putting-it-together",
+    "href": "files/lectures/7-5-glm-visualization.html#model-fit-putting-it-together",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Model Fit: Putting It Together",
+    "text": "Model Fit: Putting It Together\n\nmodel_comparison &lt;- list(\n  Full = cafe_full, Core = cafe_core, Traffic = cafe_traffic\n) |&gt;\n  imap_dfr(function(model, label) {\n    glance(model) |&gt;\n      transmute(model = label, r_squared = r.squared,\n                adjusted_r_squared = adj.r.squared, AIC, BIC)\n  })\n\nError:\n! object 'cafe_full' not found\n\nknitr::kable(model_comparison, digits = 3)\n\nError:\n! object 'model_comparison' not found\n\n\n\nThese results are computed from our café data.\nConsider fit, complexity, diagnostics, and the business question together."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#outliers",
+    "href": "files/lectures/7-5-glm-visualization.html#outliers",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Outliers",
+    "text": "Outliers\n\nA regression outlier has an unusually large residual.\nFor the bakery: sales are unusually high or low given the predictors.\nA high-sales day is not necessarily an outlier if the model predicts high sales.\nUnusual predictor values concern leverage, which we will discuss next."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#standardized-residuals",
+    "href": "files/lectures/7-5-glm-visualization.html#standardized-residuals",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Standardized Residuals",
+    "text": "Standardized Residuals\ne_{i,\\text{std}} = \\frac{e_i}{\\sqrt{\\text{MSE}(1-h_i)}}\n\nStandardization accounts for the residual scale and observation leverage.\nScreening rules used in this lecture:\n\n|e_{i,\\text{std}}| &gt; 2.5: suspected outlier.\n|e_{i,\\text{std}}| &gt; 3: more extreme residual.\n\nThese are flags for investigation, not automatic deletion rules."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#outliers-r",
+    "href": "files/lectures/7-5-glm-visualization.html#outliers-r",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Outliers (R)",
+    "text": "Outliers (R)\n\nbakery_diagnostics &lt;- bakery_sales |&gt;\n  mutate(day_id = row_number(),\n         standardized_residual = rstandard(bakery_model),\n         outlier = if_else(abs(standardized_residual) &gt; 2.5,\n                           \"Suspected\", \"Not Suspected\"))\n\nError in `mutate()`:\nℹ In argument: `standardized_residual = rstandard(bakery_model)`.\nCaused by error:\n! object 'bakery_model' not found\n\nbakery_diagnostics |&gt; count(outlier)\n\nError:\n! object 'bakery_diagnostics' not found"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#looking-at-flagged-days",
+    "href": "files/lectures/7-5-glm-visualization.html#looking-at-flagged-days",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Looking at Flagged Days",
+    "text": "Looking at Flagged Days\n\nbakery_diagnostics |&gt; filter(outlier == \"Suspected\")\n\nError:\n! object 'bakery_diagnostics' not found\n\n\n\nAsk the owner what happened on those days.\nWas there a large catering order? A festival? A recording error?\nA valid unusual day can tell us something important about the business."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#outliers-depend-on-the-model",
+    "href": "files/lectures/7-5-glm-visualization.html#outliers-depend-on-the-model",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Outliers Depend on the Model",
+    "text": "Outliers Depend on the Model\n\ncafe_diagnostics &lt;- cafe_sales |&gt;\n  mutate(day_id = row_number(),\n         outlier_full = abs(rstandard(cafe_full)) &gt; 2.5,\n         outlier_core = abs(rstandard(cafe_core)) &gt; 2.5,\n         outlier_traffic = abs(rstandard(cafe_traffic)) &gt; 2.5)\n\nError in `mutate()`:\nℹ In argument: `outlier_full = abs(rstandard(cafe_full)) &gt; 2.5`.\nCaused by error:\n! object 'cafe_full' not found\n\ncafe_diagnostics |&gt; count(outlier_full, outlier_core, outlier_traffic)\n\nError:\n! object 'cafe_diagnostics' not found\n\n\n\nA day may be unusual under one model and ordinary under another.\nLeaving out a useful predictor can make some observations look unexplained."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#leverage-and-influence",
+    "href": "files/lectures/7-5-glm-visualization.html#leverage-and-influence",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Leverage and Influence",
+    "text": "Leverage and Influence\n\nLeverage: an unusual combination of predictor values.\nInfluence: how strongly an observation affects the fitted model.\nA café day with exceptionally high advertising spending may have high leverage.\nIf its sales also disagree with the model, it may pull the fitted surface toward itself.\nHigh leverage does not automatically mean high influence."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#leverage",
+    "href": "files/lectures/7-5-glm-visualization.html#leverage",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Leverage",
+    "text": "Leverage\n\nWith one explanatory variable and an intercept:\n\nh_i = \\frac{1}{n} + \\frac{(x_i-\\bar{x})^2}{\\sum_{j=1}^n(x_j-\\bar{x})^2}\n\nIn multiple regression, leverage accounts for the joint predictor configuration.\nWe can obtain the model’s leverage values with hatvalues().\n\n\nhead(hatvalues(cafe_core))\n\nError:\n! object 'cafe_core' not found"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#cooks-distance",
+    "href": "files/lectures/7-5-glm-visualization.html#cooks-distance",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Cook’s Distance",
+    "text": "Cook’s Distance\nD_i = \\frac{e_i^2}{(k+1)\\text{MSE}}\\frac{h_i}{(1-h_i)^2}\n\nCook’s distance combines residual size and leverage to assess influence.\nOne screening rule: D_i &gt; 4/(n-k-1).\nWe also look for values substantially larger than the others.\nA flagged value requires investigation; it does not prove the observation is wrong."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#cooks-distance-r",
+    "href": "files/lectures/7-5-glm-visualization.html#cooks-distance-r",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Cook’s Distance (R)",
+    "text": "Cook’s Distance (R)\n\ncafe_full |&gt; cooks()\n\nError:\n! object 'cafe_full' not found"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#influence-depends-on-the-model",
+    "href": "files/lectures/7-5-glm-visualization.html#influence-depends-on-the-model",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Influence Depends on the Model",
+    "text": "Influence Depends on the Model\n\ncafe_core |&gt; cooks()\n\nError:\n! object 'cafe_core' not found\n\n\n\nCompare the flagged days with those in the full model.\nAn influential observation need not have a large standardized residual."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#handling-unusual-observations",
+    "href": "files/lectures/7-5-glm-visualization.html#handling-unusual-observations",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Handling Unusual Observations",
+    "text": "Handling Unusual Observations\n\nInvestigate the original record and discuss it with the owner.\nCorrect a documented entry error when possible.\nCompare models with and without flagged observations as a sensitivity analysis.\nDo not remove valid days merely to improve significance or fit.\nDocument the reason for any correction or exclusion."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#multicollinearity",
+    "href": "files/lectures/7-5-glm-visualization.html#multicollinearity",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Multicollinearity",
+    "text": "Multicollinearity\n\nExplanatory variables may contain overlapping information.\nConsequences:\n\nLarger standard errors.\nUnstable individual coefficient estimates.\nDifficulty separating the association of each predictor with sales.\n\nThe model may still predict well even when individual coefficients are difficult to estimate precisely."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#variance-inflation-factor",
+    "href": "files/lectures/7-5-glm-visualization.html#variance-inflation-factor",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Variance Inflation Factor",
+    "text": "Variance Inflation Factor\n\\text{VIF}_j = \\frac{1}{1-R_j^2}\n\nR_j^2 comes from predicting explanatory variable j using the other explanatory variables.\nVIF near 1: little overlap.\nVIF above 5 or 10: common screening thresholds for concern.\nThe thresholds are guidelines, not hypothesis tests."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#multicollinearity-r",
+    "href": "files/lectures/7-5-glm-visualization.html#multicollinearity-r",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Multicollinearity (R)",
+    "text": "Multicollinearity (R)\n\nbakery_model |&gt; car::vif()\n\nError:\n! object 'bakery_model' not found\n\ncafe_full |&gt; car::vif()\n\nError:\n! object 'cafe_full' not found\n\n\n\nThe original examples were simulated with independent explanatory variables.\nWe need a separate demonstration to make strong overlap visible."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#café-follow-up-three-ways-to-count-customers",
+    "href": "files/lectures/7-5-glm-visualization.html#café-follow-up-three-ways-to-count-customers",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Café Follow-Up: Three Ways to Count Customers",
+    "text": "Café Follow-Up: Three Ways to Count Customers\n\nThe café owner adds two measurements of customer activity:\n\nDoor sensor readings.\nCustomer counter readings.\n\nAlong with foot traffic, these largely measure the same underlying activity.\nWe create a demonstration copy; the original cafe_sales stays unchanged.\n\n\nset.seed(2222)\ncafe_overlap &lt;- cafe_sales |&gt;\n  mutate(day_id = row_number(),\n         door_sensor = foot_traffic + rnorm(n(), 0, 8),\n         customer_counter = foot_traffic + rnorm(n(), 0, 10))\noverlap_full &lt;- lm(\n  sales_dollars ~ advertising_dollars + foot_traffic +\n    door_sensor + customer_counter,\n  data = cafe_overlap\n)\noverlap_full |&gt; tidy()\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n131.5231963\n35.273737\n3.7286437\n0.0006791\n\n\nadvertising_dollars\n3.0779093\n0.393487\n7.8221366\n0.0000000\n\n\nfoot_traffic\n1.5849765\n2.006149\n0.7900591\n0.4348137\n\n\ndoor_sensor\n0.7039684\n1.354545\n0.5197082\n0.6065385\n\n\ncustomer_counter\n-0.4569829\n1.221222\n-0.3742013\n0.7105121"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#checking-the-overlap-model",
+    "href": "files/lectures/7-5-glm-visualization.html#checking-the-overlap-model",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Checking the Overlap Model",
+    "text": "Checking the Overlap Model\n\noverlap_full |&gt; reg_check()\n\n\n\noverlap_full |&gt; car::vif()\n\nadvertising_dollars        foot_traffic         door_sensor    customer_counter \n           1.021751          272.353694          135.822672           98.609622 \n\n\n\nDo the three customer-activity measures contain distinct information?"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#reducing-overlap",
+    "href": "files/lectures/7-5-glm-visualization.html#reducing-overlap",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Reducing Overlap",
+    "text": "Reducing Overlap\n\nAsk which measurement best answers the business question and is recorded reliably.\nHere, we retain foot traffic and omit the two redundant counters.\n\n\noverlap_reduced &lt;- lm(\n  sales_dollars ~ advertising_dollars + foot_traffic,\n  data = cafe_overlap\n)\noverlap_reduced |&gt; tidy()\n\n\n\n\n\nterm\nestimate\nstd.error\nstatistic\np.value\n\n\n\n\n(Intercept)\n126.075378\n33.4979876\n3.763670\n0.0005808\n\n\nadvertising_dollars\n3.055326\n0.3815255\n8.008183\n0.0000000\n\n\nfoot_traffic\n1.869333\n0.1191413\n15.690054\n0.0000000\n\n\n\n\n\noverlap_reduced |&gt; car::vif()\n\nadvertising_dollars        foot_traffic \n           1.001444            1.001444 \n\n\n\nAdvanced options include combining measurements into a summary score."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#recheck-the-reduced-model",
+    "href": "files/lectures/7-5-glm-visualization.html#recheck-the-reduced-model",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Recheck the Reduced Model",
+    "text": "Recheck the Reduced Model\n\noverlap_reduced |&gt; reg_check()\n\n\n\n\n\n\n\n\n\noverlap_reduced |&gt; cooks()\n\n\n\n\n\n\n\n\n\nChanging the model means we should revisit its diagnostics."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#sensitivity-analysis-two-unusual-café-days",
+    "href": "files/lectures/7-5-glm-visualization.html#sensitivity-analysis-two-unusual-café-days",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Sensitivity Analysis: Two Unusual Café Days",
+    "text": "Sensitivity Analysis: Two Unusual Café Days\n\nThe owner asks: “What if one festival day is driving the whole result?”\nTo demonstrate the process, we create another 40-day demonstration copy.\nDay 29 has exceptionally high advertising spending and unexpected sales.\nDay 40 has ordinary predictors but unexpectedly high sales.\n\n\ncafe_unusual &lt;- cafe_sales |&gt; mutate(day_id = row_number())\ncafe_unusual$advertising_dollars[29] &lt;- 220\ncafe_unusual$sales_dollars[29] &lt;-\n  100 + 3 * 220 + 2 * cafe_unusual$foot_traffic[29] - 700\ncafe_unusual$sales_dollars[40] &lt;- cafe_unusual$sales_dollars[40] + 650\nsensitivity_full &lt;- lm(\n  sales_dollars ~ advertising_dollars + foot_traffic,\n  data = cafe_unusual\n)"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#which-days-are-flagged",
+    "href": "files/lectures/7-5-glm-visualization.html#which-days-are-flagged",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Which Days Are Flagged?",
+    "text": "Which Days Are Flagged?\n\ncafe_unusual &lt;- cafe_unusual |&gt;\n  mutate(standardized_residual = rstandard(sensitivity_full),\n         leverage = hatvalues(sensitivity_full),\n         cooks_distance = cooks.distance(sensitivity_full),\n         suspected_outlier = abs(standardized_residual) &gt; 2.5)\ncafe_unusual |&gt;\n  filter(suspected_outlier | cooks_distance &gt; 4 / (n() - 3)) |&gt;\n  select(day_id, advertising_dollars, foot_traffic, sales_dollars,\n         standardized_residual, leverage, cooks_distance)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nday_id\nadvertising_dollars\nfoot_traffic\nsales_dollars\nstandardized_residual\nleverage\ncooks_distance\n\n\n\n\n29\n220.00\n327\n714.00\n-3.221271\n0.5448146\n4.139938\n\n\n40\n53.36\n211\n1391.29\n4.675968\n0.0261736\n0.195886\n\n\n\n\n\n\n\nDistinguish residual size, leverage, and influence."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#inspecting-influence",
+    "href": "files/lectures/7-5-glm-visualization.html#inspecting-influence",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Inspecting Influence",
+    "text": "Inspecting Influence\n\nsensitivity_full |&gt; cooks()\n\n\n\nWe know which days were changed because this is a teaching simulation.\nIn real data, the diagnostics would guide questions for the café owner."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#refit-for-comparison",
+    "href": "files/lectures/7-5-glm-visualization.html#refit-for-comparison",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Refit for Comparison",
+    "text": "Refit for Comparison\n\nCompare three situations:\n\nAll 40 days.\nWithout day 29.\nWithout days 29 and 40.\n\n\n\nsensitivity_no29 &lt;- lm(\n  sales_dollars ~ advertising_dollars + foot_traffic,\n  data = cafe_unusual |&gt; filter(day_id != 29)\n)\nsensitivity_no29_40 &lt;- lm(\n  sales_dollars ~ advertising_dollars + foot_traffic,\n  data = cafe_unusual |&gt; filter(!day_id %in% c(29, 40))\n)"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#comparing-the-results",
+    "href": "files/lectures/7-5-glm-visualization.html#comparing-the-results",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Comparing the Results",
+    "text": "Comparing the Results\n\nsensitivity_results &lt;- list(\n  \"All days\" = sensitivity_full,\n  \"Without 29\" = sensitivity_no29,\n  \"Without 29 and 40\" = sensitivity_no29_40\n) |&gt;\n  imap_dfr(function(model, label) {\n    tidy(model, conf.int = TRUE) |&gt; mutate(model = label)\n  })\nsensitivity_results |&gt;\n  select(model, term, estimate, conf.low, conf.high, p.value) |&gt;\n  knitr::kable(digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\nmodel\nterm\nestimate\nconf.low\nconf.high\np.value\n\n\n\n\nAll days\n(Intercept)\n260.168\n108.789\n411.548\n0.001\n\n\nAll days\nadvertising_dollars\n0.974\n-0.387\n2.335\n0.155\n\n\nAll days\nfoot_traffic\n1.754\n1.146\n2.362\n0.000\n\n\nWithout 29\n(Intercept)\n144.670\n0.138\n289.202\n0.050\n\n\nWithout 29\nadvertising_dollars\n3.205\n1.522\n4.888\n0.000\n\n\nWithout 29\nfoot_traffic\n1.828\n1.303\n2.353\n0.000\n\n\nWithout 29 and 40\n(Intercept)\n124.388\n55.217\n193.558\n0.001\n\n\nWithout 29 and 40\nadvertising_dollars\n3.047\n2.243\n3.852\n0.000\n\n\nWithout 29 and 40\nfoot_traffic\n1.871\n1.620\n2.122\n0.000"
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#interpreting-the-sensitivity-analysis",
+    "href": "files/lectures/7-5-glm-visualization.html#interpreting-the-sensitivity-analysis",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Interpreting the Sensitivity Analysis",
+    "text": "Interpreting the Sensitivity Analysis\n\nDo the estimated associations change meaningfully?\nDo the directions, confidence intervals, or significance decisions change?\nIs the business interpretation stable across these versions?\nIf results change, report that sensitivity rather than choosing the version you prefer.\nThese refits are comparisons, not a justification for deleting valid observations."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#what-would-we-ask-the-owner",
+    "href": "files/lectures/7-5-glm-visualization.html#what-would-we-ask-the-owner",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "What Would We Ask the Owner?",
+    "text": "What Would We Ask the Owner?\n\nWas day 29’s advertising spending entered correctly?\nDid a closure or stock shortage prevent the expected sales?\nDid day 40 include a catering order that the model does not account for?\nA special event may suggest a missing explanatory variable rather than a bad observation."
+  },
+  {
+    "objectID": "files/lectures/7-5-glm-visualization.html#wrap-up",
+    "href": "files/lectures/7-5-glm-visualization.html#wrap-up",
+    "title": "General Linear Models:Model Fit and Diagnostics",
+    "section": "Wrap Up",
+    "text": "Wrap Up\n\nModel fit: how much sales variation is explained, and whether extra complexity helps.\nOutliers: days with unusually large residuals.\nLeverage and influence: unusual predictors and observations that affect the fit.\nMulticollinearity: explanatory variables with overlapping information.\nSensitivity analysis: how conclusions change when we examine specific observations.\nUse diagnostics with the owner’s knowledge of the business, and document decisions.\nNext module: incorporating categorical predictors."
+  },
+  {
     "objectID": "files/lectures/3-4-two-sample-variances.html#introduction",
     "href": "files/lectures/3-4-two-sample-variances.html#introduction",
     "title": "Two-Sample Variances",
@@ -3329,7 +4183,7 @@
     "href": "files/lectures/6-1-goodness-of-fit.html#hypothesis-testing-goodness-of-fit-1",
     "title": "Goodness-of-Fit",
     "section": "Hypothesis Testing: Goodness-of-Fit",
-    "text": "Hypothesis Testing: Goodness-of-Fit\n\nHypotheses\n\nH_0: The random variable follows the specified distribution.\nH_1: The random variable does not follow the specified distribution.\n\nTest Statistic\n\n\\chi^2_0 = \\sum_{i=1}^k \\frac{(O_i-E_i)^2}{E_i}\n\nwhere\n\nk = number of categories,\nO_i = observed count and\n\nE_i = expected count"
+    "text": "Hypothesis Testing: Goodness-of-Fit\n\nHypotheses\n\nH_0: The random variable follows the specified distribution.\nH_1: The random variable does not follow the specified distribution.\n\nTest Statistic\n\n\\chi^2_0 = \\sum_{i=1}^k \\frac{(O_i-E_i)^2}{E_i}\n\nwhere k = number of categories, O_i = observed count and E_i = expected count"
   },
   {
     "objectID": "files/lectures/6-1-goodness-of-fit.html#hypothesis-testing-goodness-of-fit-r",
